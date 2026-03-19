@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/spah-logo.png" />
+  <title>Veterinarian in Alhambra & South Pasadena, CA | Exotic Vet Near Me | SPAH</title>
+  <meta name="description" content="South Pasadena Animal Hospital (SPAH) — veterinarian in Alhambra, CA near South Pasadena. Dogs, cats, reptiles, birds & exotic pets. Serving Alhambra, South Pasadena, Highland Park, Pasadena, San Marino, San Gabriel, Altadena & greater Los Angeles. (626) 441-1314." />
+  <meta name="keywords" content="vet Alhambra, veterinarian Alhambra CA, vet South Pasadena, animal hospital Alhambra, exotic vet near me, reptile vet Los Angeles, vet Highland Park, vet Pasadena, pasadena animal hospital, vet San Marino, vet San Gabriel, vet Altadena, exotic pet vet, bird vet LA, SPAH" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.spah.la/" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Veterinarian in Alhambra & South Pasadena | SPAH – Exotic Pets Welcome" />
+  <meta property="og:description" content="Privately-owned animal hospital in Alhambra, CA. Dogs, cats, reptiles, birds & exotic pets. Serving Alhambra, South Pasadena, Highland Park, Pasadena, San Marino, San Gabriel & Altadena." />
+  <meta property="og:url" content="https://www.spah.la/" />
+  <meta property="og:site_name" content="South Pasadena Animal Hospital" />
+  <meta property="og:image" content="https://www.spah.la/images/spah-logo.png" />
+  <meta property="og:image:width" content="512" />
+  <meta property="og:image:height" content="512" />
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Veterinarian in Alhambra & South Pasadena | SPAH" />
+  <meta name="twitter:description" content="Privately-owned animal hospital in Alhambra, CA. Dogs, cats, reptiles, birds & exotic pets welcome." />
+  <meta name="twitter:image" content="https://www.spah.la/images/spah-logo.png" />
+  <!-- BreadcrumbList -->
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.spah.la/"}]}
+  </script>
+  <!-- Schema.org: VeterinaryCare -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VeterinaryCare",
+    "name": "South Pasadena Animal Hospital",
+    "alternateName": "SPAH",
+    "url": "https://www.spah.la",
+    "telephone": "+16264411314",
+    "email": "info@spah.la",
+    "foundingDate": "2023",
+    "description": "Privately-owned veterinary hospital in Alhambra, CA near South Pasadena. Specializing in dogs, cats, reptiles, birds, and exotic pets. Serving Alhambra, South Pasadena, Highland Park, Pasadena, San Marino, San Gabriel, Altadena, and greater Los Angeles.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "3116 W Main St",
+      "addressLocality": "Alhambra",
+      "addressRegion": "CA",
+      "postalCode": "91801",
+      "addressCountry": "US"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 34.1161,
+      "longitude": -118.1500
+    },
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "08:00", "closes": "13:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "14:00", "closes": "18:00" }
+    ],
+    "areaServed": [
+      { "@type": "City", "name": "Alhambra" },
+      { "@type": "City", "name": "South Pasadena" },
+      { "@type": "City", "name": "Highland Park" },
+      { "@type": "City", "name": "Pasadena" },
+      { "@type": "City", "name": "San Marino" },
+      { "@type": "City", "name": "San Gabriel" },
+      { "@type": "City", "name": "Altadena" },
+      { "@type": "City", "name": "Los Angeles" },
+      { "@type": "City", "name": "Eagle Rock" },
+      { "@type": "City", "name": "Monterey Park" }
+    ],
+    "medicalSpecialty": ["Veterinary Medicine", "Exotic Animal Medicine"],
+    "employee": [
+      { "@type": "Person", "name": "Dr. Sylvia Chiang", "jobTitle": "Veterinarian" },
+      { "@type": "Person", "name": "Dr. Gina Navia", "jobTitle": "Veterinarian" }
+    ],
+    "sameAs": ["https://www.spah.la"],
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.5",
+      "reviewCount": "235",
+      "bestRating": "5",
+      "worstRating": "1"
+    }
+  }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand:  '#5A7FA6',
+            sage:   '#7A9E8E',
+            terra:  '#A8673A',
+            sky:    '#89A8C4',
+            warm:   '#FAFAF8',
+            dark:   '#2A3442',
+            muted:  '#5C6B7A',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'Georgia', 'serif'],
+            body:    ['"Lato"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+
+    /* Grain texture overlay */
+    .grain::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 1;
+    }
+
+    /* Layered shadows */
+    .card-shadow { box-shadow: 0 2px 4px rgba(90,127,166,0.06), 0 8px 24px rgba(90,127,166,0.10); }
+    .card-shadow-lg { box-shadow: 0 4px 8px rgba(90,127,166,0.08), 0 16px 40px rgba(90,127,166,0.14); }
+
+    /* Smooth transitions */
+    .btn-primary {
+      background: #5A7FA6;
+      color: white;
+      border-radius: 9999px;
+      padding: 0.75rem 2rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: background 0.2s cubic-bezier(0.34,1.56,0.64,1), transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.2s ease;
+      box-shadow: 0 4px 14px rgba(90,127,166,0.30);
+    }
+    .btn-primary:hover { background: #4A6D92; transform: scale(1.03); box-shadow: 0 6px 20px rgba(90,127,166,0.40); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-primary:focus-visible { outline: 3px solid #89A8C4; outline-offset: 3px; }
+
+    .btn-outline {
+      border: 2px solid #5A7FA6;
+      color: #5A7FA6;
+      border-radius: 9999px;
+      padding: 0.7rem 2rem;
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      transition: all 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .btn-outline:hover { background: #5A7FA6; color: white; transform: scale(1.03); }
+    .btn-outline:active { transform: scale(0.98); }
+    .btn-outline:focus-visible { outline: 3px solid #89A8C4; outline-offset: 3px; }
+
+    /* Nav link hover */
+    .nav-link { position: relative; }
+    .nav-link::after {
+      content: '';
+      position: absolute; bottom: -2px; left: 0; right: 0;
+      height: 2px; background: #7A9E8E;
+      transform: scaleX(0); transform-origin: left;
+      transition: transform 0.25s ease;
+    }
+    .nav-link:hover::after { transform: scaleX(1); }
+
+    /* Service card hover */
+    .service-card {
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+    }
+    .service-card:hover { transform: translateY(-4px); }
+
+    /* Fade-in on scroll */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    /* ── SPAH Scroll Hero ── */
+    .spah-letter {
+      width: 100%; aspect-ratio: 1;
+      background-size: 200% 200%;
+      background-repeat: no-repeat;
+    }
+    #spah-letter-s { background-position:   0%   0%; }
+    #spah-letter-p { background-position: 100%   0%; }
+    #spah-letter-a { background-position:   0% 100%; }
+    #spah-letter-h { background-position: 100% 100%; }
+    @keyframes spah-bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NOTICE BANNER -->
+  <div class="text-center py-2 px-4 text-sm font-body font-bold tracking-wide" style="background: #F5E6A3; color: #2A3442;">
+    Sorry, we are not accepting new clients at this time except <strong>exotics appointments</strong>. &nbsp;<a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login" target="_blank" class="underline hover:no-underline" style="color:#5A7FA6;">Book now&nbsp;→</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-50 bg-warm/95 backdrop-blur-sm border-b border-sky/20" style="box-shadow: 0 2px 12px rgba(90,127,166,0.08);">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-center gap-10 relative">
+      <!-- Desktop nav -->
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html"     class="nav-link text-brand font-body font-bold text-sm tracking-wide">HOME</a>
+        <a href="about.html"     class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">ABOUT US</a>
+        <a href="services.html"  class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">SERVICES</a>
+      </div>
+      <a href="index.html" id="nav-logo">
+        <img src="images/spah-logo-vertical.jpg"
+             alt="South Pasadena Animal Hospital Logo" class="h-[70px]" style="mix-blend-mode: multiply; transition: opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);" />
+      </a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="pricing.html"   class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">PRICING</a>
+        <a href="contact.html"   class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">CONTACT</a>
+        <a href="https://spah.koala.health/" target="_blank"
+           class="nav-link text-terra font-body text-sm tracking-wide font-bold transition-colors duration-200">PHARMACY ↗</a>
+      </div>
+      <!-- Mobile menu button -->
+      <button id="menuBtn" class="md:hidden absolute right-6 text-dark focus-visible:outline-none" aria-label="Open menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+      </button>
+    </div>
+    <!-- Mobile menu -->
+    <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 flex-col gap-4 bg-warm border-t border-sky/20">
+      <a href="index.html"    class="text-brand font-body font-bold text-sm tracking-wide py-3">HOME</a>
+      <a href="about.html"    class="text-dark/70 font-body text-sm tracking-wide py-3">ABOUT US</a>
+      <a href="services.html" class="text-dark/70 font-body text-sm tracking-wide py-3">SERVICES</a>
+      <a href="pricing.html"  class="text-dark/70 font-body text-sm tracking-wide py-3">PRICING</a>
+      <a href="contact.html"  class="text-dark/70 font-body text-sm tracking-wide py-3">CONTACT</a>
+      <a href="https://spah.koala.health/" target="_blank" class="text-terra font-body text-sm font-bold py-3">PHARMACY ↗</a>
+    </div>
+  </nav>
+
+  <!-- HERO (Scroll Animation) -->
+  <div id="spah-hero" style="position: relative;">
+    <div id="spah-hero-sticky" class="grain" style="position: sticky; top: 0; height: 100vh; display: flex; align-items: center; justify-content: center; overflow: hidden; background: linear-gradient(135deg, #EFF4F9 0%, #F5F0EC 50%, #EDF3F0 100%);">
+
+      <!-- Decorative blobs -->
+      <div style="position:absolute;top:-80px;right:-80px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(90,127,166,0.12) 0%,transparent 70%);pointer-events:none;z-index:1;"></div>
+      <div style="position:absolute;bottom:-60px;left:-60px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(122,158,142,0.10) 0%,transparent 70%);pointer-events:none;z-index:1;"></div>
+
+      <!-- Logo grid -->
+      <div id="spah-logo-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(12px,2.5vw,22px);width:min(540px,88vw);position:relative;z-index:2;">
+        <div class="spah-letter" id="spah-letter-s"></div>
+        <div class="spah-letter" id="spah-letter-p"></div>
+        <div class="spah-letter" id="spah-letter-a"></div>
+        <div class="spah-letter" id="spah-letter-h"></div>
+      </div>
+
+      <!-- Tagline -->
+      <div id="spah-tagline" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;opacity:0;pointer-events:none;z-index:3;width:min(580px,82vw);">
+        <span style="display:inline-block;padding:4px 14px;border:1.5px solid #7A9E8E;border-radius:999px;font-family:'Lato',sans-serif;font-weight:700;font-size:clamp(0.55rem,1.2vw,0.68rem);letter-spacing:0.16em;text-transform:uppercase;color:#5a7a6a;margin-bottom:0.8rem;">Alhambra / South Pasadena, CA &nbsp;·&nbsp; Est. 2023</span>
+        <h1 style="display:block;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(2rem,5.5vw,3.8rem);color:#2A3442;line-height:1.08;letter-spacing:-0.02em;margin-bottom:0.7rem;">
+          Compassionate Care<br>
+          <span style="color:#5A7FA6;">for Every </span><span style="color:#7A9E8E;">Pet.</span>
+        </h1>
+        <p style="display:block;font-family:'Lato',sans-serif;font-weight:400;font-size:clamp(0.85rem,1.6vw,1rem);color:#666;line-height:1.7;margin-bottom:1.2rem;">From Golden Retrievers to Bearded Dragons — we treat every patient like family.<br>Led by Dr. Sylvia Chiang and Dr. Gina Navia.</p>
+        <div style="display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap;pointer-events:auto;">
+          <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login" target="_blank" class="btn-primary">Book an Appointment</a>
+          <a href="services.html" class="btn-outline">See Our Services</a>
+        </div>
+      </div>
+
+      <!-- Scroll hint -->
+      <div id="spah-scroll-hint" style="position:absolute;bottom:6%;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;opacity:0;cursor:pointer;" onclick="window.scrollBy({top:300,behavior:'smooth'})">
+        <span style="font-family:'Lato',sans-serif;font-size:0.8rem;font-weight:900;letter-spacing:0.3em;text-transform:uppercase;color:#5A7FA6;">Scroll</span>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;animation:spah-bounce 2s ease-in-out infinite;">
+          <svg width="22" height="12" viewBox="0 0 22 12" fill="none" style="opacity:0.35;"><path d="M1 1l10 9 10-9" stroke="#5A7FA6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="22" height="12" viewBox="0 0 22 12" fill="none" style="opacity:0.55;margin-top:-4px;"><path d="M1 1l10 9 10-9" stroke="#5A7FA6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg width="22" height="12" viewBox="0 0 22 12" fill="none" style="opacity:0.85;margin-top:-4px;"><path d="M1 1l10 9 10-9" stroke="#5A7FA6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ABOUT BRIEF -->
+  <section class="py-24 bg-warm">
+    <div class="max-w-6xl mx-auto px-6 flex flex-col lg:flex-row items-center gap-16">
+      <!-- Image -->
+      <div class="flex-1 relative">
+        <div class="rounded-3xl overflow-hidden card-shadow" style="aspect-ratio:4/3;">
+          <!-- Replace with real team photo -->
+          <img src="https://placehold.co/560x420/EDF3F0/5A7FA6?text=Dr.+Chiang+%26+Dr.+Navia"
+               alt="Dr. Sylvia Chiang and Dr. Gina Navia"
+               class="w-full h-full object-cover" loading="lazy" />
+        </div>
+      </div>
+      <!-- Text -->
+      <div class="flex-1">
+        <span class="inline-block text-sage font-body text-xs font-bold tracking-widest uppercase mb-4">About Us</span>
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-dark mb-6 leading-tight" style="letter-spacing:-0.02em;">
+          Your neighbors in<br/>South Pasadena.
+        </h2>
+        <p class="font-body text-muted text-lg leading-relaxed mb-5" style="line-height:1.7;">
+          We are a privately-owned, small animal hospital led by Dr. Sylvia Chiang and Dr. Gina Navia.
+          We pride ourselves in creating a warm and welcoming environment where both you and your pets feel comfortable.
+        </p>
+        <p class="font-body text-muted text-lg leading-relaxed mb-8" style="line-height:1.7;">
+          From preventive care and surgery to exotics, our broad and varied <a href="services.html" class="text-brand hover:underline">services</a> can meet all of your pet's
+          health needs in one place. Whether you're bringing your pet in for the first time, or have trusted us for
+          years — we treat your animal as if it were our own.
+        </p>
+        <a href="about.html" class="btn-primary inline-block">Meet Our Team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="py-24" style="background: linear-gradient(180deg, #FAFAF8 0%, #EFF4F9 100%);">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="text-center mb-14">
+        <span class="text-sage font-body text-xs font-bold tracking-widest uppercase">What We Offer</span>
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-dark mt-3" style="letter-spacing:-0.02em;">Comprehensive Care</h2>
+        <p class="font-body text-muted text-lg mt-4 max-w-xl mx-auto" style="line-height:1.7;">
+          Everything your pet needs, under one roof — with <a href="pricing.html" class="text-brand hover:underline">transparent pricing</a>.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Service cards -->
+        <div class="service-card bg-white rounded-2xl p-7 card-shadow">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5" style="background:#D6DFED;">
+            <img src="images/services/wellness-exams.svg" alt="Wellness exams icon" class="w-9 h-9" loading="lazy" />
+          </div>
+          <h3 class="font-display text-xl font-bold text-dark mb-2">Wellness Exams</h3>
+          <p class="font-body text-muted text-sm leading-relaxed" style="line-height:1.7;">
+            Annual and semi-annual check-ups to keep your pet healthy and catch issues early.
+          </p>
+        </div>
+        <div class="service-card bg-white rounded-2xl p-7 card-shadow">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5" style="background:#E8D6E8;">
+            <img src="images/services/vaccinations.svg" alt="Vaccinations icon" class="w-9 h-9" loading="lazy" />
+          </div>
+          <h3 class="font-display text-xl font-bold text-dark mb-2">Vaccinations</h3>
+          <p class="font-body text-muted text-sm leading-relaxed" style="line-height:1.7;">
+            Core and lifestyle vaccines tailored to your pet's age, species, and risk factors.
+          </p>
+        </div>
+        <div class="service-card bg-white rounded-2xl p-7 card-shadow">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5" style="background:#D4E5D9;">
+            <img src="images/services/exotics-exams.svg" alt="Exotic pet care icon" class="w-9 h-9" loading="lazy" />
+          </div>
+          <h3 class="font-display text-xl font-bold text-dark mb-2">Exotic Pet Care</h3>
+          <p class="font-body text-muted text-sm leading-relaxed" style="line-height:1.7;">
+            Specialized expertise for reptiles, birds, rabbits, guinea pigs, and other exotics.
+            <span class="text-terra font-bold"> Now accepting new patients.</span>
+          </p>
+        </div>
+        <div class="service-card bg-white rounded-2xl p-7 card-shadow">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5" style="background:#D4E5D9;">
+            <img src="images/services/laboratory-services.svg" alt="Diagnostics and lab icon" class="w-9 h-9" loading="lazy" />
+          </div>
+          <h3 class="font-display text-xl font-bold text-dark mb-2">Diagnostics</h3>
+          <p class="font-body text-muted text-sm leading-relaxed" style="line-height:1.7;">
+            In-house lab work, digital radiography, and advanced diagnostic tools for accurate results.
+          </p>
+        </div>
+        <div class="service-card bg-white rounded-2xl p-7 card-shadow">
+          <div class="w-14 h-14 rounded-full flex items-center justify-center mb-5" style="background:#D6DFED;">
+            <img src="images/services/sick-pet-exams.svg" alt="Sick pet exams icon" class="w-9 h-9" loading="lazy" />
+          </div>
+          <h3 class="font-display text-xl font-bold text-dark mb-2">Dental Care</h3>
+          <p class="font-body text-muted text-sm leading-relaxed" style="line-height:1.7;">
+            Professional cleanings and oral health assessments to prevent pain and disease.
+          </p>
+        </div>
+        <!-- Pharmacy card -->
+        <div class="service-card rounded-2xl p-7 text-dark" style="background: linear-gradient(135deg, #EDE8E0 0%, #F5F1EB 100%); box-shadow: 0 4px 8px rgba(0,0,0,0.06), 0 16px 40px rgba(0,0,0,0.04);">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5" style="background:rgba(0,0,0,0.05);">
+            <span style="font-size:1.6rem;">💊</span>
+          </div>
+          <h3 class="font-display text-xl font-bold mb-2">Online Pharmacy</h3>
+          <p class="text-dark/70 text-sm leading-relaxed mb-5" style="line-height:1.7;">
+            Order medications and refills from home. Fast, easy, and delivered to your door.
+          </p>
+          <a href="https://spah.koala.health/" target="_blank"
+             class="inline-block text-dark font-body font-bold text-sm border border-dark/20 rounded-full px-5 py-2 hover:bg-dark/5 transition-colors duration-200">
+            Shop the Pharmacy →
+          </a>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="services.html" class="btn-outline inline-block">View All Services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS — Carousel -->
+  <section class="py-24 bg-warm overflow-hidden" itemscope itemtype="https://schema.org/LocalBusiness">
+    <meta itemprop="name" content="South Pasadena Animal Hospital" />
+    <div class="max-w-6xl mx-auto px-6">
+      <!-- Header with combined rating -->
+      <div class="text-center mb-14">
+        <span class="text-sage font-body text-xs font-bold tracking-widest uppercase">What Pet Parents Say</span>
+        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-dark mt-3" style="letter-spacing:-0.03em;">Trusted by Our Community</h2>
+
+        <!-- Combined rating -->
+        <div class="flex items-center justify-center gap-6 mt-6">
+          <a href="https://www.google.com/maps/place/South+Pasadena+Animal+Hospital/@34.1035187,-118.1525169,17z/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-white rounded-2xl px-5 py-3 card-shadow hover:shadow-lg transition-shadow duration-200">
+            <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+            <div class="text-left">
+              <div class="flex items-center gap-1.5">
+                <span class="font-display text-lg font-bold text-dark">4.8</span>
+                <div style="color:#F59E0B; font-size:0.85rem; letter-spacing:1px;">★★★★★</div>
+              </div>
+              <div class="font-body text-xs text-muted">124 reviews</div>
+            </div>
+          </a>
+          <a href="https://www.yelp.com/biz/south-pasadena-animal-hospital-south-pasadena" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3 bg-white rounded-2xl px-5 py-3 card-shadow hover:shadow-lg transition-shadow duration-200">
+            <svg class="w-6 h-6 flex-shrink-0" viewBox="0 0 24 24" fill="#D32323"><path d="M20.16 12.73l-4.83-1.39c-.41-.12-.78.27-.59.66l1.22 2.6c.19.41.71.49 1.01.17l3.61-3.86c.06-.06.05-.15-.01-.18z"/><path d="M11.78 2C6.4 2 2 6.4 2 11.78c0 5.37 4.4 9.78 9.78 9.78 5.37 0 9.78-4.4 9.78-9.78C21.56 6.4 17.16 2 11.78 2zm-.55 4.46l.74 4.97c.05.33-.34.56-.61.36L7.8 9.04c-.27-.2-.24-.6.06-.75l3.04-1.97c.13-.08.31-.01.33.14zm-5.5 8.37l4.48-2.17c.3-.14.63.12.56.44l-.93 4.93c-.07.37-.5.52-.77.27l-3.55-3.26c-.1-.09-.08-.24.02-.3l.19-.91zm4.95 5.56l.25-5.05c.02-.34.4-.52.67-.31l3.97 2.97c.27.2.22.6-.08.74l-4.22 2.08c-.3.15-.61-.11-.59-.43zm7.31-3.05l-3.68 3.41c-.25.23-.62.06-.63-.28l-.17-5.04c-.01-.34.32-.57.63-.42l3.85 1.63c.32.13.35.55.1.78l-.1-.08z"/></svg>
+            <div class="text-left">
+              <div class="flex items-center gap-1.5">
+                <span class="font-display text-lg font-bold text-dark">4.2</span>
+                <div style="color:#F59E0B; font-size:0.85rem; letter-spacing:1px;">★★★★☆</div>
+              </div>
+              <div class="font-body text-xs text-muted">111 reviews</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Combined total -->
+        <p class="font-body text-muted text-sm mt-4">
+          <strong class="text-dark">4.5 stars</strong> · <strong class="text-dark">235+ reviews</strong> combined
+        </p>
+      </div>
+
+      <!-- Carousel container -->
+      <div class="relative">
+        <!-- Left arrow -->
+        <button onclick="scrollReviews(-1)" aria-label="Previous reviews"
+          class="absolute -left-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-sky/30 flex items-center justify-center hover:bg-brand/5 transition-all duration-200 cursor-pointer hidden md:flex"
+          style="box-shadow: 0 2px 12px rgba(90,127,166,0.15);">
+          <svg class="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+
+        <!-- Scrollable track -->
+        <div id="reviewTrack" class="flex gap-6 overflow-x-auto scroll-smooth pb-4 -mx-2 px-2 snap-x snap-mandatory" style="scrollbar-width:none; -ms-overflow-style:none;">
+          <style>#reviewTrack::-webkit-scrollbar { display:none; }</style>
+
+          <!-- Review 1 – Scott J. (Yelp) -->
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
+               itemprop="review" itemscope itemtype="https://schema.org/Review">
+            <div class="flex items-center justify-between mb-4">
+              <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
+              <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1">Yelp</span>
+            </div>
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+              "Dr. Chiang and the whole team are incredible. Unlike some clinics that try to upsell you on everything, they're honest, straightforward, and actually affordable. Dr. Chiang got our IVDD pup walking again within a couple of weeks. It's a place that actually cares AND is good at what they do."
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#5A7FA6,#7A9E8E);">S</div>
+              <div>
+                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Scott J.</span></div>
+                <div class="font-body text-xs text-muted">South Pasadena, CA · Feb 2026</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2 – Catalina T. (Google) -->
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
+               itemprop="review" itemscope itemtype="https://schema.org/Review">
+            <div class="flex items-center justify-between mb-4">
+              <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
+              <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1 flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                Google
+              </span>
+            </div>
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+              "My senior cat was having some dental issues, so I had been calling around and wasn't able to get appointments anywhere. Got super lucky with this appointment. Absolutely loved the care and attention my cat received. Highly recommend!"
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#5A7FA6,#A8673A);">C</div>
+              <div>
+                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Catalina T.</span></div>
+                <div class="font-body text-xs text-muted">Local Guide · Nov 2025</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3 – Stephanie W. (Yelp) -->
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
+               itemprop="review" itemscope itemtype="https://schema.org/Review">
+            <div class="flex items-center justify-between mb-4">
+              <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
+              <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1">Yelp</span>
+            </div>
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+              "Dr. Chiang and her team are exceptional in their care, compassion and veterinary skill and knowledge. She implemented a treatment plan based on evidence-based medicine. I feel truly blessed that Dr. Chiang is the veterinarian of our furry family member."
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#7A9E8E,#89A8C4);">S</div>
+              <div>
+                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Stephanie W.</span></div>
+                <div class="font-body text-xs text-muted">Pasadena, CA · Dec 2025</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 4 – Miranda V. (Google) -->
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
+               itemprop="review" itemscope itemtype="https://schema.org/Review">
+            <div class="flex items-center justify-between mb-4">
+              <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
+              <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1 flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                Google
+              </span>
+            </div>
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+              "Cannot say enough good things about this place. The quality of care and attentiveness is so comforting. My cats both get very nervous at vets and everyone at SPAH is so warm, patient, competent, and communicative. Dr. Chiang went above and beyond."
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#89A8C4,#5A7FA6);">M</div>
+              <div>
+                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Miranda V.</span></div>
+                <div class="font-body text-xs text-muted">Dec 2025</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 5 – Edith A. (Yelp) -->
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
+               itemprop="review" itemscope itemtype="https://schema.org/Review">
+            <div class="flex items-center justify-between mb-4">
+              <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
+              <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1">Yelp</span>
+            </div>
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+              "Great place. Super clean, friendly staff. The vet reviewed everything with us and we felt comfortable with the procedure. With everything we needed done for Ollin, much cheaper than any other place. Everyone was super helpful."
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#A8673A,#C4845A);">E</div>
+              <div>
+                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Edith A.</span></div>
+                <div class="font-body text-xs text-muted">Alhambra, CA · Jul 2024</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 6 – Suze (Google) -->
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
+               itemprop="review" itemscope itemtype="https://schema.org/Review">
+            <div class="flex items-center justify-between mb-4">
+              <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
+              <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1 flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 flex-shrink-0" viewBox="0 0 24 24" fill="none"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                Google
+              </span>
+            </div>
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+              "You won't find better service and proper care anywhere else. My cat has been a patient for a little over 2 years. After experiences I've had at other clinics, I only have enthusiastic praise for this place. Friendliest and most attentive staff."
+            </blockquote>
+            <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
+              <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#7A9E8E,#5A7FA6);">S</div>
+              <div>
+                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Suze</span></div>
+                <div class="font-body text-xs text-muted">Local Guide · Jan 2026</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Right arrow -->
+        <button onclick="scrollReviews(1)" aria-label="Next reviews"
+          class="absolute -right-4 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white border border-sky/30 flex items-center justify-center hover:bg-brand/5 transition-all duration-200 cursor-pointer hidden md:flex"
+          style="box-shadow: 0 2px 12px rgba(90,127,166,0.15);">
+          <svg class="w-5 h-5 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+
+      <!-- Carousel dots -->
+      <div class="flex justify-center items-center gap-2.5 mt-8" id="reviewDots">
+        <button onclick="scrollToReview(0)" class="w-2.5 h-2.5 rounded-full bg-dark transition-colors duration-300 cursor-pointer" aria-label="Reviews 1-3"></button>
+        <button onclick="scrollToReview(1)" class="w-2.5 h-2.5 rounded-full bg-dark/20 transition-colors duration-300 cursor-pointer" aria-label="Reviews 4-6"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BANNER -->
+  <section class="py-20 relative overflow-hidden grain" style="background: linear-gradient(135deg, #5A7FA6 0%, #7A9E8E 100%);">
+    <div style="position:absolute;top:-40px;right:-40px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.06);pointer-events:none;"></div>
+    <div class="relative z-10 max-w-3xl mx-auto px-6 text-center text-white">
+      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold mb-4" style="letter-spacing:-0.02em;">Ready to Book?</h2>
+      <p class="font-body text-white/80 text-lg mb-8" style="line-height:1.7;">
+        We're welcoming new exotic pet patients and existing clients for all species.
+        Book online or give us a call — we'd love to meet your pet.
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login" target="_blank"
+           class="bg-white text-brand font-body font-bold rounded-full px-8 py-3 hover:bg-warm transition-colors duration-200" style="box-shadow:0 4px 14px rgba(0,0,0,0.15);">
+          Book Online
+        </a>
+        <a href="tel:6264411314"
+           class="border-2 border-white/50 text-white font-body font-bold rounded-full px-8 py-3 hover:bg-white/10 transition-colors duration-200">
+          (626) 441-1314
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-sky/15 pt-12 pb-6 pb-[84px] md:pb-6">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="pb-8 mb-8 border-b border-dark/10">
+        <div class="mb-8">
+          <img src="images/spah-logo-vertical.jpg"
+               alt="South Pasadena Animal Hospital Logo" class="h-[77px] mb-4" style="mix-blend-mode: multiply;" />
+          <p class="font-body text-dark text-sm leading-relaxed max-w-lg" style="line-height:1.7;">
+            A privately-owned animal hospital committed to compassionate, comprehensive care for pets of all shapes and sizes. Proudly serving Alhambra, South Pasadena, San Marino, Highland Park, Altadena, and greater Los Angeles.
+          </p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-2 gap-6 max-w-lg">
+          <div>
+            <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Quick Links</h4>
+            <div class="flex flex-col gap-2">
+              <a href="index.html"    class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Home</a>
+              <a href="about.html"    class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">About Us</a>
+              <a href="services.html" class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Services</a>
+              <a href="contact.html"  class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Contact</a>
+              <a href="https://spah.koala.health/" target="_blank" class="font-body text-terra font-bold text-sm hover:text-brand transition-colors duration-200">Online Pharmacy ↗</a>
+            </div>
+          </div>
+          <div>
+            <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Contact</h4>
+            <div class="flex flex-col gap-2">
+              <p class="font-body text-dark text-sm">3116 W Main St<br />Alhambra, CA 91801</p>
+              <a href="tel:6264411314"   class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">(626) 441-1314</a>
+              <a href="mailto:info@spah.la" class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">info@spah.la</a>
+              <div class="flex gap-3 mt-1">
+                <a href="https://www.instagram.com/southpasah" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-dark/60 hover:text-brand transition-colors duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                </a>
+                <a href="https://www.tiktok.com/@southpasah" target="_blank" rel="noopener noreferrer" aria-label="TikTok" class="text-dark/60 hover:text-brand transition-colors duration-200">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1v-3.5a6.37 6.37 0 0 0-.79-.05A6.34 6.34 0 0 0 3.15 15a6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.34-6.34V8.75a8.18 8.18 0 0 0 4.76 1.52V6.84a4.83 4.83 0 0 1-1-.15z"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-3">
+        <p class="font-body text-dark/60 text-xs">© 2026 South Pasadena Animal Hospital. Est. 2023.</p>
+        <a href="contact.html" class="font-body text-dark/60 text-xs hover:text-dark transition-colors duration-200">Privacy Policy</a>
+      </div>
+      <p class="font-body text-dark/30 text-xs text-center mt-3">Serving: <a href="vet-alhambra.html" class="text-dark/30 no-underline hover:text-dark/50 hover:underline">Alhambra</a> \&middot; <a href="vet-south-pasadena.html" class="text-dark/30 no-underline hover:text-dark/50 hover:underline">South Pasadena</a> \&middot; <a href="exotic-vet-pasadena.html" class="text-dark/30 no-underline hover:text-dark/50 hover:underline">Pasadena</a> \&middot; <a href="vet-highland-park.html" class="text-dark/30 no-underline hover:text-dark/50 hover:underline">Highland Park</a> \&middot; <a href="vet-san-gabriel.html" class="text-dark/30 no-underline hover:text-dark/50 hover:underline">San Gabriel</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      const menu = document.getElementById('mobileMenu');
+      menu.classList.toggle('hidden');
+      menu.classList.toggle('flex');
+    });
+
+    // Review carousel
+    function scrollReviews(dir) {
+      const track = document.getElementById('reviewTrack');
+      const card = track.querySelector('.snap-start');
+      const cardWidth = (card ? card.offsetWidth : 340) + 24;
+      track.scrollBy({ left: dir * cardWidth * 2, behavior: 'smooth' });
+    }
+    function scrollToReview(page) {
+      const track = document.getElementById('reviewTrack');
+      const card = track.querySelector('.snap-start');
+      const cardWidth = (card ? card.offsetWidth : 340) + 24;
+      track.scrollTo({ left: page * cardWidth * 3, behavior: 'smooth' });
+    }
+    // Update dots on scroll
+    document.getElementById('reviewTrack').addEventListener('scroll', function() {
+      const track = this;
+      const card = track.querySelector('.snap-start');
+      const cardWidth = (card ? card.offsetWidth : 340) + 24;
+      const page = Math.round(track.scrollLeft / (cardWidth * 3));
+      document.querySelectorAll('#reviewDots button').forEach((dot, i) => {
+        dot.className = i === page
+          ? 'w-2.5 h-2.5 rounded-full bg-dark transition-colors duration-300 cursor-pointer'
+          : 'w-2.5 h-2.5 rounded-full bg-dark/20 transition-colors duration-300 cursor-pointer';
+      });
+    });
+
+    // Fade-in on scroll
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+
+  <!-- White background removal for logos -->
+  <script>
+    // Reusable: remove white background from any image via edge flood-fill
+    function removeWhiteBg(src, callback) {
+      const img = new Image();
+      img.crossOrigin = 'anonymous';
+      img.onload = function() {
+        const w = img.width, h = img.height;
+        const canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        const id = ctx.getImageData(0, 0, w, h);
+        const px = id.data;
+        const visited = new Uint8Array(w * h);
+        const queue = [];
+        const T = 238;
+        function isWhite(i4) { return px[i4] >= T && px[i4+1] >= T && px[i4+2] >= T; }
+        function seed(x, y) {
+          if (x < 0 || x >= w || y < 0 || y >= h) return;
+          const i = y * w + x;
+          if (visited[i] || !isWhite(i * 4)) return;
+          visited[i] = 1; queue.push(i);
+        }
+        for (let x = 0; x < w; x++) { seed(x, 0); seed(x, h-1); }
+        for (let y = 1; y < h-1; y++) { seed(0, y); seed(w-1, y); }
+        let qi = 0;
+        while (qi < queue.length) {
+          const i = queue[qi++], x = i % w, y = (i / w) | 0;
+          seed(x-1,y); seed(x+1,y); seed(x,y-1); seed(x,y+1);
+        }
+        for (let i = 0; i < w * h; i++) { if (visited[i]) px[i*4+3] = 0; }
+        ctx.putImageData(id, 0, 0);
+        callback(canvas.toDataURL('image/png'));
+      };
+      img.src = src;
+    }
+
+    // Remove white bg from hero SPAH logo
+    removeWhiteBg('images/spah-logo.png', function(url) {
+      document.querySelectorAll('.spah-letter').forEach(el => {
+        el.style.backgroundImage = 'url(' + url + ')';
+      });
+    });
+
+    // Remove white bg from vertical logo (nav + footer)
+    removeWhiteBg('images/spah-logo-vertical.jpg', function(url) {
+      document.querySelectorAll('img[src="images/spah-logo-vertical.jpg"]').forEach(el => {
+        el.src = url;
+        el.style.mixBlendMode = '';
+      });
+    });
+
+    // GSAP scroll animation
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Set hero height based on screen size — shorter on mobile for faster scroll
+    const isMobile = window.innerWidth < 768;
+    document.getElementById('spah-hero').style.height = isMobile ? '115vh' : '130vh';
+
+    gsap.set('#spah-logo-grid', { opacity: 0, scale: 0.88, y: 22 });
+    gsap.set('#spah-scroll-hint', { opacity: 0 });
+    gsap.to('#spah-scroll-hint', { opacity: 1, duration: 1, ease: 'circ.out', delay: 0.5 });
+    gsap.to('#spah-logo-grid', {
+      opacity: 1, scale: 1, y: 0, duration: 1.7, ease: 'expo.out', delay: 0.35,
+      onComplete() {}
+    });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: '#spah-hero',
+        start: 'top top',
+        end: 'bottom bottom',
+        scrub: isMobile ? 0.4 : 0.8,
+        invalidateOnRefresh: true,
+        onUpdate(self) {
+          const p = self.progress;
+          const from = [239,244,249], to = [245,240,236];
+          const r = Math.round(from[0]+(to[0]-from[0])*p);
+          const g = Math.round(from[1]+(to[1]-from[1])*p);
+          const b = Math.round(from[2]+(to[2]-from[2])*p);
+          document.getElementById('spah-hero-sticky').style.background =
+            `linear-gradient(135deg, rgb(${r},${g},${b+10}) 0%, rgb(${r+6},${g-4},${b-3}) 50%, rgb(${r-4},${g+3},${b}) 100%)`;
+        }
+      }
+    });
+
+    const spread = isMobile ? 0.22 : 0.34;
+    const vSpread = isMobile ? 0.22 : 0.33;
+    const letterScale = isMobile ? 1.25 : 1.42;
+    tl.to('#spah-letter-s', { x: ()=>-innerWidth*spread, y: ()=>-innerHeight*vSpread, scale:letterScale, opacity:0.45, rotation:-12, ease:'power2.inOut', duration:1 }, 0);
+    tl.to('#spah-letter-p', { x: ()=> innerWidth*spread, y: ()=>-innerHeight*vSpread, scale:letterScale, opacity:0.45, rotation: 12, ease:'power2.inOut', duration:1 }, 0);
+    tl.to('#spah-letter-a', { x: ()=>-innerWidth*spread, y: ()=> innerHeight*vSpread, scale:letterScale, opacity:0.45, rotation: -8, ease:'power2.inOut', duration:1 }, 0);
+    tl.to('#spah-letter-h', { x: ()=> innerWidth*spread, y: ()=> innerHeight*vSpread, scale:letterScale, opacity:0.45, rotation:  8, ease:'power2.inOut', duration:1 }, 0);
+    tl.fromTo('#spah-tagline', { opacity:0, scale:0.92, y:18 }, { opacity:1, scale:1, y:0, ease:'circ.out', duration:0.45 }, 0.28);
+
+    ScrollTrigger.create({
+      trigger: '#spah-hero', start: 'top+=40 top',
+      onEnter:     () => gsap.to('#spah-scroll-hint', { opacity:0, duration:0.4 }),
+      onLeaveBack: () => gsap.to('#spah-scroll-hint', { opacity:1, duration:0.4 })
+    });
+
+    // Hide nav logo while hero SPAH logo is visible, show it after scrolling past
+    const navLogo = document.querySelector('#nav-logo img');
+    if (navLogo) {
+      navLogo.style.opacity = '0';
+      ScrollTrigger.create({
+        trigger: '#spah-hero',
+        start: 'bottom top+=100',
+        onEnter:     () => { navLogo.style.opacity = '1'; },
+        onLeaveBack: () => { navLogo.style.opacity = '0'; }
+      });
+    }
+
+    // Sticky mobile CTA bar — show after scrolling past hero
+    document.addEventListener('DOMContentLoaded', function() {
+      var bar = document.getElementById('sticky-cta');
+      if (!bar || window.innerWidth >= 768) return;
+      var hero = document.getElementById('spah-hero');
+      var shown = false;
+      window.addEventListener('scroll', function() {
+        var threshold = hero ? hero.offsetTop + hero.offsetHeight + 200 : 300;
+        if (window.scrollY > threshold && !shown) { shown = true; bar.style.transform = 'translateY(0)'; }
+        else if (window.scrollY <= threshold && shown) { shown = false; bar.style.transform = 'translateY(100%)'; }
+      }, { passive: true });
+    });
+  </script>
+
+  <!-- Sticky Mobile CTA Bar -->
+  <div id="sticky-cta" class="md:hidden" style="position:fixed;bottom:0;left:0;right:0;z-index:40;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);">
+    <div style="background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-top:1px solid rgba(90,127,166,0.12);padding:10px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 -2px 16px rgba(42,52,66,0.08);">
+      <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login" target="_blank"
+         style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:#5A7FA6;color:white;font-family:'Lato',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.03em;border-radius:9999px;padding:14px 0;text-decoration:none;box-shadow:0 2px 8px rgba(90,127,166,0.25);-webkit-tap-highlight-color:transparent;">
+        Book Appointment
+      </a>
+      <a href="tel:6264411314"
+         style="display:flex;align-items:center;justify-content:center;width:50px;height:50px;border-radius:9999px;background:#EDF3F0;color:#7A9E8E;flex-shrink:0;-webkit-tap-highlight-color:transparent;"
+         aria-label="Call (626) 441-1314">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.362 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+      </a>
+    </div>
+  </div>
+
+<!-- UserWay Accessibility Widget -->
+<style>
+  .userway_buttons_wrapper,.uwy.userway_buttons_wrapper,.uwy{left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;transition:opacity .3s ease!important;}
+  .userway_buttons_wrapper *{pointer-events:auto!important;}
+</style>
+<script src="https://cdn.userway.org/widget.js" data-account="s8qKqbCCo7" data-position="4"></script>
+<script>
+(function(){
+  var scrollTimer;
+  var SEL='.userway_buttons_wrapper,.uwy,[data-userway-s]';
+  function getUW(){return document.querySelectorAll(SEL);}
+  function forcePos(el){el.style.cssText+=';left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;';}
+  function setOpacity(v){getUW().forEach(function(el){forcePos(el);el.style.opacity=v;});}
+  // MutationObserver to catch widget when it loads & force position
+  var obs=new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(function(n){
+        if(n.nodeType===1){
+          if(n.matches&&n.matches(SEL))forcePos(n);
+          if(n.querySelectorAll){n.querySelectorAll(SEL).forEach(forcePos);}
+        }
+      });
+    });
+    // Re-force position on any DOM change near widget
+    getUW().forEach(forcePos);
+  });
+  obs.observe(document.body||document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
+  window.addEventListener('scroll',function(){
+    setOpacity('0');
+    clearTimeout(scrollTimer);
+    scrollTimer=setTimeout(function(){if(window.scrollY<10)setOpacity('1');},300);
+  },{passive:true});
+  setTimeout(function(){if(window.scrollY>10)setOpacity('0');},2000);
+  // Re-force every 2s for first 10s in case widget loads late
+  var c=0;var iv=setInterval(function(){getUW().forEach(forcePos);if(++c>=5)clearInterval(iv);},2000);
+})();
+</script>
+</body>
+</html>
