@@ -181,6 +181,7 @@
     /* ── SPAH Scroll Hero ── */
     .spah-letter {
       width: 100%; aspect-ratio: 1;
+      background-image: url('images/spah-logo.png');
       background-size: 200% 200%;
       background-repeat: no-repeat;
     }
@@ -735,21 +736,27 @@
     }
 
     // Remove white bg from hero SPAH logo
-    removeWhiteBg('images/spah-logo.png', function(url) {
-      document.querySelectorAll('.spah-letter').forEach(el => {
-        el.style.backgroundImage = 'url(' + url + ')';
+    try {
+      removeWhiteBg('images/spah-logo.png', function(url) {
+        document.querySelectorAll('.spah-letter').forEach(el => {
+          el.style.backgroundImage = 'url(' + url + ')';
+        });
       });
-    });
+    } catch(e) { console.warn('Logo bg removal skipped:', e); }
 
     // Remove white bg from vertical logo (nav + footer)
-    removeWhiteBg('images/spah-logo-vertical.jpg', function(url) {
-      document.querySelectorAll('img[src="images/spah-logo-vertical.jpg"]').forEach(el => {
-        el.src = url;
-        el.style.mixBlendMode = '';
+    try {
+      removeWhiteBg('images/spah-logo-vertical.jpg', function(url) {
+        document.querySelectorAll('img[src="images/spah-logo-vertical.jpg"]').forEach(el => {
+          el.src = url;
+          el.style.mixBlendMode = '';
+        });
       });
-    });
+    } catch(e) { console.warn('Vertical logo bg removal skipped:', e); }
+  </script>
 
-    // GSAP scroll animation
+  <!-- GSAP Hero Animation (separate block so canvas errors can't break it) -->
+  <script>
     gsap.registerPlugin(ScrollTrigger);
 
     // Set hero height based on screen size — shorter on mobile for faster scroll
