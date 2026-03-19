@@ -505,29 +505,7 @@
       menu.classList.toggle('flex');
     });
 
-    // Remove white background from vertical logo (nav + footer)
-    (function() {
-      var img = new Image();
-      img.onload = function() {
-        var w = img.width, h = img.height;
-        var canvas = document.createElement('canvas');
-        canvas.width = w; canvas.height = h;
-        var ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        var id = ctx.getImageData(0, 0, w, h);
-        var px = id.data, visited = new Uint8Array(w * h), queue = [], T = 238;
-        function isW(i4) { return px[i4] >= T && px[i4+1] >= T && px[i4+2] >= T; }
-        function seed(x, y) { if (x<0||x>=w||y<0||y>=h) return; var i=y*w+x; if(visited[i]||!isW(i*4)) return; visited[i]=1; queue.push(i); }
-        for (var x=0;x<w;x++){seed(x,0);seed(x,h-1);} for(var y=1;y<h-1;y++){seed(0,y);seed(w-1,y);}
-        var qi=0; while(qi<queue.length){var i=queue[qi++],xx=i%w,yy=(i/w)|0;seed(xx-1,yy);seed(xx+1,yy);seed(xx,yy-1);seed(xx,yy+1);}
-        for(var i=0;i<w*h;i++){if(visited[i])px[i*4+3]=0;}
-        ctx.putImageData(id,0,0);
-        var url=canvas.toDataURL('image/png');
-        document.querySelectorAll('img[src="images/spah-logo-vertical.jpg"]').forEach(function(el){el.src=url;el.style.mixBlendMode='';});
-      };
-      img.src='images/spah-logo-vertical.jpg';
-    })();
-</script>
+  </script>
   <!-- Sticky Mobile CTA Bar -->
   <div id="sticky-cta" class="md:hidden" style="position:fixed;bottom:0;left:0;right:0;z-index:40;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);">
     <div style="background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-top:1px solid rgba(90,127,166,0.12);padding:10px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 -2px 16px rgba(42,52,66,0.08);">

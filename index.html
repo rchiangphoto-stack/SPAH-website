@@ -184,6 +184,7 @@
       background-image: url('images/spah-logo.png');
       background-size: 200% 200%;
       background-repeat: no-repeat;
+      mix-blend-mode: multiply;
     }
     #spah-letter-s { background-position:   0%   0%; }
     #spah-letter-p { background-position: 100%   0%; }
@@ -697,63 +698,7 @@
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 
-  <!-- White background removal for logos -->
-  <script>
-    // Reusable: remove white background from any image via edge flood-fill
-    function removeWhiteBg(src, callback) {
-      const img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = function() {
-        const w = img.width, h = img.height;
-        const canvas = document.createElement('canvas');
-        canvas.width = w; canvas.height = h;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(img, 0, 0);
-        const id = ctx.getImageData(0, 0, w, h);
-        const px = id.data;
-        const visited = new Uint8Array(w * h);
-        const queue = [];
-        const T = 238;
-        function isWhite(i4) { return px[i4] >= T && px[i4+1] >= T && px[i4+2] >= T; }
-        function seed(x, y) {
-          if (x < 0 || x >= w || y < 0 || y >= h) return;
-          const i = y * w + x;
-          if (visited[i] || !isWhite(i * 4)) return;
-          visited[i] = 1; queue.push(i);
-        }
-        for (let x = 0; x < w; x++) { seed(x, 0); seed(x, h-1); }
-        for (let y = 1; y < h-1; y++) { seed(0, y); seed(w-1, y); }
-        let qi = 0;
-        while (qi < queue.length) {
-          const i = queue[qi++], x = i % w, y = (i / w) | 0;
-          seed(x-1,y); seed(x+1,y); seed(x,y-1); seed(x,y+1);
-        }
-        for (let i = 0; i < w * h; i++) { if (visited[i]) px[i*4+3] = 0; }
-        ctx.putImageData(id, 0, 0);
-        callback(canvas.toDataURL('image/png'));
-      };
-      img.src = src;
-    }
 
-    // Remove white bg from hero SPAH logo
-    try {
-      removeWhiteBg('images/spah-logo.png', function(url) {
-        document.querySelectorAll('.spah-letter').forEach(el => {
-          el.style.backgroundImage = 'url(' + url + ')';
-        });
-      });
-    } catch(e) { console.warn('Logo bg removal skipped:', e); }
-
-    // Remove white bg from vertical logo (nav + footer)
-    try {
-      removeWhiteBg('images/spah-logo-vertical.jpg', function(url) {
-        document.querySelectorAll('img[src="images/spah-logo-vertical.jpg"]').forEach(el => {
-          el.src = url;
-          el.style.mixBlendMode = '';
-        });
-      });
-    } catch(e) { console.warn('Vertical logo bg removal skipped:', e); }
-  </script>
 
   <!-- GSAP Hero Animation (separate block so canvas errors can't break it) -->
   <script>

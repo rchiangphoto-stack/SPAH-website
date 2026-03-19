@@ -476,52 +476,6 @@
     });
   </script>
 
-  <!-- White background removal for logos -->
-  <script>
-    (function() {
-      function removeWhiteBg(src, callback) {
-        var img = new Image();
-        img.crossOrigin = 'anonymous';
-        img.onload = function() {
-          var w = img.width, h = img.height;
-          var canvas = document.createElement('canvas');
-          canvas.width = w; canvas.height = h;
-          var ctx = canvas.getContext('2d');
-          ctx.drawImage(img, 0, 0);
-          var id = ctx.getImageData(0, 0, w, h);
-          var px = id.data;
-          var visited = new Uint8Array(w * h);
-          var queue = [];
-          var T = 238;
-          function isWhite(i4) { return px[i4] >= T && px[i4+1] >= T && px[i4+2] >= T; }
-          function seed(x, y) {
-            if (x < 0 || x >= w || y < 0 || y >= h) return;
-            var i = y * w + x;
-            if (visited[i] || !isWhite(i * 4)) return;
-            visited[i] = 1; queue.push(i);
-          }
-          for (var x = 0; x < w; x++) { seed(x, 0); seed(x, h-1); }
-          for (var y = 1; y < h-1; y++) { seed(0, y); seed(w-1, y); }
-          var qi = 0;
-          while (qi < queue.length) {
-            var i = queue[qi++], bx = i % w, by = (i / w) | 0;
-            seed(bx-1,by); seed(bx+1,by); seed(bx,by-1); seed(bx,by+1);
-          }
-          for (var i = 0; i < w * h; i++) { if (visited[i]) px[i*4+3] = 0; }
-          ctx.putImageData(id, 0, 0);
-          callback(canvas.toDataURL('image/png'));
-        };
-        img.src = src;
-      }
-
-      removeWhiteBg('images/spah-logo-vertical.jpg', function(url) {
-        document.querySelectorAll('img[src="images/spah-logo-vertical.jpg"]').forEach(function(el) {
-          el.src = url;
-          el.style.mixBlendMode = '';
-        });
-      });
-    })();
-  </script>
 
   <!-- Fade-in on scroll -->
   <script>
