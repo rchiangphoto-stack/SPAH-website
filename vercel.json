@@ -1,14 +1,8 @@
 {
+  "cleanUrls": true,
+  "trailingSlash": false,
   "rewrites": [
     { "source": "/about-us", "destination": "/about.html" },
-    { "source": "/services", "destination": "/services.html" },
-    { "source": "/pricing", "destination": "/pricing.html" },
-    { "source": "/contact-us", "destination": "/contact.html" },
-    { "source": "/vet-alhambra", "destination": "/vet-alhambra.html" },
-    { "source": "/vet-south-pasadena", "destination": "/vet-south-pasadena.html" },
-    { "source": "/exotic-vet-pasadena", "destination": "/exotic-vet-pasadena.html" },
-    { "source": "/vet-highland-park", "destination": "/vet-highland-park.html" },
-    { "source": "/vet-san-gabriel", "destination": "/vet-san-gabriel.html" }
-  ],
-  "trailingSlash": false
+    { "source": "/contact-us", "destination": "/contact.html" }
+  ]
 }
