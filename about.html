@@ -60,10 +60,26 @@
     ]
   }
   </script>
-  <link rel="stylesheet" href="css/styles.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#5A7FA6', sage: '#7A9E8E', terra: '#A8673A',
+            sky: '#89A8C4', warm: '#FAFAF8', dark: '#2A3442', muted: '#5C6B7A',
+          },
+          fontFamily: {
+            display: ['"Playfair Display"', 'serif'],
+            body:    ['"Lato"', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
   <style>
     body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
@@ -132,8 +148,8 @@
     <div style="position:absolute;top:-60px;left:50%;transform:translateX(-50%);width:600px;height:300px;border-radius:50%;background:radial-gradient(circle,rgba(90,127,166,0.10) 0%,transparent 70%);pointer-events:none;"></div>
     <div class="relative z-10">
       <span class="text-sage font-body text-xs font-bold tracking-widest uppercase">Our Story</span>
-      <h1 class="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-dark mt-3 px-4" style="letter-spacing:-0.03em;">Meet Our Veterinarians in <span style="color:#5A7FA6">Alhambra</span> / <span style="color:#7A9E8E">South Pasadena</span></h1>
-      <p class="font-body text-muted text-lg sm:text-xl mt-4 max-w-xl mx-auto px-4" style="line-height:1.7;">
+      <h1 class="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-dark mt-3" style="letter-spacing:-0.03em;">Meet Our Veterinarians in Alhambra</h1>
+      <p class="font-body text-muted text-xl mt-4 max-w-xl mx-auto" style="line-height:1.7;">
         A community hospital built on trust, compassion, and a genuine love for animals.
       </p>
     </div>
@@ -316,7 +332,7 @@
         name: 'Dr. Curtis Eng',
         title: 'Relief Veterinarian',
         section: 'Relief Team',
-        bio: 'Dr. Eng began his veterinary career in small animal and exotics practice but has spent the last 20 years immersed in the fascinating world of zoo medicine—treating everything from elephants to tiny poison arrow frogs. When he\'s not working with animals, he\'s inspiring the next generation of veterinarians as a professor at Western University College of Veterinary Medicine.\n\nFun fact: Dr. Eng was Dr. Navia\'s mentor in vet school and played a huge role in shaping her veterinary journey. We are truly honored to have him providing relief care and sharing his incredible experience—especially when it comes to our exotic patients!',
+        bio: 'Dr. Eng began his veterinary career in small animal and exotics practice but has spent the last 20 years immersed in the fascinating world of zoo medicine—treating everything from elephants to tiny poison arrow frogs. When he\'s not working with animals, he\'s inspiring the next generation of veterinarians as a professor at Western University College of Veterinary Medicine.\n\nFun fact: Dr. Eng was Dr. Navia\'s mentor in vet school and played a huge role in shaping her veterinary journey. We are truly honored to have him providing relief care and sharing his incredible expertise—especially when it comes to our exotic patients!',
         photo: 'https://placehold.co/500x500/E8F5E9/7A9E8E?text=Dr.+Eng',
         specialties: [
           { label: 'Zoo Medicine', color: 'bg-terra/10 text-terra' },
@@ -328,7 +344,7 @@
         name: 'Dr. Ruby Jong',
         title: 'Relief Veterinarian',
         section: 'Relief Team',
-        bio: 'Dr. Jong earned her undergraduate degree from UC Berkeley in 2011 and went on to receive her Doctor of Veterinary Medicine from Colorado State University in 2019.\nShe completed a rigorous Small Animal Medicine & Surgery internship at VCA Animal Specialty Group from 2019—2020, sharpening her skills in everything from cuddles to critical care!\nWe\'re so lucky to have her on our team bringing her experience—and her warm heart—to every patient she meets!',
+        bio: 'Dr. Jong earned her undergraduate degree from UC Berkeley in 2011 and went on to receive her Doctor of Veterinary Medicine from Colorado State University in 2019.\nShe completed a rigorous Small Animal Medicine & Surgery internship at VCA Animal Specialty Group from 2019—2020, sharpening her skills in everything from cuddles to critical care!\nWe\'re so lucky to have her on our team bringing her expertise—and her warm heart—to every patient she meets!',
         photo: 'https://placehold.co/500x500/E0F7FA/5A7FA6?text=Dr.+Jong',
         specialties: [
           { label: 'Small Animal Medicine', color: 'bg-brand/10 text-brand' },
@@ -452,6 +468,28 @@
     buildDots();
     updateDoctor(0);
 
+    // Remove white background from vertical logo (nav + footer)
+    (function() {
+      var img = new Image();
+      img.onload = function() {
+        var w = img.width, h = img.height;
+        var canvas = document.createElement('canvas');
+        canvas.width = w; canvas.height = h;
+        var ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        var id = ctx.getImageData(0, 0, w, h);
+        var px = id.data, visited = new Uint8Array(w * h), queue = [], T = 238;
+        function isW(i4) { return px[i4] >= T && px[i4+1] >= T && px[i4+2] >= T; }
+        function seed(x, y) { if (x<0||x>=w||y<0||y>=h) return; var i=y*w+x; if(visited[i]||!isW(i*4)) return; visited[i]=1; queue.push(i); }
+        for (var x=0;x<w;x++){seed(x,0);seed(x,h-1);} for(var y=1;y<h-1;y++){seed(0,y);seed(w-1,y);}
+        var qi=0; while(qi<queue.length){var i=queue[qi++],xx=i%w,yy=(i/w)|0;seed(xx-1,yy);seed(xx+1,yy);seed(xx,yy-1);seed(xx,yy+1);}
+        for(var i=0;i<w*h;i++){if(visited[i])px[i*4+3]=0;}
+        ctx.putImageData(id,0,0);
+        var url=canvas.toDataURL('image/png');
+        document.querySelectorAll('img[src="images/spah-logo-vertical.jpg"]').forEach(function(el){el.src=url;el.style.mixBlendMode='';});
+      };
+      img.src='images/spah-logo-vertical.jpg';
+    })();
   </script>
   <!-- Sticky Mobile CTA Bar -->
   <div id="sticky-cta" class="md:hidden" style="position:fixed;bottom:0;left:0;right:0;z-index:40;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);">
@@ -482,20 +520,35 @@
 <!-- UserWay Accessibility Widget -->
 <style>
   .userway_buttons_wrapper,.uwy.userway_buttons_wrapper,.uwy{left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;transition:opacity .3s ease!important;}
+  .userway_buttons_wrapper *{pointer-events:auto!important;}
 </style>
-<script src="https://cdn.userway.org/widget.js" data-account="s8qKqbCCo7" data-position="4" defer></script>
+<script src="https://cdn.userway.org/widget.js" data-account="s8qKqbCCo7" data-position="4"></script>
 <script>
 (function(){
   var scrollTimer;
-  function setUWOpacity(v){
-    document.querySelectorAll('.userway_buttons_wrapper,.uwy').forEach(function(el){el.style.opacity=v;});
-  }
+  var SEL='.userway_buttons_wrapper,.uwy,[data-userway-s]';
+  function getUW(){return document.querySelectorAll(SEL);}
+  function forcePos(el){el.style.cssText+=';left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;';}
+  function setOpacity(v){getUW().forEach(function(el){forcePos(el);el.style.opacity=v;});}
+  var obs=new MutationObserver(function(mutations){
+    mutations.forEach(function(m){
+      m.addedNodes.forEach(function(n){
+        if(n.nodeType===1){
+          if(n.matches&&n.matches(SEL))forcePos(n);
+          if(n.querySelectorAll){n.querySelectorAll(SEL).forEach(forcePos);}
+        }
+      });
+    });
+    getUW().forEach(forcePos);
+  });
+  obs.observe(document.body||document.documentElement,{childList:true,subtree:true,attributes:true,attributeFilter:['style']});
   window.addEventListener('scroll',function(){
-    setUWOpacity('0');
+    setOpacity('0');
     clearTimeout(scrollTimer);
-    scrollTimer=setTimeout(function(){if(window.scrollY<10)setUWOpacity('1');},300);
+    scrollTimer=setTimeout(function(){if(window.scrollY<10)setOpacity('1');},300);
   },{passive:true});
-  setTimeout(function(){if(window.scrollY>10)setUWOpacity('0');},2000);
+  setTimeout(function(){if(window.scrollY>10)setOpacity('0');},2000);
+  var c=0;var iv=setInterval(function(){getUW().forEach(forcePos);if(++c>=5)clearInterval(iv);},2000);
 })();
 </script>
 </body>
