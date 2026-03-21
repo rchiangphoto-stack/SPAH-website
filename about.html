@@ -87,6 +87,47 @@
     #doctorBio, #doctorName, #doctorTitle, #doctorSpecialties, #doctorSection {
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
+
+    /* Clinic street view — zoom + glassy effect */
+    .clinic-about-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .clinic-about-img {
+      animation: clinicAboutZoom 14s ease-in-out infinite alternate;
+      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    @keyframes clinicAboutZoom {
+      0%   { transform: scale(1); }
+      100% { transform: scale(1.1); }
+    }
+    .clinic-about-wrap:hover .clinic-about-img {
+      animation-play-state: paused;
+      transform: scale(1.14);
+    }
+    /* Glassy frosted overlay at bottom */
+    .clinic-about-glass {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 35%;
+      background: linear-gradient(to top, rgba(255,255,255,0.45) 0%, rgba(255,255,255,0.15) 50%, transparent 100%);
+      backdrop-filter: blur(3px);
+      -webkit-backdrop-filter: blur(3px);
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+    .clinic-about-wrap:hover .clinic-about-glass {
+      opacity: 0;
+    }
+    @media (max-width: 768px) {
+      .clinic-about-glass {
+        height: 25%;
+        backdrop-filter: blur(2px);
+        -webkit-backdrop-filter: blur(2px);
+      }
+    }
   </style>
 </head>
 <body>
@@ -158,10 +199,12 @@
         </p>
       </div>
       <div class="flex-1">
-        <div class="rounded-3xl overflow-hidden card-shadow" style="aspect-ratio:4/3;">
-          <!-- Replace with clinic interior photo -->
-          <img src="https://placehold.co/560x420/EFF4F9/5A7FA6?text=Our+Clinic"
-               alt="SPAH Clinic Interior" class="w-full h-full object-cover" loading="lazy" />
+        <div class="rounded-3xl overflow-hidden card-shadow clinic-about-wrap" style="aspect-ratio:4/3;">
+          <img src="images/spah-street-view.png"
+               alt="Aerial street view of South Pasadena Animal Hospital in Alhambra"
+               class="w-full h-full object-cover clinic-about-img" loading="lazy" />
+          <!-- Glassy overlay -->
+          <div class="clinic-about-glass"></div>
         </div>
       </div>
     </div>
