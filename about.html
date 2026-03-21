@@ -220,6 +220,279 @@
     </div>
   </section>
 
+  <!-- INSTAGRAM 3D CAROUSEL -->
+  <section class="py-16 overflow-hidden" style="background:#FAFAF8;">
+    <div class="max-w-6xl mx-auto px-6 text-center mb-10">
+      <p class="font-body text-sm font-bold tracking-widest text-sage uppercase mb-2">@southpasah</p>
+      <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-dark" style="letter-spacing:-0.02em;">Follow Us on Instagram</h2>
+    </div>
+    <div class="ig-carousel-wrapper" id="igCarousel">
+      <div class="ig-carousel-scene">
+        <div class="ig-carousel-cylinder" id="igCylinder"></div>
+      </div>
+    </div>
+    <!-- Fullscreen overlay -->
+    <div class="ig-overlay" id="igOverlay">
+      <div class="ig-overlay-inner">
+        <button class="ig-overlay-close" id="igOverlayClose" aria-label="Close">&times;</button>
+        <img src="" alt="" class="ig-overlay-img" id="igOverlayImg" />
+      </div>
+    </div>
+    <div class="text-center mt-8">
+      <a href="https://www.instagram.com/southpasah" target="_blank" rel="noopener noreferrer"
+         class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-body font-bold rounded-full px-7 py-3 hover:shadow-lg hover:scale-105 transition-all duration-300">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Follow @southpasah
+      </a>
+    </div>
+  </section>
+
+  <style>
+    .ig-carousel-wrapper {
+      position: relative;
+      height: 320px;
+      width: 100%;
+      cursor: grab;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+    .ig-carousel-wrapper:active { cursor: grabbing; }
+    .ig-carousel-scene {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      perspective: 1200px;
+    }
+    .ig-carousel-cylinder {
+      position: relative;
+      width: 260px;
+      height: 260px;
+      transform-style: preserve-3d;
+      transition: transform 0.05s linear;
+    }
+    .ig-card {
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      backface-visibility: hidden;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      cursor: pointer;
+      transition: box-shadow 0.3s ease;
+      left: 50%;
+      top: 50%;
+      margin-left: -120px;
+      margin-top: -120px;
+    }
+    .ig-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
+    .ig-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 16px;
+      pointer-events: none;
+    }
+    /* Overlay */
+    .ig-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.7);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+    .ig-overlay.active { display: flex; opacity: 1; }
+    .ig-overlay-inner {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    .ig-overlay-img {
+      max-width: 90vw;
+      max-height: 85vh;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+      transform: scale(0.85);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.25,0.1,0.25,1), opacity 0.4s ease;
+    }
+    .ig-overlay.active .ig-overlay-img { transform: scale(1); opacity: 1; }
+    .ig-overlay-close {
+      position: absolute;
+      top: -16px;
+      right: -16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      font-size: 24px;
+      color: #2A3442;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      transition: transform 0.2s ease;
+    }
+    .ig-overlay-close:hover { transform: scale(1.1); }
+
+    @media (max-width: 640px) {
+      .ig-carousel-wrapper { height: 220px; }
+      .ig-carousel-cylinder { width: 180px; height: 180px; }
+      .ig-card { width: 160px; height: 160px; margin-left: -80px; margin-top: -80px; }
+    }
+  </style>
+
+  <script>
+  (function() {
+    // ========== INSTAGRAM IMAGES — ADD YOUR PHOTO URLS HERE ==========
+    const igImages = [
+      // Replace these placeholder URLs with your actual Instagram photo paths
+      // e.g. "images/instagram/photo1.jpg"
+      "https://picsum.photos/400/400?random=1",
+      "https://picsum.photos/400/400?random=2",
+      "https://picsum.photos/400/400?random=3",
+      "https://picsum.photos/400/400?random=4",
+      "https://picsum.photos/400/400?random=5",
+      "https://picsum.photos/400/400?random=6",
+      "https://picsum.photos/400/400?random=7",
+      "https://picsum.photos/400/400?random=8",
+      "https://picsum.photos/400/400?random=9",
+      "https://picsum.photos/400/400?random=10",
+      "https://picsum.photos/400/400?random=11",
+      "https://picsum.photos/400/400?random=12",
+    ];
+    // ==================================================================
+
+    const cylinder = document.getElementById('igCylinder');
+    const overlay = document.getElementById('igOverlay');
+    const overlayImg = document.getElementById('igOverlayImg');
+    const overlayClose = document.getElementById('igOverlayClose');
+    const isMobile = window.innerWidth <= 640;
+    const faceCount = igImages.length;
+    const angleStep = 360 / faceCount;
+    const radius = isMobile ? 340 : 580;
+
+    // Build cards
+    igImages.forEach((src, i) => {
+      const card = document.createElement('div');
+      card.className = 'ig-card';
+      card.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`;
+      card.innerHTML = `<img src="${src}" alt="South Pasadena Animal Hospital — Instagram photo ${i + 1}" loading="lazy" />`;
+      card.addEventListener('click', () => openOverlay(src, i));
+      cylinder.appendChild(card);
+    });
+
+    // Rotation state
+    let currentAngle = 0;
+    let velocity = 0;
+    let isDragging = false;
+    let startX = 0;
+    let lastX = 0;
+    let lastTime = 0;
+    let animFrame = null;
+    let autoRotate = true;
+
+    function setRotation(angle) {
+      cylinder.style.transform = `rotateY(${angle}deg)`;
+    }
+
+    // Auto-rotate
+    function autoSpin() {
+      if (!isDragging && autoRotate) {
+        currentAngle += 0.15;
+        setRotation(currentAngle);
+      }
+      requestAnimationFrame(autoSpin);
+    }
+    requestAnimationFrame(autoSpin);
+
+    // Momentum decay
+    function momentumDecay() {
+      if (isDragging) return;
+      if (Math.abs(velocity) > 0.05) {
+        currentAngle += velocity;
+        velocity *= 0.96;
+        setRotation(currentAngle);
+        animFrame = requestAnimationFrame(momentumDecay);
+      } else {
+        velocity = 0;
+        autoRotate = true;
+      }
+    }
+
+    // Pointer events for drag
+    const wrapper = document.getElementById('igCarousel');
+
+    wrapper.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      autoRotate = false;
+      velocity = 0;
+      startX = e.clientX;
+      lastX = e.clientX;
+      lastTime = Date.now();
+      if (animFrame) cancelAnimationFrame(animFrame);
+      wrapper.setPointerCapture(e.pointerId);
+    });
+
+    wrapper.addEventListener('pointermove', (e) => {
+      if (!isDragging) return;
+      const dx = e.clientX - lastX;
+      const now = Date.now();
+      const dt = now - lastTime || 1;
+      velocity = (dx / dt) * 15;
+      currentAngle += dx * (isMobile ? 0.35 : 0.25);
+      setRotation(currentAngle);
+      lastX = e.clientX;
+      lastTime = now;
+    });
+
+    wrapper.addEventListener('pointerup', (e) => {
+      if (!isDragging) return;
+      isDragging = false;
+      // If barely moved, don't suppress click
+      if (Math.abs(e.clientX - startX) < 5) {
+        autoRotate = true;
+        return;
+      }
+      animFrame = requestAnimationFrame(momentumDecay);
+    });
+
+    wrapper.addEventListener('pointercancel', () => {
+      isDragging = false;
+      autoRotate = true;
+    });
+
+    // Overlay
+    function openOverlay(src, idx) {
+      overlayImg.src = src;
+      overlayImg.alt = `South Pasadena Animal Hospital — Instagram photo ${idx + 1}`;
+      // Force reflow for transition
+      overlay.style.display = 'flex';
+      requestAnimationFrame(() => overlay.classList.add('active'));
+      autoRotate = false;
+    }
+
+    function closeOverlay() {
+      overlay.classList.remove('active');
+      setTimeout(() => { overlay.style.display = 'none'; autoRotate = true; }, 350);
+    }
+
+    overlayClose.addEventListener('click', closeOverlay);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeOverlay(); });
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOverlay(); });
+  })();
+  </script>
+
   <!-- CTA -->
   <section class="py-16 text-center" style="background: linear-gradient(135deg, #5A7FA6 0%, #7A9E8E 100%);">
     <div class="max-w-2xl mx-auto px-6 text-white">
