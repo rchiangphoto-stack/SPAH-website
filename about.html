@@ -223,7 +223,11 @@
   <!-- INSTAGRAM BANNER + 3D CAROUSEL -->
   <section class="py-24 sm:py-28 overflow-hidden" style="background: linear-gradient(135deg, #f8f0f4 0%, #eef3f0 50%, #f0f2f8 100%);">
     <div class="max-w-6xl mx-auto px-6 text-center mb-16">
-      <a href="https://www.instagram.com/southpasah" target="_blank" rel="noopener noreferrer" id="fancyHandle" class="font-body text-sm sm:text-base font-bold tracking-widest uppercase mb-3 inline-block" style="color:#7A9E8E; text-decoration:none; cursor:pointer;">@southpasah</a>
+      <a href="https://www.instagram.com/southpasah" target="_blank" rel="noopener noreferrer" class="hbg-container font-body text-xs sm:text-sm font-bold tracking-widest uppercase mb-4 inline-flex">
+        <span class="hbg-content">@southpasah</span>
+        <span class="hbg-border"></span>
+        <span class="hbg-bg"></span>
+      </a>
       <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-dark" style="letter-spacing:-0.02em;">Follow Us on Instagram</h2>
       <p class="font-body text-dark/60 mt-2 text-sm sm:text-base">See what's happening at the clinic — new faces, happy tails & more.</p>
     </div>
@@ -521,108 +525,62 @@
   })();
   </script>
 
-  <!-- GSAP for fancy text hover -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script>
-  (function() {
-    const anchor = document.getElementById('fancyHandle');
-    if (!anchor) return;
+  <!-- Hover Border Gradient styles -->
+  <style>
+    .hbg-container {
+      position: relative;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: visible;
+      border-radius: 9999px;
+      padding: 1px;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background 0.5s;
+      background: rgba(122,158,142,0.15);
+      backdrop-filter: blur(4px);
+    }
+    .hbg-container:hover {
+      background: rgba(122,158,142,0.25);
+    }
+    .hbg-content {
+      position: relative;
+      z-index: 10;
+      border-radius: inherit;
+      padding: 8px 22px;
+      color: #7A9E8E;
+      background: linear-gradient(135deg, #f8f0f4, #eef3f0, #f0f2f8);
+    }
+    .hbg-border {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      border-radius: inherit;
+      filter: blur(2px);
+      animation: hbgRotate 4s linear infinite;
+    }
+    .hbg-bg {
+      position: absolute;
+      inset: 1.5px;
+      z-index: 1;
+      border-radius: inherit;
+      background: linear-gradient(135deg, #f8f0f4, #eef3f0, #f0f2f8);
+    }
+    .hbg-container:hover .hbg-border {
+      animation: none;
+      background: radial-gradient(75% 181% at 50% 50%, #7A9E8E 0%, rgba(122,158,142,0) 100%) !important;
+    }
 
-    const text = anchor.textContent;
-    anchor.textContent = '';
-    anchor.style.display = 'inline-flex';
-
-    // Scatter transforms per letter position (max 11 for @southpasah)
-    const SCATTER = {
-      0:  { x: -20, y: 45, r: 10 },   // @
-      1:  { x: -15, y: 60, r: 8 },     // s
-      2:  { x: -30, y: 30, r: 4 },     // o
-      3:  { x: -20, y: 40, r: -6 },    // u
-      4:  { x: 0,   y: 8,  r: -8 },    // t
-      5:  { x: 0,   y: -20, r: 5 },    // h
-      6:  { x: 10,  y: 25,  r: -3 },   // p
-      7:  { x: 15,  y: -35, r: -5 },   // a
-      8:  { x: 20,  y: 15,  r: 10 },   // s
-      9:  { x: 25,  y: -25, r: -7 },   // a
-      10: { x: 15,  y: 40,  r: 6 },    // h
-    };
-
-    const outers = [];
-    const inners = [];
-
-    text.split('').forEach((char, i) => {
-      const outer = document.createElement('span');
-      outer.style.display = 'inline-block';
-      outer.style.transition = 'none';
-
-      const inner = document.createElement('span');
-      inner.style.display = 'inline-block';
-
-      const letter = document.createElement('span');
-      letter.style.display = 'inline-block';
-      letter.textContent = char;
-
-      inner.appendChild(letter);
-      outer.appendChild(inner);
-      anchor.appendChild(outer);
-
-      outers.push(outer);
-      inners.push(inner);
-    });
-
-    let floatTweens = [];
-
-    anchor.addEventListener('mouseenter', () => {
-      outers.forEach((outer, i) => {
-        const s = SCATTER[i] || { x: 0, y: 0, r: 0 };
-        gsap.to(outer, {
-          x: s.x,
-          y: s.y,
-          rotation: s.r,
-          duration: 0.3,
-          ease: 'power3.inOut',
-        });
-      });
-
-      // Float animation on each inner
-      inners.forEach((inner, i) => {
-        const delay = Math.random() * 0.5;
-        const tween = gsap.to(inner, {
-          keyframes: [
-            { y: 0, duration: 0 },
-            { y: -3, duration: 1.8, ease: 'power3.inOut' },
-            { y: 0, duration: 1.8, ease: 'power3.inOut' },
-          ],
-          repeat: -1,
-          delay: delay,
-        });
-        floatTweens.push(tween);
-      });
-    });
-
-    anchor.addEventListener('mouseleave', () => {
-      // Kill float tweens
-      floatTweens.forEach(t => t.kill());
-      floatTweens = [];
-
-      outers.forEach((outer) => {
-        gsap.to(outer, {
-          x: 0, y: 0, rotation: 0,
-          duration: 0.35,
-          ease: 'power3.inOut',
-        });
-      });
-
-      inners.forEach((inner) => {
-        gsap.to(inner, {
-          y: 0,
-          duration: 0.35,
-          ease: 'power3.inOut',
-        });
-      });
-    });
-  })();
-  </script>
+    @keyframes hbgRotate {
+      0%   { background: radial-gradient(20.7% 50% at 50% 0%, #b8d4c8 0%, rgba(184,212,200,0) 100%); }
+      25%  { background: radial-gradient(16.6% 43.1% at 0% 50%, #b8d4c8 0%, rgba(184,212,200,0) 100%); }
+      50%  { background: radial-gradient(20.7% 50% at 50% 100%, #b8d4c8 0%, rgba(184,212,200,0) 100%); }
+      75%  { background: radial-gradient(16.2% 41.2% at 100% 50%, #b8d4c8 0%, rgba(184,212,200,0) 100%); }
+      100% { background: radial-gradient(20.7% 50% at 50% 0%, #b8d4c8 0%, rgba(184,212,200,0) 100%); }
+    }
+  </style>
 
   <!-- CTA -->
   <section class="py-16 text-center" style="background: linear-gradient(135deg, #5A7FA6 0%, #7A9E8E 100%);">
