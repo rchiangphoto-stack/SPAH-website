@@ -220,11 +220,12 @@
     </div>
   </section>
 
-  <!-- INSTAGRAM 3D CAROUSEL -->
-  <section class="py-16 overflow-hidden" style="background:#FAFAF8;">
-    <div class="max-w-6xl mx-auto px-6 text-center mb-10">
-      <p class="font-body text-sm font-bold tracking-widest text-sage uppercase mb-2">@southpasah</p>
+  <!-- INSTAGRAM BANNER + 3D CAROUSEL -->
+  <section class="py-14 overflow-hidden" style="background: linear-gradient(135deg, #f8f0f4 0%, #eef3f0 50%, #f0f2f8 100%);">
+    <div class="max-w-6xl mx-auto px-6 text-center mb-6">
+      <p class="font-body text-xs font-bold tracking-widest uppercase mb-2" style="color:#c2508c;">@southpasah</p>
       <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-dark" style="letter-spacing:-0.02em;">Follow Us on Instagram</h2>
+      <p class="font-body text-dark/60 mt-2 text-sm sm:text-base">See what's happening at the clinic — new faces, happy tails & more.</p>
     </div>
     <div class="ig-carousel-wrapper" id="igCarousel">
       <div class="ig-carousel-scene">
@@ -238,10 +239,11 @@
         <img src="" alt="" class="ig-overlay-img" id="igOverlayImg" />
       </div>
     </div>
-    <div class="text-center mt-8">
+    <div class="text-center mt-6">
       <a href="https://www.instagram.com/southpasah" target="_blank" rel="noopener noreferrer"
-         class="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 via-pink-500 to-orange-400 text-white font-body font-bold rounded-full px-7 py-3 hover:shadow-lg hover:scale-105 transition-all duration-300">
-        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+         class="inline-flex items-center gap-2 text-white font-body font-bold rounded-full px-6 py-2.5 text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
+         style="background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
         Follow @southpasah
       </a>
     </div>
@@ -250,7 +252,7 @@
   <style>
     .ig-carousel-wrapper {
       position: relative;
-      height: 320px;
+      height: 180px;
       width: 100%;
       cursor: grab;
       user-select: none;
@@ -263,37 +265,37 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1200px;
+      perspective: 1000px;
     }
     .ig-carousel-cylinder {
       position: relative;
-      width: 260px;
-      height: 260px;
+      width: 130px;
+      height: 130px;
       transform-style: preserve-3d;
       transition: transform 0.05s linear;
     }
     .ig-card {
       position: absolute;
-      width: 240px;
-      height: 240px;
+      width: 120px;
+      height: 120px;
       backface-visibility: hidden;
-      border-radius: 16px;
+      border-radius: 10px;
       overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,0.10);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
       cursor: pointer;
       transition: box-shadow 0.3s ease;
       left: 50%;
       top: 50%;
-      margin-left: -120px;
-      margin-top: -120px;
+      margin-left: -60px;
+      margin-top: -60px;
     }
-    .ig-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,0.18); }
+    .ig-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
     .ig-card img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
-      border-radius: 16px;
+      border-radius: 10px;
       pointer-events: none;
     }
     /* Overlay */
@@ -346,9 +348,10 @@
     .ig-overlay-close:hover { transform: scale(1.1); }
 
     @media (max-width: 640px) {
-      .ig-carousel-wrapper { height: 220px; }
-      .ig-carousel-cylinder { width: 180px; height: 180px; }
-      .ig-card { width: 160px; height: 160px; margin-left: -80px; margin-top: -80px; }
+      .ig-carousel-wrapper { height: 130px; }
+      .ig-carousel-cylinder { width: 100px; height: 100px; }
+      .ig-card { width: 90px; height: 90px; margin-left: -45px; margin-top: -45px; border-radius: 8px; }
+      .ig-card img { border-radius: 8px; }
     }
   </style>
 
@@ -380,7 +383,7 @@
     const isMobile = window.innerWidth <= 640;
     const faceCount = igImages.length;
     const angleStep = 360 / faceCount;
-    const radius = isMobile ? 340 : 580;
+    const radius = isMobile ? 170 : 290;
 
     // Build cards
     igImages.forEach((src, i) => {
