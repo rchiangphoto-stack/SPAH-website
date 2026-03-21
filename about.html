@@ -357,24 +357,23 @@
 
   <script>
   (function() {
-    // ========== INSTAGRAM IMAGES — ADD YOUR PHOTO URLS HERE ==========
-    const igImages = [
-      // Replace these placeholder URLs with your actual Instagram photo paths
-      // e.g. "images/instagram/photo1.jpg"
-      "https://picsum.photos/400/400?random=1",
-      "https://picsum.photos/400/400?random=2",
-      "https://picsum.photos/400/400?random=3",
-      "https://picsum.photos/400/400?random=4",
-      "https://picsum.photos/400/400?random=5",
-      "https://picsum.photos/400/400?random=6",
-      "https://picsum.photos/400/400?random=7",
-      "https://picsum.photos/400/400?random=8",
-      "https://picsum.photos/400/400?random=9",
-      "https://picsum.photos/400/400?random=10",
-      "https://picsum.photos/400/400?random=11",
-      "https://picsum.photos/400/400?random=12",
+    // ========== INSTAGRAM PHOTOS & LINKS ==========
+    // Each entry: { src: image path, link: Instagram post URL, alt: description }
+    const igPhotos = [
+      { src: "images/instagram/IMG_4735.jpg", link: "", alt: "Valentine's Day dog with heart headband at South Pasadena Animal Hospital" },
+      { src: "images/instagram/IMG_4736.jpg", link: "", alt: "Fluffy dog in pink Valentine's outfit at South Pasadena Animal Hospital" },
+      { src: "images/instagram/IMG_4737.jpg", link: "", alt: "German Shepherd puppies visiting South Pasadena Animal Hospital" },
+      { src: "images/instagram/IMG_4739.jpg", link: "", alt: "St. Patrick's Day dog with green hat at South Pasadena Animal Hospital" },
+      { src: "images/instagram/IMG_4741.jpg", link: "", alt: "Cat wearing a tie at South Pasadena Animal Hospital" },
+      // Duplicate to fill out the carousel nicely
+      { src: "images/instagram/IMG_4735.jpg", link: "", alt: "Valentine's Day dog with heart headband at South Pasadena Animal Hospital" },
+      { src: "images/instagram/IMG_4736.jpg", link: "", alt: "Fluffy dog in pink Valentine's outfit at South Pasadena Animal Hospital" },
+      { src: "images/instagram/IMG_4737.jpg", link: "", alt: "German Shepherd puppies visiting South Pasadena Animal Hospital" },
+      { src: "images/instagram/IMG_4739.jpg", link: "", alt: "St. Patrick's Day dog with green hat at South Pasadena Animal Hospital" },
+      { src: "images/instagram/IMG_4741.jpg", link: "", alt: "Cat wearing a tie at South Pasadena Animal Hospital" },
     ];
-    // ==================================================================
+    const igImages = igPhotos.map(p => p.src);
+    // =============================================================
 
     const cylinder = document.getElementById('igCylinder');
     const overlay = document.getElementById('igOverlay');
@@ -386,12 +385,19 @@
     const radius = isMobile ? 170 : 290;
 
     // Build cards
-    igImages.forEach((src, i) => {
+    igPhotos.forEach((photo, i) => {
       const card = document.createElement('div');
       card.className = 'ig-card';
       card.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`;
-      card.innerHTML = `<img src="${src}" alt="South Pasadena Animal Hospital — Instagram photo ${i + 1}" loading="lazy" />`;
-      card.addEventListener('click', () => openOverlay(src, i));
+      card.innerHTML = `<img src="${photo.src}" alt="${photo.alt}" loading="lazy" />`;
+      card.addEventListener('click', () => {
+        // If an Instagram link exists, open it; otherwise expand the photo
+        if (photo.link) {
+          window.open(photo.link, '_blank');
+        } else {
+          openOverlay(photo.src, i);
+        }
+      });
       cylinder.appendChild(card);
     });
 
