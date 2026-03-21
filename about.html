@@ -252,7 +252,7 @@
   <style>
     .ig-carousel-wrapper {
       position: relative;
-      height: 300px;
+      height: 320px;
       width: 100%;
       cursor: grab;
       user-select: none;
@@ -387,7 +387,7 @@
     const isMobile = window.innerWidth <= 640;
     const faceCount = igImages.length;
     const angleStep = 360 / faceCount;
-    const radius = isMobile ? 210 : 360;
+    const radius = isMobile ? 320 : 520;
 
     // Build cards
     igPhotos.forEach((photo, i) => {
@@ -395,15 +395,8 @@
       card.className = 'ig-card';
       card.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`;
       card.innerHTML = `<img src="${photo.src}" alt="${photo.alt}" loading="lazy" />`;
-      card.addEventListener('click', (e) => {
-        // Only open link if user didn't drag
-        if (didDrag) return;
-        if (photo.link) {
-          window.open(photo.link, '_blank');
-        } else {
-          openOverlay(photo.src, i);
-        }
-      });
+      card.setAttribute('data-link', photo.link || '');
+      card.setAttribute('data-index', i);
       cylinder.appendChild(card);
     });
 
@@ -476,13 +469,23 @@
     wrapper.addEventListener('pointerup', (e) => {
       if (!isDragging) return;
       isDragging = false;
-      // If barely moved, allow click through to card
+      // If barely moved, treat as a tap/click on the card
       if (Math.abs(e.clientX - startX) < 8) {
-        didDrag = false;
         autoRotate = true;
+        // Find which card was tapped
+        const el = document.elementFromPoint(e.clientX, e.clientY);
+        const card = el && el.closest('.ig-card');
+        if (card) {
+          const link = card.getAttribute('data-link');
+          if (link) {
+            window.open(link, '_blank');
+          } else {
+            const idx = card.getAttribute('data-index');
+            openOverlay(igPhotos[idx].src, idx);
+          }
+        }
         return;
       }
-      didDrag = true;
       animFrame = requestAnimationFrame(momentumDecay);
     });
 
