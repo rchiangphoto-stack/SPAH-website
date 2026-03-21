@@ -266,29 +266,34 @@
       align-items: center;
       justify-content: center;
       perspective: 1200px;
+      -webkit-perspective: 1200px;
     }
     .ig-carousel-cylinder {
       position: relative;
       width: 188px;
       height: 206px;
       transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
       will-change: transform;
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
     }
     .ig-card {
       position: absolute;
       width: 175px;
       height: 193px;
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 5px 20px rgba(0,0,0,0.10);
       cursor: pointer;
-      transition: box-shadow 0.3s ease;
       left: 50%;
       top: 50%;
       margin-left: -88px;
       margin-top: -97px;
-      will-change: transform;
+      transform: translateZ(0);
+      -webkit-transform: translateZ(0);
     }
     .ig-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
     .ig-card img {
@@ -413,14 +418,21 @@
     let animFrame = null;
     let autoRotate = true;
 
+    let lastFrameTime = 0;
+    const rotSpeed = 4.8; // degrees per second
+
     function setRotation(angle) {
-      cylinder.style.transform = `rotateY(${angle}deg)`;
+      cylinder.style.transform = `rotateY(${angle}deg) translateZ(0)`;
     }
 
-    // Auto-rotate
-    function autoSpin() {
-      if (!isDragging && autoRotate) {
-        currentAngle += 0.08;
+    // Auto-rotate with timestamp-based animation for smooth, consistent frames
+    function autoSpin(timestamp) {
+      if (!lastFrameTime) lastFrameTime = timestamp;
+      const delta = (timestamp - lastFrameTime) / 1000; // seconds since last frame
+      lastFrameTime = timestamp;
+
+      if (!isDragging && autoRotate && delta < 0.1) {
+        currentAngle += rotSpeed * delta;
         setRotation(currentAngle);
       }
       requestAnimationFrame(autoSpin);
