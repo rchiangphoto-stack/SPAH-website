@@ -252,7 +252,7 @@
   <style>
     .ig-carousel-wrapper {
       position: relative;
-      height: 200px;
+      height: 250px;
       width: 100%;
       cursor: grab;
       user-select: none;
@@ -269,25 +269,25 @@
     }
     .ig-carousel-cylinder {
       position: relative;
-      width: 150px;
-      height: 165px;
+      width: 188px;
+      height: 206px;
       transform-style: preserve-3d;
       transition: transform 0.05s linear;
     }
     .ig-card {
       position: absolute;
-      width: 140px;
-      height: 154px;
+      width: 175px;
+      height: 193px;
       backface-visibility: hidden;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.10);
       cursor: pointer;
       transition: box-shadow 0.3s ease;
       left: 50%;
       top: 50%;
-      margin-left: -70px;
-      margin-top: -77px;
+      margin-left: -88px;
+      margin-top: -97px;
     }
     .ig-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
     .ig-card img {
@@ -349,10 +349,10 @@
     .ig-overlay-close:hover { transform: scale(1.1); }
 
     @media (max-width: 640px) {
-      .ig-carousel-wrapper { height: 155px; }
-      .ig-carousel-cylinder { width: 110px; height: 121px; }
-      .ig-card { width: 105px; height: 116px; margin-left: -52px; margin-top: -58px; border-radius: 8px; }
-      .ig-card img { border-radius: 8px; }
+      .ig-carousel-wrapper { height: 190px; }
+      .ig-carousel-cylinder { width: 138px; height: 152px; }
+      .ig-card { width: 130px; height: 143px; margin-left: -65px; margin-top: -72px; border-radius: 9px; }
+      .ig-card img { border-radius: 9px; }
     }
   </style>
 
@@ -383,7 +383,7 @@
     const isMobile = window.innerWidth <= 640;
     const faceCount = igImages.length;
     const angleStep = 360 / faceCount;
-    const radius = isMobile ? 170 : 290;
+    const radius = isMobile ? 210 : 360;
 
     // Build cards
     igPhotos.forEach((photo, i) => {
@@ -391,8 +391,9 @@
       card.className = 'ig-card';
       card.style.transform = `rotateY(${i * angleStep}deg) translateZ(${radius}px)`;
       card.innerHTML = `<img src="${photo.src}" alt="${photo.alt}" loading="lazy" />`;
-      card.addEventListener('click', () => {
-        // If an Instagram link exists, open it; otherwise expand the photo
+      card.addEventListener('click', (e) => {
+        // Only open link if user didn't drag
+        if (didDrag) return;
         if (photo.link) {
           window.open(photo.link, '_blank');
         } else {
@@ -406,6 +407,7 @@
     let currentAngle = 0;
     let velocity = 0;
     let isDragging = false;
+    let didDrag = false;
     let startX = 0;
     let lastX = 0;
     let lastTime = 0;
@@ -445,6 +447,7 @@
 
     wrapper.addEventListener('pointerdown', (e) => {
       isDragging = true;
+      didDrag = false;
       autoRotate = false;
       velocity = 0;
       startX = e.clientX;
@@ -469,11 +472,13 @@
     wrapper.addEventListener('pointerup', (e) => {
       if (!isDragging) return;
       isDragging = false;
-      // If barely moved, don't suppress click
-      if (Math.abs(e.clientX - startX) < 5) {
+      // If barely moved, allow click through to card
+      if (Math.abs(e.clientX - startX) < 8) {
+        didDrag = false;
         autoRotate = true;
         return;
       }
+      didDrag = true;
       animFrame = requestAnimationFrame(momentumDecay);
     });
 
