@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="/images/spah-logo.png" />
+  <title>Page Not Found | South Pasadena Animal Hospital</title>
+  <meta name="robots" content="noindex, follow" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="css/styles.css" rel="stylesheet" />
+  <style>
+    .error-page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      background: linear-gradient(135deg, #f0f4f1 0%, #e8ede9 50%, #dfe8e3 100%);
+    }
+    .error-code {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(5rem, 15vw, 10rem);
+      font-weight: 700;
+      color: #7A9E8E;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      opacity: 0.3;
+    }
+    .error-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.5rem, 4vw, 2.5rem);
+      font-weight: 700;
+      color: #2A3442;
+      margin-bottom: 1rem;
+    }
+    .error-message {
+      font-family: 'Lato', sans-serif;
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 500px;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    .error-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-bottom: 2rem;
+    }
+    .error-links a {
+      font-family: 'Lato', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+    .btn-primary-404 {
+      background: #5A7FA6;
+      color: #fff;
+    }
+    .btn-primary-404:hover {
+      background: #4a6d8f;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(90,127,166,0.3);
+    }
+    .btn-secondary-404 {
+      background: transparent;
+      color: #5A7FA6;
+      border: 2px solid #5A7FA6;
+    }
+    .btn-secondary-404:hover {
+      background: #5A7FA6;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .error-logo {
+      width: 80px;
+      margin-bottom: 1.5rem;
+      opacity: 0.8;
+    }
+    .error-phone {
+      font-family: 'Lato', sans-serif;
+      color: #777;
+      font-size: 0.95rem;
+    }
+    .error-phone a {
+      color: #5A7FA6;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .error-phone a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="error-page">
+    <img src="/images/spah-logo.png" alt="South Pasadena Animal Hospital logo" class="error-logo" />
+    <div class="error-code">404</div>
+    <h1 class="error-title">Oops! This page wandered off.</h1>
+    <p class="error-message">
+      The page you're looking for doesn't exist or may have moved.
+      Let's get you back on track!
+    </p>
+    <div class="error-links">
+      <a href="/" class="btn-primary-404">Back to Home</a>
+      <a href="/services.html" class="btn-secondary-404">Our Services</a>
+      <a href="/contact.html" class="btn-secondary-404">Contact Us</a>
+    </div>
+    <p class="error-phone">
+      Need help? Call us at <a href="tel:+16264411314">(626) 441-1314</a>
+    </p>
+  </div>
+</body>
+</html>
