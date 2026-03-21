@@ -261,8 +261,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1200px;
-      -webkit-perspective: 1200px;
+      perspective: 1600px;
+      -webkit-perspective: 1600px;
     }
     .ig-carousel-cylinder {
       position: relative;
@@ -271,8 +271,6 @@
       transform-style: preserve-3d;
       -webkit-transform-style: preserve-3d;
       will-change: transform;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
     }
     .ig-card {
       position: absolute;
@@ -415,7 +413,7 @@
     let autoRotate = true;
 
     let lastFrameTime = 0;
-    const rotSpeed = 4.8; // degrees per second
+    const rotSpeed = 2.5; // degrees per second (slower = smoother)
 
     function setRotation(angle) {
       cylinder.style.transform = `rotateY(${angle}deg) translateZ(0)`;
@@ -440,7 +438,7 @@
       if (isDragging) return;
       if (Math.abs(velocity) > 0.05) {
         currentAngle += velocity;
-        velocity *= 0.96;
+        velocity *= 0.94;
         setRotation(currentAngle);
         animFrame = requestAnimationFrame(momentumDecay);
       } else {
@@ -469,8 +467,8 @@
       const dx = e.clientX - lastX;
       const now = Date.now();
       const dt = now - lastTime || 1;
-      velocity = (dx / dt) * 15;
-      currentAngle += dx * (isMobile ? 0.35 : 0.25);
+      velocity = (dx / dt) * 10;
+      currentAngle += dx * (isMobile ? 0.25 : 0.18);
       setRotation(currentAngle);
       lastX = e.clientX;
       lastTime = now;
