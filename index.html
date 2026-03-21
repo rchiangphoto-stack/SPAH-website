@@ -171,46 +171,16 @@
       50%       { transform: translateX(-50%) translateY(7px); }
     }
 
-    /* Clinic aerial photo — slow zoom in/out + hover tilt */
+    /* Clinic aerial photo — slow zoom in/out, no hover effect */
     .clinic-photo-wrap {
       overflow: hidden;
-      transition: transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.5s ease;
-    }
-    .clinic-photo-wrap:hover {
-      transform: scale(1.02);
-      box-shadow: 0 20px 50px rgba(42,52,66,0.18), 0 8px 20px rgba(42,52,66,0.08);
     }
     .clinic-photo {
       animation: clinicZoom 12s ease-in-out infinite alternate;
-      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), filter 0.5s ease;
     }
     @keyframes clinicZoom {
       0%   { transform: scale(1); }
       100% { transform: scale(1.08); }
-    }
-    .clinic-photo-wrap:hover .clinic-photo {
-      animation-play-state: paused;
-      transform: scale(1.1);
-      filter: brightness(1.05) contrast(1.03);
-    }
-    /* Shine sweep on hover */
-    .clinic-photo-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background: linear-gradient(120deg, transparent 0%, transparent 40%, rgba(255,255,255,0.25) 50%, transparent 60%, transparent 100%);
-      transform: translateX(-100%);
-      transition: none;
-      pointer-events: none;
-      border-radius: 1.5rem;
-    }
-    .clinic-photo-wrap:hover::after {
-      animation: clinicShine 0.8s ease forwards;
-    }
-    @keyframes clinicShine {
-      0%   { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
     }
   </style>
 </head>

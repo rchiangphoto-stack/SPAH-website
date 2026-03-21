@@ -88,59 +88,33 @@
       transition: opacity 0.3s ease, transform 0.3s ease;
     }
 
-    /* Clinic street view — zoom + bubble hover effect */
+    /* Clinic street view — zoom + wave hover effect */
     .clinic-about-wrap {
       position: relative;
       overflow: hidden;
+      transition: box-shadow 0.5s ease;
+    }
+    .clinic-about-wrap:hover {
+      box-shadow: 0 16px 48px rgba(42,52,66,0.16), 0 4px 16px rgba(42,52,66,0.08);
     }
     .clinic-about-img {
       animation: clinicAboutZoom 14s ease-in-out infinite alternate;
-      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
+      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), filter 0.5s ease;
     }
     @keyframes clinicAboutZoom {
       0%   { transform: scale(1); }
       100% { transform: scale(1.08); }
     }
     .clinic-about-wrap:hover .clinic-about-img {
-      animation-play-state: paused;
-      transform: scale(1.05);
+      animation: clinicWave 3s ease-in-out infinite;
+      filter: brightness(1.04);
     }
-    /* Subtle bubble overlay — hidden by default, appears on hover */
-    .clinic-about-glass {
-      position: absolute;
-      inset: 0;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
-    .clinic-about-wrap:hover .clinic-about-glass {
-      opacity: 1;
-    }
-    .clinic-about-glass .bubble {
-      position: absolute;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.35), rgba(255,255,255,0.08) 60%, transparent 70%);
-      border: 1px solid rgba(255,255,255,0.15);
-      animation-timing-function: ease-in-out;
-      animation-iteration-count: infinite;
-      animation-direction: alternate;
-    }
-    .bubble-1 { width: 80px; height: 80px; bottom: 10%; left: 15%; animation: bubbleFloat1 3s ease-in-out infinite alternate; }
-    .bubble-2 { width: 50px; height: 50px; bottom: 25%; right: 20%; animation: bubbleFloat2 3.5s ease-in-out infinite alternate; animation-delay: 0.5s; }
-    .bubble-3 { width: 35px; height: 35px; bottom: 45%; left: 40%; animation: bubbleFloat3 2.8s ease-in-out infinite alternate; animation-delay: 1s; }
-    .bubble-4 { width: 60px; height: 60px; top: 20%; right: 30%; animation: bubbleFloat1 3.2s ease-in-out infinite alternate; animation-delay: 0.8s; }
-    .bubble-5 { width: 25px; height: 25px; top: 35%; left: 25%; animation: bubbleFloat2 2.5s ease-in-out infinite alternate; animation-delay: 1.3s; }
-    @keyframes bubbleFloat1 {
-      0%   { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(8px, -12px) scale(1.08); }
-    }
-    @keyframes bubbleFloat2 {
-      0%   { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(-6px, -10px) scale(0.92); }
-    }
-    @keyframes bubbleFloat3 {
-      0%   { transform: translate(0, 0) scale(1); }
-      100% { transform: translate(5px, -8px) scale(1.05); }
+    @keyframes clinicWave {
+      0%   { transform: scale(1.04) translate(0, 0) rotate(0deg); }
+      25%  { transform: scale(1.05) translate(3px, -2px) rotate(0.3deg); }
+      50%  { transform: scale(1.04) translate(-2px, 2px) rotate(-0.2deg); }
+      75%  { transform: scale(1.05) translate(2px, 1px) rotate(0.2deg); }
+      100% { transform: scale(1.04) translate(0, 0) rotate(0deg); }
     }
   </style>
 </head>
@@ -217,14 +191,6 @@
           <img src="images/spah-street-view.png"
                alt="Aerial street view of South Pasadena Animal Hospital in Alhambra"
                class="w-full h-full object-cover clinic-about-img" loading="lazy" />
-          <!-- Bubble hover overlay -->
-          <div class="clinic-about-glass">
-            <div class="bubble bubble-1"></div>
-            <div class="bubble bubble-2"></div>
-            <div class="bubble bubble-3"></div>
-            <div class="bubble bubble-4"></div>
-            <div class="bubble bubble-5"></div>
-          </div>
         </div>
       </div>
     </div>
