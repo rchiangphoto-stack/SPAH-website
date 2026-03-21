@@ -239,7 +239,7 @@
         <img src="" alt="" class="ig-overlay-img" id="igOverlayImg" />
       </div>
     </div>
-    <div class="text-center mt-10">
+    <div class="text-center mt-10" style="position:relative; z-index:10;">
       <a href="https://www.instagram.com/southpasah" target="_blank" rel="noopener noreferrer"
          class="inline-flex items-center gap-2 font-body font-bold rounded-full px-6 py-2.5 text-sm hover:shadow-lg hover:scale-105 transition-all duration-300"
          style="background: linear-gradient(135deg, #b8a9c9, #d4a5a5, #c9b98a); color: #fff;">
@@ -252,7 +252,7 @@
   <style>
     .ig-carousel-wrapper {
       position: relative;
-      height: 320px;
+      height: 380px;
       width: 100%;
       cursor: grab;
       user-select: none;
@@ -265,14 +265,14 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      perspective: 1000px;
+      perspective: 1200px;
     }
     .ig-carousel-cylinder {
       position: relative;
       width: 188px;
       height: 206px;
       transform-style: preserve-3d;
-      transition: transform 0.05s linear;
+      will-change: transform;
     }
     .ig-card {
       position: absolute;
@@ -288,6 +288,7 @@
       top: 50%;
       margin-left: -88px;
       margin-top: -97px;
+      will-change: transform;
     }
     .ig-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.18); }
     .ig-card img {
@@ -298,6 +299,7 @@
       display: block;
       border-radius: 10px;
       pointer-events: none;
+      image-rendering: -webkit-optimize-contrast;
     }
     /* Overlay */
     .ig-overlay {
@@ -349,7 +351,7 @@
     .ig-overlay-close:hover { transform: scale(1.1); }
 
     @media (max-width: 640px) {
-      .ig-carousel-wrapper { height: 220px; }
+      .ig-carousel-wrapper { height: 260px; }
       .ig-carousel-cylinder { width: 138px; height: 152px; }
       .ig-card { width: 130px; height: 143px; margin-left: -65px; margin-top: -72px; border-radius: 9px; }
       .ig-card img { border-radius: 9px; }
