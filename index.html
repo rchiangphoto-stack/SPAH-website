@@ -80,7 +80,45 @@
       "reviewCount": "235",
       "bestRating": "5",
       "worstRating": "1"
-    }
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Scott J." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Dr. Chiang and the whole team are incredible. Unlike some clinics that try to upsell you on everything, they're honest, straightforward, and actually affordable. Dr. Chiang got our IVDD pup walking again within a couple of weeks."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Catalina T." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Very caring and knowledgeable staff. They took the time to explain everything to us and we felt confident in their care. The office is clean and well-organized."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Stephanie W." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "I have taken my small zoo to Dr. Chiang at SPAH and have always received excellent care. She sees my dogs, cats, birds, and bearded dragon. She is a wonderful vet!"
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Miranda V." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Amazing care for our exotic pets. They really know how to handle reptiles and birds, which is hard to find. Affordable and honest."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Edith A." },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Great place. Super clean, friendly staff. The vet reviewed everything with us and we felt comfortable with the procedure. Much cheaper than any other place."
+      },
+      {
+        "@type": "Review",
+        "author": { "@type": "Person", "name": "Suze" },
+        "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+        "reviewBody": "Most kind, attentive vets and techs! They genuinely care about your fur babies. Prices are very reasonable and they never push unnecessary treatments."
+      }
+    ]
   }
   </script>
   <link rel="stylesheet" href="css/styles.css" />
@@ -531,8 +569,7 @@
   </section>
 
   <!-- REVIEWS — Carousel -->
-  <section class="py-24 bg-warm overflow-hidden" itemscope itemtype="https://schema.org/LocalBusiness">
-    <meta itemprop="name" content="South Pasadena Animal Hospital" />
+  <section class="py-24 bg-warm overflow-hidden">
     <div class="max-w-6xl mx-auto px-6">
       <!-- Header with combined rating -->
       <div class="text-center mb-14">
@@ -583,27 +620,25 @@
           <style>#reviewTrack::-webkit-scrollbar { display:none; }</style>
 
           <!-- Review 1 – Scott J. (Yelp) -->
-          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
-               itemprop="review" itemscope itemtype="https://schema.org/Review">
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow">
             <div class="flex items-center justify-between mb-4">
               <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
               <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1">Yelp</span>
             </div>
-            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;">
               "Dr. Chiang and the whole team are incredible. Unlike some clinics that try to upsell you on everything, they're honest, straightforward, and actually affordable. Dr. Chiang got our IVDD pup walking again within a couple of weeks. It's a place that actually cares AND is good at what they do."
             </blockquote>
             <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
               <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#5A7FA6,#7A9E8E);">S</div>
               <div>
-                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Scott J.</span></div>
+                <div class="font-body font-bold text-dark text-sm"><span>Scott J.</span></div>
                 <div class="font-body text-xs text-muted">South Pasadena, CA · Feb 2026</div>
               </div>
             </div>
           </div>
 
           <!-- Review 2 – Catalina T. (Google) -->
-          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
-               itemprop="review" itemscope itemtype="https://schema.org/Review">
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow">
             <div class="flex items-center justify-between mb-4">
               <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
               <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1 flex items-center gap-1">
@@ -611,40 +646,38 @@
                 Google
               </span>
             </div>
-            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;">
               "My senior cat was having some dental issues, so I had been calling around and wasn't able to get appointments anywhere. Got super lucky with this appointment. Absolutely loved the care and attention my cat received. Highly recommend!"
             </blockquote>
             <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
               <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#5A7FA6,#A8673A);">C</div>
               <div>
-                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Catalina T.</span></div>
+                <div class="font-body font-bold text-dark text-sm"><span>Catalina T.</span></div>
                 <div class="font-body text-xs text-muted">Local Guide · Nov 2025</div>
               </div>
             </div>
           </div>
 
           <!-- Review 3 – Stephanie W. (Yelp) -->
-          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
-               itemprop="review" itemscope itemtype="https://schema.org/Review">
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow">
             <div class="flex items-center justify-between mb-4">
               <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
               <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1">Yelp</span>
             </div>
-            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;">
               "Dr. Chiang and her team are exceptional in their care, compassion and veterinary skill and knowledge. She implemented a treatment plan based on evidence-based medicine. I feel truly blessed that Dr. Chiang is the veterinarian of our furry family member."
             </blockquote>
             <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
               <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#7A9E8E,#89A8C4);">S</div>
               <div>
-                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Stephanie W.</span></div>
+                <div class="font-body font-bold text-dark text-sm"><span>Stephanie W.</span></div>
                 <div class="font-body text-xs text-muted">Pasadena, CA · Dec 2025</div>
               </div>
             </div>
           </div>
 
           <!-- Review 4 – Miranda V. (Google) -->
-          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
-               itemprop="review" itemscope itemtype="https://schema.org/Review">
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow">
             <div class="flex items-center justify-between mb-4">
               <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
               <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1 flex items-center gap-1">
@@ -652,40 +685,38 @@
                 Google
               </span>
             </div>
-            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;">
               "Cannot say enough good things about this place. The quality of care and attentiveness is so comforting. My cats both get very nervous at vets and everyone at SPAH is so warm, patient, competent, and communicative. Dr. Chiang went above and beyond."
             </blockquote>
             <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
               <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#89A8C4,#5A7FA6);">M</div>
               <div>
-                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Miranda V.</span></div>
+                <div class="font-body font-bold text-dark text-sm"><span>Miranda V.</span></div>
                 <div class="font-body text-xs text-muted">Dec 2025</div>
               </div>
             </div>
           </div>
 
           <!-- Review 5 – Edith A. (Yelp) -->
-          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
-               itemprop="review" itemscope itemtype="https://schema.org/Review">
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow">
             <div class="flex items-center justify-between mb-4">
               <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
               <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1">Yelp</span>
             </div>
-            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;">
               "Great place. Super clean, friendly staff. The vet reviewed everything with us and we felt comfortable with the procedure. With everything we needed done for Ollin, much cheaper than any other place. Everyone was super helpful."
             </blockquote>
             <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
               <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#A8673A,#C4845A);">E</div>
               <div>
-                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Edith A.</span></div>
+                <div class="font-body font-bold text-dark text-sm"><span>Edith A.</span></div>
                 <div class="font-body text-xs text-muted">Alhambra, CA · Jul 2024</div>
               </div>
             </div>
           </div>
 
           <!-- Review 6 – Suze (Google) -->
-          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow"
-               itemprop="review" itemscope itemtype="https://schema.org/Review">
+          <div class="snap-start flex-shrink-0 w-[85vw] sm:w-[340px] bg-white rounded-3xl p-7 flex flex-col card-shadow">
             <div class="flex items-center justify-between mb-4">
               <div style="color:#F59E0B; font-size:0.95rem; letter-spacing:1px;">★★★★★</div>
               <span class="font-body text-xs text-muted/70 bg-warm border border-sky/20 rounded-full px-3 py-1 flex items-center gap-1">
@@ -693,13 +724,13 @@
                 Google
               </span>
             </div>
-            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;" itemprop="reviewBody">
+            <blockquote class="font-body text-dark/80 text-sm flex-1" style="line-height:1.8;">
               "You won't find better service and proper care anywhere else. My cat has been a patient for a little over 2 years. After experiences I've had at other clinics, I only have enthusiastic praise for this place. Friendliest and most attentive staff."
             </blockquote>
             <div class="mt-5 pt-4 border-t border-sky/15 flex items-center gap-3">
               <div class="w-9 h-9 rounded-full flex items-center justify-center font-display font-bold text-white text-sm flex-shrink-0" style="background: linear-gradient(135deg,#7A9E8E,#5A7FA6);">S</div>
               <div>
-                <div class="font-body font-bold text-dark text-sm" itemprop="author" itemscope itemtype="https://schema.org/Person"><span itemprop="name">Suze</span></div>
+                <div class="font-body font-bold text-dark text-sm"><span>Suze</span></div>
                 <div class="font-body text-xs text-muted">Local Guide · Jan 2026</div>
               </div>
             </div>
