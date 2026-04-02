@@ -85,6 +85,36 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://www.spah.la/reptile-vet-alhambra.html</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spah.la/bird-vet-alhambra.html</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spah.la/rabbit-vet-alhambra.html</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spah.la/guinea-pig-vet-alhambra.html</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spah.la/exotic-vet-alhambra.html</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://www.spah.la/blog/</loc>
     <lastmod>2026-03-31</lastmod>
     <changefreq>weekly</changefreq>
