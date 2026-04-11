@@ -1,0 +1,63 @@
+name: Update Review Counts
+
+on:
+  schedule:
+    - cron: '0 8 * * *'  # Daily at 8am UTC (1am PST)
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update-reviews:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Fetch Google Reviews
+        id: google
+        run: |
+          RESPONSE=$(curl -s "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=South+Pasadena+Animal+Hospital+Alhambra&inputtype=textquery&fields=place_id,rating,user_ratings_total&key=${{ secrets.GOOGLE_API_KEY }}")
+          GOOGLE_RATING=$(echo "$RESPONSE" | jq -r '.candidates[0].rating // empty')
+          GOOGLE_COUNT=$(echo "$RESPONSE" | jq -r '.candidates[0].user_ratings_total // empty')
+          echo "rating=$GOOGLE_RATING" >> $GITHUB_OUTPUT
+          echo "count=$GOOGLE_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Fetch Yelp Reviews
+        id: yelp
+        run: |
+          RESPONSE=$(curl -s "https://api.yelp.com/v3/businesses/south-pasadena-animal-hospital-alhambra" -H "Authorization: Bearer ${{ secrets.YELP_API_KEY }}")
+          YELP_RATING=$(echo "$RESPONSE" | jq -r '.rating // empty')
+          YELP_COUNT=$(echo "$RESPONSE" | jq -r '.review_count // empty')
+          echo "rating=$YELP_RATING" >> $GITHUB_OUTPUT
+          echo "count=$YELP_COUNT" >> $GITHUB_OUTPUT
+
+      - name: Generate reviews.json
+        run: |
+          GOOGLE_RATING="${{ steps.google.outputs.rating }}"
+          GOOGLE_COUNT="${{ steps.google.outputs.count }}"
+          YELP_RATING="${{ steps.yelp.outputs.rating }}"
+          YELP_COUNT="${{ steps.yelp.outputs.count }}"
+          TOTAL_COUNT=$((GOOGLE_COUNT + YELP_COUNT))
+
+          # Weighted average for combined rating
+          COMBINED=$(echo "scale=1; ($GOOGLE_RATING * $GOOGLE_COUNT + $YELP_RATING * $YELP_COUNT) / $TOTAL_COUNT" | bc)
+
+          cat > reviews.json << EOF
+          {
+            "google": { "rating": $GOOGLE_RATING, "count": $GOOGLE_COUNT },
+            "yelp": { "rating": $YELP_RATING, "count": $YELP_COUNT },
+            "combined": { "rating": $COMBINED, "count": $TOTAL_COUNT },
+            "updated": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          }
+          EOF
+
+          # Clean up whitespace
+          cat reviews.json | python3 -m json.tool > reviews_clean.json
+          mv reviews_clean.json reviews.json
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add reviews.json
+          git diff --cached --quiet || (git commit -m "Update review counts [automated]" && git push)
