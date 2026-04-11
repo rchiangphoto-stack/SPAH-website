@@ -1,3 +1,22 @@
 .claude/
 node_modules/
 src/
+
+# Python scripts
+*.py
+
+# Excel files
+*.xlsx
+*.xls
+
+# Temp/lock files
+~$*
+*.tmp
+
+# Social media assets
+social-posts/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
