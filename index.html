@@ -137,10 +137,12 @@
   }
   </script>
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="preload" as="image" href="images/spah-we-moved.webp" />
+  <link rel="preload" as="image" href="images/spah-we-moved.webp" type="image/webp" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Load Google Fonts async to unblock FCP -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; }
@@ -920,11 +922,12 @@
         var isMobile = window.innerWidth < 768;
         spahHero.style.height = isMobile ? '115vh' : '130vh';
 
-        gsap.set('#spah-logo-grid', { opacity: 0, scale: 0.88, y: 22 });
+        // Note: opacity NOT set to 0 on logo-grid — keeps hero image visible for LCP
+        gsap.set('#spah-logo-grid', { scale: 0.88, y: 22 });
         gsap.set('#spah-scroll-hint', { opacity: 0 });
         gsap.to('#spah-scroll-hint', { opacity: 1, duration: 1, ease: 'circ.out', delay: 0.5 });
         gsap.to('#spah-logo-grid', {
-          opacity: 1, scale: 1, y: 0, duration: 1.7, ease: 'expo.out', delay: 0.35,
+          scale: 1, y: 0, duration: 1.7, ease: 'expo.out', delay: 0.35,
           onComplete() {}
         });
 
