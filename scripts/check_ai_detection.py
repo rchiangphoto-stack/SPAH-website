@@ -4,14 +4,20 @@ SPAH Blog AI Detection Checker
 Extracts prose text from batch-4 blog HTML files and submits to GPTZero API.
 Reports AI probability scores so you can verify each post is below the threshold.
 
-SETUP:
-1. Get a free API key at https://gptzero.me  (Settings → API)
-2. Run:  python scripts/check_ai_detection.py --key YOUR_API_KEY
+SETUP (one-time):
+1. Get a free API key at https://gptzero.me  (click API in the top menu)
+2. Paste your key into:  scripts/.gptzero_key   (one line, nothing else)
+
+Then just run:
+   python scripts/check_ai_detection.py
 
 Optional: check a single post
-   python scripts/check_ai_detection.py --key YOUR_API_KEY --file blog/pet-limping.html
+   python scripts/check_ai_detection.py --file blog/pet-limping.html
 
-Results are printed to console and saved to scripts\ai_detection_results.txt
+Optional: override key on the command line
+   python scripts/check_ai_detection.py --key YOUR_API_KEY
+
+Results are printed to console and saved to scripts/ai_detection_results.txt
 """
 
 import argparse
@@ -165,11 +171,35 @@ def short_name(filepath):
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
+KEY_FILE_NAME = ".gptzero_key"
+
+
+def load_key(cli_key, root):
+    """Return API key from CLI arg → key file → env var, in that order."""
+    if cli_key:
+        return cli_key.strip()
+
+    key_path = os.path.join(root, "scripts", KEY_FILE_NAME)
+    if os.path.exists(key_path):
+        with open(key_path, encoding="utf-8") as f:
+            key = f.read().strip()
+        if key:
+            return key
+
+    env_key = os.environ.get("GPTZERO_API_KEY", "").strip()
+    if env_key:
+        return env_key
+
+    return None
+
+
 def main():
     parser = argparse.ArgumentParser(description="SPAH AI Detection Checker (GPTZero)")
-    parser.add_argument("--key",  required=True, help="GPTZero API key (free at gptzero.me)")
-    parser.add_argument("--file", default=None,  help="Check a single HTML file instead of all batch-4")
-    parser.add_argument("--root", default=None,  help="Path to SPAH-website root (auto-detected if omitted)")
+    parser.add_argument("--key",  default=None, help="GPTZero API key (or save to scripts/.gptzero_key)")
+    parser.add_argument("--file", default=None, help="Check a single HTML file instead of all batch-4")
+    parser.add_argument("--root", default=None, help="Path to SPAH-website root (auto-detected if omitted)")
+    parser.add_argument("--save-key", default=None, metavar="KEY",
+                        help="Save this API key to scripts/.gptzero_key and exit")
     args = parser.parse_args()
 
     # Locate project root
@@ -178,6 +208,25 @@ def main():
     else:
         script_dir = os.path.dirname(os.path.abspath(__file__))
         root = os.path.dirname(script_dir)
+
+    # --save-key: write key to file and exit
+    if args.save_key:
+        key_path = os.path.join(root, "scripts", KEY_FILE_NAME)
+        with open(key_path, "w", encoding="utf-8") as f:
+            f.write(args.save_key.strip())
+        print(f"API key saved to: {key_path}")
+        print("You can now run:  python scripts/check_ai_detection.py")
+        return
+
+    api_key = load_key(args.key, root)
+    if not api_key:
+        print("ERROR: No API key found.")
+        print()
+        print("To set up your key (one-time):")
+        print("  python scripts/check_ai_detection.py --save-key YOUR_KEY_HERE")
+        print()
+        print("Get a free key at: https://gptzero.me  (click API in the menu)")
+        sys.exit(1)
 
     files = [args.file] if args.file else [os.path.join(root, p) for p in BATCH_4_POSTS]
 

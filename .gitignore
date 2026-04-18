@@ -5,6 +5,10 @@ src/
 # Python scripts
 *.py
 
+# API keys — never commit these
+scripts/.gptzero_key
+.env
+
 # Excel files
 *.xlsx
 *.xls
