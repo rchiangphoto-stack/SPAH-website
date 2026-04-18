@@ -1,12 +1,14 @@
 """
 SPAH Blog AI Detection Checker
 ================================
-Extracts prose text from batch-4 blog HTML files and submits to GPTZero API.
+Extracts prose text from batch-4 blog HTML files and submits to Sapling.ai API.
 Reports AI probability scores so you can verify each post is below the threshold.
 
 SETUP (one-time):
-1. Get a free API key at https://gptzero.me  (click API in the top menu)
-2. Paste your key into:  scripts/.gptzero_key   (one line, nothing else)
+1. Sign up for a free account at https://sapling.ai  (no credit card required)
+2. Go to https://sapling.ai/user/settings — copy your API key
+3. Run once to save your key:
+   python scripts/check_ai_detection.py --save-key YOUR_KEY_HERE
 
 Then just run:
    python scripts/check_ai_detection.py
@@ -47,10 +49,10 @@ BATCH_4_POSTS = [
     "blog/pet-euthanasia-guide.html",
 ]
 
-GPTZERO_ENDPOINT = "https://api.gptzero.me/v2/predict/text"
+SAPLING_ENDPOINT = "https://api.sapling.ai/api/v1/aidetect"
 
 
-# ── HTML → plain text ─────────────────────────────────────────────────────────
+# ── HTML -> plain text ─────────────────────────────────────────────────────────
 class ProseExtractor(HTMLParser):
     """Extracts text from inside <div class="prose"> ... </div>."""
 
@@ -103,27 +105,25 @@ def extract_prose(filepath):
     return text
 
 
-# ── GPTZero API call ──────────────────────────────────────────────────────────
-def check_gptzero(text, api_key):
+# ── Sapling.ai API call ───────────────────────────────────────────────────────
+def check_sapling(text, api_key):
     """
+    Calls Sapling.ai AI detection API.
     Returns a dict:
       {
-        "completely_generated_prob": float,   # 0–1, probability entire doc is AI
-        "average_generated_prob":   float,    # average sentence-level AI probability
-        "ai_sentences":             int,      # count of sentences flagged as AI
-        "total_sentences":          int,
-        "predicted_class":          str,      # "ai" | "mixed" | "human"
-        "error":                    str|None
+        "score":            float,      # 0-1, overall AI probability (1 = fully AI)
+        "ai_sentences":     int,        # sentences scored >= 0.5
+        "total_sentences":  int,
+        "predicted_class":  str,        # "AI" | "MIXED" | "HUMAN"
+        "error":            str|None
       }
     """
-    payload = json.dumps({"document": text}).encode("utf-8")
+    payload = json.dumps({"key": api_key, "text": text}).encode("utf-8")
     req = urllib.request.Request(
-        GPTZERO_ENDPOINT,
+        SAPLING_ENDPOINT,
         data=payload,
         headers={
-            "Accept": "application/json",
             "Content-Type": "application/json",
-            "x-api-key": api_key,
         },
         method="POST",
     )
@@ -136,17 +136,25 @@ def check_gptzero(text, api_key):
     except Exception as e:
         return {"error": str(e)}
 
-    doc = data.get("documents", [{}])[0]
-    sentences = doc.get("sentences", [])
-    ai_sentences = [s for s in sentences if s.get("generated_prob", 0) >= 0.5]
+    score = data.get("score", 0)
+    sentence_scores = data.get("sentence_scores", [])
+
+    # sentence_scores is a list of [sentence_text, probability] pairs
+    ai_sentences = [s for s in sentence_scores if s[1] >= 0.5]
+
+    if score >= 0.8:
+        predicted_class = "AI"
+    elif score >= 0.4:
+        predicted_class = "MIXED"
+    else:
+        predicted_class = "HUMAN"
 
     return {
-        "completely_generated_prob": doc.get("completely_generated_prob", 0),
-        "average_generated_prob":    doc.get("average_generated_prob", 0),
-        "ai_sentences":              len(ai_sentences),
-        "total_sentences":           len(sentences),
-        "predicted_class":           doc.get("predicted_class", "unknown"),
-        "error":                     None,
+        "score":           score,
+        "ai_sentences":    len(ai_sentences),
+        "total_sentences": len(sentence_scores),
+        "predicted_class": predicted_class,
+        "error":           None,
     }
 
 
@@ -155,15 +163,15 @@ def score_label(prob):
     """Return a text label + pass/fail indicator."""
     pct = prob * 100
     if pct < 20:
-        return f"{pct:.1f}%  ✅ VERY LOW"
+        return f"{pct:.1f}%  [VERY LOW - OK]"
     elif pct < 40:
-        return f"{pct:.1f}%  ✅ LOW"
+        return f"{pct:.1f}%  [LOW - OK]"
     elif pct < 60:
-        return f"{pct:.1f}%  ⚠️  MODERATE"
+        return f"{pct:.1f}%  [MODERATE - REVIEW]"
     elif pct < 80:
-        return f"{pct:.1f}%  ❌ HIGH"
+        return f"{pct:.1f}%  [HIGH - REWRITE]"
     else:
-        return f"{pct:.1f}%  ❌ VERY HIGH"
+        return f"{pct:.1f}%  [VERY HIGH - REWRITE]"
 
 
 def short_name(filepath):
@@ -171,11 +179,11 @@ def short_name(filepath):
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
-KEY_FILE_NAME = ".gptzero_key"
+KEY_FILE_NAME = ".sapling_key"
 
 
 def load_key(cli_key, root):
-    """Return API key from CLI arg → key file → env var, in that order."""
+    """Return API key from CLI arg -> key file -> env var, in that order."""
     if cli_key:
         return cli_key.strip()
 
@@ -186,7 +194,7 @@ def load_key(cli_key, root):
         if key:
             return key
 
-    env_key = os.environ.get("GPTZERO_API_KEY", "").strip()
+    env_key = os.environ.get("SAPLING_API_KEY", "").strip()
     if env_key:
         return env_key
 
@@ -194,12 +202,12 @@ def load_key(cli_key, root):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="SPAH AI Detection Checker (GPTZero)")
-    parser.add_argument("--key",  default=None, help="GPTZero API key (or save to scripts/.gptzero_key)")
+    parser = argparse.ArgumentParser(description="SPAH AI Detection Checker (Sapling.ai)")
+    parser.add_argument("--key",  default=None, help="Sapling.ai API key (or save to scripts/.sapling_key)")
     parser.add_argument("--file", default=None, help="Check a single HTML file instead of all batch-4")
     parser.add_argument("--root", default=None, help="Path to SPAH-website root (auto-detected if omitted)")
     parser.add_argument("--save-key", default=None, metavar="KEY",
-                        help="Save this API key to scripts/.gptzero_key and exit")
+                        help="Save this API key to scripts/.sapling_key and exit")
     args = parser.parse_args()
 
     # Locate project root
@@ -223,18 +231,19 @@ def main():
         print("ERROR: No API key found.")
         print()
         print("To set up your key (one-time):")
-        print("  python scripts/check_ai_detection.py --save-key YOUR_KEY_HERE")
+        print("  1. Sign up free at https://sapling.ai  (no credit card needed)")
+        print("  2. Go to https://sapling.ai/user/settings to copy your key")
+        print("  3. Run: python scripts/check_ai_detection.py --save-key YOUR_KEY_HERE")
         print()
-        print("Get a free key at: https://gptzero.me  (click API in the menu)")
         sys.exit(1)
 
     files = [args.file] if args.file else [os.path.join(root, p) for p in BATCH_4_POSTS]
 
     lines = []
-    header = f"SPAH AI Detection Report  —  {datetime.now().strftime('%Y-%m-%d %H:%M')}"
+    header = f"SPAH AI Detection Report  --  {datetime.now().strftime('%Y-%m-%d %H:%M')}"
     lines.append(header)
     lines.append("=" * len(header))
-    lines.append(f"Using GPTZero API | Checking {len(files)} post(s)")
+    lines.append(f"Using Sapling.ai API | Checking {len(files)} post(s)")
     lines.append("")
 
     print(header)
@@ -243,48 +252,46 @@ def main():
 
     for filepath in files:
         if not os.path.exists(filepath):
-            msg = f"⚠️  File not found: {filepath}"
+            msg = f"[!] File not found: {filepath}"
             print(msg)
             lines.append(msg)
             continue
 
         name = short_name(filepath)
-        print(f"Checking: {name} …", end=" ", flush=True)
+        print(f"Checking: {name} ...", end=" ", flush=True)
 
         text = extract_prose(filepath)
         if len(text) < 100:
-            msg = f"  ⚠️  Could not extract prose text from {name}"
+            msg = f"  [!] Could not extract prose text from {name}"
             print(msg)
             lines.append(msg)
             continue
 
-        # Truncate to GPTZero free-tier limit (~5000 chars) if needed
+        # Truncate to ~5000 chars to stay within free-tier limits
         if len(text) > 5000:
             text = text[:5000]
 
-        result = check_gptzero(text, args.key)
-        time.sleep(1.2)  # stay within free-tier rate limits
+        result = check_sapling(text, api_key)
+        time.sleep(1.5)  # stay within free-tier rate limits
 
         if result.get("error"):
-            msg = f"  ERROR — {result['error']}"
+            msg = f"  ERROR -- {result['error']}"
             print(msg)
             lines.append(f"{name}: {msg}")
             continue
 
-        cg  = result["completely_generated_prob"]
-        avg = result["average_generated_prob"]
-        cls = result["predicted_class"].upper()
+        score = result["score"]
+        cls   = result["predicted_class"]
         ai_s  = result["ai_sentences"]
         tot_s = result["total_sentences"]
 
         row = (
             f"  {name}\n"
             f"    Class:           {cls}\n"
-            f"    Doc AI score:    {score_label(cg)}\n"
-            f"    Avg sentence:    {score_label(avg)}\n"
+            f"    AI score:        {score_label(score)}\n"
             f"    AI sentences:    {ai_s} / {tot_s}\n"
         )
-        print(f"done  [{cls} — {cg*100:.1f}%]")
+        print(f"done  [{cls} -- {score*100:.1f}%]")
         lines.append(row)
 
     # Save results
