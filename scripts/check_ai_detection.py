@@ -139,8 +139,8 @@ def check_sapling(text, api_key):
     score = data.get("score", 0)
     sentence_scores = data.get("sentence_scores", [])
 
-    # sentence_scores is a list of [sentence_text, probability] pairs
-    ai_sentences = [s for s in sentence_scores if s[1] >= 0.5]
+    # sentence_scores is a list of {"sentence": str, "score": float} dicts
+    ai_sentences = [s for s in sentence_scores if s.get("score", 0) >= 0.5]
 
     if score >= 0.8:
         predicted_class = "AI"
