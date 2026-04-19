@@ -146,8 +146,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
   <noscript><link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" /></noscript>
   <style>
-    html { scroll-behavior: smooth; }
-    body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; }
+    html { scroll-behavior: smooth; overflow-x: hidden; }
+    body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; overflow-x: hidden; overscroll-behavior-y: none; }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
     /* Grain texture overlay */
@@ -988,8 +988,8 @@
         var shown = false;
         window.addEventListener('scroll', function() {
           var threshold = heroEl ? heroEl.offsetTop + heroEl.offsetHeight + 200 : 300;
-          if (window.scrollY > threshold && !shown) { shown = true; bar.style.transform = 'translateY(0)'; }
-          else if (window.scrollY <= threshold && shown) { shown = false; bar.style.transform = 'translateY(100%)'; }
+          if (window.scrollY > threshold && !shown) { shown = true; bar.style.opacity = '1'; bar.style.transform = 'translateY(0)'; bar.style.pointerEvents = 'auto'; }
+          else if (window.scrollY <= threshold && shown) { shown = false; bar.style.opacity = '0'; bar.style.transform = 'translateY(12px)'; bar.style.pointerEvents = 'none'; }
         }, { passive: true });
       }
     }
@@ -1003,7 +1003,7 @@
   </script>
 
   <!-- Sticky Mobile CTA Bar -->
-  <div id="sticky-cta" class="md:hidden" style="position:fixed;bottom:0;left:0;right:0;z-index:40;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);">
+  <div id="sticky-cta" class="md:hidden" style="position:fixed;bottom:0;left:0;right:0;z-index:40;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity 0.35s ease,transform 0.35s cubic-bezier(0.4,0,0.2,1);">
     <div style="background:rgba(255,255,255,0.97);backdrop-filter:blur(12px);border-top:1px solid rgba(90,127,166,0.12);padding:10px 16px;display:flex;gap:10px;align-items:center;box-shadow:0 -2px 16px rgba(42,52,66,0.08);">
       <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank"
          style="flex:1;display:flex;align-items:center;justify-content:center;gap:6px;background:#5A7FA6;color:white;font-family:'Lato',sans-serif;font-weight:700;font-size:0.9rem;letter-spacing:0.03em;border-radius:9999px;padding:14px 0;text-decoration:none;box-shadow:0 2px 8px rgba(90,127,166,0.25);-webkit-tap-highlight-color:transparent;">
