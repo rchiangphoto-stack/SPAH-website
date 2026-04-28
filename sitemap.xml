@@ -80,7 +80,7 @@
   </url>
   <url>
     <loc>https://www.spah.la/vet-san-gabriel</loc>
-    <lastmod>2026-03-21</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -175,8 +175,8 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.spah.la/blog/</loc>
-    <lastmod>2026-04-02</lastmod>
+    <loc>https://www.spah.la/blog</loc>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -206,7 +206,7 @@
   </url>
   <url>
     <loc>https://www.spah.la/blog/guinea-pig-sneezing</loc>
-    <lastmod>2026-03-31</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -230,7 +230,7 @@
   </url>
   <url>
     <loc>https://www.spah.la/blog/hamster-sick-signs</loc>
-    <lastmod>2026-04-02</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -257,6 +257,18 @@
     <lastmod>2026-04-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.spah.la/blog/dog-ear-cytology</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.spah.la/blog/dog-fecal-test-cost</loc>
+    <lastmod>2026-04-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.spah.la/blog/dog-dental-disease-alhambra</loc>
@@ -500,13 +512,13 @@
   </url>
   <url>
     <loc>https://www.spah.la/blog/cat-dog-urinary-problems</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.spah.la/blog/dog-urinary-problems</loc>
-    <lastmod>2026-04-25</lastmod>
+    <lastmod>2026-04-27</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>

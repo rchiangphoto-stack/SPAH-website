@@ -1,8 +1,27 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
-    { "source": "/about-us", "destination": "/about.html" },
-    { "source": "/contact-us", "destination": "/contact.html" }
+  "redirects": [
+    { "source": "/about-us", "destination": "/about", "permanent": true },
+    { "source": "/contact-us", "destination": "/contact", "permanent": true },
+
+    { "source": "/spay-and-neuter", "destination": "/spay-neuter", "permanent": true },
+    { "source": "/wing-trims", "destination": "/beak-trim", "permanent": true },
+    { "source": "/nutritional-counseling", "destination": "/services", "permanent": true },
+    { "source": "/after-hours-emergency", "destination": "/contact", "permanent": true },
+    { "source": "/onlinebooking", "destination": "/contact", "permanent": true },
+    { "source": "/promotions", "destination": "/", "permanent": true },
+    { "source": "/policy", "destination": "/", "permanent": true },
+
+    { "source": "/post/pasadena-veterinary-excellence-where-your-pets-health-comes-first", "destination": "/vet-pasadena", "permanent": true },
+    { "source": "/post/feathers-scales-and-slither-a-comprehensive-guide-to-exotic-pet-care-in-pasadena-california", "destination": "/exotic-vet-alhambra", "permanent": true },
+    { "source": "/post/fun-activities-for-animal-lovers-in-south-pasadena-california", "destination": "/blog/new-home-alhambra", "permanent": true },
+    { "source": "/post/discover-exceptional-veterinary-care-in-south-pasadena-serving-pasadena-alhambra-and-san-marino", "destination": "/animal-hospital-alhambra", "permanent": true },
+    { "source": "/post/why-hot-asphalt-can-harm-your-dog-s-paws", "destination": "/blog/pet-wounds-cuts", "permanent": true },
+    { "source": "/post/pawsitively-exceptional-the-top-rated-animal-hospitals-in-south-pasadena-and-pasadena", "destination": "/animal-hospital-alhambra", "permanent": true },
+
+    { "source": "/blog/tags/reptiles", "destination": "/reptile-vet-alhambra", "permanent": true },
+    { "source": "/blog/tags/birds", "destination": "/bird-vet-alhambra", "permanent": true },
+    { "source": "/blog/categories/veterinarian-insight", "destination": "/blog", "permanent": true }
   ]
 }

@@ -183,17 +183,17 @@
   <nav class="sticky top-0 z-50 bg-warm/95 backdrop-blur-sm border-b border-sky/20" style="box-shadow: 0 2px 12px rgba(90,127,166,0.08);">
     <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-center gap-10 relative">
       <div class="hidden md:flex items-center gap-8">
-        <a href="index.html"    class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">HOME</a>
-        <a href="about.html"    class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">ABOUT US</a>
-        <a href="services.html" class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">SERVICES</a>
+        <a href="/"    class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">HOME</a>
+        <a href="/about"    class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">ABOUT US</a>
+        <a href="/services" class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">SERVICES</a>
       </div>
-      <a href="index.html">
+      <a href="/">
         <img width="60" height="70" src="images/spah-logo-new.webp"
              alt="South Pasadena Animal Hospital logo – veterinarian serving Alhambra and South Pasadena" class="h-[70px] w-auto" style="height:70px;width:auto;" />
       </a>
       <div class="hidden md:flex items-center gap-8">
-        <a href="pricing.html"  class="nav-link text-brand font-body font-bold text-sm tracking-wide">PRICING</a>
-        <a href="contact.html"  class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">CONTACT</a>
+        <a href="/pricing"  class="nav-link text-brand font-body font-bold text-sm tracking-wide">PRICING</a>
+        <a href="/contact"  class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">CONTACT</a>
         <a href="https://spah.koala.health/" target="_blank" class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide font-bold">PHARMACY ↗</a>
       </div>
       <button id="menuBtn" class="md:hidden absolute right-6 text-dark" aria-label="Open menu">
@@ -201,11 +201,11 @@
       </button>
     </div>
     <div id="mobileMenu" class="hidden md:hidden px-6 pb-4 flex-col gap-4 bg-warm border-t border-sky/20">
-      <a href="index.html"    class="text-dark/70 font-body text-sm tracking-wide py-3">HOME</a>
-      <a href="about.html"    class="text-dark/70 font-body text-sm tracking-wide py-3">ABOUT US</a>
-      <a href="services.html" class="text-dark/70 font-body text-sm tracking-wide py-3">SERVICES</a>
-      <a href="pricing.html"  class="text-brand font-body font-bold text-sm tracking-wide py-3">PRICING</a>
-      <a href="contact.html"  class="text-dark/70 font-body text-sm tracking-wide py-3">CONTACT</a>
+      <a href="/"    class="text-dark/70 font-body text-sm tracking-wide py-3">HOME</a>
+      <a href="/about"    class="text-dark/70 font-body text-sm tracking-wide py-3">ABOUT US</a>
+      <a href="/services" class="text-dark/70 font-body text-sm tracking-wide py-3">SERVICES</a>
+      <a href="/pricing"  class="text-brand font-body font-bold text-sm tracking-wide py-3">PRICING</a>
+      <a href="/contact"  class="text-dark/70 font-body text-sm tracking-wide py-3">CONTACT</a>
       <a href="https://spah.koala.health/" target="_blank" class="text-dark/70 font-body text-sm font-bold py-3">PHARMACY ↗</a>
     </div>
   </nav>
@@ -217,7 +217,7 @@
       <span class="text-sage font-body text-xs font-bold tracking-widest uppercase">Transparent Pricing</span>
       <h1 class="font-display text-2xl sm:text-4xl md:text-5xl font-bold text-dark mt-3" style="letter-spacing:-0.03em;">Transparent Vet Pricing in <span style="color:#5A7FA6">Alhambra</span> / <span style="color:#7A9E8E">South Pasadena</span></h1>
       <p class="font-body text-muted text-lg mt-4" style="line-height:1.7;">
-        Below is a compilation of frequently requested <a href="services.html" class="text-brand hover:underline">services</a>. Each patient is unique, and an estimate
+        Below is a compilation of frequently requested <a href="/services" class="text-brand hover:underline">services</a>. Each patient is unique, and an estimate
         will be provided prior to any services at your appointment.
       </p>
       <p class="font-body text-xs text-muted/60 mt-3">*Rev 12.31.25</p>
@@ -304,7 +304,7 @@
           </div>
           <div class="pkg-body">
             <div class="divide-y divide-sky/10 px-7 pb-4">
-              <div class="price-row flex justify-between items-center py-3"><span class="font-body text-dark text-sm">Ear Cytology</span><span class="font-body font-bold text-brand text-sm">$67.00</span></div>
+              <div class="price-row flex justify-between items-center py-3"><span class="font-body text-dark text-sm"><a href="/blog/dog-ear-cytology" class="hover:underline" style="color:inherit;">Ear Cytology</a></span><span class="font-body font-bold text-brand text-sm">$67.00</span></div>
               <div class="price-row flex justify-between items-center py-3"><span class="font-body text-dark text-sm">Skin Cytology</span><span class="font-body font-bold text-brand text-sm">$58.00</span></div>
               <div class="price-row flex justify-between items-center py-3"><span class="font-body text-dark text-sm">Skin Scraping</span><span class="font-body font-bold text-brand text-sm">$67.00</span></div>
               <div class="price-row flex justify-between items-center py-3"><div><span class="font-body text-dark text-sm">Heartworm Test</span><span class="ml-2 inline-block bg-brand/10 text-brand text-xs font-bold px-2 py-0.5 rounded-full">Canine</span></div><span class="font-body font-bold text-brand text-sm">$36.25</span></div>
@@ -313,7 +313,7 @@
               <div class="price-row flex justify-between items-center py-3"><div><span class="font-body text-dark text-sm">Senior Bloodwork</span><span class="font-body text-muted text-xs ml-2">&gt;7 years</span></div><span class="font-body font-bold text-brand text-sm">$309.99</span></div>
               <div class="price-row flex justify-between items-center py-3"><span class="font-body text-dark text-sm">Urinalysis</span><span class="font-body font-bold text-brand text-sm">$95.70</span></div>
               <div class="price-row flex justify-between items-center py-3"><span class="font-body text-dark text-sm">Radiographs (2-view with consultation)</span><span class="font-body font-bold text-brand text-sm">$352.80</span></div>
-              <div class="price-row flex justify-between items-center py-3"><span class="font-body text-dark text-sm">Fecal Test</span><span class="font-body font-bold text-brand text-sm">$101.22</span></div>
+              <div class="price-row flex justify-between items-center py-3"><span class="font-body text-dark text-sm"><a href="/blog/dog-fecal-test-cost" class="hover:underline" style="color:inherit;">Fecal Test</a></span><span class="font-body font-bold text-brand text-sm">$101.22</span></div>
             </div>
           </div>
         </div>
@@ -613,7 +613,7 @@
     <div class="max-w-2xl mx-auto px-6 text-white">
       <h2 class="font-display text-3xl font-bold mb-4" style="letter-spacing:-0.02em;">Have questions about pricing?</h2>
       <p class="font-body text-white/80 mb-8" style="line-height:1.7;">
-        Give us a call or book an appointment at our <a href="vet-alhambra.html" class="text-white underline hover:no-underline">Alhambra location</a> on Main Street — we'll provide a full estimate before any services begin.
+        Give us a call or book an appointment at our <a href="/vet-alhambra" class="text-white underline hover:no-underline">Alhambra location</a> on Main Street — we'll provide a full estimate before any services begin.
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
         <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank"
@@ -637,11 +637,11 @@
           <div>
             <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Quick Links</h4>
             <div class="flex flex-col gap-2">
-              <a href="index.html"    class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Home</a>
-              <a href="about.html"    class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">About Us</a>
-              <a href="services.html" class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Services</a>
-              <a href="pricing.html"  class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Pricing</a>
-              <a href="contact.html"  class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Contact</a>
+              <a href="/"    class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Home</a>
+              <a href="/about"    class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">About Us</a>
+              <a href="/services" class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Services</a>
+              <a href="/pricing"  class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Pricing</a>
+              <a href="/contact"  class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Contact</a>
               <a href="https://spah.koala.health/" target="_blank" class="font-body text-terra font-bold text-sm hover:text-brand transition-colors duration-200">Online Pharmacy ↗</a>            </div>
           </div>
           <div>
@@ -666,10 +666,10 @@
         <p class="font-body text-dark/60 text-xs">© 2026 South Pasadena Animal Hospital. Est. 2023.</p>
         <div class="flex gap-4">
           <a href="blog/" class="font-body text-dark/60 text-xs hover:text-dark transition-colors duration-200">Blog</a>
-          <a href="contact.html" class="font-body text-dark/60 text-xs hover:text-dark transition-colors duration-200">Privacy Policy</a>
+          <a href="/contact" class="font-body text-dark/60 text-xs hover:text-dark transition-colors duration-200">Privacy Policy</a>
         </div>
       </div>
-      <p class="font-body text-center mt-2" style="font-size:9px;color:rgba(42,52,66,0.08);letter-spacing:0.02em;">Serving: <a href="vet-alhambra.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Alhambra</a> &middot; <a href="vet-south-pasadena.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">South Pasadena</a> &middot; <a href="exotic-vet-pasadena.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Pasadena</a> &middot; <a href="vet-highland-park.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Highland Park</a> &middot; <a href="vet-san-gabriel.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">San Gabriel</a> &middot; <a href="vet-monterey-park.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Monterey Park</a> &middot; <a href="vet-san-marino.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">San Marino</a> &middot; <a href="vet-rosemead.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Rosemead</a> &middot; <a href="vet-eagle-rock.html" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Eagle Rock</a></p>
+      <p class="font-body text-center mt-2" style="font-size:9px;color:rgba(42,52,66,0.08);letter-spacing:0.02em;">Serving: <a href="/vet-alhambra" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Alhambra</a> &middot; <a href="/vet-south-pasadena" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">South Pasadena</a> &middot; <a href="/exotic-vet-pasadena" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Pasadena</a> &middot; <a href="/vet-highland-park" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Highland Park</a> &middot; <a href="/vet-san-gabriel" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">San Gabriel</a> &middot; <a href="/vet-monterey-park" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Monterey Park</a> &middot; <a href="/vet-san-marino" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">San Marino</a> &middot; <a href="/vet-rosemead" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Rosemead</a> &middot; <a href="/vet-eagle-rock" style="color:rgba(42,52,66,0.08);" class="no-underline hover:underline">Eagle Rock</a></p>
     </div>
   </footer>
 
