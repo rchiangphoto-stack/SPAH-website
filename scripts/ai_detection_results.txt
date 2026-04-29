@@ -1,0 +1,5 @@
+SPAH AI Detection Report  --  2026-04-23 09:04
+==============================================
+Using Sapling.ai API | Checking 1 post(s)
+
+pet-skin-rashes:   ERROR -- HTTP 429: {"key_prefix":"W7B********************************","msg":"Rate limited. Capacity used. Visit https://sapling.ai/docs/api/api-access for details."}
