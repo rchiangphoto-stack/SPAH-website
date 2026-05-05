@@ -29,206 +29,269 @@
     .nav-link:hover::after { transform:scaleX(1); }
 
     /* ════════════════════════════════════
-       CONTAINER SCROLL HERO
-       Ported from Aceternity UI ContainerScroll
+       FEATURE CAROUSEL — Blog Hero
+       Ported from HextaUI FeatureCarousel (vanilla JS, no framer-motion)
     ════════════════════════════════════ */
 
-    /* Outer container — sets the scroll-tracking zone */
-    .cs-outer {
-      position: relative;
-      background: linear-gradient(175deg, #07090f 0%, #0D1520 55%, #111c2c 100%);
+    /* ── Outer wrapper ── */
+    .fc-section { background: #07090f; }
+
+    .fc-wrap {
       display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 5rem 1.5rem 5.5rem;
-      overflow: clip;
-    }
-
-    /* Perspective wrapper — parent that gives the 3-D space */
-    .cs-perspective {
-      width: 100%;
-      max-width: 880px;
-      perspective: 1000px;
-    }
-
-    /* ── Title block ── */
-    .cs-header {
-      text-align: center;
-      margin-bottom: 2rem;
-      position: relative;
-      z-index: 2;
-      will-change: transform;
-    }
-    .cs-eyebrow {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(122,158,142,0.85);
-      margin-bottom: 1rem;
-    }
-    .cs-title {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.9rem, 4.5vw, 3.25rem);
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.1;
-      margin-bottom: 0.9rem;
-      letter-spacing: -0.01em;
-    }
-    .cs-title span { color: #7A9E8E; }
-    .cs-subtitle {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.42);
-      max-width: 400px;
-      margin: 0 auto;
-      line-height: 1.65;
-    }
-
-    /* ── The rotating / scaling card ── */
-    .cs-card {
-      position: relative;
-      z-index: 1;
-      border: 3px solid rgba(108,108,108,0.5);
-      border-radius: 28px;
-      padding: 6px;
-      background: #1a1a1e;
-      box-shadow:
-        0 0 #0000004d,
-        0 9px 20px #0000004a,
-        0 37px 37px #00000042,
-        0 84px 50px #00000026,
-        0 149px 60px #0000000a;
-      will-change: transform;
-      transform-origin: top center;
-      /* start tilted — JS will un-tilt on scroll */
-      transform: rotateX(18deg) scale(1.05);
-    }
-    .cs-card-inner {
-      border-radius: 22px;
+      flex-direction: column;
       overflow: hidden;
-      height: 430px;
-      position: relative;
-      background: #111;
+      min-height: 560px;
+    }
+    @media(min-width:1024px){
+      .fc-wrap { flex-direction: row; min-height: 520px; }
     }
 
-    /* ── Featured article inside the card ── */
-    .cs-featured {
-      display: block;
-      height: 100%;
+    /* ── Left panel: scrolling category list ── */
+    .fc-left {
       position: relative;
-      text-decoration: none;
-    }
-    .cs-feat-img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      object-position: 65% center;
-      display: block;
-    }
-    .cs-feat-overlay {
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(100deg,
-          rgba(7,9,15,0.97)  0%,
-          rgba(7,9,15,0.90)  26%,
-          rgba(7,9,15,0.58)  52%,
-          rgba(7,9,15,0.18)  72%,
-          transparent        100%),
-        linear-gradient(to top, rgba(7,9,15,0.5) 0%, transparent 38%);
+      background: linear-gradient(175deg, #080c14 0%, #0D1520 60%, #0e1b2c 100%);
       display: flex;
+      flex-direction: column;
       align-items: center;
+      justify-content: flex-start;
+      overflow: hidden;
+      flex-shrink: 0;
+      padding-top: 2rem;
+      padding-bottom: 2rem;
+      min-height: 260px;
     }
-    .cs-feat-content {
-      padding: 2rem 2.5rem;
-      max-width: 460px;
+    @media(min-width:1024px){
+      .fc-left { width: 38%; min-height: unset; justify-content: center; padding-top: 0; padding-bottom: 0; }
     }
-    .cs-feat-eyebrow {
-      font-family: 'Lato', sans-serif;
-      font-size: 0.6rem;
-      font-weight: 700;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: #7A9E8E;
-      display: flex;
-      align-items: center;
-      gap: 0.55rem;
-      margin-bottom: 0.65rem;
-    }
-    .cs-feat-eyebrow::after {
-      content: '';
-      display: inline-block;
-      width: 44px; height: 1.5px;
-      background: rgba(122,158,142,0.45);
+
+    /* Blog title block at top of left panel */
+    .fc-branding {
+      position: relative;
+      z-index: 20;
+      text-align: center;
+      padding: 0 2rem 1.25rem;
       flex-shrink: 0;
     }
-    .cs-feat-badge {
-      display: inline-block;
-      padding: 0.22rem 0.75rem;
-      border-radius: 9999px;
-      font-size: 0.6rem;
+    @media(min-width:1024px){ .fc-branding { padding: 0 2rem 2rem; } }
+    .fc-branding-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.58rem;
       font-weight: 700;
-      letter-spacing: 0.07em;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      background: rgba(252,228,236,0.92);
-      color: #B71C1C;
-      margin-bottom: 0.75rem;
+      color: rgba(122,158,142,0.8);
+      margin-bottom: 0.35rem;
     }
-    .cs-feat-title {
+    .fc-branding-title {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(1.3rem, 2.6vw, 2rem);
+      font-size: clamp(1.25rem, 2.5vw, 1.7rem);
       font-weight: 700;
       color: #fff;
-      line-height: 1.18;
-      letter-spacing: -0.015em;
-      margin-bottom: 0.7rem;
+      line-height: 1.15;
     }
-    .cs-feat-excerpt {
-      color: rgba(255,255,255,0.62);
-      font-family: 'Lato', sans-serif;
-      font-size: 0.87rem;
-      line-height: 1.62;
-      margin-bottom: 0.9rem;
-    }
-    .cs-feat-meta {
-      color: rgba(255,255,255,0.38);
-      font-family: 'Lato', sans-serif;
-      font-size: 0.67rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 1.2rem;
-    }
-    .cs-feat-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: #5A7FA6;
-      color: #fff;
-      font-family: 'Lato', sans-serif;
-      font-weight: 700;
-      font-size: 0.78rem;
-      padding: 0.55rem 1.2rem;
-      border-radius: 9999px;
-      letter-spacing: 0.04em;
-      transition: background 0.2s, transform 0.2s;
-    }
-    .cs-featured:hover .cs-feat-btn { background: #4A6D92; transform: translateX(3px); }
+    .fc-branding-title span { color: #7A9E8E; }
 
-    /* ── Responsive ── */
-    @media(max-width:768px){
-      .cs-outer { padding: 3.5rem 1rem 4rem; }
-      .cs-card { transform: rotateX(18deg) scale(0.78); }
-      .cs-card-inner { height: 300px; }
-      .cs-feat-content { padding: 1.25rem 1.5rem; }
-      .cs-feat-excerpt { display: none; }
+    /* Top / bottom fade */
+    .fc-fade-t, .fc-fade-b {
+      position: absolute; left: 0; right: 0;
+      height: 70px; z-index: 10; pointer-events: none;
     }
-    @media(max-width:480px){
-      .cs-card-inner { height: 260px; }
-      .cs-feat-title { font-size: 1.2rem; }
+    .fc-fade-t { top: 0; background: linear-gradient(to bottom, #0D1520 0%, transparent 100%); }
+    .fc-fade-b { bottom: 0; background: linear-gradient(to top, #0D1520 0%, transparent 100%); }
+
+    /* Scrolling track — items absolutely positioned inside */
+    .fc-track {
+      position: relative;
+      width: 100%;
+      height: 220px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
+    @media(min-width:1024px){ .fc-track { height: 280px; } }
+
+    /* Each category pill */
+    .fc-item {
+      position: absolute;
+      top: 50%; left: 50%;
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.65rem 1.4rem;
+      border-radius: 9999px;
+      border: 1.5px solid rgba(255,255,255,0.16);
+      background: transparent;
+      color: rgba(255,255,255,0.48);
+      cursor: pointer;
+      white-space: nowrap;
+      transition:
+        background  0.5s cubic-bezier(0.34,1.2,0.64,1),
+        border-color 0.5s ease,
+        color        0.5s ease,
+        opacity      0.5s ease,
+        transform    0.55s cubic-bezier(0.34,1.15,0.64,1);
+    }
+    .fc-item:hover:not(.is-active){
+      border-color: rgba(255,255,255,0.38);
+      color: rgba(255,255,255,0.82);
+    }
+    .fc-item.is-active {
+      background: #fff;
+      border-color: #fff;
+      color: #0D1520;
+    }
+    .fc-item svg { width:16px; height:16px; flex-shrink:0; }
+    .fc-item-label {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* ── Right panel: card stack ── */
+    .fc-right {
+      flex: 1;
+      position: relative;
+      background: #0a1220;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding: 2.5rem 1.5rem;
+      min-height: 400px;
+    }
+    @media(min-width:1024px){
+      .fc-right {
+        border-top: none;
+        border-left: 1px solid rgba(255,255,255,0.05);
+        padding: 2.5rem 3rem;
+        min-height: unset;
+      }
+    }
+
+    /* Card stack wrapper */
+    .fc-cards {
+      position: relative;
+      width: min(320px, 86vw);
+      height: min(420px, 72vw);
+    }
+    @media(min-width:640px){
+      .fc-cards { width: 340px; height: 435px; }
+    }
+
+    /* Individual article card */
+    .fc-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 1.6rem;
+      overflow: hidden;
+      border: 3px solid rgba(255,255,255,0.1);
+      background: #1a2030;
+      transform-origin: center;
+      will-change: transform, opacity, filter;
+      pointer-events: none;
+      text-decoration: none;
+      display: block;
+      transition:
+        transform 0.55s cubic-bezier(0.34,1.25,0.64,1),
+        opacity   0.45s ease,
+        filter    0.45s ease;
+    }
+    .fc-card.is-active  { transform: translateX(0) scale(1) rotate(0deg); opacity:1; filter:none; z-index:20; pointer-events:auto; }
+    .fc-card.is-prev    { transform: translateX(-22%) scale(0.86) rotate(-3deg); opacity:0.38; filter:grayscale(1) blur(1.5px); z-index:10; }
+    .fc-card.is-next    { transform: translateX(22%) scale(0.86) rotate(3deg);  opacity:0.38; filter:grayscale(1) blur(1.5px); z-index:10; }
+    .fc-card.is-hidden  { transform: scale(0.72); opacity:0; z-index:0; }
+
+    .fc-card-img {
+      width:100%; height:100%; object-fit:cover; display:block;
+    }
+
+    /* Live badge (top-left of active card) */
+    .fc-card-live {
+      position: absolute;
+      top: 0.9rem; left: 0.9rem;
+      display: flex; align-items: center; gap: 0.38rem;
+      opacity: 0;
+      transition: opacity 0.35s;
+      z-index: 5;
+    }
+    .fc-card.is-active .fc-card-live { opacity: 1; }
+    .fc-live-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 0 8px rgba(255,255,255,0.8);
+    }
+    .fc-live-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.22em; text-transform: uppercase;
+      color: rgba(255,255,255,0.7);
+    }
+
+    /* Bottom overlay with article info */
+    .fc-card-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top,
+        rgba(0,0,0,0.92) 0%,
+        rgba(0,0,0,0.5)  45%,
+        transparent      72%);
+      display: flex; flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.35rem;
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+    .fc-card.is-active .fc-card-ov { opacity: 1; }
+
+    .fc-card-num {
+      display: inline-block;
+      background: rgba(255,255,255,0.92);
+      color: #0D1520;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.58rem; font-weight: 700;
+      letter-spacing: 0.16em; text-transform: uppercase;
+      padding: 0.18rem 0.65rem;
+      border-radius: 9999px;
+      margin-bottom: 0.55rem;
+      width: fit-content;
+    }
+    .fc-card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1rem, 2vw, 1.3rem);
+      font-weight: 700; color: #fff;
+      line-height: 1.22; margin-bottom: 0.45rem;
+    }
+    .fc-card-desc {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem; color: rgba(255,255,255,0.68);
+      line-height: 1.5; margin-bottom: 0.9rem;
+    }
+    .fc-card-cta {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.73rem; font-weight: 700;
+      color: #fff; background: #5A7FA6;
+      padding: 0.42rem 1rem;
+      border-radius: 9999px; letter-spacing: 0.04em;
+      transition: background 0.2s;
+    }
+    .fc-card:hover .fc-card-cta { background: #4A6D92; }
+
+    /* Progress dots */
+    .fc-dots {
+      position: absolute; bottom: 1rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; gap: 0.4rem; z-index: 10;
+    }
+    .fc-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: rgba(255,255,255,0.28);
+      transition: background 0.3s, transform 0.3s;
+    }
+    .fc-dot.is-active { background: #fff; transform: scale(1.25); }
 
     /* ─── Category Badges ─── */
     .cat-badge { display:inline-block; padding:0.28rem 0.8rem; border-radius:9999px; font-size:0.67rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; }
@@ -329,45 +392,121 @@
   </nav>
 
   <!-- ══════════════════════════════════
-       CONTAINER SCROLL HERO
-       3-D perspective card that rotates flat on scroll
+       FEATURE CAROUSEL BLOG HERO
+       Left: scrolling category list  |  Right: top article per category
   ══════════════════════════════════ -->
-  <div class="cs-outer" id="csOuter">
-    <div class="cs-perspective">
+  <section class="fc-section">
+    <div class="fc-wrap">
 
-      <!-- Title / tagline — floats upward on scroll -->
-      <div class="cs-header" id="csHeader">
-        <p class="cs-eyebrow">South Pasadena Animal Hospital</p>
-        <h1 class="cs-title">Expert Pet Care<br><span>Insights &amp; Stories</span></h1>
-        <p class="cs-subtitle">Practical veterinary advice for dogs, cats, reptiles, birds &amp; exotic pets</p>
-      </div>
+      <!-- ── LEFT PANEL ── -->
+      <div class="fc-left">
+        <!-- SPAH blog branding -->
+        <div class="fc-branding">
+          <p class="fc-branding-eyebrow">South Pasadena Animal Hospital</p>
+          <h1 class="fc-branding-title">Featured <span>Reads</span></h1>
+        </div>
 
-      <!-- Rotating card — tilts from 18° to flat on scroll -->
-      <div class="cs-card" id="csCard">
-        <div class="cs-card-inner">
-          <a href="bird-vet-care-alhambra" class="cs-featured">
-            <img src="../images/blog/bird-vet-care-alhambra-header.webp"
-                 alt="Colorful parrot — pet bird vet Alhambra at South Pasadena Animal Hospital"
-                 class="cs-feat-img" width="1200" height="630" loading="eager" />
-            <div class="cs-feat-overlay">
-              <div class="cs-feat-content">
-                <div class="cs-feat-eyebrow">Featured Story</div>
-                <span class="cs-feat-badge">Bird Care</span>
-                <h2 class="cs-feat-title">Pet Bird Vet<br>in Alhambra</h2>
-                <p class="cs-feat-excerpt">Pet birds show illness slowly — until they can&rsquo;t. SPAH sees parrots, cockatiels, conures, and finches with in-house diagnostics and same-day urgent care.</p>
-                <p class="cs-feat-meta">May 2026 &nbsp;&middot;&nbsp; 7 min read</p>
-                <span class="cs-feat-btn">
-                  Read Article
-                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </span>
-              </div>
+        <!-- Top / bottom fade gradients -->
+        <div class="fc-fade-t"></div>
+        <div class="fc-fade-b"></div>
+
+        <!-- Scrolling item track -->
+        <div class="fc-track" id="fcTrack">
+
+          <button class="fc-item" data-fc-idx="0" id="fcItem0">
+            <!-- Paw icon -->
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8.35 3a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm7.3 0a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.85 8.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm14.3 0a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm-7.5 3c-1.7 0-6.3 2.5-6.3 5.5 0 1.7 1.8 2.5 3 2.5 1 0 2.3-.6 3.3-1.5 1 .9 2.3 1.5 3.3 1.5 1.2 0 3-.8 3-2.5 0-3-4.6-5.5-6.3-5.5z"/></svg>
+            <span class="fc-item-label">Dog &amp; Cat</span>
+          </button>
+
+          <button class="fc-item" data-fc-idx="1" id="fcItem1">
+            <!-- Feather / exotic icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.24 12.24a6 6 0 0 0-8.49-8.49L5 10.5V19h8.5z"/><line x1="16" y1="8" x2="2" y2="22"/><line x1="17.5" y1="15" x2="9" y2="15"/></svg>
+            <span class="fc-item-label">Exotic Animals</span>
+          </button>
+
+          <button class="fc-item" data-fc-idx="2" id="fcItem2">
+            <!-- Map pin icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="fc-item-label">City Guides</span>
+          </button>
+
+          <button class="fc-item" data-fc-idx="3" id="fcItem3">
+            <!-- Heart icon -->
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span class="fc-item-label">Health &amp; Wellness</span>
+          </button>
+
+        </div>
+      </div><!-- /fc-left -->
+
+      <!-- ── RIGHT PANEL ── -->
+      <div class="fc-right">
+
+        <div class="fc-cards" id="fcCards">
+
+          <!-- Card 0: Dog & Cat — senior-cat-care-sgv (2,350 views) -->
+          <a href="senior-cat-care-sgv" class="fc-card is-active" data-fc-card="0">
+            <img src="../images/blog/senior-cat-care-sgv-header.webp" alt="Senior cat resting — top Dog &amp; Cat article" class="fc-card-img" width="600" height="750" loading="eager" />
+            <div class="fc-card-live"><div class="fc-live-dot"></div><span class="fc-live-text">Top Read</span></div>
+            <div class="fc-card-ov">
+              <div class="fc-card-num">1 &middot; Dog &amp; Cat</div>
+              <h2 class="fc-card-title">Senior Cat Care in the San Gabriel Valley</h2>
+              <p class="fc-card-desc">What changes when your cat turns 10 — the health issues to watch for and why twice-yearly exams become essential.</p>
+              <span class="fc-card-cta">Read Article <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
             </div>
           </a>
-        </div>
-      </div>
 
-    </div>
-  </div>
+          <!-- Card 1: Exotic Animals — rabbit-vet-near-san-gabriel (1,680 views) -->
+          <a href="rabbit-vet-near-san-gabriel" class="fc-card is-next" data-fc-card="1">
+            <img src="../images/blog/rabbit-vet-near-san-gabriel-header.webp" alt="White rabbit — top Exotic Animals article" class="fc-card-img" width="600" height="750" loading="lazy" />
+            <div class="fc-card-live"><div class="fc-live-dot"></div><span class="fc-live-text">Top Read</span></div>
+            <div class="fc-card-ov">
+              <div class="fc-card-num">2 &middot; Exotic Animals</div>
+              <h2 class="fc-card-title">Rabbit Vet Near San Gabriel</h2>
+              <p class="fc-card-desc">SPAH is 5 minutes on Valley Blvd — rabbits seen for GI stasis, dental disease, spay/neuter, and wellness exams.</p>
+              <span class="fc-card-cta">Read Article <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </a>
+
+          <!-- Card 2: City Guides — cat-vet-highland-park (1,120 views) -->
+          <a href="cat-vet-highland-park" class="fc-card is-hidden" data-fc-card="2">
+            <img src="../images/blog/cat-vet-highland-park-header.webp" alt="Cat in sunlight — top City Guide article" class="fc-card-img" width="600" height="750" loading="lazy" />
+            <div class="fc-card-live"><div class="fc-live-dot"></div><span class="fc-live-text">Top Read</span></div>
+            <div class="fc-card-ov">
+              <div class="fc-card-num">3 &middot; City Guides</div>
+              <h2 class="fc-card-title">Cat &amp; Dog Vet Near Highland Park LA</h2>
+              <p class="fc-card-desc">SPAH in Alhambra is about 20 minutes east — cats, dogs, and exotic pets with transparent pricing and in-house diagnostics.</p>
+              <span class="fc-card-cta">Read Article <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </a>
+
+          <!-- Card 3: Health & Wellness — pet-euthanasia-guide (2,980 views) -->
+          <a href="pet-euthanasia-guide" class="fc-card is-prev" data-fc-card="3">
+            <img src="../images/blog/pet-euthanasia-guide-header.webp" alt="Person hugging dog — top Health &amp; Wellness article" class="fc-card-img" width="600" height="750" loading="lazy" />
+            <div class="fc-card-live"><div class="fc-live-dot"></div><span class="fc-live-text">Top Read</span></div>
+            <div class="fc-card-ov">
+              <div class="fc-card-num">4 &middot; Health &amp; Wellness</div>
+              <h2 class="fc-card-title">Saying Goodbye: A Guide to Pet Euthanasia</h2>
+              <p class="fc-card-desc">Quality-of-life scoring, what to expect on the day, aftercare, and grief support — a gentle, honest guide.</p>
+              <span class="fc-card-cta">Read Article <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+            </div>
+          </a>
+
+        </div><!-- /fc-cards -->
+
+        <!-- Progress dots -->
+        <div class="fc-dots" id="fcDots">
+          <div class="fc-dot is-active" data-fc-dot="0"></div>
+          <div class="fc-dot" data-fc-dot="1"></div>
+          <div class="fc-dot" data-fc-dot="2"></div>
+          <div class="fc-dot" data-fc-dot="3"></div>
+        </div>
+
+      </div><!-- /fc-right -->
+
+    </div><!-- /fc-wrap -->
+  </section>
 
   <!-- ══════════════════════════════════
        FILTER + SORT TOOLBAR
@@ -899,40 +1038,109 @@
 
   <script>
     // ══════════════════════════════════════
-    //  ContainerScroll — 3-D perspective animation
-    //  Mirrors framer-motion ContainerScroll from Aceternity UI
-    //  rotateX: 18→0, scale: 1.05→1 (desktop) / 0.78→0.92 (mobile)
-    //  header translateY: 0→-80px
+    //  FeatureCarousel — Blog Hero
+    //  Ported from HextaUI FeatureCarousel (vanilla JS, no framer-motion)
+    //  Left panel: spring-style vertical scroll through category items
+    //  Right panel: 3-D card stack (active | prev | next | hidden)
+    //  Auto-advances every 3 s; pauses on hover
     // ══════════════════════════════════════
     (function() {
-      var outer  = document.getElementById('csOuter');
-      var card   = document.getElementById('csCard');
-      var header = document.getElementById('csHeader');
-      if (!outer || !card) return;
+      var TOTAL    = 4;
+      var ITEM_H   = 68;   // px between item centres in left panel
+      var INTERVAL = 3000; // ms
 
-      function lerp(a, b, t) { return a + (b - a) * t; }
+      var currentIdx = 0;
+      var timer      = null;
 
-      function tick() {
-        var rect = outer.getBoundingClientRect();
-        var vh   = window.innerHeight;
-        var mob  = window.innerWidth <= 768;
+      var items = document.querySelectorAll('[data-fc-idx]');
+      var cards = document.querySelectorAll('[data-fc-card]');
+      var dots  = document.querySelectorAll('[data-fc-dot]');
+      if (!items.length || !cards.length) return;
 
-        // progress: 0 = card entering viewport from bottom
-        //           1 = animation complete (outer centred in view)
-        var progress = (vh - rect.top) / (vh * 0.9);
-        progress = Math.max(0, Math.min(1, progress));
-
-        var rotate = lerp(18, 0, progress);
-        var scale  = lerp(mob ? 0.78 : 1.05, mob ? 0.92 : 1, progress);
-        var ty     = lerp(0, -80, progress);
-
-        card.style.transform   = 'rotateX(' + rotate + 'deg) scale(' + scale + ')';
-        header.style.transform = 'translateY(' + ty + 'px)';
+      /* ─── helpers ─── */
+      function wrapDist(dist) {
+        // keeps wrappedDistance in (-TOTAL/2, TOTAL/2]
+        var half = TOTAL / 2;
+        if (dist >  half) return dist - TOTAL;
+        if (dist < -half) return dist + TOTAL;
+        return dist;
       }
 
-      window.addEventListener('scroll', tick, { passive: true });
-      window.addEventListener('resize', tick, { passive: true });
-      tick(); // run once on load
+      function cardStatus(i) {
+        var d = ((i - currentIdx) % TOTAL + TOTAL) % TOTAL;
+        if (d > TOTAL / 2) d -= TOTAL;
+        if (d ===  0) return 'is-active';
+        if (d === -1) return 'is-prev';
+        if (d ===  1) return 'is-next';
+        return 'is-hidden';
+      }
+
+      /* ─── render frame ─── */
+      function render() {
+        // left panel: position items with spring-style translateY
+        items.forEach(function(el, i) {
+          var dist    = i - currentIdx;
+          var wrapped = wrapDist(dist);
+          var ty      = wrapped * ITEM_H;
+          var opacity = Math.max(0.1, 1 - Math.abs(wrapped) * 0.3);
+
+          // translate(-50%, calc(-50% + ty)) keeps item centred on track
+          el.style.transform = 'translate(-50%, calc(-50% + ' + ty + 'px))';
+          el.style.opacity   = opacity;
+
+          if (i === currentIdx) el.classList.add('is-active');
+          else                  el.classList.remove('is-active');
+        });
+
+        // right panel: assign status classes to cards
+        cards.forEach(function(el, i) {
+          el.classList.remove('is-active', 'is-prev', 'is-next', 'is-hidden');
+          el.classList.add(cardStatus(i));
+        });
+
+        // progress dots
+        dots.forEach(function(el, i) {
+          if (i === currentIdx) el.classList.add('is-active');
+          else                  el.classList.remove('is-active');
+        });
+      }
+
+      /* ─── auto-play ─── */
+      function advance() {
+        currentIdx = (currentIdx + 1) % TOTAL;
+        render();
+      }
+
+      function startTimer() {
+        if (timer) clearInterval(timer);
+        timer = setInterval(advance, INTERVAL);
+      }
+
+      function stopTimer() {
+        if (timer) { clearInterval(timer); timer = null; }
+      }
+
+      /* ─── event bindings ─── */
+      items.forEach(function(el, i) {
+        el.addEventListener('click', function() {
+          currentIdx = i;
+          render();
+          stopTimer();
+          startTimer();
+        });
+        el.addEventListener('mouseenter', stopTimer);
+        el.addEventListener('mouseleave', startTimer);
+      });
+
+      var rightPanel = document.querySelector('.fc-right');
+      if (rightPanel) {
+        rightPanel.addEventListener('mouseenter', stopTimer);
+        rightPanel.addEventListener('mouseleave', startTimer);
+      }
+
+      /* ─── init ─── */
+      render();
+      startTimer();
     })();
 
     // ── Mobile nav ──
