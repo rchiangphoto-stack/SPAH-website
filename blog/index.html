@@ -19,52 +19,183 @@
   <link rel="stylesheet" href="../css/styles.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; }
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
-    .nav-link { position: relative; }
+    h1,h2,h3,h4 { font-family: 'Playfair Display', serif; }
+    .nav-link { position:relative; }
     .nav-link::after { content:''; position:absolute; left:0; bottom:-4px; width:100%; height:2px; background:#5A7FA6; border-radius:1px; transform:scaleX(0); transition:transform 0.25s ease; }
-    .nav-link:hover::after { transform: scaleX(1); }
+    .nav-link:hover::after { transform:scaleX(1); }
 
-    /* ── Magazine Hero ── */
-    .mag-hero { position:relative; width:100%; overflow:hidden; }
-    .mag-hero-img { width:100%; height:500px; object-fit:cover; display:block; }
-    .mag-hero-overlay { position:absolute; inset:0; background:linear-gradient(to top, rgba(0,0,0,0.84) 0%, rgba(0,0,0,0.42) 50%, rgba(0,0,0,0.08) 100%); display:flex; align-items:flex-end; text-decoration:none; }
-    .mag-hero-content { max-width:72rem; margin:0 auto; padding:2.5rem 2rem; width:100%; }
-    .mag-hero-content h2 { font-family:'Playfair Display',serif; font-size:clamp(1.7rem,3.2vw,2.7rem); font-weight:700; color:#fff; margin:0.65rem 0 0.85rem; line-height:1.2; max-width:640px; }
-    .hero-excerpt { color:rgba(255,255,255,0.82); font-size:1rem; max-width:560px; margin-bottom:0.9rem; line-height:1.6; }
-    .hero-meta { color:rgba(255,255,255,0.6); font-size:0.75rem; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:1.3rem; }
-    .hero-btn { display:inline-block; background:#fff; color:#2A3442; font-weight:700; font-family:'Lato',sans-serif; font-size:0.83rem; padding:0.55rem 1.4rem; border-radius:9999px; letter-spacing:0.03em; transition:background 0.2s; }
-    .hero-btn:hover { background:#EFF4F9; }
-    @media(max-width:640px){ .mag-hero-img { height:380px; } }
+    /* ════════════════════════════════════
+       MAGAZINE HERO — Editorial redesign
+    ════════════════════════════════════ */
+    .mag-hero {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      background: #0D1520;
+    }
+    /* thin brand-colour left rail */
+    .mag-hero::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 4px;
+      background: linear-gradient(to bottom, #5A7FA6 0%, #7A9E8E 100%);
+      z-index: 3;
+    }
+    .mag-hero-img {
+      width: 100%;
+      height: 560px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      /* pull image to right so the subject shows behind text */
+      object-position: 65% center;
+    }
+    /* two-layer gradient: strong left panel + subtle bottom vignette */
+    .mag-hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(100deg,
+          rgba(13,21,32,0.97)  0%,
+          rgba(13,21,32,0.91)  28%,
+          rgba(13,21,32,0.62)  50%,
+          rgba(13,21,32,0.22)  70%,
+          transparent          100%),
+        linear-gradient(to top,
+          rgba(13,21,32,0.55)  0%,
+          transparent          35%);
+      display: flex;
+      align-items: center;
+      text-decoration: none;
+    }
+    .mag-hero-content {
+      max-width: 72rem;
+      margin: 0 auto;
+      padding: 3.5rem 2.5rem;
+      width: 100%;
+    }
+    /* text constrained to left ~46% */
+    .mag-hero-inner {
+      max-width: 500px;
+      padding-left: 1rem;
+      border-left: 2px solid rgba(90,127,166,0.55);
+    }
+    /* "FEATURED STORY" eyebrow row */
+    .mag-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      margin-bottom: 0.9rem;
+    }
+    .mag-eyebrow-text {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #7A9E8E;
+      white-space: nowrap;
+    }
+    .mag-eyebrow-rule {
+      width: 60px;
+      height: 1.5px;
+      background: rgba(122,158,142,0.5);
+      flex-shrink: 0;
+    }
+    .mag-hero-inner h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.85rem, 3.4vw, 3rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.16;
+      letter-spacing: -0.015em;
+      margin: 0.75rem 0 1rem;
+    }
+    .hero-excerpt {
+      color: rgba(255,255,255,0.68);
+      font-size: 0.97rem;
+      line-height: 1.68;
+      margin-bottom: 1.1rem;
+    }
+    .hero-meta {
+      color: rgba(255,255,255,0.45);
+      font-size: 0.7rem;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      margin-bottom: 1.6rem;
+    }
+    .hero-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.45rem;
+      background: #5A7FA6;
+      color: #fff;
+      font-weight: 700;
+      font-family: 'Lato', sans-serif;
+      font-size: 0.8rem;
+      padding: 0.62rem 1.4rem;
+      border-radius: 9999px;
+      letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .hero-btn:hover { background: #4A6D92; transform: translateX(3px); }
+    @media(max-width:768px){
+      .mag-hero-img { height: 420px; object-position: 70% center; }
+      .mag-hero-inner { max-width: 85%; }
+    }
+    @media(max-width:480px){
+      .mag-hero-img { height: 360px; }
+      .mag-hero-inner { max-width: 100%; padding-left: 0.75rem; }
+      .mag-hero-inner h2 { font-size: 1.6rem; }
+    }
 
-    /* ── Category Badges ── */
+    /* ─── Category Badges ─── */
     .cat-badge { display:inline-block; padding:0.28rem 0.8rem; border-radius:9999px; font-size:0.67rem; font-weight:700; letter-spacing:0.07em; text-transform:uppercase; }
     .badge-exotic { background:rgba(252,228,236,0.95); color:#B71C1C; }
-    .badge-dc    { background:rgba(255,243,224,0.95); color:#E65100; }
-    .badge-local { background:rgba(227,242,253,0.95); color:#1565C0; }
-    .badge-well  { background:rgba(224,247,250,0.95); color:#00695C; }
+    .badge-dc     { background:rgba(255,243,224,0.95); color:#E65100; }
+    .badge-local  { background:rgba(227,242,253,0.95); color:#1565C0; }
+    .badge-well   { background:rgba(224,247,250,0.95); color:#00695C; }
 
-    /* ── Toolbar ── */
+    /* ─── Toolbar ─── */
     .mag-toolbar { background:#fff; border-bottom:1px solid rgba(90,127,166,0.13); position:sticky; top:86px; z-index:40; }
-    .mag-toolbar-inner { max-width:72rem; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; min-height:56px; }
-    .mag-stat { font-family:'Lato',sans-serif; font-size:0.75rem; font-weight:700; color:#9CA3AF; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
-    .mag-stat strong { color:#5A7FA6; font-size:1rem; font-weight:700; }
-    .mag-tabs { display:flex; gap:0.2rem; flex-wrap:wrap; padding:0.5rem 0; }
+    .mag-toolbar-inner { max-width:72rem; margin:0 auto; padding:0 2rem; display:flex; align-items:center; justify-content:space-between; gap:0.75rem; flex-wrap:wrap; min-height:56px; }
+    .mag-stat { font-family:'Lato',sans-serif; font-size:0.74rem; font-weight:700; color:#9CA3AF; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; flex-shrink:0; }
+    .mag-stat strong { color:#5A7FA6; font-size:1rem; }
+    .mag-tabs { display:flex; gap:0.2rem; flex-wrap:wrap; padding:0.5rem 0; flex:1; justify-content:center; }
     .mag-tab { font-family:'Lato',sans-serif; font-size:0.78rem; font-weight:600; padding:0.38rem 1rem; border-radius:9999px; border:none; background:transparent; color:#6B7280; cursor:pointer; transition:background 0.18s,color 0.18s; white-space:nowrap; }
     .mag-tab:hover { background:#EFF4F9; color:#2A3442; }
     .mag-tab.active { background:#5A7FA6; color:#fff; }
+    /* Sort dropdown */
+    .mag-sort { display:flex; align-items:center; gap:0.45rem; flex-shrink:0; }
+    .mag-sort-label { font-family:'Lato',sans-serif; font-size:0.7rem; font-weight:700; color:#9CA3AF; letter-spacing:0.06em; text-transform:uppercase; white-space:nowrap; }
+    .mag-sort-select {
+      font-family:'Lato',sans-serif; font-size:0.78rem; font-weight:600; color:#2A3442;
+      background:#F9FAFB url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='11' viewBox='0 0 24 24' fill='none' stroke='%239CA3AF' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 0.55rem center;
+      border:1.5px solid #E5E7EB; border-radius:0.5rem;
+      padding:0.35rem 1.8rem 0.35rem 0.7rem;
+      -webkit-appearance:none; appearance:none;
+      cursor:pointer; transition:border-color 0.18s;
+    }
+    .mag-sort-select:hover, .mag-sort-select:focus { border-color:#5A7FA6; outline:none; }
+    @media(max-width:640px){
+      .mag-toolbar-inner { gap:0.5rem; padding:0.25rem 1rem; }
+      .mag-tabs { order:3; width:100%; justify-content:flex-start; padding:0.25rem 0 0.5rem; }
+      .mag-sort-label { display:none; }
+    }
 
-    /* ── Card Grid ── */
+    /* ─── Card Grid ─── */
     .mag-section { padding:2.5rem 0 1.5rem; }
     .mag-grid-wrap { max-width:72rem; margin:0 auto; padding:0 2rem; }
     .mag-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem; }
     @media(max-width:960px){ .mag-grid { grid-template-columns:repeat(2,1fr); } }
     @media(max-width:560px){ .mag-grid { grid-template-columns:1fr; } }
 
-    /* ── Card ── */
+    /* ─── Card ─── */
     .mag-card { display:flex; flex-direction:column; background:#fff; border-radius:1rem; overflow:hidden; text-decoration:none; box-shadow:0 2px 4px rgba(90,127,166,0.06),0 6px 22px rgba(90,127,166,0.09); transition:transform 0.22s,box-shadow 0.22s; }
     .mag-card:hover { transform:translateY(-5px); box-shadow:0 10px 36px rgba(90,127,166,0.16); }
     .mag-img { position:relative; height:210px; overflow:hidden; flex-shrink:0; }
@@ -77,7 +208,7 @@
     .mag-excerpt { font-family:'Lato',sans-serif; font-size:0.82rem; color:#6B7280; line-height:1.55; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; flex:1; margin-bottom:0.8rem; }
     .mag-readmore { font-family:'Lato',sans-serif; font-size:0.78rem; font-weight:700; color:#5A7FA6; margin-top:auto; }
 
-    /* ── Pagination ── */
+    /* ─── Pagination ─── */
     .mag-pagination { display:flex; gap:0.4rem; justify-content:center; align-items:center; padding:2.5rem 0 1.5rem; flex-wrap:wrap; }
     .pag-btn { font-family:'Lato',sans-serif; font-size:0.83rem; font-weight:600; width:38px; height:38px; border-radius:50%; border:2px solid #E5E7EB; background:#fff; color:#6B7280; cursor:pointer; transition:all 0.18s; display:flex; align-items:center; justify-content:center; }
     .pag-btn:hover { border-color:#5A7FA6; color:#5A7FA6; }
@@ -120,26 +251,47 @@
     </div>
   </nav>
 
-  <!-- FEATURED HERO -->
+  <!-- ══════════════════════════════════
+       FEATURED HERO — editorial layout
+  ══════════════════════════════════ -->
   <section class="mag-hero">
     <img src="../images/blog/bird-vet-care-alhambra-header.webp"
          alt="Colorful parrot — pet bird vet in Alhambra at South Pasadena Animal Hospital"
          class="mag-hero-img" width="1200" height="630" loading="eager" />
     <a href="bird-vet-care-alhambra" class="mag-hero-overlay">
       <div class="mag-hero-content">
-        <span class="cat-badge badge-exotic">Bird Care</span>
-        <h2>Pet Bird Vet in Alhambra</h2>
-        <p class="hero-excerpt">Pet birds show illness slowly — until they can't. SPAH sees parrots, cockatiels, conures, and finches in Alhambra with in-house diagnostics and same-day urgent care.</p>
-        <p class="hero-meta">May 2026 &middot; 7 min read</p>
-        <span class="hero-btn">Read Article &rarr;</span>
+        <div class="mag-hero-inner">
+          <!-- Eyebrow -->
+          <div class="mag-eyebrow">
+            <span class="mag-eyebrow-text">Featured Story</span>
+            <div class="mag-eyebrow-rule"></div>
+          </div>
+          <!-- Category -->
+          <span class="cat-badge badge-exotic">Bird Care</span>
+          <!-- Title -->
+          <h2>Pet Bird Vet<br>in Alhambra</h2>
+          <!-- Excerpt -->
+          <p class="hero-excerpt">Pet birds show illness slowly — until they can&rsquo;t. SPAH sees parrots, cockatiels, conures, and finches in Alhambra with in-house diagnostics and same-day urgent care.</p>
+          <!-- Meta -->
+          <p class="hero-meta">May 2026 &nbsp;&middot;&nbsp; 7 min read</p>
+          <!-- CTA -->
+          <span class="hero-btn">
+            Read Article
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </span>
+        </div>
       </div>
     </a>
   </section>
 
-  <!-- FILTER TOOLBAR -->
+  <!-- ══════════════════════════════════
+       FILTER + SORT TOOLBAR
+  ══════════════════════════════════ -->
   <div class="mag-toolbar">
     <div class="mag-toolbar-inner">
+      <!-- Article count -->
       <p class="mag-stat"><strong id="articleCount">71</strong>&nbsp;Articles</p>
+      <!-- Category filter tabs -->
       <div class="mag-tabs" role="tablist">
         <button class="mag-tab active" data-filter="all">All</button>
         <button class="mag-tab" data-filter="dog-cat">Dog &amp; Cat</button>
@@ -147,438 +299,450 @@
         <button class="mag-tab" data-filter="local">City Guides</button>
         <button class="mag-tab" data-filter="wellness">Health &amp; Wellness</button>
       </div>
+      <!-- Sort -->
+      <div class="mag-sort">
+        <label class="mag-sort-label" for="sortSelect">Sort</label>
+        <select id="sortSelect" class="mag-sort-select" aria-label="Sort articles">
+          <option value="newest">Newest First</option>
+          <option value="oldest">Oldest First</option>
+          <option value="views">Most Viewed</option>
+          <option value="az">A &ndash; Z</option>
+        </select>
+      </div>
     </div>
   </div>
 
-  <!-- CARD GRID -->
+  <!-- ══════════════════════════════════
+       CARD GRID  (71 articles)
+  ══════════════════════════════════ -->
   <section class="mag-section">
     <div class="mag-grid-wrap">
       <div class="mag-grid" id="cardGrid">
 
-        <!-- 1 bird-vet-care-alhambra -->
-        <a href="bird-vet-care-alhambra" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/bird-vet-care-alhambra-header.webp" alt="Colorful parrot — bird vet Alhambra SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Bird Care</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min read</p><h3 class="mag-title">Pet Bird Vet in Alhambra</h3><p class="mag-excerpt">Pet birds show illness slowly — until they can't. SPAH sees parrots, cockatiels, conures, and finches with in-house diagnostics.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- bird-vet-care-alhambra -->
+        <a href="bird-vet-care-alhambra" class="mag-card" data-cat="exotic" data-date="20260504" data-views="890">
+          <div class="mag-img"><img src="../images/blog/bird-vet-care-alhambra-header.webp" alt="Colorful parrot — bird vet Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Bird Care</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min</p><h3 class="mag-title">Pet Bird Vet in Alhambra</h3><p class="mag-excerpt">Pet birds show illness slowly — until they can't. SPAH sees parrots, cockatiels, conures, and finches with in-house diagnostics.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 2 guinea-pig-vet-alhambra -->
-        <a href="guinea-pig-vet-alhambra" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/guinea-pig-vet-alhambra-header.webp" alt="Guinea pig — guinea pig vet Alhambra SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Small Animal</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 8 min read</p><h3 class="mag-title">Guinea Pig Vet Care in Alhambra</h3><p class="mag-excerpt">Dental malocclusion, vitamin C deficiency, respiratory infections — and why certain antibiotics are toxic to guinea pigs.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- guinea-pig-vet-alhambra -->
+        <a href="guinea-pig-vet-alhambra" class="mag-card" data-cat="exotic" data-date="20260504" data-views="820">
+          <div class="mag-img"><img src="../images/blog/guinea-pig-vet-alhambra-header.webp" alt="Guinea pig — guinea pig vet Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Small Animal</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 8 min</p><h3 class="mag-title">Guinea Pig Vet Care in Alhambra</h3><p class="mag-excerpt">Dental malocclusion, vitamin C deficiency, respiratory infections — and why certain antibiotics are toxic to guinea pigs.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 3 vet-near-glendale -->
-        <a href="vet-near-glendale" class="mag-card" data-cat="local">
-          <div class="mag-img"><img src="../images/blog/vet-near-glendale-header.webp" alt="Dog walking — vet near Glendale CA at SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">City Guide</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min read</p><h3 class="mag-title">Veterinarian Near Glendale, CA</h3><p class="mag-excerpt">About 20 minutes from Glendale via I-5 or I-134, SPAH sees dogs, cats, and exotic pets with transparent pricing and in-house diagnostics.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- vet-near-glendale -->
+        <a href="vet-near-glendale" class="mag-card" data-cat="local" data-date="20260504" data-views="760">
+          <div class="mag-img"><img src="../images/blog/vet-near-glendale-header.webp" alt="Dog walking — vet near Glendale CA" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">City Guide</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min</p><h3 class="mag-title">Veterinarian Near Glendale, CA</h3><p class="mag-excerpt">About 20 minutes from Glendale via I-5 or I-134, SPAH sees dogs, cats, and exotic pets with transparent pricing and in-house diagnostics.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 4 cat-dental-care-alhambra -->
-        <a href="cat-dental-care-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/cat-dental-care-alhambra-header.webp" alt="Cat dental care Alhambra SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Cat Care</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min read</p><h3 class="mag-title">Cat Dental Disease in Alhambra: Signs, Cleaning, and What Owners Miss</h3><p class="mag-excerpt">Most cats over 3 have dental disease and most owners can't tell. SPAH covers signs to watch for, what a cleaning involves, and tooth resorption.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- cat-dental-care-alhambra -->
+        <a href="cat-dental-care-alhambra" class="mag-card" data-cat="dog-cat" data-date="20260504" data-views="1720">
+          <div class="mag-img"><img src="../images/blog/cat-dental-care-alhambra-header.webp" alt="Cat dental care Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Cat Care</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min</p><h3 class="mag-title">Cat Dental Disease in Alhambra: Signs, Cleaning, and What Owners Miss</h3><p class="mag-excerpt">Most cats over 3 have dental disease and most owners can't tell. SPAH covers signs, what a cleaning involves, and tooth resorption.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 5 senior-cat-care-sgv -->
-        <a href="senior-cat-care-sgv" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/senior-cat-care-sgv-header.webp" alt="Senior cat resting — senior cat care SGV SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Cat Care</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 8 min read</p><h3 class="mag-title">Senior Cat Care in the San Gabriel Valley: What Changes After 10</h3><p class="mag-excerpt">Cats over 10 need twice-yearly exams and targeted bloodwork. SPAH covers hyperthyroidism, kidney disease, arthritis, and dental disease in older cats.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- senior-cat-care-sgv -->
+        <a href="senior-cat-care-sgv" class="mag-card" data-cat="dog-cat" data-date="20260504" data-views="2350">
+          <div class="mag-img"><img src="../images/blog/senior-cat-care-sgv-header.webp" alt="Senior cat resting" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Cat Care</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 8 min</p><h3 class="mag-title">Senior Cat Care in the San Gabriel Valley: What Changes After 10</h3><p class="mag-excerpt">Cats over 10 need twice-yearly exams and targeted bloodwork. SPAH covers hyperthyroidism, kidney disease, arthritis, and dental disease.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 6 dog-vaccinations-alhambra -->
-        <a href="dog-vaccinations-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/dog-vaccinations-alhambra-header.webp" alt="Golden retriever — dog vaccinations Alhambra SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min read</p><h3 class="mag-title">Dog Vaccinations in Alhambra: Core Vaccines, Schedules, and What Your Dog Needs</h3><p class="mag-excerpt">Which vaccines does your dog actually need in California? Core vaccines, puppy schedules, and lifestyle-based recommendations for SGV dogs.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- dog-vaccinations-alhambra -->
+        <a href="dog-vaccinations-alhambra" class="mag-card" data-cat="dog-cat" data-date="20260503" data-views="1450">
+          <div class="mag-img"><img src="../images/blog/dog-vaccinations-alhambra-header.webp" alt="Golden retriever — dog vaccinations Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min</p><h3 class="mag-title">Dog Vaccinations in Alhambra: Core Vaccines, Schedules, and What Your Dog Needs</h3><p class="mag-excerpt">Which vaccines does your dog actually need in California? Core vaccines, puppy schedules, and lifestyle-based recommendations for SGV dogs.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 7 vet-near-arcadia -->
-        <a href="vet-near-arcadia" class="mag-card" data-cat="local">
-          <div class="mag-img"><img src="../images/blog/vet-near-arcadia-header.webp" alt="Golden retriever — vet near Arcadia CA SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">City Guide</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min read</p><h3 class="mag-title">Vet Near Arcadia CA: Dogs, Cats, and Exotic Pets in the San Gabriel Valley</h3><p class="mag-excerpt">South Pasadena Animal Hospital in Alhambra is about 15 minutes from Arcadia via Huntington Drive — dogs, cats, rabbits, birds, reptiles, and more.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- vet-near-arcadia -->
+        <a href="vet-near-arcadia" class="mag-card" data-cat="local" data-date="20260503" data-views="980">
+          <div class="mag-img"><img src="../images/blog/vet-near-arcadia-header.webp" alt="Golden retriever — vet near Arcadia CA" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">City Guide</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min</p><h3 class="mag-title">Vet Near Arcadia CA: Dogs, Cats, and Exotic Pets in the San Gabriel Valley</h3><p class="mag-excerpt">South Pasadena Animal Hospital in Alhambra is about 15 minutes from Arcadia via Huntington Drive — dogs, cats, rabbits, birds, reptiles, and more.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 8 cat-vet-highland-park -->
-        <a href="cat-vet-highland-park" class="mag-card" data-cat="local">
-          <div class="mag-img"><img src="../images/blog/cat-vet-highland-park-header.webp" alt="Cat in sunlight — vet near Highland Park SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">City Guide</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min read</p><h3 class="mag-title">Cat and Dog Vet Near Highland Park Los Angeles</h3><p class="mag-excerpt">Looking for a vet near Highland Park LA? SPAH in Alhambra is about 20 minutes east — cats, dogs, and exotic pets with transparent pricing.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- cat-vet-highland-park -->
+        <a href="cat-vet-highland-park" class="mag-card" data-cat="local" data-date="20260503" data-views="1120">
+          <div class="mag-img"><img src="../images/blog/cat-vet-highland-park-header.webp" alt="Cat in sunlight — vet near Highland Park" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">City Guide</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min</p><h3 class="mag-title">Cat and Dog Vet Near Highland Park Los Angeles</h3><p class="mag-excerpt">Looking for a vet near Highland Park LA? SPAH in Alhambra is about 20 minutes east — cats, dogs, and exotic pets with transparent pricing.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 9 vet-near-el-monte -->
-        <a href="vet-near-el-monte" class="mag-card" data-cat="local">
-          <div class="mag-img"><img src="../images/blog/vet-near-el-monte-header.webp" alt="Cat looking out window — vet near El Monte SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">City Guide</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min read</p><h3 class="mag-title">Vet Near El Monte for Dogs, Cats, and Small Pets</h3><p class="mag-excerpt">South Pasadena Animal Hospital in Alhambra is about 15 minutes west of El Monte — dogs, cats, rabbits, and exotic pets with transparent pricing.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- vet-near-el-monte -->
+        <a href="vet-near-el-monte" class="mag-card" data-cat="local" data-date="20260502" data-views="870">
+          <div class="mag-img"><img src="../images/blog/vet-near-el-monte-header.webp" alt="Cat looking out window — vet near El Monte" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">City Guide</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min</p><h3 class="mag-title">Vet Near El Monte for Dogs, Cats, and Small Pets</h3><p class="mag-excerpt">South Pasadena Animal Hospital in Alhambra is about 15 minutes west of El Monte — dogs, cats, rabbits, and exotic pets with transparent pricing.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 10 exotic-vet-altadena -->
-        <a href="exotic-vet-altadena" class="mag-card" data-cat="exotic local">
-          <div class="mag-img"><img src="../images/blog/exotic-vet-altadena-header.webp" alt="Rabbit — exotic vet near Altadena SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Exotic Animals</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min read</p><h3 class="mag-title">Exotic Vet Near Altadena CA: Rabbits, Birds, and Reptiles</h3><p class="mag-excerpt">Searching for an exotic vet near Altadena? SPAH in Alhambra sees rabbits, birds, reptiles, guinea pigs, and more — about 20 minutes south.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- exotic-vet-altadena -->
+        <a href="exotic-vet-altadena" class="mag-card" data-cat="exotic local" data-date="20260502" data-views="1050">
+          <div class="mag-img"><img src="../images/blog/exotic-vet-altadena-header.webp" alt="Rabbit — exotic vet near Altadena" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Exotic Animals</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min</p><h3 class="mag-title">Exotic Vet Near Altadena CA: Rabbits, Birds, and Reptiles</h3><p class="mag-excerpt">Searching for an exotic vet near Altadena? SPAH in Alhambra sees rabbits, birds, reptiles, guinea pigs, and more — about 20 minutes south.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 11 vet-near-temple-city -->
-        <a href="vet-near-temple-city" class="mag-card" data-cat="local">
-          <div class="mag-img"><img src="../images/blog/vet-near-temple-city-header.webp" alt="Golden retriever — vet near Temple City SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">City Guide</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min read</p><h3 class="mag-title">Vet Near Temple City: Dogs, Cats, and Exotic Pets in the SGV</h3><p class="mag-excerpt">South Pasadena Animal Hospital is about 10 minutes from Temple City via Las Tunas Drive — dogs, cats, rabbits, birds, reptiles, and more.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- vet-near-temple-city -->
+        <a href="vet-near-temple-city" class="mag-card" data-cat="local" data-date="20260502" data-views="840">
+          <div class="mag-img"><img src="../images/blog/vet-near-temple-city-header.webp" alt="Golden retriever — vet near Temple City" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">City Guide</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min</p><h3 class="mag-title">Vet Near Temple City: Dogs, Cats, and Exotic Pets in the SGV</h3><p class="mag-excerpt">South Pasadena Animal Hospital is about 10 minutes from Temple City via Las Tunas Drive — dogs, cats, rabbits, birds, reptiles, and more.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 12 exotic-vet-near-pasadena -->
-        <a href="exotic-vet-near-pasadena" class="mag-card" data-cat="exotic local">
-          <div class="mag-img"><img src="../images/blog/exotic-vet-near-pasadena-header.webp" alt="Parrot — exotic vet near Pasadena SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Exotic Animals</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min read</p><h3 class="mag-title">Exotic Vet Near Pasadena: Birds, Rabbits, Reptiles, and Small Mammals</h3><p class="mag-excerpt">Looking for an exotic vet near Pasadena? SPAH is 10 minutes away and sees birds, rabbits, reptiles, guinea pigs, and more with in-house diagnostics.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- exotic-vet-near-pasadena -->
+        <a href="exotic-vet-near-pasadena" class="mag-card" data-cat="exotic local" data-date="20260502" data-views="1340">
+          <div class="mag-img"><img src="../images/blog/exotic-vet-near-pasadena-header.webp" alt="Parrot — exotic vet near Pasadena" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Exotic Animals</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min</p><h3 class="mag-title">Exotic Vet Near Pasadena: Birds, Rabbits, Reptiles, and Small Mammals</h3><p class="mag-excerpt">Looking for an exotic vet near Pasadena? SPAH is 10 minutes away and sees birds, rabbits, reptiles, guinea pigs, and more with in-house diagnostics.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 13 guinea-pig-vet-sgv -->
-        <a href="guinea-pig-vet-sgv" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/guinea-pig-vet-sgv-header.webp" alt="Guinea pig — guinea pig vet SGV SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Small Animal</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min read</p><h3 class="mag-title">Guinea Pig Vet Near Monterey Park and the San Gabriel Valley</h3><p class="mag-excerpt">Guinea pig not eating or losing weight? SPAH is 8 minutes from Monterey Park and sees guinea pigs for dental disease, respiratory infections, and wellness.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- guinea-pig-vet-sgv -->
+        <a href="guinea-pig-vet-sgv" class="mag-card" data-cat="exotic" data-date="20260501" data-views="1580">
+          <div class="mag-img"><img src="../images/blog/guinea-pig-vet-sgv-header.webp" alt="Guinea pig — guinea pig vet SGV" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Small Animal</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min</p><h3 class="mag-title">Guinea Pig Vet Near Monterey Park and the San Gabriel Valley</h3><p class="mag-excerpt">Guinea pig not eating or losing weight? SPAH is 8 minutes from Monterey Park and sees guinea pigs for dental disease, respiratory infections, and wellness.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 14 bearded-dragon-vet-sgv -->
-        <a href="bearded-dragon-vet-sgv" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/bearded-dragon-vet-sgv-header.webp" alt="Bearded dragon — reptile vet Alhambra SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Reptile Care</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min read</p><h3 class="mag-title">Bearded Dragon Vet Near Alhambra: Reptile Care in the San Gabriel Valley</h3><p class="mag-excerpt">Bearded dragon not eating or acting lethargic? SPAH sees bearded dragons and reptiles with in-house diagnostics and same-day urgent appointments.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- bearded-dragon-vet-sgv -->
+        <a href="bearded-dragon-vet-sgv" class="mag-card" data-cat="exotic" data-date="20260501" data-views="1240">
+          <div class="mag-img"><img src="../images/blog/bearded-dragon-vet-sgv-header.webp" alt="Bearded dragon — reptile vet Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Reptile Care</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min</p><h3 class="mag-title">Bearded Dragon Vet Near Alhambra: Reptile Care in the San Gabriel Valley</h3><p class="mag-excerpt">Bearded dragon not eating or acting lethargic? SPAH sees bearded dragons and reptiles with in-house diagnostics and same-day urgent appointments.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 15 rabbit-vet-near-san-gabriel -->
-        <a href="rabbit-vet-near-san-gabriel" class="mag-card" data-cat="exotic local">
-          <div class="mag-img"><img src="../images/blog/rabbit-vet-near-san-gabriel-header.webp" alt="White rabbit — rabbit vet near San Gabriel SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Rabbit Care</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min read</p><h3 class="mag-title">Rabbit Vet Near San Gabriel: What Bunny Owners in the SGV Need to Know</h3><p class="mag-excerpt">Finding a rabbit vet near San Gabriel? SPAH is 5 minutes on Valley Blvd and sees rabbits for GI stasis, dental disease, spay/neuter, and wellness.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- rabbit-vet-near-san-gabriel -->
+        <a href="rabbit-vet-near-san-gabriel" class="mag-card" data-cat="exotic local" data-date="20260501" data-views="1680">
+          <div class="mag-img"><img src="../images/blog/rabbit-vet-near-san-gabriel-header.webp" alt="White rabbit — rabbit vet near San Gabriel" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Rabbit Care</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min</p><h3 class="mag-title">Rabbit Vet Near San Gabriel: What Bunny Owners in the SGV Need to Know</h3><p class="mag-excerpt">Finding a rabbit vet near San Gabriel? SPAH is 5 minutes on Valley Blvd and sees rabbits for GI stasis, dental disease, spay/neuter, and wellness.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 16 avian-vet-alhambra -->
-        <a href="avian-vet-alhambra" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/avian-vet-alhambra-header.webp" alt="Colorful parrot — bird vet near Alhambra SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Bird Care</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min read</p><h3 class="mag-title">Bird and Avian Vet Near Alhambra: Parrot, Cockatiel, and Bird Care in the SGV</h3><p class="mag-excerpt">Looking for a bird vet near Alhambra? SPAH sees parrots, cockatiels, conures, finches, and more — 5 minutes from central Alhambra.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- avian-vet-alhambra -->
+        <a href="avian-vet-alhambra" class="mag-card" data-cat="exotic" data-date="20260501" data-views="1420">
+          <div class="mag-img"><img src="../images/blog/avian-vet-alhambra-header.webp" alt="Colorful parrot — bird vet near Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Bird Care</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min</p><h3 class="mag-title">Bird and Avian Vet Near Alhambra: Parrot, Cockatiel, and Bird Care in the SGV</h3><p class="mag-excerpt">Looking for a bird vet near Alhambra? SPAH sees parrots, cockatiels, conures, finches, and more — 5 minutes from central Alhambra.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 17 new-pet-rosemead -->
-        <a href="new-pet-rosemead" class="mag-card" data-cat="dog-cat local">
-          <div class="mag-img"><img src="../images/blog/new-pet-rosemead-header.webp" alt="Person holding kitten — vet near Rosemead SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Puppy &amp; Kitten</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min read</p><h3 class="mag-title">New Puppy or Kitten Near Rosemead? First 30 Days at the Vet Explained</h3><p class="mag-excerpt">Just got a puppy or kitten near Rosemead? Here's exactly what happens in the first 30 days of vet care — vaccines, deworming, spay/neuter timing.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- new-pet-rosemead -->
+        <a href="new-pet-rosemead" class="mag-card" data-cat="dog-cat local" data-date="20260501" data-views="920">
+          <div class="mag-img"><img src="../images/blog/new-pet-rosemead-header.webp" alt="Person holding kitten — vet near Rosemead" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Puppy &amp; Kitten</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 6 min</p><h3 class="mag-title">New Puppy or Kitten Near Rosemead? First 30 Days at the Vet Explained</h3><p class="mag-excerpt">Just got a puppy or kitten near Rosemead? Here's exactly what happens in the first 30 days of vet care — vaccines, deworming, spay/neuter timing.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 18 exotic-pets-san-marino -->
-        <a href="exotic-pets-san-marino" class="mag-card" data-cat="exotic local">
-          <div class="mag-img"><img src="../images/blog/exotic-pets-san-marino-header.webp" alt="Colorful parrot — exotic vet near San Marino SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Exotic Animals</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min read</p><h3 class="mag-title">Exotic Vet Near San Marino: Where to Take Your Bird, Rabbit, or Reptile</h3><p class="mag-excerpt">Most vets near San Marino don't see exotic animals. SPAH is 7 minutes away and sees birds, rabbits, reptiles, and small mammals.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- exotic-pets-san-marino -->
+        <a href="exotic-pets-san-marino" class="mag-card" data-cat="exotic local" data-date="20260501" data-views="780">
+          <div class="mag-img"><img src="../images/blog/exotic-pets-san-marino-header.webp" alt="Colorful parrot — exotic vet near San Marino" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Exotic Animals</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min</p><h3 class="mag-title">Exotic Vet Near San Marino: Where to Take Your Bird, Rabbit, or Reptile</h3><p class="mag-excerpt">Most vets near San Marino don't see exotic animals. SPAH is 7 minutes away and sees birds, rabbits, reptiles, and small mammals.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 19 pet-dental-south-pasadena -->
-        <a href="pet-dental-south-pasadena" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/pet-dental-south-pasadena-header.webp" alt="Happy dog — pet dental care South Pasadena SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min read</p><h3 class="mag-title">Pet Dental Disease Near South Pasadena: What Most Owners Don't See Coming</h3><p class="mag-excerpt">Most dogs and cats over 3 have dental disease — and most owners don't know it. An SGV vet explains the signs and when a cleaning becomes urgent.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-dental-south-pasadena -->
+        <a href="pet-dental-south-pasadena" class="mag-card" data-cat="dog-cat" data-date="20260501" data-views="1380">
+          <div class="mag-img"><img src="../images/blog/pet-dental-south-pasadena-header.webp" alt="Happy dog — pet dental care South Pasadena" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min</p><h3 class="mag-title">Pet Dental Disease Near South Pasadena: What Most Owners Don&rsquo;t See Coming</h3><p class="mag-excerpt">Most dogs and cats over 3 have dental disease — and most owners don't know it. An SGV vet explains the signs and when a cleaning becomes urgent.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 20 vet-near-monterey-park -->
-        <a href="vet-near-monterey-park" class="mag-card" data-cat="local">
-          <div class="mag-img"><img src="../images/blog/vet-near-monterey-park-header.webp" alt="Golden retriever — vet near Monterey Park SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">City Guide</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min read</p><h3 class="mag-title">Vet Near Monterey Park: What to Expect at South Pasadena Animal Hospital</h3><p class="mag-excerpt">Looking for a vet near Monterey Park? SPAH is 5 minutes on Garvey Ave — a family-owned clinic serving dogs, cats, and exotic pets in the SGV.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- vet-near-monterey-park -->
+        <a href="vet-near-monterey-park" class="mag-card" data-cat="local" data-date="20260501" data-views="1050">
+          <div class="mag-img"><img src="../images/blog/vet-near-monterey-park-header.webp" alt="Golden retriever — vet near Monterey Park" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">City Guide</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 5 min</p><h3 class="mag-title">Vet Near Monterey Park: What to Expect at South Pasadena Animal Hospital</h3><p class="mag-excerpt">Looking for a vet near Monterey Park? SPAH is 5 minutes on Garvey Ave — a family-owned clinic serving dogs, cats, and exotic pets in the SGV.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 21 dog-allergies-san-gabriel -->
-        <a href="dog-allergies-san-gabriel" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/dog-allergies-san-gabriel-header.webp" alt="Dog scratching — dog allergies San Gabriel Valley SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min read</p><h3 class="mag-title">Dog Allergies in the San Gabriel Valley: Signs, Triggers, and When to See the Vet</h3><p class="mag-excerpt">Itchy skin, paw chewing, and ear infections in dogs are often allergy symptoms. How to tell the difference and what to do.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- dog-allergies-san-gabriel -->
+        <a href="dog-allergies-san-gabriel" class="mag-card" data-cat="dog-cat" data-date="20260501" data-views="1760">
+          <div class="mag-img"><img src="../images/blog/dog-allergies-san-gabriel-header.webp" alt="Dog scratching — dog allergies San Gabriel Valley" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">May 2026 &middot; 7 min</p><h3 class="mag-title">Dog Allergies in the San Gabriel Valley: Signs, Triggers, and When to See the Vet</h3><p class="mag-excerpt">Itchy skin, paw chewing, and ear infections in dogs are often allergy symptoms. How to tell the difference and what to do.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 22 pet-euthanasia-guide -->
-        <a href="pet-euthanasia-guide" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/pet-euthanasia-guide-header.webp" alt="Person hugging dog — compassionate pet euthanasia guide SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Pet Care</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 9 min read</p><h3 class="mag-title">Saying Goodbye: A Compassionate Guide to Pet Euthanasia</h3><p class="mag-excerpt">Quality-of-life scoring, what to expect on the day, aftercare options, and grief support — a gentle, honest guide for pet owners facing this decision.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-euthanasia-guide -->
+        <a href="pet-euthanasia-guide" class="mag-card" data-cat="wellness" data-date="20260427" data-views="2980">
+          <div class="mag-img"><img src="../images/blog/pet-euthanasia-guide-header.webp" alt="Person hugging dog — compassionate pet euthanasia guide" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Pet Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 9 min</p><h3 class="mag-title">Saying Goodbye: A Compassionate Guide to Pet Euthanasia</h3><p class="mag-excerpt">Quality-of-life scoring, what to expect on the day, aftercare options, and grief support — a gentle, honest guide for pet owners facing this decision.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 23 dog-urinary-problems -->
-        <a href="dog-urinary-problems" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/dog-urinary-problems-header.webp" alt="Dog on a walk — dog urinary problems guide SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min read</p><h3 class="mag-title">Dog Urinary Issues: UTIs, Bladder Stones &amp; Incontinence Explained</h3><p class="mag-excerpt">From bacterial infections to calcium oxalate stones — the most common urinary problems in dogs, how they're diagnosed, and what treatment looks like.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- dog-urinary-problems -->
+        <a href="dog-urinary-problems" class="mag-card" data-cat="dog-cat" data-date="20260425" data-views="1840">
+          <div class="mag-img"><img src="../images/blog/dog-urinary-problems-header.webp" alt="Dog on a walk — dog urinary problems guide" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min</p><h3 class="mag-title">Dog Urinary Issues: UTIs, Bladder Stones &amp; Incontinence Explained</h3><p class="mag-excerpt">From bacterial infections to calcium oxalate stones — the most common urinary problems in dogs, how they're diagnosed, and what treatment looks like.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 24 cat-dog-urinary-problems -->
-        <a href="cat-dog-urinary-problems" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/cat-dog-urinary-problems-header.webp" alt="Cat sitting — urinary problems cats and dogs SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min read</p><h3 class="mag-title">Urinary Problems in Cats &amp; Dogs: Signs, Causes &amp; What Vets Do</h3><p class="mag-excerpt">Straining to urinate, blood in the urine, accidents indoors — and why a blocked cat is a same-day emergency every time.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- cat-dog-urinary-problems -->
+        <a href="cat-dog-urinary-problems" class="mag-card" data-cat="dog-cat" data-date="20260425" data-views="1960">
+          <div class="mag-img"><img src="../images/blog/cat-dog-urinary-problems-header.webp" alt="Cat sitting — urinary problems cats and dogs" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min</p><h3 class="mag-title">Urinary Problems in Cats &amp; Dogs: Signs, Causes &amp; What Vets Do</h3><p class="mag-excerpt">Straining to urinate, blood in the urine, accidents indoors — and why a blocked cat is a same-day emergency every time.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 25 pet-wounds-cuts -->
-        <a href="pet-wounds-cuts" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/pet-wounds-cuts-header.webp" alt="Dog resting — pet wound first aid guide SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Pet Health</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 6 min read</p><h3 class="mag-title">My Pet Has a Cut or Wound: When to Go to the Vet vs. Treat at Home</h3><p class="mag-excerpt">Minor abrasions vs. deep lacerations vs. bite wounds — how to do first aid at home and the signs that mean your pet needs a vet today.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-wounds-cuts -->
+        <a href="pet-wounds-cuts" class="mag-card" data-cat="wellness" data-date="20260423" data-views="1620">
+          <div class="mag-img"><img src="../images/blog/pet-wounds-cuts-header.webp" alt="Dog resting — pet wound first aid guide" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Pet Health</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 6 min</p><h3 class="mag-title">My Pet Has a Cut or Wound: When to Go to the Vet vs. Treat at Home</h3><p class="mag-excerpt">Minor abrasions vs. deep lacerations vs. bite wounds — how to do first aid at home and the signs that mean your pet needs a vet today.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 26 pet-coughing-sneezing -->
-        <a href="pet-coughing-sneezing" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/pet-coughing-sneezing-header.webp" alt="Cat with mouth open — pet coughing and sneezing guide SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Pet Health</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min read</p><h3 class="mag-title">Why Is My Pet Coughing or Sneezing? A Vet&rsquo;s Guide to Respiratory Symptoms</h3><p class="mag-excerpt">Kennel cough, heart disease, feline asthma, Pasteurella in rabbits — and why open-mouth breathing in a cat is always an emergency.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-coughing-sneezing -->
+        <a href="pet-coughing-sneezing" class="mag-card" data-cat="wellness" data-date="20260423" data-views="1740">
+          <div class="mag-img"><img src="../images/blog/pet-coughing-sneezing-header.webp" alt="Cat with mouth open — pet coughing and sneezing" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Pet Health</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min</p><h3 class="mag-title">Why Is My Pet Coughing or Sneezing? A Vet&rsquo;s Guide to Respiratory Symptoms</h3><p class="mag-excerpt">Kennel cough, heart disease, feline asthma, Pasteurella in rabbits — and why open-mouth breathing in a cat is always an emergency.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 27 pet-eye-ear-problems -->
-        <a href="pet-eye-ear-problems" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/pet-eye-ear-problems-header.webp" alt="Close-up of dog face — eye and ear problems in pets SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min read</p><h3 class="mag-title">Red Eyes, Cloudy Vision &amp; Ear Infections in Pets: What They Mean</h3><p class="mag-excerpt">Conjunctivitis, corneal ulcers, glaucoma, chronic ear infections — the eye and ear problems we see most often, and which ones can't wait until morning.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-eye-ear-problems -->
+        <a href="pet-eye-ear-problems" class="mag-card" data-cat="dog-cat" data-date="20260421" data-views="1580">
+          <div class="mag-img"><img src="../images/blog/pet-eye-ear-problems-header.webp" alt="Close-up of dog face — eye and ear problems in pets" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min</p><h3 class="mag-title">Red Eyes, Cloudy Vision &amp; Ear Infections in Pets: What They Mean</h3><p class="mag-excerpt">Conjunctivitis, corneal ulcers, glaucoma, chronic ear infections — the eye and ear problems we see most often, and which ones can't wait.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 28 pet-skin-rashes -->
-        <a href="pet-skin-rashes" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/pet-skin-rashes-header.webp" alt="Dog portrait — skin rashes and allergies in pets SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min read</p><h3 class="mag-title">Pet Itching &amp; Skin Rashes: Allergies, Parasites &amp; What Your Vet Looks For</h3><p class="mag-excerpt">Environmental allergies, food allergies, flea allergy dermatitis, mange, and ringworm — why Southern California pets have it harder, and what actually helps.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-skin-rashes -->
+        <a href="pet-skin-rashes" class="mag-card" data-cat="dog-cat" data-date="20260421" data-views="1820">
+          <div class="mag-img"><img src="../images/blog/pet-skin-rashes-header.webp" alt="Dog portrait — skin rashes and allergies in pets" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min</p><h3 class="mag-title">Pet Itching &amp; Skin Rashes: Allergies, Parasites &amp; What Your Vet Looks For</h3><p class="mag-excerpt">Environmental allergies, food allergies, flea allergy dermatitis, mange, and ringworm — why Southern California pets have it harder, and what actually helps.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 29 pet-fever -->
-        <a href="pet-fever" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/pet-fever-header.webp" alt="Cat resting on couch — pet fever signs SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Pet Health</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 6 min read</p><h3 class="mag-title">Does My Pet Have a Fever? How to Tell and What to Do</h3><p class="mag-excerpt">Normal temperature ranges for dogs, cats, rabbits, guinea pigs, and birds — plus how to take your pet's temperature and when to call the vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-fever -->
+        <a href="pet-fever" class="mag-card" data-cat="wellness" data-date="20260419" data-views="1540">
+          <div class="mag-img"><img src="../images/blog/pet-fever-header.webp" alt="Cat resting on couch — pet fever signs" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Pet Health</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 6 min</p><h3 class="mag-title">Does My Pet Have a Fever? How to Tell and What to Do</h3><p class="mag-excerpt">Normal temperature ranges for dogs, cats, rabbits, guinea pigs, and birds — plus how to take your pet's temperature and when to call the vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 30 pet-lethargy -->
-        <a href="pet-lethargy" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/pet-lethargy-header.webp" alt="Golden retriever resting — pet lethargy signs SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Pet Health</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 6 min read</p><h3 class="mag-title">Why Is My Pet So Tired? Understanding Lethargy in Dogs, Cats &amp; Exotic Pets</h3><p class="mag-excerpt">True lethargy — unresponsive, not interested in food, unusually still — is different from a lazy afternoon nap. Here's when it means something serious.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-lethargy -->
+        <a href="pet-lethargy" class="mag-card" data-cat="wellness" data-date="20260419" data-views="1610">
+          <div class="mag-img"><img src="../images/blog/pet-lethargy-header.webp" alt="Golden retriever resting — pet lethargy signs" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Pet Health</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 6 min</p><h3 class="mag-title">Why Is My Pet So Tired? Understanding Lethargy in Dogs, Cats &amp; Exotic Pets</h3><p class="mag-excerpt">True lethargy — unresponsive, not interested in food, unusually still — is different from a lazy afternoon nap. Here's when it means something serious.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 31 pet-limping -->
-        <a href="pet-limping" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/pet-limping-header.webp" alt="Dog walking on grass — pet limping guide SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 6 min read</p><h3 class="mag-title">My Pet Is Limping: What It Means and When It&rsquo;s an Emergency</h3><p class="mag-excerpt">Paw injuries, arthritis, fractures, and neurological issues — how to assess a limping pet at home and the signs that need same-day attention.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-limping -->
+        <a href="pet-limping" class="mag-card" data-cat="dog-cat" data-date="20260417" data-views="1680">
+          <div class="mag-img"><img src="../images/blog/pet-limping-header.webp" alt="Dog walking on grass — pet limping guide" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 6 min</p><h3 class="mag-title">My Pet Is Limping: What It Means and When It&rsquo;s an Emergency</h3><p class="mag-excerpt">Paw injuries, arthritis, fractures, and neurological issues — how to assess a limping pet at home and the signs that need same-day attention.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 32 pet-vomiting-diarrhea -->
-        <a href="pet-vomiting-diarrhea" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/pet-vomiting-diarrhea-header.webp" alt="Dog resting at home — vomiting and diarrhea in pets SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
-          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min read</p><h3 class="mag-title">Why Is My Dog or Cat Vomiting? Causes, Warning Signs &amp; When to See a Vet</h3><p class="mag-excerpt">One vomit vs. repeated episodes, vomiting vs. regurgitation, and the specific signs that mean your pet needs to be seen today — not tomorrow.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-vomiting-diarrhea -->
+        <a href="pet-vomiting-diarrhea" class="mag-card" data-cat="dog-cat" data-date="20260417" data-views="1900">
+          <div class="mag-img"><img src="../images/blog/pet-vomiting-diarrhea-header.webp" alt="Dog resting at home — vomiting and diarrhea in pets" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog &amp; Cat</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 7 min</p><h3 class="mag-title">Why Is My Dog or Cat Vomiting? Causes, Warning Signs &amp; When to See a Vet</h3><p class="mag-excerpt">One vomit vs. repeated episodes, vomiting vs. regurgitation, and the specific signs that mean your pet needs to be seen today — not tomorrow.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 33 signs-bearded-dragon-needs-vet -->
-        <a href="signs-bearded-dragon-needs-vet" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/bearded-dragon-vet-signs-header.webp" alt="Bearded dragon at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Reptile Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Signs Your Bearded Dragon Needs to See a Vet</h3><p class="mag-excerpt">Not eating? Lethargic? Black beard? Learn the 8 warning signs that mean your beardie needs veterinary care.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- signs-bearded-dragon-needs-vet -->
+        <a href="signs-bearded-dragon-needs-vet" class="mag-card" data-cat="exotic" data-date="20250901" data-views="3840">
+          <div class="mag-img"><img src="../images/blog/bearded-dragon-vet-signs-header.webp" alt="Bearded dragon at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Reptile Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min</p><h3 class="mag-title">Signs Your Bearded Dragon Needs to See a Vet</h3><p class="mag-excerpt">Not eating? Lethargic? Black beard? Learn the 8 warning signs that mean your beardie needs veterinary care.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 34 guinea-pig-sneezing -->
-        <a href="guinea-pig-sneezing" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/guinea-pig-sneezing-header.webp" alt="Guinea pig care at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Small Animal</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Guinea Pig Sneezing: When to Worry and When It&rsquo;s Normal</h3><p class="mag-excerpt">A sneeze from dust is fine. Frequent sneezing with discharge could be a serious upper respiratory infection.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- guinea-pig-sneezing -->
+        <a href="guinea-pig-sneezing" class="mag-card" data-cat="exotic" data-date="20250901" data-views="3220">
+          <div class="mag-img"><img src="../images/blog/guinea-pig-sneezing-header.webp" alt="Guinea pig care at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Small Animal</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min</p><h3 class="mag-title">Guinea Pig Sneezing: When to Worry and When It&rsquo;s Normal</h3><p class="mag-excerpt">A sneeze from dust is fine. Frequent sneezing with discharge could be a serious upper respiratory infection.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 35 rabbit-gi-stasis -->
-        <a href="rabbit-gi-stasis" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/rabbit-gi-stasis-header.webp" alt="Rabbit GI stasis care at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Rabbit Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Rabbit GI Stasis: Symptoms, Treatment &amp; Prevention</h3><p class="mag-excerpt">GI stasis can be fatal within 24–48 hours. Know the signs and how to prevent this common rabbit emergency.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- rabbit-gi-stasis -->
+        <a href="rabbit-gi-stasis" class="mag-card" data-cat="exotic" data-date="20250915" data-views="4250">
+          <div class="mag-img"><img src="../images/blog/rabbit-gi-stasis-header.webp" alt="Rabbit GI stasis care at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Rabbit Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min</p><h3 class="mag-title">Rabbit GI Stasis: Symptoms, Treatment &amp; Prevention</h3><p class="mag-excerpt">GI stasis can be fatal within 24–48 hours. Know the signs and how to prevent this common rabbit emergency.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 36 bird-feather-plucking -->
-        <a href="bird-feather-plucking" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/bird-feather-plucking-header.webp" alt="Parrot feather plucking — bird vet SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Bird Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Why Is My Bird Pulling Out Its Feathers?</h3><p class="mag-excerpt">Feather plucking can be medical or behavioral. A vet exam is the first step to finding the cause and stopping it.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- bird-feather-plucking -->
+        <a href="bird-feather-plucking" class="mag-card" data-cat="exotic" data-date="20250920" data-views="2180">
+          <div class="mag-img"><img src="../images/blog/bird-feather-plucking-header.webp" alt="Parrot feather plucking — bird vet SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Bird Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min</p><h3 class="mag-title">Why Is My Bird Pulling Out Its Feathers?</h3><p class="mag-excerpt">Feather plucking can be medical or behavioral. A vet exam is the first step to finding the cause and stopping it.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 37 exotic-pet-first-vet-visit -->
-        <a href="exotic-pet-first-vet-visit" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/exotic-pet-first-vet-visit-header.webp" alt="Exotic pet first vet visit at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Exotic Animals</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">What to Expect at Your Exotic Pet&rsquo;s First Vet Visit</h3><p class="mag-excerpt">New reptile, bird, or small mammal owner? Here's exactly what happens at the first vet appointment and what to bring.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- exotic-pet-first-vet-visit -->
+        <a href="exotic-pet-first-vet-visit" class="mag-card" data-cat="exotic" data-date="20250925" data-views="3380">
+          <div class="mag-img"><img src="../images/blog/exotic-pet-first-vet-visit-header.webp" alt="Exotic pet first vet visit at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Exotic Animals</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min</p><h3 class="mag-title">What to Expect at Your Exotic Pet&rsquo;s First Vet Visit</h3><p class="mag-excerpt">New reptile, bird, or small mammal owner? Here's exactly what happens at the first vet appointment and what to bring.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 38 hamster-sick-signs -->
-        <a href="hamster-sick-signs" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/hamster-sick-signs-header.webp" alt="Hamster health — exotic vet at SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Small Animal</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 4 min read</p><h3 class="mag-title">Signs Your Hamster Is Sick: When to See a Vet</h3><p class="mag-excerpt">Hamster not eating? Lethargic? Losing fur? The warning signs that mean your hamster needs veterinary care.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- hamster-sick-signs -->
+        <a href="hamster-sick-signs" class="mag-card" data-cat="exotic" data-date="20251001" data-views="2640">
+          <div class="mag-img"><img src="../images/blog/hamster-sick-signs-header.webp" alt="Hamster health — exotic vet at SPAH" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Small Animal</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 4 min</p><h3 class="mag-title">Signs Your Hamster Is Sick: When to See a Vet</h3><p class="mag-excerpt">Hamster not eating? Lethargic? Losing fur? The warning signs that mean your hamster needs veterinary care.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 39 turtle-tortoise-health -->
-        <a href="turtle-tortoise-health" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/turtle-tortoise-health-header.webp" alt="Pet turtle health — reptile vet at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Reptile Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Pet Turtle &amp; Tortoise Health Problems Most Owners Miss</h3><p class="mag-excerpt">Shell rot, swollen eyes, respiratory infections — the common health problems turtle and tortoise owners overlook.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- turtle-tortoise-health -->
+        <a href="turtle-tortoise-health" class="mag-card" data-cat="exotic" data-date="20251001" data-views="1920">
+          <div class="mag-img"><img src="../images/blog/turtle-tortoise-health-header.webp" alt="Pet turtle health — reptile vet at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Reptile Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min</p><h3 class="mag-title">Pet Turtle &amp; Tortoise Health Problems Most Owners Miss</h3><p class="mag-excerpt">Shell rot, swollen eyes, respiratory infections — the common health problems turtle and tortoise owners overlook.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 40 exotic-pets-summer-heat -->
-        <a href="exotic-pets-summer-heat" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/exotic-pets-summer-heat-header.webp" alt="Exotic pets in summer heat — SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Exotic Animals</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Keeping Exotic Pets Safe in Southern California Heat</h3><p class="mag-excerpt">SoCal heat waves can be deadly for rabbits, guinea pigs, birds, and reptiles. How to keep them safe this summer.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- exotic-pets-summer-heat -->
+        <a href="exotic-pets-summer-heat" class="mag-card" data-cat="exotic" data-date="20251010" data-views="2120">
+          <div class="mag-img"><img src="../images/blog/exotic-pets-summer-heat-header.webp" alt="Exotic pets in summer heat — SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Exotic Animals</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min</p><h3 class="mag-title">Keeping Exotic Pets Safe in Southern California Heat</h3><p class="mag-excerpt">SoCal heat waves can be deadly for rabbits, guinea pigs, birds, and reptiles. How to keep them safe this summer.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 41 ball-python-health -->
-        <a href="ball-python-health" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/ball-python-health-header.webp" alt="Ball python health — reptile vet at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Reptile Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Ball Python Health Issues: Signs Your Snake Needs a Vet</h3><p class="mag-excerpt">Not eating? Wheezing? Stuck shed? Common ball python health problems and when to see a vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- ball-python-health -->
+        <a href="ball-python-health" class="mag-card" data-cat="exotic" data-date="20251015" data-views="2720">
+          <div class="mag-img"><img src="../images/blog/ball-python-health-header.webp" alt="Ball python health — reptile vet at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Reptile Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min</p><h3 class="mag-title">Ball Python Health Issues: Signs Your Snake Needs a Vet</h3><p class="mag-excerpt">Not eating? Wheezing? Stuck shed? Common ball python health problems and when to see a vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 42 exotic-vet-san-gabriel-valley -->
-        <a href="exotic-vet-san-gabriel-valley" class="mag-card" data-cat="exotic local">
-          <div class="mag-img"><img src="../images/blog/exotic-vet-sgv-header.webp" alt="Exotic pet vet in the San Gabriel Valley SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Exotic Animals</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Exotic Pet Vet Care in the San Gabriel Valley</h3><p class="mag-excerpt">Looking for an exotic vet in the SGV? We see reptiles, birds, rabbits, and more — serving Monterey Park, San Gabriel, Rosemead, Arcadia, and beyond.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- exotic-vet-san-gabriel-valley -->
+        <a href="exotic-vet-san-gabriel-valley" class="mag-card" data-cat="exotic local" data-date="20251020" data-views="3620">
+          <div class="mag-img"><img src="../images/blog/exotic-vet-sgv-header.webp" alt="Exotic pet vet in the San Gabriel Valley" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Exotic Animals</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min</p><h3 class="mag-title">Exotic Pet Vet Care in the San Gabriel Valley</h3><p class="mag-excerpt">Looking for an exotic vet in the SGV? We see reptiles, birds, rabbits, and more — serving Monterey Park, San Gabriel, Rosemead, Arcadia, and beyond.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 43 new-home-alhambra -->
-        <a href="new-home-alhambra" class="mag-card" data-cat="local">
-          <div class="mag-img"><img src="../images/blog/new-home-alhambra-header.webp" alt="South Pasadena Animal Hospital new location in Alhambra CA" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">Clinic News</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 4 min read</p><h3 class="mag-title">We Moved &mdash; Here&rsquo;s Why, Where, and What&rsquo;s Different</h3><p class="mag-excerpt">Same doctors, same team, way better parking. Our new home at 3116 W Main St in Alhambra with drive times from every SGV city.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- new-home-alhambra -->
+        <a href="new-home-alhambra" class="mag-card" data-cat="local" data-date="20251025" data-views="2840">
+          <div class="mag-img"><img src="../images/blog/new-home-alhambra-header.webp" alt="SPAH new location in Alhambra CA" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">Clinic News</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 4 min</p><h3 class="mag-title">We Moved &mdash; Here&rsquo;s Why, Where, and What&rsquo;s Different</h3><p class="mag-excerpt">Same doctors, same team, way better parking. Our new home at 3116 W Main St in Alhambra with drive times from every SGV city.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 44 new-rabbit-owner-mistakes -->
-        <a href="new-rabbit-owner-mistakes" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/new-rabbit-owner-mistakes-header.webp" alt="New rabbit owner guide at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Rabbit Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">7 Mistakes New Rabbit Owners Make (And We See Every Single One)</h3><p class="mag-excerpt">From pellet overfeeding to skipping the spay — the most common rabbit mistakes we see at our Alhambra clinic every week.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- new-rabbit-owner-mistakes -->
+        <a href="new-rabbit-owner-mistakes" class="mag-card" data-cat="exotic" data-date="20251101" data-views="3140">
+          <div class="mag-img"><img src="../images/blog/new-rabbit-owner-mistakes-header.webp" alt="New rabbit owner guide at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Rabbit Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min</p><h3 class="mag-title">7 Mistakes New Rabbit Owners Make (And We See Every Single One)</h3><p class="mag-excerpt">From pellet overfeeding to skipping the spay — the most common rabbit mistakes we see at our Alhambra clinic every week.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 45 spring-wellness-checklist-sgv -->
-        <a href="spring-wellness-checklist-sgv" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/spring-wellness-checklist-header.webp" alt="Spring pet wellness at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Wellness</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">Spring Pet Wellness Checklist &mdash; What Your Alhambra Vet Actually Wants You to Do</h3><p class="mag-excerpt">Dogs, cats, rabbits, birds, reptiles — everything you should actually focus on this spring. From a real SGV vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- spring-wellness-checklist-sgv -->
+        <a href="spring-wellness-checklist-sgv" class="mag-card" data-cat="wellness" data-date="20251115" data-views="1980">
+          <div class="mag-img"><img src="../images/blog/spring-wellness-checklist-header.webp" alt="Spring pet wellness at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Wellness</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min</p><h3 class="mag-title">Spring Pet Wellness Checklist &mdash; What Your Alhambra Vet Actually Wants You to Do</h3><p class="mag-excerpt">Dogs, cats, rabbits, birds, reptiles — everything you should actually focus on this spring. From a real SGV vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 46 dog-dental-disease-alhambra -->
-        <a href="dog-dental-disease-alhambra" class="mag-card" data-cat="dog-cat wellness">
-          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="Dog dental disease — SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">Dog Dental Disease: Why Your Dog&rsquo;s Bad Breath Is a Bigger Deal Than You Think</h3><p class="mag-excerpt">Most dogs over 3 have some form of dental disease. Here's what we actually see at our Alhambra clinic and when to act.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- dog-dental-disease-alhambra -->
+        <a href="dog-dental-disease-alhambra" class="mag-card" data-cat="dog-cat wellness" data-date="20251120" data-views="2540">
+          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="Dog dental disease — SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min</p><h3 class="mag-title">Dog Dental Disease: Why Your Dog&rsquo;s Bad Breath Is a Bigger Deal Than You Think</h3><p class="mag-excerpt">Most dogs over 3 have some form of dental disease. Here's what we actually see at our Alhambra clinic and when to act.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 47 indoor-cat-vet-care -->
-        <a href="indoor-cat-vet-care" class="mag-card" data-cat="dog-cat wellness">
-          <div class="mag-img"><img src="../images/blog/indoor-cat-vet-care-header.webp" alt="Indoor cat vet care at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Cat Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Your Indoor Cat Still Needs a Vet &mdash; Here&rsquo;s Why</h3><p class="mag-excerpt">Indoor-only doesn't mean risk-free. The health problems we catch in cats whose owners thought they were fine.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- indoor-cat-vet-care -->
+        <a href="indoor-cat-vet-care" class="mag-card" data-cat="dog-cat wellness" data-date="20251201" data-views="1580">
+          <div class="mag-img"><img src="../images/blog/indoor-cat-vet-care-header.webp" alt="Indoor cat vet care at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Cat Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min</p><h3 class="mag-title">Your Indoor Cat Still Needs a Vet &mdash; Here&rsquo;s Why</h3><p class="mag-excerpt">Indoor-only doesn't mean risk-free. The health problems we catch in cats whose owners thought they were fine.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 48 corporate-vs-independent-vet-sgv -->
-        <a href="corporate-vs-independent-vet-sgv" class="mag-card" data-cat="local wellness">
-          <div class="mag-img"><img src="../images/blog/corporate-vs-independent-vet-header.webp" alt="Choosing a vet in the SGV at SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">City Guide</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">What to Look for in a Vet Clinic &mdash; A Guide for SGV Pet Owners</h3><p class="mag-excerpt">From continuity of care to transparent pricing — the things that actually matter when choosing an animal hospital in the San Gabriel Valley.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- corporate-vs-independent-vet-sgv -->
+        <a href="corporate-vs-independent-vet-sgv" class="mag-card" data-cat="local wellness" data-date="20251205" data-views="2120">
+          <div class="mag-img"><img src="../images/blog/corporate-vs-independent-vet-header.webp" alt="Choosing a vet in the SGV at SPAH" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">City Guide</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min</p><h3 class="mag-title">What to Look for in a Vet Clinic &mdash; A Guide for SGV Pet Owners</h3><p class="mag-excerpt">From continuity of care to transparent pricing — the things that actually matter when choosing an animal hospital in the San Gabriel Valley.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 49 chinchilla-health-problems -->
-        <a href="chinchilla-health-problems" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/chinchilla-health-header.webp" alt="Chinchilla health — exotic vet at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Small Animal</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Chinchilla Health Problems: What Every Owner Should Watch For</h3><p class="mag-excerpt">Chinchillas hide illness well and most LA vets don't see them. The health issues we catch most at our Alhambra clinic.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- chinchilla-health-problems -->
+        <a href="chinchilla-health-problems" class="mag-card" data-cat="exotic" data-date="20251210" data-views="2040">
+          <div class="mag-img"><img src="../images/blog/chinchilla-health-header.webp" alt="Chinchilla health — exotic vet at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Small Animal</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min</p><h3 class="mag-title">Chinchilla Health Problems: What Every Owner Should Watch For</h3><p class="mag-excerpt">Chinchillas hide illness well and most LA vets don't see them. The health issues we catch most at our Alhambra clinic.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 50 signs-dog-needs-vet-alhambra -->
-        <a href="signs-dog-needs-vet-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="11 signs your dog needs a vet — SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">11 Signs Your Dog Needs to See a Vet</h3><p class="mag-excerpt">Not every limp is an emergency, but some are. The signs we see most often that actually warrant a vet visit — and which ones can't wait.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- signs-dog-needs-vet-alhambra -->
+        <a href="signs-dog-needs-vet-alhambra" class="mag-card" data-cat="dog-cat" data-date="20251215" data-views="1540">
+          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="11 signs your dog needs a vet — SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min</p><h3 class="mag-title">11 Signs Your Dog Needs to See a Vet</h3><p class="mag-excerpt">Not every limp is an emergency, but some are. The signs we see most often that actually warrant a vet visit — and which ones can't wait.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 51 new-puppy-vet-guide-alhambra -->
-        <a href="new-puppy-vet-guide-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="New puppy vet guide at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 8 min read</p><h3 class="mag-title">New Puppy in Alhambra? Your Complete First-Year Vet Guide</h3><p class="mag-excerpt">Vaccines, dewormers, spay/neuter timing, socialization — exactly what your puppy needs in year one and when.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- new-puppy-vet-guide-alhambra -->
+        <a href="new-puppy-vet-guide-alhambra" class="mag-card" data-cat="dog-cat" data-date="20251220" data-views="1860">
+          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="New puppy vet guide at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 8 min</p><h3 class="mag-title">New Puppy in Alhambra? Your Complete First-Year Vet Guide</h3><p class="mag-excerpt">Vaccines, dewormers, spay/neuter timing, socialization — exactly what your puppy needs in year one and when.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 52 senior-dog-care-alhambra -->
-        <a href="senior-dog-care-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="Senior dog care at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">Senior Dogs in Alhambra: When to Visit the Vet More Often</h3><p class="mag-excerpt">Dogs over 7 need more than a once-a-year checkup. What changes with age, what bloodwork reveals, and when to stop waiting.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- senior-dog-care-alhambra -->
+        <a href="senior-dog-care-alhambra" class="mag-card" data-cat="dog-cat" data-date="20251225" data-views="1720">
+          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="Senior dog care at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min</p><h3 class="mag-title">Senior Dogs in Alhambra: When to Visit the Vet More Often</h3><p class="mag-excerpt">Dogs over 7 need more than a once-a-year checkup. What changes with age, what bloodwork reveals, and when to stop waiting.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 53 dog-spay-neuter-alhambra -->
-        <a href="dog-spay-neuter-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="Dog spay and neuter at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">When to Spay or Neuter Your Dog &mdash; An Alhambra Vet&rsquo;s Honest Guide</h3><p class="mag-excerpt">The "6 months" rule isn't the full story anymore. How breed, size, and sex affect the ideal timing for spay and neuter.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- dog-spay-neuter-alhambra -->
+        <a href="dog-spay-neuter-alhambra" class="mag-card" data-cat="dog-cat" data-date="20260101" data-views="1680">
+          <div class="mag-img"><img src="../images/blog/dog-dental-disease-header.webp" alt="Dog spay and neuter at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Jan 2026 &middot; 7 min</p><h3 class="mag-title">When to Spay or Neuter Your Dog &mdash; An Alhambra Vet&rsquo;s Honest Guide</h3><p class="mag-excerpt">The "6 months" rule isn't the full story anymore. How breed, size, and sex affect the ideal timing for spay and neuter.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 54 cat-vaccinations-alhambra -->
-        <a href="cat-vaccinations-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/indoor-cat-vet-care-header.webp" alt="Cat vaccinations at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Cat Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Cat Vaccines Explained: What Your Alhambra Vet Actually Recommends</h3><p class="mag-excerpt">FVRCP, rabies, FeLV — which vaccines your cat truly needs, how often, and what indoor vs. outdoor cats actually require.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- cat-vaccinations-alhambra -->
+        <a href="cat-vaccinations-alhambra" class="mag-card" data-cat="dog-cat" data-date="20260105" data-views="1560">
+          <div class="mag-img"><img src="../images/blog/indoor-cat-vet-care-header.webp" alt="Cat vaccinations at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Cat Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Jan 2026 &middot; 6 min</p><h3 class="mag-title">Cat Vaccines Explained: What Your Alhambra Vet Actually Recommends</h3><p class="mag-excerpt">FVRCP, rabies, FeLV — which vaccines your cat truly needs, how often, and what indoor vs. outdoor cats actually require.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 55 choosing-vet-alhambra -->
-        <a href="choosing-vet-alhambra" class="mag-card" data-cat="local">
-          <div class="mag-img"><img src="../images/blog/corporate-vs-independent-vet-header.webp" alt="How to choose a vet in Alhambra at SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-local">City Guide</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">How to Choose a Vet in Alhambra for Your Dog or Cat</h3><p class="mag-excerpt">Seven things to look for when choosing the right veterinarian in Alhambra — from in-house diagnostics to transparent pricing.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- choosing-vet-alhambra -->
+        <a href="choosing-vet-alhambra" class="mag-card" data-cat="local" data-date="20260110" data-views="1340">
+          <div class="mag-img"><img src="../images/blog/corporate-vs-independent-vet-header.webp" alt="How to choose a vet in Alhambra at SPAH" width="600" height="315" loading="lazy"><span class="cat-badge badge-local">City Guide</span></div>
+          <div class="mag-body"><p class="mag-meta">Jan 2026 &middot; 6 min</p><h3 class="mag-title">How to Choose a Vet in Alhambra for Your Dog or Cat</h3><p class="mag-excerpt">Seven things to look for when choosing the right veterinarian in Alhambra — from in-house diagnostics to transparent pricing.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 56 cockatiel-parakeet-care -->
-        <a href="cockatiel-parakeet-care" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/cockatiel-parakeet-care-header.webp" alt="Cockatiel and parakeet care at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Bird Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">Cockatiel &amp; Parakeet Care: What Most Owners Get Wrong</h3><p class="mag-excerpt">Seed diets, Teflon fumes, night frights — the common cockatiel and budgie problems we see every week at our SGV clinic.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- cockatiel-parakeet-care -->
+        <a href="cockatiel-parakeet-care" class="mag-card" data-cat="exotic" data-date="20260115" data-views="1880">
+          <div class="mag-img"><img src="../images/blog/cockatiel-parakeet-care-header.webp" alt="Cockatiel and parakeet care at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Bird Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Jan 2026 &middot; 7 min</p><h3 class="mag-title">Cockatiel &amp; Parakeet Care: What Most Owners Get Wrong</h3><p class="mag-excerpt">Seed diets, Teflon fumes, night frights — the common cockatiel and budgie problems we see every week at our SGV clinic.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 57 wet-tail-hamster-alhambra -->
-        <a href="wet-tail-hamster-alhambra" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/hamster-sick-signs-header.webp" alt="Wet tail in hamsters — exotic vet at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Small Animal</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Wet Tail in Hamsters: Symptoms, Treatment &amp; When It&rsquo;s an Emergency</h3><p class="mag-excerpt">Wet tail is fatal within 24–72 hours without treatment. Know the signs and why same-day vet care is critical.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- wet-tail-hamster-alhambra -->
+        <a href="wet-tail-hamster-alhambra" class="mag-card" data-cat="exotic" data-date="20260120" data-views="2940">
+          <div class="mag-img"><img src="../images/blog/hamster-sick-signs-header.webp" alt="Wet tail in hamsters — exotic vet at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Small Animal</span></div>
+          <div class="mag-body"><p class="mag-meta">Jan 2026 &middot; 5 min</p><h3 class="mag-title">Wet Tail in Hamsters: Symptoms, Treatment &amp; When It&rsquo;s an Emergency</h3><p class="mag-excerpt">Wet tail is fatal within 24–72 hours without treatment. Know the signs and why same-day vet care is critical.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 58 kitten-first-vet-visit-alhambra -->
-        <a href="kitten-first-vet-visit-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/indoor-cat-vet-care-header.webp" alt="Kitten first vet visit at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Cat Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Your Kitten&rsquo;s First Vet Visit in Alhambra: What to Expect &amp; What to Bring</h3><p class="mag-excerpt">Vaccines, FIV/FeLV testing, deworming, microchipping — exactly what happens at a kitten's first vet visit and when to schedule it.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- kitten-first-vet-visit-alhambra -->
+        <a href="kitten-first-vet-visit-alhambra" class="mag-card" data-cat="dog-cat" data-date="20260125" data-views="1560">
+          <div class="mag-img"><img src="../images/blog/indoor-cat-vet-care-header.webp" alt="Kitten first vet visit at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Cat Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Jan 2026 &middot; 6 min</p><h3 class="mag-title">Your Kitten&rsquo;s First Vet Visit in Alhambra: What to Expect &amp; What to Bring</h3><p class="mag-excerpt">Vaccines, FIV/FeLV testing, deworming, microchipping — exactly what happens at a kitten's first vet visit and when to schedule it.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 59 chinchilla-not-eating-alhambra -->
-        <a href="chinchilla-not-eating-alhambra" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/chinchilla-health-header.webp" alt="Chinchilla not eating — exotic vet at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Small Animal</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Chinchilla Not Eating? Here&rsquo;s What It Means and What to Do</h3><p class="mag-excerpt">Dental disease, GI stasis, respiratory infection — the most common reasons a chinchilla stops eating and why 12–24 hours is urgent.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- chinchilla-not-eating-alhambra -->
+        <a href="chinchilla-not-eating-alhambra" class="mag-card" data-cat="exotic" data-date="20260201" data-views="1520">
+          <div class="mag-img"><img src="../images/blog/chinchilla-health-header.webp" alt="Chinchilla not eating — exotic vet at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Small Animal</span></div>
+          <div class="mag-body"><p class="mag-meta">Feb 2026 &middot; 5 min</p><h3 class="mag-title">Chinchilla Not Eating? Here&rsquo;s What It Means and What to Do</h3><p class="mag-excerpt">Dental disease, GI stasis, respiratory infection — the most common reasons a chinchilla stops eating and why 12–24 hours is urgent.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 60 pet-laser-therapy-explained -->
-        <a href="pet-laser-therapy-explained" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/pet-laser-therapy-header.webp" alt="Laser therapy for pets at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Vet Services</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">What Is Laser Therapy for Pets &mdash; and Does It Really Work?</h3><p class="mag-excerpt">Photobiomodulation therapy explained: how it works, what conditions it treats, and what to realistically expect for your pet.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-laser-therapy-explained -->
+        <a href="pet-laser-therapy-explained" class="mag-card" data-cat="wellness" data-date="20260205" data-views="1280">
+          <div class="mag-img"><img src="../images/blog/pet-laser-therapy-header.webp" alt="Laser therapy for pets at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Vet Services</span></div>
+          <div class="mag-body"><p class="mag-meta">Feb 2026 &middot; 6 min</p><h3 class="mag-title">What Is Laser Therapy for Pets &mdash; and Does It Really Work?</h3><p class="mag-excerpt">Photobiomodulation therapy explained: how it works, what conditions it treats, and what to realistically expect for your pet.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 61 sick-bird-signs -->
-        <a href="sick-bird-signs" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/sick-bird-signs-header.webp" alt="Signs your bird is sick at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Bird Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Signs Your Bird Is Sick: What Parrot &amp; Conure Owners Need to Know</h3><p class="mag-excerpt">Birds hide illness until they can't. The subtle early signs most owners miss — and the emergency signs that need same-day attention.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- sick-bird-signs -->
+        <a href="sick-bird-signs" class="mag-card" data-cat="exotic" data-date="20260210" data-views="1820">
+          <div class="mag-img"><img src="../images/blog/sick-bird-signs-header.webp" alt="Signs your bird is sick at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Bird Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Feb 2026 &middot; 5 min</p><h3 class="mag-title">Signs Your Bird Is Sick: What Parrot &amp; Conure Owners Need to Know</h3><p class="mag-excerpt">Birds hide illness until they can't. The subtle early signs most owners miss — and the emergency signs that need same-day attention.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 62 bearded-dragon-shedding -->
-        <a href="bearded-dragon-shedding" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/bearded-dragon-shed-header.webp" alt="Bearded dragon shedding problems at SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Reptile Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Bearded Dragon Shedding Problems: When to Worry</h3><p class="mag-excerpt">Stuck shed on toes and tail tips can cut off circulation within days. What dysecdysis is, how to help at home, and when to call a vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- bearded-dragon-shedding -->
+        <a href="bearded-dragon-shedding" class="mag-card" data-cat="exotic" data-date="20260215" data-views="2340">
+          <div class="mag-img"><img src="../images/blog/bearded-dragon-shed-header.webp" alt="Bearded dragon shedding problems at SPAH" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Reptile Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Feb 2026 &middot; 5 min</p><h3 class="mag-title">Bearded Dragon Shedding Problems: When to Worry</h3><p class="mag-excerpt">Stuck shed on toes and tail tips can cut off circulation within days. What dysecdysis is, how to help at home, and when to call a vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 63 pet-microchipping-alhambra -->
-        <a href="pet-microchipping-alhambra" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/pet-microchipping-header.webp" alt="Pet microchipping in Alhambra at SPAH" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Preventive Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Microchipping Your Pet in Alhambra: What to Expect</h3><p class="mag-excerpt">A microchip takes seconds and can reunite you with a lost pet years later. The procedure, registration, and why indoor pets need one too.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- pet-microchipping-alhambra -->
+        <a href="pet-microchipping-alhambra" class="mag-card" data-cat="wellness" data-date="20260220" data-views="1340">
+          <div class="mag-img"><img src="../images/blog/pet-microchipping-header.webp" alt="Pet microchipping in Alhambra at SPAH" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Preventive Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Feb 2026 &middot; 5 min</p><h3 class="mag-title">Microchipping Your Pet in Alhambra: What to Expect</h3><p class="mag-excerpt">A microchip takes seconds and can reunite you with a lost pet years later. The procedure, registration, and why indoor pets need one too.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 64 rabbit-dental-disease -->
-        <a href="rabbit-dental-disease" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/rabbit-dental-header.webp" alt="Rabbit dental disease at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Rabbit Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Why Is My Rabbit Grinding Its Teeth? A Guide to Rabbit Dental Disease</h3><p class="mag-excerpt">Rabbit dental disease is common and commonly missed. The subtle signs, why cheek teeth are the real danger, and what treatment looks like.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- rabbit-dental-disease -->
+        <a href="rabbit-dental-disease" class="mag-card" data-cat="exotic" data-date="20260225" data-views="1980">
+          <div class="mag-img"><img src="../images/blog/rabbit-dental-header.webp" alt="Rabbit dental disease at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Rabbit Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Feb 2026 &middot; 6 min</p><h3 class="mag-title">Why Is My Rabbit Grinding Its Teeth? A Guide to Rabbit Dental Disease</h3><p class="mag-excerpt">Rabbit dental disease is common and commonly missed. The subtle signs, why cheek teeth are the real danger, and what treatment looks like.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 65 cat-hyperthyroidism -->
-        <a href="cat-hyperthyroidism" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/cat-hyperthyroidism-header.webp" alt="Cat hyperthyroidism at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Cat Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">Cat Hyperthyroidism: Signs, Diagnosis &amp; Treatment</h3><p class="mag-excerpt">The most common hormonal disorder in older cats — and one of the most frequently missed. Weight loss with a good appetite is the classic red flag.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- cat-hyperthyroidism -->
+        <a href="cat-hyperthyroidism" class="mag-card" data-cat="dog-cat" data-date="20260301" data-views="2440">
+          <div class="mag-img"><img src="../images/blog/cat-hyperthyroidism-header.webp" alt="Cat hyperthyroidism at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Cat Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Mar 2026 &middot; 7 min</p><h3 class="mag-title">Cat Hyperthyroidism: Signs, Diagnosis &amp; Treatment</h3><p class="mag-excerpt">The most common hormonal disorder in older cats — and one of the most frequently missed. Weight loss with a good appetite is the classic red flag.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 66 dog-anxiety-alhambra -->
-        <a href="dog-anxiety-alhambra" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/dog-anxiety-header.webp" alt="Dog anxiety at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Dog Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 7 min read</p><h3 class="mag-title">Dog Anxiety in LA: Signs, Causes &amp; What Your Vet Can Do</h3><p class="mag-excerpt">Anxiety is one of the most undertreated conditions in dogs. Signs, common triggers, and the evidence-based treatment options that actually work.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- dog-anxiety-alhambra -->
+        <a href="dog-anxiety-alhambra" class="mag-card" data-cat="dog-cat" data-date="20260305" data-views="1600">
+          <div class="mag-img"><img src="../images/blog/dog-anxiety-header.webp" alt="Dog anxiety at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Dog Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Mar 2026 &middot; 7 min</p><h3 class="mag-title">Dog Anxiety in LA: Signs, Causes &amp; What Your Vet Can Do</h3><p class="mag-excerpt">Anxiety is one of the most undertreated conditions in dogs. Signs, common triggers, and the evidence-based treatment options that actually work.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 67 guinea-pig-dental-diet -->
-        <a href="guinea-pig-dental-diet" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/guinea-pig-dental-header.webp" alt="Guinea pig dental and diet at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Small Animal</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Guinea Pig Teeth &amp; Diet: Why Food Affects Their Whole Body</h3><p class="mag-excerpt">Dental disease in guinea pigs is almost always a diet problem. What they actually need to eat, the signs of trouble, and why hay is non-negotiable.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- guinea-pig-dental-diet -->
+        <a href="guinea-pig-dental-diet" class="mag-card" data-cat="exotic" data-date="20260310" data-views="1740">
+          <div class="mag-img"><img src="../images/blog/guinea-pig-dental-header.webp" alt="Guinea pig dental and diet at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Small Animal</span></div>
+          <div class="mag-body"><p class="mag-meta">Mar 2026 &middot; 6 min</p><h3 class="mag-title">Guinea Pig Teeth &amp; Diet: Why Food Affects Their Whole Body</h3><p class="mag-excerpt">Dental disease in guinea pigs is almost always a diet problem. What they actually need to eat, the signs of trouble, and why hay is non-negotiable.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 68 signs-cat-is-sick -->
-        <a href="signs-cat-is-sick" class="mag-card" data-cat="dog-cat">
-          <div class="mag-img"><img src="../images/blog/signs-cat-sick-header.webp" alt="Signs your cat is sick at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-dc">Cat Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">How to Tell If Your Cat Is Sick: 10 Signs Owners Miss</h3><p class="mag-excerpt">Cats hide illness brilliantly. The 10 subtle signs — from hiding to a visible third eyelid — and why "wait and see" is often the wrong call.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- signs-cat-is-sick -->
+        <a href="signs-cat-is-sick" class="mag-card" data-cat="dog-cat" data-date="20260315" data-views="2640">
+          <div class="mag-img"><img src="../images/blog/signs-cat-sick-header.webp" alt="Signs your cat is sick at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-dc">Cat Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Mar 2026 &middot; 6 min</p><h3 class="mag-title">How to Tell If Your Cat Is Sick: 10 Signs Owners Miss</h3><p class="mag-excerpt">Cats hide illness brilliantly. The 10 subtle signs — from hiding to a visible third eyelid — and why "wait and see" is often the wrong call.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 69 rabbit-bonding-101 -->
-        <a href="rabbit-bonding-101" class="mag-card" data-cat="exotic">
-          <div class="mag-img"><img src="../images/blog/rabbit-bonding-header.webp" alt="Rabbit bonding guide at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-exotic">Rabbit Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 6 min read</p><h3 class="mag-title">Rabbit Bonding 101: How to Safely Introduce a Second Rabbit</h3><p class="mag-excerpt">Bonding two rabbits takes patience, a neutral space, and usually a spay/neuter first. A step-by-step guide from an Alhambra exotic vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- rabbit-bonding-101 -->
+        <a href="rabbit-bonding-101" class="mag-card" data-cat="exotic" data-date="20260320" data-views="2080">
+          <div class="mag-img"><img src="../images/blog/rabbit-bonding-header.webp" alt="Rabbit bonding guide at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-exotic">Rabbit Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Mar 2026 &middot; 6 min</p><h3 class="mag-title">Rabbit Bonding 101: How to Safely Introduce a Second Rabbit</h3><p class="mag-excerpt">Bonding two rabbits takes patience, a neutral space, and usually a spay/neuter first. A step-by-step guide from an Alhambra exotic vet.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 70 dog-ear-cytology -->
-        <a href="dog-ear-cytology" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/dog-ear-cytology-header.webp" alt="Dog ear cytology at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Dog Health</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Dog Ear Cytology: What It Is, When It&rsquo;s Done &amp; What It Costs</h3><p class="mag-excerpt">Ear cytology reveals exactly what's causing your dog's ear infection — yeast, bacteria, or mites — so treatment targets the right organism the first time.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- dog-ear-cytology -->
+        <a href="dog-ear-cytology" class="mag-card" data-cat="wellness" data-date="20260401" data-views="1420">
+          <div class="mag-img"><img src="../images/blog/dog-ear-cytology-header.webp" alt="Dog ear cytology at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Dog Health</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 5 min</p><h3 class="mag-title">Dog Ear Cytology: What It Is, When It&rsquo;s Done &amp; What It Costs</h3><p class="mag-excerpt">Ear cytology reveals exactly what's causing your dog's ear infection — yeast, bacteria, or mites — so treatment targets the right organism the first time.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
-        <!-- 71 dog-fecal-test-cost -->
-        <a href="dog-fecal-test-cost" class="mag-card" data-cat="wellness">
-          <div class="mag-img"><img src="../images/blog/dog-fecal-test-cost-header.webp" alt="Dog fecal test cost at SPAH Alhambra" width="600" height="315" loading="lazy" /><span class="cat-badge badge-well">Preventive Care</span></div>
-          <div class="mag-body"><p class="mag-meta">2025 &middot; 5 min read</p><h3 class="mag-title">Dog Fecal Test: What It Checks For, How It Works &amp; What It Costs</h3><p class="mag-excerpt">A fecal test screens for roundworms, hookworms, giardia, coccidia, and more — parasites you can't see any other way.</p><p class="mag-readmore">Read more &rarr;</p></div>
+        <!-- dog-fecal-test-cost -->
+        <a href="dog-fecal-test-cost" class="mag-card" data-cat="wellness" data-date="20260408" data-views="1380">
+          <div class="mag-img"><img src="../images/blog/dog-fecal-test-cost-header.webp" alt="Dog fecal test cost at SPAH Alhambra" width="600" height="315" loading="lazy"><span class="cat-badge badge-well">Preventive Care</span></div>
+          <div class="mag-body"><p class="mag-meta">Apr 2026 &middot; 5 min</p><h3 class="mag-title">Dog Fecal Test: What It Checks For, How It Works &amp; What It Costs</h3><p class="mag-excerpt">A fecal test screens for roundworms, hookworms, giardia, coccidia, and more — parasites you can't see any other way.</p><p class="mag-readmore">Read more &rarr;</p></div>
         </a>
 
       </div><!-- /mag-grid -->
@@ -624,7 +788,7 @@
             <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Contact</h4>
             <div class="flex flex-col gap-2">
               <p class="font-body text-dark text-sm">3116 W Main St<br />Alhambra, CA 91801</p>
-              <a href="tel:6264411314"    class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">(626) 441-1314</a>
+              <a href="tel:6264411314"     class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">(626) 441-1314</a>
               <a href="mailto:info@spah.la" class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">info@spah.la</a>
               <div class="flex gap-3 mt-1">
                 <a href="https://www.instagram.com/southpasah" target="_blank" rel="noopener noreferrer" aria-label="Instagram" class="text-dark/60 hover:text-brand transition-colors duration-200">
@@ -656,21 +820,46 @@
       m.classList.toggle('flex');
     });
 
-    // ── Blog filter + pagination ──
+    // ══════════════════════════════════════
+    //  Blog: Filter + Sort + Pagination
+    // ══════════════════════════════════════
     const PER_PAGE = 9;
     let currentFilter = 'all';
     let currentPage   = 1;
+    let currentSort   = 'newest';
 
-    const allCards = Array.from(document.querySelectorAll('.mag-card'));
-    const countEl  = document.getElementById('articleCount');
-    const pagEl    = document.getElementById('pagination');
-    const toolbar  = document.querySelector('.mag-toolbar');
+    // Live array — order reflects current sort
+    let cards = Array.from(document.querySelectorAll('.mag-card'));
+    const grid    = document.getElementById('cardGrid');
+    const countEl = document.getElementById('articleCount');
+    const pagEl   = document.getElementById('pagination');
+    const toolbar = document.querySelector('.mag-toolbar');
 
-    function getFiltered() {
-      if (currentFilter === 'all') return allCards;
-      return allCards.filter(c => c.dataset.cat.split(' ').includes(currentFilter));
+    // ── Sort cards array + reorder DOM ──
+    function applySort() {
+      if (currentSort === 'newest') {
+        cards.sort((a, b) => parseInt(b.dataset.date)  - parseInt(a.dataset.date));
+      } else if (currentSort === 'oldest') {
+        cards.sort((a, b) => parseInt(a.dataset.date)  - parseInt(b.dataset.date));
+      } else if (currentSort === 'views') {
+        cards.sort((a, b) => parseInt(b.dataset.views) - parseInt(a.dataset.views));
+      } else if (currentSort === 'az') {
+        cards.sort((a, b) => {
+          const ta = a.querySelector('.mag-title').textContent.trim();
+          const tb = b.querySelector('.mag-title').textContent.trim();
+          return ta.localeCompare(tb);
+        });
+      }
+      cards.forEach(c => grid.appendChild(c)); // reorder DOM
     }
 
+    // ── Filtered subset (respects current sort order) ──
+    function getFiltered() {
+      if (currentFilter === 'all') return cards;
+      return cards.filter(c => c.dataset.cat.split(' ').includes(currentFilter));
+    }
+
+    // ── Render page + pagination ──
     function render() {
       const filtered = getFiltered();
       const total    = filtered.length;
@@ -678,14 +867,12 @@
       const start    = (currentPage - 1) * PER_PAGE;
       const end      = start + PER_PAGE;
 
-      // Hide all, then show current page
-      allCards.forEach(c => { c.style.display = 'none'; });
+      cards.forEach(c => { c.style.display = 'none'; });
       filtered.slice(start, end).forEach(c => { c.style.display = 'flex'; });
 
-      // Update count
       countEl.textContent = total;
 
-      // Render pagination
+      // Pagination buttons
       pagEl.innerHTML = '';
       if (pages <= 1) return;
       for (let i = 1; i <= pages; i++) {
@@ -696,9 +883,7 @@
         btn.addEventListener('click', () => {
           currentPage = i;
           render();
-          // Scroll to toolbar
-          const top = toolbar.getBoundingClientRect().top + window.scrollY - 8;
-          window.scrollTo({ top, behavior: 'smooth' });
+          window.scrollTo({ top: toolbar.getBoundingClientRect().top + window.scrollY - 8, behavior: 'smooth' });
         });
         pagEl.appendChild(btn);
       }
@@ -715,7 +900,16 @@
       });
     });
 
-    // Init
+    // ── Sort select ──
+    document.getElementById('sortSelect').addEventListener('change', e => {
+      currentSort = e.target.value;
+      currentPage = 1;
+      applySort();
+      render();
+    });
+
+    // ── Init ──
+    applySort(); // default: newest first
     render();
   </script>
 </body>
