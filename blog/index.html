@@ -184,7 +184,8 @@
     .mag-sort-select:hover, .mag-sort-select:focus { border-color:#5A7FA6; outline:none; }
     @media(max-width:640px){
       .mag-toolbar-inner { gap:0.5rem; padding:0.25rem 1rem; }
-      .mag-tabs { order:3; width:100%; justify-content:flex-start; padding:0.25rem 0 0.5rem; }
+      .mag-tabs { order:3; width:100%; justify-content:flex-start; padding:0.25rem 0 0.5rem; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; }
+      .mag-tabs::-webkit-scrollbar { display:none; }
       .mag-sort-label { display:none; }
     }
 
