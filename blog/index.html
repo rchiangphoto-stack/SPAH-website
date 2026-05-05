@@ -29,129 +29,205 @@
     .nav-link:hover::after { transform:scaleX(1); }
 
     /* ════════════════════════════════════
-       MAGAZINE HERO — Editorial redesign
+       CONTAINER SCROLL HERO
+       Ported from Aceternity UI ContainerScroll
     ════════════════════════════════════ */
-    .mag-hero {
+
+    /* Outer container — sets the scroll-tracking zone */
+    .cs-outer {
       position: relative;
+      background: linear-gradient(175deg, #07090f 0%, #0D1520 55%, #111c2c 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 5rem 1.5rem 5.5rem;
+      overflow: clip;
+    }
+
+    /* Perspective wrapper — parent that gives the 3-D space */
+    .cs-perspective {
       width: 100%;
+      max-width: 880px;
+      perspective: 1000px;
+    }
+
+    /* ── Title block ── */
+    .cs-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      position: relative;
+      z-index: 2;
+      will-change: transform;
+    }
+    .cs-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(122,158,142,0.85);
+      margin-bottom: 1rem;
+    }
+    .cs-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.9rem, 4.5vw, 3.25rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+      letter-spacing: -0.01em;
+    }
+    .cs-title span { color: #7A9E8E; }
+    .cs-subtitle {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.42);
+      max-width: 400px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* ── The rotating / scaling card ── */
+    .cs-card {
+      position: relative;
+      z-index: 1;
+      border: 3px solid rgba(108,108,108,0.5);
+      border-radius: 28px;
+      padding: 6px;
+      background: #1a1a1e;
+      box-shadow:
+        0 0 #0000004d,
+        0 9px 20px #0000004a,
+        0 37px 37px #00000042,
+        0 84px 50px #00000026,
+        0 149px 60px #0000000a;
+      will-change: transform;
+      transform-origin: top center;
+      /* start tilted — JS will un-tilt on scroll */
+      transform: rotateX(18deg) scale(1.05);
+    }
+    .cs-card-inner {
+      border-radius: 22px;
       overflow: hidden;
-      background: #0D1520;
+      height: 430px;
+      position: relative;
+      background: #111;
     }
-    /* thin brand-colour left rail */
-    .mag-hero::before {
-      content: '';
-      position: absolute;
-      left: 0; top: 0; bottom: 0;
-      width: 4px;
-      background: linear-gradient(to bottom, #5A7FA6 0%, #7A9E8E 100%);
-      z-index: 3;
-    }
-    .mag-hero-img {
-      width: 100%;
-      height: 560px;
-      object-fit: cover;
-      object-position: center;
+
+    /* ── Featured article inside the card ── */
+    .cs-featured {
       display: block;
-      /* pull image to right so the subject shows behind text */
-      object-position: 65% center;
+      height: 100%;
+      position: relative;
+      text-decoration: none;
     }
-    /* two-layer gradient: strong left panel + subtle bottom vignette */
-    .mag-hero-overlay {
+    .cs-feat-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 65% center;
+      display: block;
+    }
+    .cs-feat-overlay {
       position: absolute;
       inset: 0;
       background:
         linear-gradient(100deg,
-          rgba(13,21,32,0.97)  0%,
-          rgba(13,21,32,0.91)  28%,
-          rgba(13,21,32,0.62)  50%,
-          rgba(13,21,32,0.22)  70%,
-          transparent          100%),
-        linear-gradient(to top,
-          rgba(13,21,32,0.55)  0%,
-          transparent          35%);
+          rgba(7,9,15,0.97)  0%,
+          rgba(7,9,15,0.90)  26%,
+          rgba(7,9,15,0.58)  52%,
+          rgba(7,9,15,0.18)  72%,
+          transparent        100%),
+        linear-gradient(to top, rgba(7,9,15,0.5) 0%, transparent 38%);
       display: flex;
       align-items: center;
-      text-decoration: none;
     }
-    .mag-hero-content {
-      max-width: 72rem;
-      margin: 0 auto;
-      padding: 3.5rem 2.5rem;
-      width: 100%;
+    .cs-feat-content {
+      padding: 2rem 2.5rem;
+      max-width: 460px;
     }
-    /* text constrained to left ~46% */
-    .mag-hero-inner {
-      max-width: 500px;
-      padding-left: 1rem;
-      border-left: 2px solid rgba(90,127,166,0.55);
-    }
-    /* "FEATURED STORY" eyebrow row */
-    .mag-eyebrow {
-      display: flex;
-      align-items: center;
-      gap: 0.65rem;
-      margin-bottom: 0.9rem;
-    }
-    .mag-eyebrow-text {
+    .cs-feat-eyebrow {
       font-family: 'Lato', sans-serif;
-      font-size: 0.65rem;
+      font-size: 0.6rem;
       font-weight: 700;
-      letter-spacing: 0.14em;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
       color: #7A9E8E;
-      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 0.55rem;
+      margin-bottom: 0.65rem;
     }
-    .mag-eyebrow-rule {
-      width: 60px;
-      height: 1.5px;
-      background: rgba(122,158,142,0.5);
+    .cs-feat-eyebrow::after {
+      content: '';
+      display: inline-block;
+      width: 44px; height: 1.5px;
+      background: rgba(122,158,142,0.45);
       flex-shrink: 0;
     }
-    .mag-hero-inner h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: clamp(1.85rem, 3.4vw, 3rem);
+    .cs-feat-badge {
+      display: inline-block;
+      padding: 0.22rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.6rem;
       font-weight: 700;
-      color: #fff;
-      line-height: 1.16;
-      letter-spacing: -0.015em;
-      margin: 0.75rem 0 1rem;
-    }
-    .hero-excerpt {
-      color: rgba(255,255,255,0.68);
-      font-size: 0.97rem;
-      line-height: 1.68;
-      margin-bottom: 1.1rem;
-    }
-    .hero-meta {
-      color: rgba(255,255,255,0.45);
-      font-size: 0.7rem;
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      margin-bottom: 1.6rem;
+      background: rgba(252,228,236,0.92);
+      color: #B71C1C;
+      margin-bottom: 0.75rem;
     }
-    .hero-btn {
+    .cs-feat-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(1.3rem, 2.6vw, 2rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.18;
+      letter-spacing: -0.015em;
+      margin-bottom: 0.7rem;
+    }
+    .cs-feat-excerpt {
+      color: rgba(255,255,255,0.62);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.87rem;
+      line-height: 1.62;
+      margin-bottom: 0.9rem;
+    }
+    .cs-feat-meta {
+      color: rgba(255,255,255,0.38);
+      font-family: 'Lato', sans-serif;
+      font-size: 0.67rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+    .cs-feat-btn {
       display: inline-flex;
       align-items: center;
-      gap: 0.45rem;
+      gap: 0.4rem;
       background: #5A7FA6;
       color: #fff;
-      font-weight: 700;
       font-family: 'Lato', sans-serif;
-      font-size: 0.8rem;
-      padding: 0.62rem 1.4rem;
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 0.55rem 1.2rem;
       border-radius: 9999px;
       letter-spacing: 0.04em;
       transition: background 0.2s, transform 0.2s;
     }
-    .hero-btn:hover { background: #4A6D92; transform: translateX(3px); }
+    .cs-featured:hover .cs-feat-btn { background: #4A6D92; transform: translateX(3px); }
+
+    /* ── Responsive ── */
     @media(max-width:768px){
-      .mag-hero-img { height: 420px; object-position: 70% center; }
-      .mag-hero-inner { max-width: 85%; }
+      .cs-outer { padding: 3.5rem 1rem 4rem; }
+      .cs-card { transform: rotateX(18deg) scale(0.78); }
+      .cs-card-inner { height: 300px; }
+      .cs-feat-content { padding: 1.25rem 1.5rem; }
+      .cs-feat-excerpt { display: none; }
     }
     @media(max-width:480px){
-      .mag-hero-img { height: 360px; }
-      .mag-hero-inner { max-width: 100%; padding-left: 0.75rem; }
-      .mag-hero-inner h2 { font-size: 1.6rem; }
+      .cs-card-inner { height: 260px; }
+      .cs-feat-title { font-size: 1.2rem; }
     }
 
     /* ─── Category Badges ─── */
@@ -253,37 +329,45 @@
   </nav>
 
   <!-- ══════════════════════════════════
-       FEATURED HERO — editorial layout
+       CONTAINER SCROLL HERO
+       3-D perspective card that rotates flat on scroll
   ══════════════════════════════════ -->
-  <section class="mag-hero">
-    <img src="../images/blog/bird-vet-care-alhambra-header.webp"
-         alt="Colorful parrot — pet bird vet in Alhambra at South Pasadena Animal Hospital"
-         class="mag-hero-img" width="1200" height="630" loading="eager" />
-    <a href="bird-vet-care-alhambra" class="mag-hero-overlay">
-      <div class="mag-hero-content">
-        <div class="mag-hero-inner">
-          <!-- Eyebrow -->
-          <div class="mag-eyebrow">
-            <span class="mag-eyebrow-text">Featured Story</span>
-            <div class="mag-eyebrow-rule"></div>
-          </div>
-          <!-- Category -->
-          <span class="cat-badge badge-exotic">Bird Care</span>
-          <!-- Title -->
-          <h2>Pet Bird Vet<br>in Alhambra</h2>
-          <!-- Excerpt -->
-          <p class="hero-excerpt">Pet birds show illness slowly — until they can&rsquo;t. SPAH sees parrots, cockatiels, conures, and finches in Alhambra with in-house diagnostics and same-day urgent care.</p>
-          <!-- Meta -->
-          <p class="hero-meta">May 2026 &nbsp;&middot;&nbsp; 7 min read</p>
-          <!-- CTA -->
-          <span class="hero-btn">
-            Read Article
-            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-          </span>
+  <div class="cs-outer" id="csOuter">
+    <div class="cs-perspective">
+
+      <!-- Title / tagline — floats upward on scroll -->
+      <div class="cs-header" id="csHeader">
+        <p class="cs-eyebrow">South Pasadena Animal Hospital</p>
+        <h1 class="cs-title">Expert Pet Care<br><span>Insights &amp; Stories</span></h1>
+        <p class="cs-subtitle">Practical veterinary advice for dogs, cats, reptiles, birds &amp; exotic pets</p>
+      </div>
+
+      <!-- Rotating card — tilts from 18° to flat on scroll -->
+      <div class="cs-card" id="csCard">
+        <div class="cs-card-inner">
+          <a href="bird-vet-care-alhambra" class="cs-featured">
+            <img src="../images/blog/bird-vet-care-alhambra-header.webp"
+                 alt="Colorful parrot — pet bird vet Alhambra at South Pasadena Animal Hospital"
+                 class="cs-feat-img" width="1200" height="630" loading="eager" />
+            <div class="cs-feat-overlay">
+              <div class="cs-feat-content">
+                <div class="cs-feat-eyebrow">Featured Story</div>
+                <span class="cs-feat-badge">Bird Care</span>
+                <h2 class="cs-feat-title">Pet Bird Vet<br>in Alhambra</h2>
+                <p class="cs-feat-excerpt">Pet birds show illness slowly — until they can&rsquo;t. SPAH sees parrots, cockatiels, conures, and finches with in-house diagnostics and same-day urgent care.</p>
+                <p class="cs-feat-meta">May 2026 &nbsp;&middot;&nbsp; 7 min read</p>
+                <span class="cs-feat-btn">
+                  Read Article
+                  <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-    </a>
-  </section>
+
+    </div>
+  </div>
 
   <!-- ══════════════════════════════════
        FILTER + SORT TOOLBAR
@@ -814,6 +898,43 @@
   </footer>
 
   <script>
+    // ══════════════════════════════════════
+    //  ContainerScroll — 3-D perspective animation
+    //  Mirrors framer-motion ContainerScroll from Aceternity UI
+    //  rotateX: 18→0, scale: 1.05→1 (desktop) / 0.78→0.92 (mobile)
+    //  header translateY: 0→-80px
+    // ══════════════════════════════════════
+    (function() {
+      var outer  = document.getElementById('csOuter');
+      var card   = document.getElementById('csCard');
+      var header = document.getElementById('csHeader');
+      if (!outer || !card) return;
+
+      function lerp(a, b, t) { return a + (b - a) * t; }
+
+      function tick() {
+        var rect = outer.getBoundingClientRect();
+        var vh   = window.innerHeight;
+        var mob  = window.innerWidth <= 768;
+
+        // progress: 0 = card entering viewport from bottom
+        //           1 = animation complete (outer centred in view)
+        var progress = (vh - rect.top) / (vh * 0.9);
+        progress = Math.max(0, Math.min(1, progress));
+
+        var rotate = lerp(18, 0, progress);
+        var scale  = lerp(mob ? 0.78 : 1.05, mob ? 0.92 : 1, progress);
+        var ty     = lerp(0, -80, progress);
+
+        card.style.transform   = 'rotateX(' + rotate + 'deg) scale(' + scale + ')';
+        header.style.transform = 'translateY(' + ty + 'px)';
+      }
+
+      window.addEventListener('scroll', tick, { passive: true });
+      window.addEventListener('resize', tick, { passive: true });
+      tick(); // run once on load
+    })();
+
     // ── Mobile nav ──
     document.getElementById('menuBtn').addEventListener('click', () => {
       const m = document.getElementById('mobileMenu');
