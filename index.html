@@ -162,11 +162,17 @@
       .footer-contact-col { padding-left:1rem; border-left:1px solid rgba(42,52,66,0.08); }
       .footer-areas-col { grid-column:1/-1; border-top:1px solid rgba(42,52,66,0.08); padding-top:1.25rem; margin-top:0.25rem; }
       .footer-areas-links { display:grid; grid-template-columns:repeat(2,1fr); gap:0.375rem 1.5rem; }
+      .areas-chevron { display:none; }
     }
-    /* Footer desktop: restore middle-column order for Areas We Serve */
+    /* Footer desktop: Areas We Serve is col 3 (natural HTML order) as a click-to-open dropdown */
     @media (min-width:768px) {
-      .footer-areas-col { order:2; }
-      .footer-contact-col { order:3; }
+      .footer-areas-header { display:flex; align-items:center; gap:0.4rem; cursor:pointer; user-select:none; }
+      .footer-areas-header h4 { margin-bottom:0; }
+      .footer-areas-header:hover h4 { color:rgba(42,52,66,0.6); }
+      .areas-chevron { width:12px; height:12px; opacity:0.45; flex-shrink:0; transition:transform 0.22s ease; }
+      .footer-areas-col.is-open .areas-chevron { transform:rotate(180deg); }
+      .footer-areas-links { display:none; }
+      .footer-areas-col.is-open .footer-areas-links { display:flex; flex-direction:column; gap:0.5rem; margin-top:0.75rem; }
     }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
@@ -882,9 +888,12 @@
               </div>
             </div>
           </div>
-          <!-- Full-width mobile / Col 2 desktop: Areas We Serve -->
-          <div class="footer-areas-col">
-            <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Areas We Serve</h4>
+          <!-- Full-width mobile / Col 3 desktop: Areas We Serve (desktop = dropdown) -->
+          <div class="footer-areas-col" id="footerAreasCol">
+            <div class="footer-areas-header" id="footerAreasHeader">
+              <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Areas We Serve</h4>
+              <svg class="areas-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+            </div>
             <div class="footer-areas-links">
               <a href="/vet-alhambra"       class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Alhambra</a>
               <a href="/vet-south-pasadena" class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">South Pasadena</a>
@@ -936,6 +945,17 @@
     // through a horizontal-only scroll container to the page automatically.
     // The old passive:false + e.preventDefault() + window.scrollBy() approach broke
     // desktop scroll by stacking smooth-scroll animations. No handler needed.
+
+    // Areas We Serve dropdown — desktop only
+    (function() {
+      var hdr = document.getElementById('footerAreasHeader');
+      if (!hdr) return;
+      hdr.addEventListener('click', function() {
+        if (window.innerWidth < 768) return;
+        var col = document.getElementById('footerAreasCol');
+        col.classList.toggle('is-open');
+      });
+    })();
 
     // Sticky mobile CTA bar — show after scrolling past hero
     (function() {
