@@ -148,8 +148,11 @@
   <style>
     /* IMPORTANT: overflow-x:hidden must ONLY go on body, never on html.
        Setting it on html hijacks the viewport scroll root → breaks window.scrollBy,
-       sticky nav, and all mouse-wheel scroll on desktop. */
-    html { scroll-behavior: smooth; }
+       sticky nav, and all mouse-wheel scroll on desktop.
+       scroll-behavior:smooth on html is also intentionally omitted — it makes every
+       programmatic scrollBy() animated, stacking animations on rapid wheel spin and
+       freezing desktop scroll. Anchor-link smooth scroll is handled via CSS below. */
+    html { scroll-padding-top: 90px; } /* offset for sticky nav on anchor jumps */
     body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; overflow-x: hidden; overscroll-behavior-y: none; }
     /* Footer mobile: add divider line before Areas We Serve and Contact */
     @media (max-width:767px) {
@@ -646,7 +649,7 @@
         </button>
 
         <!-- Scrollable track -->
-        <div id="reviewTrack" class="flex gap-6 overflow-x-auto scroll-smooth pb-4 -mx-2 px-2 snap-x snap-mandatory" style="scrollbar-width:none; -ms-overflow-style:none;">
+        <div id="reviewTrack" class="flex gap-6 overflow-x-auto scroll-smooth pb-4 -mx-2 px-2 snap-x snap-mandatory" style="scrollbar-width:none; -ms-overflow-style:none; overscroll-behavior-x:contain;">
           <style>#reviewTrack::-webkit-scrollbar { display:none; }</style>
 
           <!-- Review 1 – Scott J. (Yelp) -->
@@ -916,14 +919,24 @@
       const cardWidth = (card ? card.offsetWidth : 340) + 24;
       track.scrollTo({ left: page * cardWidth * 3, behavior: 'smooth' });
     }
-    // Prevent carousel from swallowing vertical mouse-wheel scroll
-    document.getElementById('reviewTrack').addEventListener('wheel', function(e) {
-      // If the user is scrolling more vertically than horizontally, let the page handle it
-      if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-        e.preventDefault();
-        window.scrollBy({ top: e.deltaY, behavior: 'auto' });
+    // Modern browsers (Chrome 61+, Firefox 55+, Safari 15+) pass vertical wheel scroll
+    // through a horizontal-only scroll container to the page automatically.
+    // The old passive:false + e.preventDefault() + window.scrollBy() approach broke
+    // desktop scroll by stacking smooth-scroll animations. No handler needed.
+
+    // Sticky mobile CTA bar — show after scrolling past hero
+    (function() {
+      var bar = document.getElementById('sticky-cta');
+      if (bar && window.innerWidth < 768) {
+        var heroEl = document.querySelector('.moved-hero');
+        var shown = false;
+        window.addEventListener('scroll', function() {
+          var threshold = heroEl ? heroEl.offsetTop + heroEl.offsetHeight + 200 : 300;
+          if (window.scrollY > threshold && !shown) { shown = true; bar.style.opacity = '1'; bar.style.transform = 'translateY(0)'; bar.style.pointerEvents = 'auto'; }
+          else if (window.scrollY <= threshold && shown) { shown = false; bar.style.opacity = '0'; bar.style.transform = 'translateY(12px)'; bar.style.pointerEvents = 'none'; }
+        }, { passive: true });
       }
-    }, { passive: false });
+    })();
 
     // Update dots on scroll
     document.getElementById('reviewTrack').addEventListener('scroll', function() {
@@ -947,91 +960,10 @@
 
 
 
-  <!-- GSAP (loaded here at bottom to avoid render-blocking) -->
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <!-- GSAP Hero Animation — only runs if original hero (#spah-hero) is active -->
-  <script>
-    function initGSAPAnimations() {
-      gsap.registerPlugin(ScrollTrigger);
-
-      // Only run scroll-hero animation if the original hero section exists (not commented out)
-      var spahHero = document.getElementById('spah-hero');
-      if (spahHero) {
-        var isMobile = window.innerWidth < 768;
-        spahHero.style.height = isMobile ? '115vh' : '130vh';
-
-        // Note: opacity NOT set to 0 on logo-grid — keeps hero image visible for LCP
-        gsap.set('#spah-logo-grid', { scale: 0.88, y: 22 });
-        gsap.set('#spah-scroll-hint', { opacity: 0 });
-        gsap.to('#spah-scroll-hint', { opacity: 1, duration: 1, ease: 'circ.out', delay: 0.5 });
-        gsap.to('#spah-logo-grid', {
-          scale: 1, y: 0, duration: 1.7, ease: 'expo.out', delay: 0.35,
-          onComplete() {}
-        });
-
-        var tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: '#spah-hero',
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: isMobile ? 0.4 : 0.8,
-            invalidateOnRefresh: true,
-            onUpdate(self) {
-              var p = self.progress;
-              var from = [239,244,249], to = [245,240,236];
-              var r = Math.round(from[0]+(to[0]-from[0])*p);
-              var g = Math.round(from[1]+(to[1]-from[1])*p);
-              var b = Math.round(from[2]+(to[2]-from[2])*p);
-              document.getElementById('spah-hero-sticky').style.background =
-                'linear-gradient(135deg, rgb('+r+','+g+','+(b+10)+') 0%, rgb('+(r+6)+','+(g-4)+','+(b-3)+') 50%, rgb('+(r-4)+','+(g+3)+','+b+') 100%)';
-            }
-          }
-        });
-
-        var spread = isMobile ? 0.22 : 0.34;
-        var vSpread = isMobile ? 0.22 : 0.33;
-        var letterScale = isMobile ? 1.25 : 1.42;
-        tl.to('#spah-letter-s', { x: function(){return -innerWidth*spread}, y: function(){return -innerHeight*vSpread}, scale:letterScale, opacity:0.45, rotation:-12, ease:'power2.inOut', duration:1 }, 0);
-        tl.to('#spah-letter-p', { x: function(){return  innerWidth*spread}, y: function(){return -innerHeight*vSpread}, scale:letterScale, opacity:0.45, rotation: 12, ease:'power2.inOut', duration:1 }, 0);
-        tl.to('#spah-letter-a', { x: function(){return -innerWidth*spread}, y: function(){return  innerHeight*vSpread}, scale:letterScale, opacity:0.45, rotation: -8, ease:'power2.inOut', duration:1 }, 0);
-        tl.to('#spah-letter-h', { x: function(){return  innerWidth*spread}, y: function(){return  innerHeight*vSpread}, scale:letterScale, opacity:0.45, rotation:  8, ease:'power2.inOut', duration:1 }, 0);
-        tl.fromTo('#spah-tagline', { opacity:0, scale:0.92, y:18 }, { opacity:1, scale:1, y:0, ease:'circ.out', duration:0.45 }, 0.28);
-        tl.to('#spah-scroll-hint', { opacity:0, duration:0.15 }, 0.05);
-
-        // Hide nav logo while hero SPAH logo is visible
-        var navLogo = document.querySelector('#nav-logo img');
-        if (navLogo) {
-          navLogo.style.opacity = '0';
-          ScrollTrigger.create({
-            trigger: '#spah-hero',
-            start: 'bottom top+=100',
-            onEnter:     function() { navLogo.style.opacity = '1'; },
-            onLeaveBack: function() { navLogo.style.opacity = '0'; }
-          });
-        }
-      }
-
-      // Sticky mobile CTA bar — show after scrolling past hero/moved-hero
-      var bar = document.getElementById('sticky-cta');
-      if (bar && window.innerWidth < 768) {
-        var heroEl = document.getElementById('spah-hero') || document.querySelector('.moved-hero');
-        var shown = false;
-        window.addEventListener('scroll', function() {
-          var threshold = heroEl ? heroEl.offsetTop + heroEl.offsetHeight + 200 : 300;
-          if (window.scrollY > threshold && !shown) { shown = true; bar.style.opacity = '1'; bar.style.transform = 'translateY(0)'; bar.style.pointerEvents = 'auto'; }
-          else if (window.scrollY <= threshold && shown) { shown = false; bar.style.opacity = '0'; bar.style.transform = 'translateY(12px)'; bar.style.pointerEvents = 'none'; }
-        }, { passive: true });
-      }
-    }
-
-    // Ensure GSAP is loaded before running animations
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', initGSAPAnimations);
-    } else {
-      initGSAPAnimations();
-    }
-  </script>
+  <!-- GSAP scripts intentionally removed: the scroll-hero animation (#spah-hero) is
+       commented out and not in use. GSAP + ScrollTrigger were loading ~200 KB of JS,
+       registering global scroll listeners, and interfering with mouse-wheel scroll on
+       desktop. Re-add these scripts only if the GSAP hero section is re-enabled. -->
 
   <!-- Sticky Mobile CTA Bar -->
   <div id="sticky-cta" class="md:hidden" style="position:fixed;bottom:0;left:0;right:0;z-index:40;opacity:0;pointer-events:none;transform:translateY(12px);transition:opacity 0.35s ease,transform 0.35s cubic-bezier(0.4,0,0.2,1);">
