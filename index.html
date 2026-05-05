@@ -148,6 +148,10 @@
   <style>
     html { scroll-behavior: smooth; overflow-x: hidden; }
     body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; overflow-x: hidden; overscroll-behavior-y: none; }
+    /* Footer mobile: add divider line before Areas We Serve and Contact */
+    @media (max-width:767px) {
+      .footer-links-section { border-top:1px solid rgba(42,52,66,0.08); padding-top:1.25rem; margin-top:0.25rem; }
+    }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
 
     /* Grain texture overlay */
@@ -909,7 +913,7 @@
             A privately-owned animal hospital committed to compassionate, comprehensive care for pets of all shapes and sizes. Proudly serving Alhambra, South Pasadena, San Marino, Highland Park, Altadena, and greater Los Angeles.
           </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-2xl footer-links-grid">
           <div>
             <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Quick Links</h4>
             <div class="flex flex-col gap-2">
@@ -922,7 +926,7 @@
               <a href="https://spah.koala.health/" target="_blank" class="font-body text-terra font-bold text-sm hover:text-brand transition-colors duration-200">Online Pharmacy ↗</a>
             </div>
           </div>
-          <div>
+          <div class="footer-links-section">
             <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Areas We Serve</h4>
             <div class="flex flex-col gap-2">
               <a href="/vet-alhambra"       class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Alhambra</a>
@@ -937,7 +941,7 @@
               <a href="/animal-hospital-alhambra" class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Animal Hospital</a>
             </div>
           </div>
-          <div>
+          <div class="footer-links-section">
             <h4 class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Contact</h4>
             <div class="flex flex-col gap-2">
               <p class="font-body text-dark text-sm">3116 W Main St<br />Alhambra, CA 91801</p>
