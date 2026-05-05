@@ -62,12 +62,7 @@
       { "@type": "City", "name": "Monterey Park" }
     ],
     "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
-        "opens": "08:00",
-        "closes": "18:00"
-      }
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"08:00","closes":"12:00"},{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday"],"opens":"14:00","closes":"18:00"}
     ],
     "aggregateRating": {
       "@type": "AggregateRating",
@@ -255,8 +250,9 @@
       <div class="bg-white rounded-2xl p-6 card-shadow max-w-md mx-auto text-center">
         <h3 class="font-display text-xl font-bold text-dark mb-3">Hours</h3>
         <div class="font-body text-muted text-sm space-y-1" style="line-height:1.7;">
-          <p><span class="font-bold text-dark">Monday &ndash; Friday:</span> 8:00 AM &ndash; 1:00 PM &amp; 2:00 PM &ndash; 6:00 PM</p>
+          <p><span class="font-bold text-dark">Monday &ndash; Friday:</span> 8:00 AM &ndash; 12:00 PM &amp; 2:00 PM &ndash; 6:00 PM</p>
           <p><span class="font-bold text-dark">Saturday &ndash; Sunday:</span> Closed</p>
+          <p class="font-body text-dark/50 text-xs italic mt-1">Closed for lunch 1&ndash;2 PM everyday.</p>
         </div>
       </div>
     </div>
