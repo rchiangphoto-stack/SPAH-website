@@ -3,10 +3,10 @@
 section[style*="linear-gradient"] h2 span[style*="color"]{color:rgba(255,255,255,.92)!important;}
 
 /* ── Local SEO Accordion ── */
-.spah-seo-accordion summary{list-style:none;display:flex;align-items:center;justify-content:space-between;cursor:pointer;-webkit-user-select:none;user-select:none;padding:.375rem 0;gap:.75rem;}
+.spah-seo-accordion summary{list-style:none;display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-user-select:none;user-select:none;padding:.375rem 0;gap:.5rem;}
 .spah-seo-accordion summary::-webkit-details-marker{display:none;}
 .spah-seo-accordion summary::marker{display:none;}
-.spah-seo-summary h2{margin:0;flex:1;}
+.spah-seo-summary h2{margin:0;text-align:center;}
 .spah-seo-chevron{transition:transform .2s ease;flex-shrink:0;color:rgba(13,21,32,.2);}
 .spah-seo-accordion[open] .spah-seo-chevron{transform:rotate(180deg);}
 .spah-seo-body{padding-top:.625rem;}
