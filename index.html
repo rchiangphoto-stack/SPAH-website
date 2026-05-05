@@ -153,7 +153,10 @@
        programmatic scrollBy() animated, stacking animations on rapid wheel spin and
        freezing desktop scroll. Anchor-link smooth scroll is handled via CSS below. */
     html { scroll-padding-top: 90px; } /* offset for sticky nav on anchor jumps */
-    body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; overflow-x: hidden; overscroll-behavior-y: none; }
+    /* overflow-x:clip (NOT hidden) — clip prevents horizontal overflow without
+       creating a scroll container. overflow-x:hidden forces overflow-y:auto which
+       makes body the scroll root and breaks mouse-wheel scroll on desktop. */
+    body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; overflow-x: clip; }
     /* Footer mobile: add divider line before Areas We Serve and Contact */
     @media (max-width:767px) {
       .footer-links-section { border-top:1px solid rgba(42,52,66,0.08); padding-top:1.25rem; margin-top:0.25rem; }
