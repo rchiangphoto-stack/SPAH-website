@@ -2,6 +2,12 @@
 /* SPAH: Force city-color spans inside gradient CTA sections to white for legibility */
 section[style*="linear-gradient"] h2 span[style*="color"]{color:rgba(255,255,255,.92)!important;}
 
+/* ── Global scroll safety ──
+   RULE: overflow-x:hidden goes on body ONLY — never on html.
+   Setting it on html hijacks the viewport scroll root, which breaks
+   window.scrollBy, position:sticky, and mouse-wheel scroll on desktop. */
+body{overflow-x:hidden;}
+
 /* ── Local SEO Accordion ── */
 .spah-seo-accordion summary{list-style:none;display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-user-select:none;user-select:none;padding:.375rem 0;gap:.5rem;}
 .spah-seo-accordion summary::-webkit-details-marker{display:none;}
