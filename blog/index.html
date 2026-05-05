@@ -213,9 +213,20 @@
     .fc-card.is-next    { transform: translateX(20%) scale(0.86) rotate(3deg);  opacity:0.35; filter:grayscale(1) blur(1.5px); z-index:10; }
     .fc-card.is-hidden  { transform: scale(0.7); opacity:0; z-index:0; }
 
+    /* Always-on full-card dimmer — sits above photo, below text layers.
+       Hides baked-in watermark text from Pillow-generated header images.
+       Active card: lighter so photo reads as a photo.
+       Inactive cards: heavier since they're already blurred. */
+    .fc-card::before {
+      content: '';
+      position: absolute; inset: 0; z-index: 1;
+      pointer-events: none;
+      background: rgba(10, 18, 30, 0.55);
+      transition: background 0.45s ease;
+    }
+    .fc-card.is-active::before { background: rgba(10, 18, 30, 0.25); }
+
     .fc-card-img {
-      /* push image up so the top (clean photo) fills the card,
-         hiding the baked-in title text that sits at center */
       width:100%; height:100%; object-fit:cover; object-position: 50% 5%; display:block;
     }
 
@@ -230,7 +241,7 @@
       padding: 0.22rem 0.65rem;
       opacity: 0;
       transition: opacity 0.35s;
-      z-index: 5;
+      z-index: 10; /* above ::before dimmer */
     }
     .fc-card.is-active .fc-card-live { opacity: 1; }
     .fc-live-dot {
@@ -245,16 +256,16 @@
       color: rgba(255,255,255,0.85);
     }
 
-    /* Bottom overlay — solid dark panel for crisp text legibility */
+    /* Bottom gradient — text content panel, sits above ::before dimmer */
     .fc-card-ov {
       position: absolute; inset: 0;
-      /* strong dark gradient so text is always readable over any image */
+      z-index: 3; /* above ::before dimmer */
       background: linear-gradient(to top,
-        rgba(15,24,38,0.98) 0%,
-        rgba(15,24,38,0.88) 28%,
-        rgba(15,24,38,0.45) 52%,
-        rgba(15,24,38,0.08) 68%,
-        transparent         80%);
+        rgba(8,16,28,1.00)  0%,
+        rgba(8,16,28,0.94) 32%,
+        rgba(8,16,28,0.60) 55%,
+        rgba(8,16,28,0.12) 72%,
+        transparent         85%);
       display: flex; flex-direction: column;
       justify-content: flex-end;
       padding: 1.25rem;
@@ -362,8 +373,18 @@
     .mag-card:hover { transform:translateY(-5px); box-shadow:0 10px 36px rgba(90,127,166,0.16); }
     .mag-img { position:relative; height:210px; overflow:hidden; flex-shrink:0; }
     .mag-img img { width:100%; height:100%; object-fit:cover; object-position: center top; display:block; transition:transform 0.4s; }
+    /* Dimmer overlay hides baked-in watermark text from Pillow-generated images */
+    .mag-img::after {
+      content: '';
+      position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(to bottom,
+        rgba(10,18,30,0.28) 0%,
+        rgba(10,18,30,0.18) 40%,
+        rgba(10,18,30,0.08) 70%,
+        transparent         100%);
+    }
     .mag-card:hover .mag-img img { transform:scale(1.04); }
-    .mag-img .cat-badge { position:absolute; bottom:0.75rem; left:0.75rem; }
+    .mag-img .cat-badge { position:absolute; bottom:0.75rem; left:0.75rem; z-index:2; }
     .mag-body { padding:1.2rem 1.3rem 1.35rem; display:flex; flex-direction:column; flex:1; }
     .mag-meta { font-family:'Lato',sans-serif; font-size:0.7rem; color:#9CA3AF; letter-spacing:0.05em; text-transform:uppercase; margin-bottom:0.45rem; }
     .mag-title { font-family:'Playfair Display',serif; font-size:1rem; font-weight:700; color:#2A3442; line-height:1.35; margin-bottom:0.5rem; }
