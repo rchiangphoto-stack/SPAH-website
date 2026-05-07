@@ -22,6 +22,23 @@
 
     { "source": "/blog/tags/reptiles", "destination": "/reptile-vet-alhambra", "permanent": true },
     { "source": "/blog/tags/birds", "destination": "/bird-vet-alhambra", "permanent": true },
-    { "source": "/blog/categories/veterinarian-insight", "destination": "/blog", "permanent": true }
+    { "source": "/blog/categories/veterinarian-insight", "destination": "/blog", "permanent": true },
+
+    { "source": "/about.html", "destination": "/about", "permanent": true },
+    { "source": "/animal-hospital-alhambra.html", "destination": "/animal-hospital-alhambra", "permanent": true },
+    { "source": "/vet-san-gabriel.html", "destination": "/vet-san-gabriel", "permanent": true },
+    { "source": "/vet-rosemead.html", "destination": "/vet-rosemead", "permanent": true },
+    { "source": "/vet-highland-park.html", "destination": "/vet-highland-park", "permanent": true },
+    { "source": "/vet-alhambra.html", "destination": "/vet-alhambra", "permanent": true },
+    { "source": "/vet-monterey-park.html", "destination": "/vet-monterey-park", "permanent": true },
+    { "source": "/exotic-vet-pasadena.html", "destination": "/exotic-vet-pasadena", "permanent": true },
+    { "source": "/blog/ball-python-health.html", "destination": "/blog/ball-python-health", "permanent": true },
+    { "source": "/blog/bird-feather-plucking.html", "destination": "/blog/bird-feather-plucking", "permanent": true },
+    { "source": "/blog/cat-vaccinations-alhambra.html", "destination": "/blog/cat-vaccinations-alhambra", "permanent": true },
+    { "source": "/blog/chinchilla-health-problems.html", "destination": "/blog/chinchilla-health-problems", "permanent": true },
+    { "source": "/blog/corporate-vs-independent-vet-sgv.html", "destination": "/blog/corporate-vs-independent-vet-sgv", "permanent": true },
+    { "source": "/blog/dog-dental-disease-alhambra.html", "destination": "/blog/dog-dental-disease-alhambra", "permanent": true },
+    { "source": "/blog/cockatiel-parakeet-care.html", "destination": "/blog/cockatiel-parakeet-care", "permanent": true },
+    { "source": "/blog/dog-spay-neuter-alhambra.html", "destination": "/blog/dog-spay-neuter-alhambra", "permanent": true }
   ]
 }
