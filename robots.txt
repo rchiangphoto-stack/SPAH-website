@@ -1,4 +1,7 @@
 User-agent: *
 Disallow: /social-posts/
 
+User-agent: Google-Extended
+Disallow:
+
 Sitemap: https://www.spah.la/sitemap.xml
