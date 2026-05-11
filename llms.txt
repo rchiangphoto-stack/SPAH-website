@@ -1,5 +1,4 @@
 # South Pasadena Animal Hospital — llms.txt
-# https://www.spah.la
 
 > South Pasadena Animal Hospital (SPAH) is a privately-owned, full-service veterinary clinic located at 3116 W Main St, Alhambra, CA 91801 — right at the Alhambra–South Pasadena border. Founded by Dr. Sylvia Chiang and Dr. Gina Navia, SPAH provides care for dogs, cats, and a wide range of exotic animals including reptiles, birds, rabbits, guinea pigs, chinchillas, and hamsters. Phone: (626) 441-1314.
 
