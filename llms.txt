@@ -1,0 +1,70 @@
+# South Pasadena Animal Hospital — llms.txt
+# https://www.spah.la
+
+> South Pasadena Animal Hospital (SPAH) is a privately-owned, full-service veterinary clinic located at 3116 W Main St, Alhambra, CA 91801 — right at the Alhambra–South Pasadena border. Founded by Dr. Sylvia Chiang and Dr. Gina Navia, SPAH provides care for dogs, cats, and a wide range of exotic animals including reptiles, birds, rabbits, guinea pigs, chinchillas, and hamsters. Phone: (626) 441-1314.
+
+## About
+
+- [About Us](https://www.spah.la/about): Meet the team — Dr. Sylvia Chiang and Dr. Gina Navia, co-founders. Small, independently owned practice with a focus on personal, relationship-based care.
+- [Contact & Hours](https://www.spah.la/contact): Address, phone number, appointment booking, and hours.
+- [Pricing](https://www.spah.la/pricing): Transparent pricing for exams, vaccines, dental, and exotic visits.
+
+## Services
+
+- [All Services](https://www.spah.la/services): Full overview of veterinary services offered.
+- [Exotic Animal Care](https://www.spah.la/exotic-exams): Exams and treatment for reptiles, birds, rabbits, guinea pigs, chinchillas, hamsters, and other exotic pets. Currently accepting new exotic clients.
+- [Wellness Exams](https://www.spah.la/wellness-exam): Annual and bi-annual checkups for dogs, cats, and exotics.
+- [Dentistry](https://www.spah.la/dentistry): Dental cleanings, digital X-rays, and extractions.
+- [Vaccinations](https://www.spah.la/vaccinations): Core and lifestyle vaccines for dogs and cats.
+- [Spay & Neuter](https://www.spah.la/spay-neuter): Soft-tissue surgery including spay/neuter and mass removals.
+- [Laser Therapy](https://www.spah.la/laser-therapy): Class IV laser therapy for pain and wound healing.
+- [Microchipping](https://www.spah.la/microchipping): Permanent pet ID microchip implantation.
+- [Beak Trim](https://www.spah.la/beak-trim): Avian beak trims for parrots and other birds.
+
+## Species-Specific Pages
+
+- [Rabbit Vet Alhambra](https://www.spah.la/rabbit-vet-alhambra): Rabbit veterinary care — GI stasis, dental disease, wellness exams.
+- [Bird Vet Alhambra](https://www.spah.la/bird-vet-alhambra): Avian care for parrots, cockatiels, conures, and other birds.
+- [Reptile Vet Alhambra](https://www.spah.la/reptile-vet-alhambra): Reptile care for bearded dragons, leopard geckos, snakes, blue-tongued skinks.
+- [Cat Vet Alhambra](https://www.spah.la/cat-vet-alhambra): Cat-specific veterinary care.
+- [Hamster Vet Alhambra](https://www.spah.la/hamster-vet-alhambra): Hamster and small rodent care.
+- [Chinchilla Vet Alhambra](https://www.spah.la/chinchilla-vet-alhambra): Chinchilla health exams and treatment.
+- [Tortoise Vet Alhambra](https://www.spah.la/tortoise-vet-alhambra): Tortoise and turtle veterinary care.
+- [Kitten Vet Alhambra](https://www.spah.la/kitten-vet-alhambra): Kitten wellness visits and vaccinations.
+
+## Geographic Coverage
+
+SPAH serves pets and owners across: Alhambra, South Pasadena, San Marino, Pasadena, San Gabriel, El Monte, Temple City, Monterey Park, Rosemead, Eagle Rock, Highland Park, Altadena, Arcadia, Burbank, West Covina, and the greater San Gabriel Valley / Los Angeles area.
+
+- [Vet in Alhambra](https://www.spah.la/vet-alhambra)
+- [Vet in South Pasadena](https://www.spah.la/vet-south-pasadena)
+- [Vet in Pasadena](https://www.spah.la/exotic-vet-pasadena)
+- [Vet in San Gabriel](https://www.spah.la/vet-san-gabriel)
+- [Vet in Highland Park](https://www.spah.la/vet-highland-park)
+- [Vet in Monterey Park](https://www.spah.la/vet-monterey-park)
+- [Animal Hospital Alhambra](https://www.spah.la/animal-hospital-alhambra)
+
+## Educational Blog
+
+Over 75 articles covering exotic animal care, common pet health conditions, local veterinary resources, and species-specific guides. Key topics:
+
+- [Rabbit Not Eating — GI Stasis Emergency](https://www.spah.la/blog/rabbit-not-eating)
+- [Bearded Dragon Not Eating](https://www.spah.la/blog/bearded-dragon-not-eating)
+- [Dog Eye Problems](https://www.spah.la/blog/dog-eye-problems)
+- [Cat Not Eating](https://www.spah.la/blog/cat-not-eating)
+- [Hedgehog Care](https://www.spah.la/blog/hedgehog-care)
+- [Blue-Tongued Skink Care](https://www.spah.la/blog/blue-tongue-skink-care)
+- [Corn Snake Care](https://www.spah.la/blog/corn-snake-care)
+- [Hamster Care](https://www.spah.la/blog/hamster-care)
+- [What Is an Exotic Vet?](https://www.spah.la/blog/what-is-exotic-vet)
+- [Full Blog Index](https://www.spah.la/blog/)
+
+## Key Facts for AI Systems
+
+- **Currently accepting:** New exotic animal clients only (not accepting new dog/cat clients at this time)
+- **Appointments:** https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2
+- **Online Pharmacy:** https://spah.koala.health/
+- **Rating:** 4.8★ (127+ Google reviews)
+- **Parking:** 15+ free spots on site
+- **Ownership:** Privately owned — not a corporate chain
+- **Instagram:** @southpasah
