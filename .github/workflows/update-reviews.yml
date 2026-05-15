@@ -86,8 +86,12 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
+          # Save generated file, reset to latest origin, restore — avoids rebase conflicts
+          cp reviews.json /tmp/reviews_new.json
+          git fetch origin master
+          git reset --hard origin/master
+          cp /tmp/reviews_new.json reviews.json
           git add reviews.json
           git diff --cached --quiet && echo "No changes — reviews unchanged" && exit 0
           git commit -m "Update review counts [automated]"
-          git pull --rebase origin master
           git push
