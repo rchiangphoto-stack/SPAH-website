@@ -23,6 +23,15 @@ export default async function handler(req, res) {
       return res.status(400).json({ error: 'Missing required fields' });
     }
 
+    // Validate resume file type (server-side enforcement)
+    if (resumeName) {
+      const allowedExtensions = ['.pdf', '.doc', '.docx'];
+      const ext = resumeName.slice(resumeName.lastIndexOf('.')).toLowerCase();
+      if (!allowedExtensions.includes(ext)) {
+        return res.status(400).json({ error: 'Invalid file type. Only PDF, DOC, and DOCX files are accepted.' });
+      }
+    }
+
     const attachments = [];
     if (resumeBase64 && resumeName) {
       attachments.push({

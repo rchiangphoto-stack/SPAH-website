@@ -554,6 +554,8 @@
       input.addEventListener('change', function() {
         if (input.files && input.files[0]) {
           var f = input.files[0];
+          var ext = f.name.slice(f.name.lastIndexOf('.')).toLowerCase();
+          if (!['.pdf','.doc','.docx'].includes(ext)) { label.innerHTML = '<span style="color:#E05252;">Invalid file type. Please upload a PDF, DOC, or DOCX.</span>'; input.value = ''; return; }
           if (f.size > 5 * 1024 * 1024) { label.innerHTML = '<span style="color:#E05252;">File too large. Max 5MB.</span>'; input.value = ''; return; }
           label.innerHTML = '<span style="color:#3D6B5A;font-weight:700;">&#10003; ' + f.name + '</span>';
         }
