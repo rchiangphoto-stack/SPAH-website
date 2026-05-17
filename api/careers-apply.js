@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       });
     }
 
-    // 1. Send application email to careers@spah.la
+    // 1. Send application email to career@spah.la
     const notifyRes = await fetch('https://api.resend.com/emails', {
       method: 'POST',
       headers: {
@@ -41,7 +41,7 @@ export default async function handler(req, res) {
       },
       body: JSON.stringify({
         from: 'SPAH Careers <onboarding@resend.dev>',
-        to: ['careers@spah.la'],
+        to: ['career@spah.la'],
         subject: `New Application: ${position} — ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #FAFAF8;">
@@ -97,7 +97,7 @@ export default async function handler(req, res) {
               <p style="color: #2A3442; line-height: 1.7; margin: 0 0 16px;">Our team reviews every application personally. If your background is a fit for our team, we'll be in touch within two weeks to schedule a conversation.</p>
               <p style="color: #5C6B7A; line-height: 1.7; margin: 0 0 24px; font-size: 0.95rem;">Thank you for your interest in joining SPAH — we appreciate your time.</p>
               <div style="border-top: 1px solid #e0e8f0; padding-top: 20px; margin-top: 8px;">
-                <p style="margin: 0; color: #5C6B7A; font-size: 0.85rem;">South Pasadena Animal Hospital<br>3116 W Main St, Alhambra, CA 91801<br><a href="mailto:careers@spah.la" style="color: #5A7FA6;">careers@spah.la</a></p>
+                <p style="margin: 0; color: #5C6B7A; font-size: 0.85rem;">South Pasadena Animal Hospital<br>3116 W Main St, Alhambra, CA 91801<br><a href="mailto:career@spah.la" style="color: #5A7FA6;">career@spah.la</a></p>
               </div>
             </div>
           </div>
