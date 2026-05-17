@@ -613,7 +613,7 @@
         submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
 
         try {
-          var response = await fetch('/api/careers-apply', {
+          var response = await fetch('https://spah-website.vercel.app/api/careers-apply', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, phone, linkedin: '', position: area, hearAbout: '', message, resumeBase64, resumeName, resumeType })
