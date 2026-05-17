@@ -40,7 +40,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'SPAH Careers <onboarding@resend.dev>',
+        from: 'SPAH Careers <career@spah.la>',
         to: ['career@spah.la'],
         subject: `New Application: ${position} — ${name}`,
         html: `
@@ -84,7 +84,7 @@ export default async function handler(req, res) {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        from: 'SPAH Careers <onboarding@resend.dev>',
+        from: 'SPAH Careers <career@spah.la>',
         to: [email],
         subject: 'We received your application — South Pasadena Animal Hospital',
         html: `
