@@ -2,7 +2,7 @@
 // Requires: npm install resend
 // Env var needed: RESEND_API_KEY
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
@@ -55,7 +55,7 @@ export default async function handler(req, res) {
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #FAFAF8;">
             <div style="background: #5A7FA6; color: white; padding: 20px 24px; border-radius: 12px 12px 0 0;">
-              <img src="https://www.spah.la/images/spah-logo.png" alt="South Pasadena Animal Hospital" width="48" height="56" style="display:block; margin-bottom: 12px;" />
+              <img src="https://www.spah.la/images/spah-logo-new.png" alt="South Pasadena Animal Hospital" width="48" height="56" style="display:block; margin-bottom: 12px;" />
               <h2 style="margin:0; font-size: 1.3rem;">New Job Application — SPAH</h2>
               <p style="margin: 4px 0 0; opacity: 0.8; font-size: 0.9rem;">${position}</p>
             </div>
@@ -100,7 +100,7 @@ export default async function handler(req, res) {
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #FAFAF8;">
             <div style="background: linear-gradient(135deg, #5A7FA6, #7A9E8E); color: white; padding: 28px 24px; border-radius: 12px 12px 0 0; text-align: center;">
-              <img src="https://www.spah.la/images/spah-logo.png" alt="South Pasadena Animal Hospital" width="48" height="56" style="display:block; margin: 0 auto 14px;" />
+              <img src="https://www.spah.la/images/spah-logo-new.png" alt="South Pasadena Animal Hospital" width="48" height="56" style="display:block; margin: 0 auto 14px;" />
               <h2 style="margin: 0; font-size: 1.4rem;">Thank you, ${name}!</h2>
             </div>
             <div style="background: white; padding: 28px 24px; border-radius: 0 0 12px 12px; border: 1px solid #e0e8f0;">
