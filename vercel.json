@@ -1,6 +1,15 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/**/*.js": {
+      "runtime": "@vercel/node@3.2.22"
+    }
+  },
+  "rewrites": [
+    { "source": "/api/careers-apply", "destination": "/api/careers-apply.js" },
+    { "source": "/api/test", "destination": "/api/test.js" }
+  ],
   "redirects": [
     { "source": "/about-us", "destination": "/about", "permanent": true },
     { "source": "/contact-us", "destination": "/contact", "permanent": true },
