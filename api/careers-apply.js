@@ -83,7 +83,7 @@ module.exports = async function handler(req, res) {
     if (!notifyRes.ok) {
       const errBody = await notifyRes.text();
       console.error('Resend notify error:', errBody);
-      return res.status(500).json({ error: 'Failed to send notification email' });
+      return res.status(500).json({ error: 'Resend error: ' + errBody });
     }
 
     // 2. Send confirmation to applicant
