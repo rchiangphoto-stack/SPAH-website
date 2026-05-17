@@ -59,8 +59,10 @@ module.exports = async function handler(req, res) {
         subject: `New Application: ${position} — ${name}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #FAFAF8;">
-            <div style="background: #5A7FA6; color: white; padding: 20px 24px; border-radius: 12px 12px 0 0;">
-              <img src="https://www.spah.la/images/spah-logo-new.png" alt="South Pasadena Animal Hospital" width="48" height="56" style="display:block; margin-bottom: 12px;" />
+            <div style="background: white; padding: 20px 24px 16px; border-radius: 12px 12px 0 0; border-bottom: 3px solid #5A7FA6; text-align: center;">
+              <img src="https://www.spah.la/images/spah-logo-new.png" alt="South Pasadena Animal Hospital" width="48" height="56" style="display:block; margin: 0 auto;" />
+            </div>
+            <div style="background: #5A7FA6; color: white; padding: 16px 24px;">
               <h2 style="margin:0; font-size: 1.3rem;">New Job Application — SPAH</h2>
               <p style="margin: 4px 0 0; opacity: 0.8; font-size: 0.9rem;">${position}</p>
             </div>
@@ -104,8 +106,10 @@ module.exports = async function handler(req, res) {
         subject: 'We received your application — South Pasadena Animal Hospital',
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 24px; background: #FAFAF8;">
-            <div style="background: linear-gradient(135deg, #5A7FA6, #7A9E8E); color: white; padding: 28px 24px; border-radius: 12px 12px 0 0; text-align: center;">
-              <img src="https://www.spah.la/images/spah-logo-new.png" alt="South Pasadena Animal Hospital" width="48" height="56" style="display:block; margin: 0 auto 14px;" />
+            <div style="background: white; padding: 20px 24px 16px; border-radius: 12px 12px 0 0; border-bottom: 3px solid #5A7FA6; text-align: center;">
+              <img src="https://www.spah.la/images/spah-logo-new.png" alt="South Pasadena Animal Hospital" width="48" height="56" style="display:block; margin: 0 auto;" />
+            </div>
+            <div style="background: linear-gradient(135deg, #5A7FA6, #7A9E8E); color: white; padding: 22px 24px; text-align: center;">
               <h2 style="margin: 0; font-size: 1.4rem;">Thank you, ${name}!</h2>
             </div>
             <div style="background: white; padding: 28px 24px; border-radius: 0 0 12px 12px; border: 1px solid #e0e8f0;">
