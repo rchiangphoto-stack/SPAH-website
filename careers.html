@@ -613,7 +613,7 @@
         submitBtn.disabled = true; submitBtn.textContent = 'Sending…';
 
         try {
-          var response = await fetch('https://spah-website.vercel.app/api/careers-apply', {
+          var response = await fetch('/api/careers-apply', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, phone, linkedin: '', position: area, hearAbout: '', message, resumeBase64, resumeName, resumeType })
@@ -624,7 +624,7 @@
             msgEl.innerHTML = '<div class="msg-success">Got it, ' + name + '! We\'ll keep your information on file and reach out when something fits.</div>';
           } else { throw new Error(data.error || 'Unknown error'); }
         } catch(err) {
-          msgEl.innerHTML = '<div class="msg-error mb-6">Error: ' + (err.message || 'Unknown') + '</div>';
+          msgEl.innerHTML = '<div class="msg-error mb-6">Something went wrong. Please try again or email us at <a href="mailto:career@spah.la" style="font-weight:bold;color:#5A7FA6;">career@spah.la</a>.</div>';
           submitBtn.disabled = false; submitBtn.textContent = 'Send My Resume';
         }
       });
