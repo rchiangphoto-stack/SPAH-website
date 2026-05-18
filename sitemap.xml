@@ -823,9 +823,21 @@
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.spah.la/llms.txt</loc>
-    <lastmod>2026-05-10</lastmod>
+    <loc>https://www.spah.la/blog/dog-ear-infection</loc>
+    <lastmod>2026-04-29</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.5</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.spah.la/blog/dog-not-eating</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.spah.la/blog/what-is-exotic-vet</loc>
+    <lastmod>2026-04-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>
