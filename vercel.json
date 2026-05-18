@@ -7,45 +7,666 @@
     }
   },
   "redirects": [
-    { "source": "/:path*", "has": [{ "type": "host", "value": "spah.la" }], "destination": "https://www.spah.la/:path*", "permanent": true },
-    { "source": "/rabbit-gi-stasis", "destination": "/blog/rabbit-gi-stasis", "permanent": true },
-    { "source": "/about-us", "destination": "/about", "permanent": true },
-    { "source": "/contact-us", "destination": "/contact", "permanent": true },
-
-    { "source": "/spay-and-neuter", "destination": "/spay-neuter", "permanent": true },
-    { "source": "/wing-trims", "destination": "/beak-trim", "permanent": true },
-    { "source": "/nutritional-counseling", "destination": "/services", "permanent": true },
-    { "source": "/after-hours-emergency", "destination": "/contact", "permanent": true },
-    { "source": "/onlinebooking", "destination": "/contact", "permanent": true },
-    { "source": "/promotions", "destination": "/", "permanent": true },
-    { "source": "/policy", "destination": "/", "permanent": true },
-
-    { "source": "/post/pasadena-veterinary-excellence-where-your-pets-health-comes-first", "destination": "/vet-pasadena", "permanent": true },
-    { "source": "/post/feathers-scales-and-slither-a-comprehensive-guide-to-exotic-pet-care-in-pasadena-california", "destination": "/exotic-vet-alhambra", "permanent": true },
-    { "source": "/post/fun-activities-for-animal-lovers-in-south-pasadena-california", "destination": "/blog/new-home-alhambra", "permanent": true },
-    { "source": "/post/discover-exceptional-veterinary-care-in-south-pasadena-serving-pasadena-alhambra-and-san-marino", "destination": "/animal-hospital-alhambra", "permanent": true },
-    { "source": "/post/why-hot-asphalt-can-harm-your-dog-s-paws", "destination": "/blog/pet-wounds-cuts", "permanent": true },
-    { "source": "/post/pawsitively-exceptional-the-top-rated-animal-hospitals-in-south-pasadena-and-pasadena", "destination": "/animal-hospital-alhambra", "permanent": true },
-
-    { "source": "/blog/tags/reptiles", "destination": "/reptile-vet-alhambra", "permanent": true },
-    { "source": "/blog/tags/birds", "destination": "/bird-vet-alhambra", "permanent": true },
-    { "source": "/blog/categories/veterinarian-insight", "destination": "/blog", "permanent": true },
-
-    { "source": "/about.html", "destination": "/about", "permanent": true },
-    { "source": "/animal-hospital-alhambra.html", "destination": "/animal-hospital-alhambra", "permanent": true },
-    { "source": "/vet-san-gabriel.html", "destination": "/vet-san-gabriel", "permanent": true },
-    { "source": "/vet-rosemead.html", "destination": "/vet-rosemead", "permanent": true },
-    { "source": "/vet-highland-park.html", "destination": "/vet-highland-park", "permanent": true },
-    { "source": "/vet-alhambra.html", "destination": "/vet-alhambra", "permanent": true },
-    { "source": "/vet-monterey-park.html", "destination": "/vet-monterey-park", "permanent": true },
-    { "source": "/exotic-vet-pasadena.html", "destination": "/exotic-vet-pasadena", "permanent": true },
-    { "source": "/blog/ball-python-health.html", "destination": "/blog/ball-python-health", "permanent": true },
-    { "source": "/blog/bird-feather-plucking.html", "destination": "/blog/bird-feather-plucking", "permanent": true },
-    { "source": "/blog/cat-vaccinations-alhambra.html", "destination": "/blog/cat-vaccinations-alhambra", "permanent": true },
-    { "source": "/blog/chinchilla-health-problems.html", "destination": "/blog/chinchilla-health-problems", "permanent": true },
-    { "source": "/blog/corporate-vs-independent-vet-sgv.html", "destination": "/blog/corporate-vs-independent-vet-sgv", "permanent": true },
-    { "source": "/blog/dog-dental-disease-alhambra.html", "destination": "/blog/dog-dental-disease-alhambra", "permanent": true },
-    { "source": "/blog/cockatiel-parakeet-care.html", "destination": "/blog/cockatiel-parakeet-care", "permanent": true },
-    { "source": "/blog/dog-spay-neuter-alhambra.html", "destination": "/blog/dog-spay-neuter-alhambra", "permanent": true }
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "spah.la"
+        }
+      ],
+      "destination": "https://www.spah.la/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/rabbit-gi-stasis",
+      "destination": "/blog/rabbit-gi-stasis",
+      "permanent": true
+    },
+    {
+      "source": "/avian-vet-alhambra",
+      "destination": "/blog/avian-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/ball-python-health",
+      "destination": "/blog/ball-python-health",
+      "permanent": true
+    },
+    {
+      "source": "/bearded-dragon-diet",
+      "destination": "/blog/bearded-dragon-diet",
+      "permanent": true
+    },
+    {
+      "source": "/bearded-dragon-not-eating",
+      "destination": "/blog/bearded-dragon-not-eating",
+      "permanent": true
+    },
+    {
+      "source": "/bearded-dragon-shedding",
+      "destination": "/blog/bearded-dragon-shedding",
+      "permanent": true
+    },
+    {
+      "source": "/bearded-dragon-vet-sgv",
+      "destination": "/blog/bearded-dragon-vet-sgv",
+      "permanent": true
+    },
+    {
+      "source": "/bird-feather-plucking",
+      "destination": "/blog/bird-feather-plucking",
+      "permanent": true
+    },
+    {
+      "source": "/bird-vet-care-alhambra",
+      "destination": "/blog/bird-vet-care-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blue-tongue-skink-care",
+      "destination": "/blog/blue-tongue-skink-care",
+      "permanent": true
+    },
+    {
+      "source": "/cat-dental-care-alhambra",
+      "destination": "/blog/cat-dental-care-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/cat-dog-urinary-problems",
+      "destination": "/blog/cat-dog-urinary-problems",
+      "permanent": true
+    },
+    {
+      "source": "/cat-hyperthyroidism",
+      "destination": "/blog/cat-hyperthyroidism",
+      "permanent": true
+    },
+    {
+      "source": "/cat-not-eating",
+      "destination": "/blog/cat-not-eating",
+      "permanent": true
+    },
+    {
+      "source": "/cat-vaccinations-alhambra",
+      "destination": "/blog/cat-vaccinations-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/cat-vet-highland-park",
+      "destination": "/blog/cat-vet-highland-park",
+      "permanent": true
+    },
+    {
+      "source": "/cat-vomiting",
+      "destination": "/blog/cat-vomiting",
+      "permanent": true
+    },
+    {
+      "source": "/chinchilla-health-problems",
+      "destination": "/blog/chinchilla-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/chinchilla-not-eating-alhambra",
+      "destination": "/blog/chinchilla-not-eating-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/choosing-vet-alhambra",
+      "destination": "/blog/choosing-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/cockatiel-parakeet-care",
+      "destination": "/blog/cockatiel-parakeet-care",
+      "permanent": true
+    },
+    {
+      "source": "/corn-snake-care",
+      "destination": "/blog/corn-snake-care",
+      "permanent": true
+    },
+    {
+      "source": "/corporate-vs-independent-vet-sgv",
+      "destination": "/blog/corporate-vs-independent-vet-sgv",
+      "permanent": true
+    },
+    {
+      "source": "/dog-allergies-san-gabriel",
+      "destination": "/blog/dog-allergies-san-gabriel",
+      "permanent": true
+    },
+    {
+      "source": "/dog-anxiety-alhambra",
+      "destination": "/blog/dog-anxiety-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/dog-dental-disease-alhambra",
+      "destination": "/blog/dog-dental-disease-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/dog-ear-cytology",
+      "destination": "/blog/dog-ear-cytology",
+      "permanent": true
+    },
+    {
+      "source": "/dog-ear-infection",
+      "destination": "/blog/dog-ear-infection",
+      "permanent": true
+    },
+    {
+      "source": "/dog-eye-problems",
+      "destination": "/blog/dog-eye-problems",
+      "permanent": true
+    },
+    {
+      "source": "/dog-fecal-test-cost",
+      "destination": "/blog/dog-fecal-test-cost",
+      "permanent": true
+    },
+    {
+      "source": "/dog-limping",
+      "destination": "/blog/dog-limping",
+      "permanent": true
+    },
+    {
+      "source": "/dog-not-eating",
+      "destination": "/blog/dog-not-eating",
+      "permanent": true
+    },
+    {
+      "source": "/dog-spay-neuter-alhambra",
+      "destination": "/blog/dog-spay-neuter-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/dog-urinary-problems",
+      "destination": "/blog/dog-urinary-problems",
+      "permanent": true
+    },
+    {
+      "source": "/dog-vaccinations-alhambra",
+      "destination": "/blog/dog-vaccinations-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-pet-first-vet-visit",
+      "destination": "/blog/exotic-pet-first-vet-visit",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-pets-san-marino",
+      "destination": "/blog/exotic-pets-san-marino",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-pets-summer-heat",
+      "destination": "/blog/exotic-pets-summer-heat",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-vet-altadena",
+      "destination": "/blog/exotic-vet-altadena",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-vet-near-pasadena",
+      "destination": "/blog/exotic-vet-near-pasadena",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-vet-san-gabriel-valley",
+      "destination": "/blog/exotic-vet-san-gabriel-valley",
+      "permanent": true
+    },
+    {
+      "source": "/ferret-care",
+      "destination": "/blog/ferret-care",
+      "permanent": true
+    },
+    {
+      "source": "/guinea-pig-bonding",
+      "destination": "/blog/guinea-pig-bonding",
+      "permanent": true
+    },
+    {
+      "source": "/guinea-pig-dental-diet",
+      "destination": "/blog/guinea-pig-dental-diet",
+      "permanent": true
+    },
+    {
+      "source": "/guinea-pig-not-eating",
+      "destination": "/blog/guinea-pig-not-eating",
+      "permanent": true
+    },
+    {
+      "source": "/guinea-pig-sneezing",
+      "destination": "/blog/guinea-pig-sneezing",
+      "permanent": true
+    },
+    {
+      "source": "/guinea-pig-vet-alhambra",
+      "destination": "/blog/guinea-pig-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/guinea-pig-vet-sgv",
+      "destination": "/blog/guinea-pig-vet-sgv",
+      "permanent": true
+    },
+    {
+      "source": "/hamster-care",
+      "destination": "/blog/hamster-care",
+      "permanent": true
+    },
+    {
+      "source": "/hamster-sick-signs",
+      "destination": "/blog/hamster-sick-signs",
+      "permanent": true
+    },
+    {
+      "source": "/hedgehog-care",
+      "destination": "/blog/hedgehog-care",
+      "permanent": true
+    },
+    {
+      "source": "/how-long-do-bearded-dragons-live",
+      "destination": "/blog/how-long-do-bearded-dragons-live",
+      "permanent": true
+    },
+    {
+      "source": "/how-long-do-guinea-pigs-live",
+      "destination": "/blog/how-long-do-guinea-pigs-live",
+      "permanent": true
+    },
+    {
+      "source": "/how-long-do-red-eared-sliders-live",
+      "destination": "/blog/how-long-do-red-eared-sliders-live",
+      "permanent": true
+    },
+    {
+      "source": "/indoor-cat-vet-care",
+      "destination": "/blog/indoor-cat-vet-care",
+      "permanent": true
+    },
+    {
+      "source": "/kitten-first-vet-visit-alhambra",
+      "destination": "/blog/kitten-first-vet-visit-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/leopard-gecko-care",
+      "destination": "/blog/leopard-gecko-care",
+      "permanent": true
+    },
+    {
+      "source": "/new-home-alhambra",
+      "destination": "/blog/new-home-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/new-pet-rosemead",
+      "destination": "/blog/new-pet-rosemead",
+      "permanent": true
+    },
+    {
+      "source": "/new-puppy-vet-guide-alhambra",
+      "destination": "/blog/new-puppy-vet-guide-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/new-rabbit-owner-mistakes",
+      "destination": "/blog/new-rabbit-owner-mistakes",
+      "permanent": true
+    },
+    {
+      "source": "/pet-coughing-sneezing",
+      "destination": "/blog/pet-coughing-sneezing",
+      "permanent": true
+    },
+    {
+      "source": "/pet-dental-south-pasadena",
+      "destination": "/blog/pet-dental-south-pasadena",
+      "permanent": true
+    },
+    {
+      "source": "/pet-euthanasia-guide",
+      "destination": "/blog/pet-euthanasia-guide",
+      "permanent": true
+    },
+    {
+      "source": "/pet-eye-ear-problems",
+      "destination": "/blog/pet-eye-ear-problems",
+      "permanent": true
+    },
+    {
+      "source": "/pet-fever",
+      "destination": "/blog/pet-fever",
+      "permanent": true
+    },
+    {
+      "source": "/pet-laser-therapy-explained",
+      "destination": "/blog/pet-laser-therapy-explained",
+      "permanent": true
+    },
+    {
+      "source": "/pet-lethargy",
+      "destination": "/blog/pet-lethargy",
+      "permanent": true
+    },
+    {
+      "source": "/pet-limping",
+      "destination": "/blog/pet-limping",
+      "permanent": true
+    },
+    {
+      "source": "/pet-microchipping-alhambra",
+      "destination": "/blog/pet-microchipping-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/pet-skin-rashes",
+      "destination": "/blog/pet-skin-rashes",
+      "permanent": true
+    },
+    {
+      "source": "/pet-vomiting-diarrhea",
+      "destination": "/blog/pet-vomiting-diarrhea",
+      "permanent": true
+    },
+    {
+      "source": "/pet-wounds-cuts",
+      "destination": "/blog/pet-wounds-cuts",
+      "permanent": true
+    },
+    {
+      "source": "/rabbit-bonding-101",
+      "destination": "/blog/rabbit-bonding-101",
+      "permanent": true
+    },
+    {
+      "source": "/rabbit-dental-disease",
+      "destination": "/blog/rabbit-dental-disease",
+      "permanent": true
+    },
+    {
+      "source": "/rabbit-not-eating",
+      "destination": "/blog/rabbit-not-eating",
+      "permanent": true
+    },
+    {
+      "source": "/rabbit-vet-near-san-gabriel",
+      "destination": "/blog/rabbit-vet-near-san-gabriel",
+      "permanent": true
+    },
+    {
+      "source": "/red-eared-slider-not-eating",
+      "destination": "/blog/red-eared-slider-not-eating",
+      "permanent": true
+    },
+    {
+      "source": "/senior-cat-care-sgv",
+      "destination": "/blog/senior-cat-care-sgv",
+      "permanent": true
+    },
+    {
+      "source": "/senior-dog-care-alhambra",
+      "destination": "/blog/senior-dog-care-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/sick-bird-signs",
+      "destination": "/blog/sick-bird-signs",
+      "permanent": true
+    },
+    {
+      "source": "/signs-bearded-dragon-needs-vet",
+      "destination": "/blog/signs-bearded-dragon-needs-vet",
+      "permanent": true
+    },
+    {
+      "source": "/signs-cat-is-sick",
+      "destination": "/blog/signs-cat-is-sick",
+      "permanent": true
+    },
+    {
+      "source": "/signs-dog-needs-vet-alhambra",
+      "destination": "/blog/signs-dog-needs-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/spring-wellness-checklist-sgv",
+      "destination": "/blog/spring-wellness-checklist-sgv",
+      "permanent": true
+    },
+    {
+      "source": "/tortoise-diet",
+      "destination": "/blog/tortoise-diet",
+      "permanent": true
+    },
+    {
+      "source": "/turtle-tortoise-health",
+      "destination": "/blog/turtle-tortoise-health",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-arcadia",
+      "destination": "/blog/vet-near-arcadia",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-burbank",
+      "destination": "/blog/vet-near-burbank",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-el-monte",
+      "destination": "/blog/vet-near-el-monte",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-glendale",
+      "destination": "/blog/vet-near-glendale",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-monterey-park",
+      "destination": "/blog/vet-near-monterey-park",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-temple-city",
+      "destination": "/blog/vet-near-temple-city",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-west-covina",
+      "destination": "/blog/vet-near-west-covina",
+      "permanent": true
+    },
+    {
+      "source": "/wet-tail-hamster-alhambra",
+      "destination": "/blog/wet-tail-hamster-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/what-is-exotic-vet",
+      "destination": "/blog/what-is-exotic-vet",
+      "permanent": true
+    },
+    {
+      "source": "/about-us",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/contact-us",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/spay-and-neuter",
+      "destination": "/spay-neuter",
+      "permanent": true
+    },
+    {
+      "source": "/wing-trims",
+      "destination": "/beak-trim",
+      "permanent": true
+    },
+    {
+      "source": "/nutritional-counseling",
+      "destination": "/services",
+      "permanent": true
+    },
+    {
+      "source": "/after-hours-emergency",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/onlinebooking",
+      "destination": "/contact",
+      "permanent": true
+    },
+    {
+      "source": "/promotions",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/policy",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/post/pasadena-veterinary-excellence-where-your-pets-health-comes-first",
+      "destination": "/vet-pasadena",
+      "permanent": true
+    },
+    {
+      "source": "/post/feathers-scales-and-slither-a-comprehensive-guide-to-exotic-pet-care-in-pasadena-california",
+      "destination": "/exotic-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/post/fun-activities-for-animal-lovers-in-south-pasadena-california",
+      "destination": "/blog/new-home-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/post/discover-exceptional-veterinary-care-in-south-pasadena-serving-pasadena-alhambra-and-san-marino",
+      "destination": "/animal-hospital-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/post/why-hot-asphalt-can-harm-your-dog-s-paws",
+      "destination": "/blog/pet-wounds-cuts",
+      "permanent": true
+    },
+    {
+      "source": "/post/pawsitively-exceptional-the-top-rated-animal-hospitals-in-south-pasadena-and-pasadena",
+      "destination": "/animal-hospital-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tags/reptiles",
+      "destination": "/reptile-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tags/birds",
+      "destination": "/bird-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/categories/veterinarian-insight",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/about.html",
+      "destination": "/about",
+      "permanent": true
+    },
+    {
+      "source": "/animal-hospital-alhambra.html",
+      "destination": "/animal-hospital-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/vet-san-gabriel.html",
+      "destination": "/vet-san-gabriel",
+      "permanent": true
+    },
+    {
+      "source": "/vet-rosemead.html",
+      "destination": "/vet-rosemead",
+      "permanent": true
+    },
+    {
+      "source": "/vet-highland-park.html",
+      "destination": "/vet-highland-park",
+      "permanent": true
+    },
+    {
+      "source": "/vet-alhambra.html",
+      "destination": "/vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/vet-monterey-park.html",
+      "destination": "/vet-monterey-park",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-vet-pasadena.html",
+      "destination": "/exotic-vet-pasadena",
+      "permanent": true
+    },
+    {
+      "source": "/blog/ball-python-health.html",
+      "destination": "/blog/ball-python-health",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bird-feather-plucking.html",
+      "destination": "/blog/bird-feather-plucking",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cat-vaccinations-alhambra.html",
+      "destination": "/blog/cat-vaccinations-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/chinchilla-health-problems.html",
+      "destination": "/blog/chinchilla-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/blog/corporate-vs-independent-vet-sgv.html",
+      "destination": "/blog/corporate-vs-independent-vet-sgv",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dog-dental-disease-alhambra.html",
+      "destination": "/blog/dog-dental-disease-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/cockatiel-parakeet-care.html",
+      "destination": "/blog/cockatiel-parakeet-care",
+      "permanent": true
+    },
+    {
+      "source": "/blog/dog-spay-neuter-alhambra.html",
+      "destination": "/blog/dog-spay-neuter-alhambra",
+      "permanent": true
+    }
   ]
 }
