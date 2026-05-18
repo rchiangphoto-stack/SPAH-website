@@ -8,6 +8,7 @@
   },
   "redirects": [
     { "source": "/:path*", "has": [{ "type": "host", "value": "spah.la" }], "destination": "https://www.spah.la/:path*", "permanent": true },
+    { "source": "/rabbit-gi-stasis", "destination": "/blog/rabbit-gi-stasis", "permanent": true },
     { "source": "/about-us", "destination": "/about", "permanent": true },
     { "source": "/contact-us", "destination": "/contact", "permanent": true },
 
