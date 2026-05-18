@@ -165,12 +165,16 @@
        creating a scroll container. overflow-x:hidden forces overflow-y:auto which
        makes body the scroll root and breaks mouse-wheel scroll on desktop. */
     body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; overflow-x: clip; }
-    /* Footer mobile: Quick Links + Contact side-by-side; Areas We Serve full-width 2-col grid */
+    /* Footer mobile: Quick Links + Contact side-by-side; Areas We Serve full-width dropdown */
     @media (max-width:767px) {
       .footer-contact-col { padding-left:1rem; border-left:1px solid rgba(42,52,66,0.08); }
       .footer-areas-col { grid-column:1/-1; border-top:1px solid rgba(42,52,66,0.08); padding-top:1.25rem; margin-top:0.25rem; }
-      .footer-areas-links { display:grid; grid-template-columns:repeat(2,1fr); gap:0.375rem 1.5rem; }
-      .areas-chevron { display:none; }
+      .footer-areas-header { display:flex; align-items:center; gap:0.4rem; cursor:pointer; user-select:none; }
+      .footer-areas-header h4 { margin-bottom:0; }
+      .areas-chevron { width:12px; height:12px; opacity:0.45; flex-shrink:0; transition:transform 0.22s ease; }
+      .footer-areas-col.is-open .areas-chevron { transform:rotate(180deg); }
+      .footer-areas-links { display:none; }
+      .footer-areas-col.is-open .footer-areas-links { display:grid; grid-template-columns:repeat(2,1fr); gap:0.375rem 1.5rem; margin-top:0.75rem; }
     }
     /* Footer desktop: Areas We Serve is col 3 (natural HTML order) as a click-to-open dropdown */
     @media (min-width:768px) {
@@ -951,12 +955,11 @@
     // The old passive:false + e.preventDefault() + window.scrollBy() approach broke
     // desktop scroll by stacking smooth-scroll animations. No handler needed.
 
-    // Areas We Serve dropdown — desktop only
+    // Areas We Serve dropdown — mobile collapsible
     (function() {
       var hdr = document.getElementById('footerAreasHeader');
       if (!hdr) return;
       hdr.addEventListener('click', function() {
-        if (window.innerWidth < 768) return;
         var col = document.getElementById('footerAreasCol');
         col.classList.toggle('is-open');
       });
