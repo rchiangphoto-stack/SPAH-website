@@ -299,6 +299,55 @@
       0%   { background-position: 200% center; }
       100% { background-position: -200% center; }
     }
+
+    /* ── Blog carousel card hover ── */
+    .blog-card {
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+    }
+    .blog-card:hover { transform: translateY(-4px); }
+    .blog-card img { transition: transform 0.4s ease; }
+    .blog-card:hover img { transform: scale(1.04); }
+
+    /* ── Morphing arrow button ── */
+    .morph-btn {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid #2A3442;
+      background: transparent;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      flex-shrink: 0;
+      transition: width 0.28s cubic-bezier(0.4,0,0.2,1),
+                  border-radius 0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+    .morph-btn:hover { width: 108px; }
+    .morph-btn-prev:hover { border-radius: 26px 12px 12px 26px; }
+    .morph-btn-next:hover { border-radius: 12px 26px 26px 12px; }
+    /* Extending line via ::before */
+    .morph-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%; margin-top: -0.75px;
+      height: 1.5px;
+      background: #2A3442;
+      width: 0;
+      transition: width 0.28s cubic-bezier(0.4,0,0.2,1);
+    }
+    .morph-btn-prev::before { right: 26px; }
+    .morph-btn-next::before { left: 26px; }
+    .morph-btn:hover::before { width: calc(100% - 50px); }
+    /* Chevron icon */
+    .morph-btn-icon {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.28s cubic-bezier(0.4,0,0.2,1);
+      pointer-events: none;
+    }
+    .morph-btn-prev:hover .morph-btn-icon { transform: translate(calc(-50% - 22px), -50%); }
+    .morph-btn-next:hover .morph-btn-icon { transform: translate(calc(-50% + 22px), -50%); }
   </style>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="ZIMxhr5nEAsxfE8H6JNaeQ" async></script>
 </head>
@@ -831,6 +880,123 @@
     </div>
   </section>
 
+  <!-- BLOG — Latest Articles -->
+  <section class="py-20 md:py-28 bg-white overflow-hidden">
+    <div class="max-w-6xl mx-auto px-6">
+
+      <!-- Header row -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-12">
+        <div>
+          <span class="font-body text-xs font-bold tracking-widest uppercase" style="color:#4e7566;">Pet Care Resources</span>
+          <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-dark mt-3" style="letter-spacing:-0.02em;">From the Blog</h2>
+          <p class="font-body text-muted text-base mt-3 max-w-sm" style="line-height:1.7;">Practical guides for pet owners — from exotic care to everyday health questions.</p>
+        </div>
+        <div class="flex items-center gap-3 flex-shrink-0">
+          <button id="blogPrev" aria-label="Previous articles" class="morph-btn morph-btn-prev">
+            <span class="morph-btn-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A3442" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+            </span>
+          </button>
+          <button id="blogNext" aria-label="Next articles" class="morph-btn morph-btn-next">
+            <span class="morph-btn-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#2A3442" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+            </span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Scrollable track -->
+      <div id="blogTrack" class="flex gap-6 overflow-x-auto pb-4 -mx-2 px-2 snap-x snap-mandatory" style="scrollbar-width:none;-ms-overflow-style:none;overscroll-behavior-x:contain;">
+        <style>#blogTrack::-webkit-scrollbar{display:none;}</style>
+
+        <!-- Card 1 — Rabbit -->
+        <a href="/blog/rabbit-not-eating" class="blog-card snap-start flex-shrink-0 w-[78vw] sm:w-[300px] md:w-[320px] bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+          <div class="overflow-hidden h-44 flex-shrink-0">
+            <img src="images/blog/rabbit-not-eating-header.webp" alt="Rabbit not eating — GI stasis guide" width="320" height="176" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <span class="inline-block font-body text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-3 self-start" style="background:#EAF0F7;color:#5A7FA6;">Rabbits</span>
+            <h3 class="font-display text-base font-bold text-dark mb-2 leading-snug">Rabbit Not Eating? This Is a Medical Emergency</h3>
+            <p class="font-body text-muted text-sm leading-relaxed flex-1" style="line-height:1.7;">Even 12 hours without food can be life-threatening. Learn the signs of GI stasis and when to act fast.</p>
+            <span class="mt-4 font-body text-sm font-bold text-brand group-hover:underline">Read article →</span>
+          </div>
+        </a>
+
+        <!-- Card 2 — Corn Snake -->
+        <a href="/blog/corn-snake-care" class="blog-card snap-start flex-shrink-0 w-[78vw] sm:w-[300px] md:w-[320px] bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+          <div class="overflow-hidden h-44 flex-shrink-0">
+            <img src="images/blog/corn-snake-care-header.webp" alt="Corn snake care and health guide" width="320" height="176" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <span class="inline-block font-body text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-3 self-start" style="background:#EAF4EE;color:#4e7566;">Reptiles</span>
+            <h3 class="font-display text-base font-bold text-dark mb-2 leading-snug">Corn Snake Health Problems, Care &amp; Feeding Guide</h3>
+            <p class="font-body text-muted text-sm leading-relaxed flex-1" style="line-height:1.7;">Not eating, stuck shed, or wheezing? Everything you need to know about corn snake health problems.</p>
+            <span class="mt-4 font-body text-sm font-bold text-brand group-hover:underline">Read article →</span>
+          </div>
+        </a>
+
+        <!-- Card 3 — Hamster -->
+        <a href="/blog/hamster-sick-signs" class="blog-card snap-start flex-shrink-0 w-[78vw] sm:w-[300px] md:w-[320px] bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+          <div class="overflow-hidden h-44 flex-shrink-0">
+            <img src="images/blog/hamster-sick-signs-header.jpg" alt="Signs your hamster is sick" width="320" height="176" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <span class="inline-block font-body text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-3 self-start" style="background:#F5F0EA;color:#A8673A;">Small Animals</span>
+            <h3 class="font-display text-base font-bold text-dark mb-2 leading-snug">Signs Your Hamster Is Sick: 8 Warning Signs</h3>
+            <p class="font-body text-muted text-sm leading-relaxed flex-1" style="line-height:1.7;">Hiding, losing fur, or not eating? These warning signs mean your hamster needs a vet — some urgently.</p>
+            <span class="mt-4 font-body text-sm font-bold text-brand group-hover:underline">Read article →</span>
+          </div>
+        </a>
+
+        <!-- Card 4 — Bearded Dragon -->
+        <a href="/blog/bearded-dragon-diet" class="blog-card snap-start flex-shrink-0 w-[78vw] sm:w-[300px] md:w-[320px] bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+          <div class="overflow-hidden h-44 flex-shrink-0">
+            <img src="images/blog/bearded-dragon-diet-header.webp" alt="Bearded dragon diet guide" width="320" height="176" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <span class="inline-block font-body text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-3 self-start" style="background:#EAF4EE;color:#4e7566;">Reptiles</span>
+            <h3 class="font-display text-base font-bold text-dark mb-2 leading-snug">Bearded Dragon Diet: What to Feed (and What to Avoid)</h3>
+            <p class="font-body text-muted text-sm leading-relaxed flex-1" style="line-height:1.7;">The wrong diet is the #1 cause of illness in bearded dragons. Here's exactly what to feed — and what to skip.</p>
+            <span class="mt-4 font-body text-sm font-bold text-brand group-hover:underline">Read article →</span>
+          </div>
+        </a>
+
+        <!-- Card 5 — Cat Not Eating -->
+        <a href="/blog/cat-not-eating" class="blog-card snap-start flex-shrink-0 w-[78vw] sm:w-[300px] md:w-[320px] bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+          <div class="overflow-hidden h-44 flex-shrink-0">
+            <img src="images/blog/cat-not-eating-header.webp" alt="Why is my cat not eating" width="320" height="176" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <span class="inline-block font-body text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-3 self-start" style="background:#EDF2F7;color:#5A7FA6;">Cats</span>
+            <h3 class="font-display text-base font-bold text-dark mb-2 leading-snug">Why Is My Cat Not Eating? When to Call the Vet</h3>
+            <p class="font-body text-muted text-sm leading-relaxed flex-1" style="line-height:1.7;">Appetite loss in cats is never "just picky eating." Here's how to tell when it's time to call the vet.</p>
+            <span class="mt-4 font-body text-sm font-bold text-brand group-hover:underline">Read article →</span>
+          </div>
+        </a>
+
+        <!-- Card 6 — Dog Dental -->
+        <a href="/blog/dog-dental-disease-alhambra" class="blog-card snap-start flex-shrink-0 w-[78vw] sm:w-[300px] md:w-[320px] bg-white rounded-2xl card-shadow overflow-hidden flex flex-col group">
+          <div class="overflow-hidden h-44 flex-shrink-0">
+            <img src="images/blog/dog-dental-disease-header.jpg" alt="Dog bad breath and dental disease" width="320" height="176" class="w-full h-full object-cover" loading="lazy" />
+          </div>
+          <div class="p-5 flex flex-col flex-1">
+            <span class="inline-block font-body text-xs font-bold tracking-widest uppercase rounded-full px-3 py-1 mb-3 self-start" style="background:#EDF2F7;color:#2A3442;">Dogs</span>
+            <h3 class="font-display text-base font-bold text-dark mb-2 leading-snug">Your Dog's Bad Breath Isn't Normal — What It Actually Means</h3>
+            <p class="font-body text-muted text-sm leading-relaxed flex-1" style="line-height:1.7;">Bad breath in dogs usually means dental disease — and it gets worse without treatment. Here's what to look for.</p>
+            <span class="mt-4 font-body text-sm font-bold text-brand group-hover:underline">Read article →</span>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- View all link -->
+      <div class="text-center mt-10">
+        <a href="/blog" class="btn-outline inline-block">View All Articles</a>
+      </div>
+
+    </div>
+  </section>
+
   <!-- CTA BANNER -->
   <section class="py-8 md:py-20 relative overflow-hidden grain" style="background: linear-gradient(135deg, #5A7FA6 0%, #7A9E8E 100%);">
     <div style="position:absolute;top:-40px;right:-40px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.06);pointer-events:none;"></div>
@@ -936,6 +1102,24 @@
       menu.classList.toggle('hidden');
       menu.classList.toggle('flex');
     });
+
+    // Blog carousel
+    (function() {
+      var track = document.getElementById('blogTrack');
+      var prevBtn = document.getElementById('blogPrev');
+      var nextBtn = document.getElementById('blogNext');
+      if (!track || !prevBtn || !nextBtn) return;
+      function cardWidth() {
+        var c = track.querySelector('.snap-start');
+        return c ? c.offsetWidth + 24 : 344;
+      }
+      prevBtn.addEventListener('click', function() {
+        track.scrollBy({ left: -cardWidth() * 2, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', function() {
+        track.scrollBy({ left: cardWidth() * 2, behavior: 'smooth' });
+      });
+    })();
 
     // Review carousel
     function scrollReviews(dir) {
