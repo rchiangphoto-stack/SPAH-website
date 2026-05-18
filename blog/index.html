@@ -1485,8 +1485,8 @@
       const counterEl  = document.getElementById('pagCounter');
       pagEl.style.display = pages <= 1 ? 'none' : 'flex';
       if (counterEl) counterEl.textContent = 'Page ' + currentPage + ' of ' + pages;
-      if (prevBtn)   prevBtn.disabled  = currentPage === 1;
-      if (nextBtn)   nextBtn.disabled  = currentPage === pages;
+      if (prevBtn) { if (currentPage === 1)     { prevBtn.blur(); prevBtn.disabled = true; }  else { prevBtn.disabled = false; } }
+      if (nextBtn) { if (currentPage === pages) { nextBtn.blur(); nextBtn.disabled = true; }  else { nextBtn.disabled = false; } }
       if (prevBtn && !prevBtn._bound) {
         prevBtn._bound = true;
         prevBtn.addEventListener('click', () => {
