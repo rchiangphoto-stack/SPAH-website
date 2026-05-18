@@ -1490,13 +1490,13 @@
       if (prevBtn && !prevBtn._bound) {
         prevBtn._bound = true;
         prevBtn.addEventListener('click', () => {
-          if (currentPage > 1) { currentPage--; render(); window.scrollTo({ top: toolbar.getBoundingClientRect().top + window.scrollY - 8, behavior: 'smooth' }); }
+          if (currentPage > 1) { currentPage--; render(); }
         });
       }
       if (nextBtn && !nextBtn._bound) {
         nextBtn._bound = true;
         nextBtn.addEventListener('click', () => {
-          if (currentPage < pages) { currentPage++; render(); window.scrollTo({ top: toolbar.getBoundingClientRect().top + window.scrollY - 8, behavior: 'smooth' }); }
+          if (currentPage < pages) { currentPage++; render(); }
         });
       }
     }
