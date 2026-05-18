@@ -1466,6 +1466,14 @@
       return cards.filter(c => c.dataset.cat.split(' ').includes(currentFilter));
     }
 
+    // ── Snap viewport to top of grid (instant — no animation) ──
+    function snapToGrid() {
+      var gridEl = document.getElementById('cardGrid');
+      if (!gridEl) return;
+      var top = gridEl.getBoundingClientRect().top + window.scrollY - 96; // 96px offset for sticky nav
+      window.scrollTo({ top: Math.max(0, top), behavior: 'instant' });
+    }
+
     // ── Render page + pagination ──
     function render() {
       const filtered = getFiltered();
@@ -1490,13 +1498,13 @@
       if (prevBtn && !prevBtn._bound) {
         prevBtn._bound = true;
         prevBtn.addEventListener('click', () => {
-          if (currentPage > 1) { currentPage--; render(); }
+          if (currentPage > 1) { currentPage--; render(); snapToGrid(); }
         });
       }
       if (nextBtn && !nextBtn._bound) {
         nextBtn._bound = true;
         nextBtn.addEventListener('click', () => {
-          if (currentPage < pages) { currentPage++; render(); }
+          if (currentPage < pages) { currentPage++; render(); snapToGrid(); }
         });
       }
     }
