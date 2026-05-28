@@ -4,9 +4,9 @@ Auto-generate a blog header image for CI (non-interactive).
 Usage: python3 auto_header.py <slug>
 
 Reads title from blog/{slug}.html og:title.
-Reads Pexels/Unsplash query from the HTML comment:
+Reads search query from the HTML comment:
   <!-- Photo: ... using query "your search query here" -->
-Requires UNSPLASH_ACCESS_KEY env var.
+Requires PIXABAY_API_KEY env var.
 """
 
 import sys
@@ -40,16 +40,16 @@ def _find_font(bold=True):
 
 
 def get_api_key():
-    key = os.environ.get("UNSPLASH_ACCESS_KEY", "")
+    key = os.environ.get("PIXABAY_API_KEY", "")
     if not key:
         env_path = os.path.join(REPO_ROOT, ".env")
         if os.path.exists(env_path):
             with open(env_path) as f:
                 for line in f:
-                    if line.startswith("UNSPLASH_ACCESS_KEY="):
+                    if line.startswith("PIXABAY_API_KEY="):
                         key = line.strip().split("=", 1)[1].strip('"').strip("'")
     if not key:
-        sys.exit("UNSPLASH_ACCESS_KEY not set")
+        sys.exit("PIXABAY_API_KEY not set")
     return key
 
 
@@ -60,33 +60,35 @@ def extract_from_html(slug):
     with open(html_path, encoding="utf-8") as f:
         html = f.read()
 
-    # og:title
     m = re.search(r'<meta property="og:title" content="([^"]+)"', html)
     title = m.group(1) if m else slug.replace("-", " ").title()
 
-    # Query from comment: <!-- Photo: ... using query "..." -->
     m = re.search(r'using query "([^"]+)"', html)
     query = m.group(1) if m else slug.replace("-", " ")
 
     return title, query
 
 
-def search_unsplash(query, api_key):
+def search_pixabay(query, api_key):
     url = (
-        f"https://api.unsplash.com/search/photos"
-        f"?query={urllib.parse.quote(query)}&per_page=10&orientation=landscape"
+        "https://pixabay.com/api/?"
+        + urllib.parse.urlencode({
+            "key": api_key,
+            "q": query,
+            "image_type": "photo",
+            "orientation": "horizontal",
+            "per_page": 10,
+            "safesearch": "true",
+            "min_width": 1200,
+        })
     )
-    req = urllib.request.Request(url, headers={
-        "Authorization": f"Client-ID {api_key}",
-        "Accept-Version": "v1",
-        "User-Agent": UA,
-    })
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=20) as r:
         data = json.loads(r.read())
-    results = data.get("results", [])
-    if not results:
-        sys.exit(f"No Unsplash results for: {query!r}")
-    return results[0]
+    hits = data.get("hits", [])
+    if not hits:
+        sys.exit(f"No Pixabay results for: {query!r}")
+    return hits[0]
 
 
 def make_header(out_path, photo_url, title, photo_id, photographer):
@@ -119,7 +121,7 @@ def make_header(out_path, photo_url, title, photo_id, photographer):
     os.makedirs(os.path.dirname(out_path), exist_ok=True)
     img.save(out_path, "WEBP", quality=88)
     print(f"Saved: {out_path}")
-    print(f"Photo by {photographer} on Unsplash (ID: {photo_id})")
+    print(f"Photo by {photographer} on Pixabay (ID: {photo_id})")
 
 
 def main():
@@ -135,22 +137,10 @@ def main():
     print(f"Title: {title}")
     print(f"Query: {query}")
 
-    photo = search_unsplash(query, api_key)
+    photo = search_pixabay(query, api_key)
     photo_id     = photo["id"]
-    photographer = photo["user"]["name"]
-    photo_url    = photo["urls"]["full"]
-
-    # Trigger download for Unsplash attribution tracking
-    dl_url = photo.get("links", {}).get("download_location", "")
-    if dl_url:
-        try:
-            req = urllib.request.Request(
-                dl_url,
-                headers={"Authorization": f"Client-ID {api_key}", "User-Agent": UA}
-            )
-            urllib.request.urlopen(req, timeout=10)
-        except Exception:
-            pass
+    photographer = photo["user"]
+    photo_url    = photo["largeImageURL"]
 
     out_path = os.path.join(REPO_ROOT, "images", "blog", f"{slug}-header.webp")
     make_header(out_path, photo_url, title, photo_id, photographer)

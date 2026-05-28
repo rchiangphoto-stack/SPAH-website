@@ -1,10 +1,10 @@
 """
-SPAH Blog Header Image Generator (Unsplash)
-Usage: python3 make_blog_header.py <slug> "<Blog Title>" "<unsplash search query>"
+SPAH Blog Header Image Generator (Pixabay)
+Usage: python3 make_blog_header.py <slug> "<Blog Title>" "<pixabay search query>"
 Example: python3 make_blog_header.py hamster-health-problems "Hamster Health Problems" "hamster pet cute"
 
-Requires UNSPLASH_ACCESS_KEY env var or .env file:
-  export UNSPLASH_ACCESS_KEY=your_key_here
+Requires PIXABAY_API_KEY env var or .env file:
+  export PIXABAY_API_KEY=your_key_here
 """
 
 import sys
@@ -20,13 +20,10 @@ W, H = 1200, 630
 OVERLAY_ALPHA = 130
 SUBTITLE = "South Pasadena Animal Hospital  •  Alhambra, CA"
 
-# Linux paths (DejaVu); Windows fallback to Georgia
 def _find_font(bold=True):
     candidates = (
         ["/usr/share/fonts/truetype/dejavu/DejaVuSerif-Bold.ttf",
-         "/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
-         "C:/Windows/Fonts/georgiab.ttf",
-         "C:/Windows/Fonts/georgia.ttf"]
+         "C:/Windows/Fonts/georgiab.ttf"]
         if bold else
         ["/usr/share/fonts/truetype/dejavu/DejaVuSerif.ttf",
          "C:/Windows/Fonts/georgia.ttf"]
@@ -34,49 +31,52 @@ def _find_font(bold=True):
     for p in candidates:
         if os.path.exists(p):
             return p
-    return None  # PIL will fall back to default bitmap font
-
-FONT_BOLD = _find_font(bold=True)
-FONT_REG  = _find_font(bold=False)
+    return None
 
 OUT_DIR = os.path.join(os.path.dirname(__file__), "..", "images", "blog")
 UA = "Mozilla/5.0 (compatible; SPAH-bot/1.0)"
 
 
 def get_api_key():
-    key = os.environ.get("UNSPLASH_ACCESS_KEY", "")
+    key = os.environ.get("PIXABAY_API_KEY", "")
     if not key:
         env_path = os.path.join(os.path.dirname(__file__), "..", ".env")
         if os.path.exists(env_path):
             with open(env_path) as f:
                 for line in f:
-                    if line.startswith("UNSPLASH_ACCESS_KEY="):
+                    if line.startswith("PIXABAY_API_KEY="):
                         key = line.strip().split("=", 1)[1].strip('"').strip("'")
     if not key:
-        sys.exit("Error: UNSPLASH_ACCESS_KEY not found. Set it with: export UNSPLASH_ACCESS_KEY=your_key")
+        sys.exit("Error: PIXABAY_API_KEY not found. Set it with: export PIXABAY_API_KEY=your_key")
     return key
 
 
-def search_unsplash(query, api_key, per_page=10):
+def search_pixabay(query, api_key, per_page=10):
     url = (
-        f"https://api.unsplash.com/search/photos"
-        f"?query={urllib.parse.quote(query)}"
-        f"&per_page={per_page}&orientation=landscape"
+        "https://pixabay.com/api/?"
+        + urllib.parse.urlencode({
+            "key": api_key,
+            "q": query,
+            "image_type": "photo",
+            "orientation": "horizontal",
+            "per_page": per_page,
+            "safesearch": "true",
+            "min_width": 1200,
+        })
     )
-    req = urllib.request.Request(url, headers={
-        "Authorization": f"Client-ID {api_key}",
-        "User-Agent": UA,
-        "Accept-Version": "v1",
-    })
+    req = urllib.request.Request(url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=20) as r:
         data = json.loads(r.read())
-    photos = data.get("results", [])
-    if not photos:
+    hits = data.get("hits", [])
+    if not hits:
         sys.exit(f"No photos found for query: {query!r}")
-    return photos
+    return hits
 
 
 def make_header(out_path, photo_url, title, photo_id, photographer):
+    font_bold = _find_font(bold=True)
+    font_reg  = _find_font(bold=False)
+
     req = urllib.request.Request(photo_url, headers={"User-Agent": UA})
     with urllib.request.urlopen(req, timeout=30) as r:
         img = Image.open(io.BytesIO(r.read())).convert("RGB")
@@ -86,9 +86,8 @@ def make_header(out_path, photo_url, title, photo_id, photographer):
     img = Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB")
     draw = ImageDraw.Draw(img)
 
-    # Fit title text
     for pt in (64, 56, 48, 42, 36):
-        fnt = ImageFont.truetype(FONT_BOLD, pt) if FONT_BOLD else ImageFont.load_default()
+        fnt = ImageFont.truetype(font_bold, pt) if font_bold else ImageFont.load_default()
         wrapped = textwrap.fill(title, width=28)
         bbox = draw.multiline_textbbox((0, 0), wrapped, font=fnt, align="center", spacing=12)
         tw, th = bbox[2] - bbox[0], bbox[3] - bbox[1]
@@ -98,15 +97,14 @@ def make_header(out_path, photo_url, title, photo_id, photographer):
     tx, ty = W / 2, H / 2 - th / 2 - 20
     draw.multiline_text((tx, ty), wrapped, font=fnt, fill=(255, 255, 255),
                         align="center", anchor="ma", spacing=12)
-
-    fnt_sub = ImageFont.truetype(FONT_REG, 26) if FONT_REG else ImageFont.load_default()
+    fnt_sub = ImageFont.truetype(font_reg, 26) if font_reg else ImageFont.load_default()
     draw.text((tx, ty + th + 28), SUBTITLE, font=fnt_sub, fill=(230, 230, 230), anchor="ma")
 
     os.makedirs(out_path.rsplit("/", 1)[0], exist_ok=True)
     img.save(out_path, "WEBP", quality=88)
     print(f"Saved: {out_path}")
-    print(f"  Photo by {photographer} on Unsplash (ID: {photo_id})")
-    print(f"  Attribution: <!-- Photo by {photographer} on Unsplash (ID: {photo_id}) -->")
+    print(f"  Photo by {photographer} on Pixabay (ID: {photo_id})")
+    print(f"  Attribution: <!-- Photo by {photographer} on Pixabay (ID: {photo_id}) -->")
 
 
 def main():
@@ -119,32 +117,18 @@ def main():
     query  = sys.argv[3]
     api_key = get_api_key()
 
-    print(f"Searching Unsplash for: {query!r}")
-    photos = search_unsplash(query, api_key)
+    print(f"Searching Pixabay for: {query!r}")
+    hits = search_pixabay(query, api_key)
 
-    for i, p in enumerate(photos[:5]):
-        print(f"  [{i}] ID:{p['id']} by {p['user']['name']} — {p['urls']['regular'][:80]}...")
+    for i, p in enumerate(hits[:5]):
+        print(f"  [{i}] ID:{p['id']} by {p['user']} — {p['largeImageURL'][:80]}...")
 
     choice = input("Pick photo index [0]: ").strip()
     idx = int(choice) if choice.isdigit() else 0
-    photo = photos[idx]
-    photo_url    = photo["urls"]["full"]
-    photo_id     = photo["id"]
-    photographer = photo["user"]["name"]
+    photo = hits[idx]
 
-    # Unsplash requires a download trigger for attribution tracking
-    dl_url = photo.get("links", {}).get("download_location", "")
-    if dl_url:
-        try:
-            req = urllib.request.Request(
-                dl_url, headers={"Authorization": f"Client-ID {api_key}", "User-Agent": UA}
-            )
-            urllib.request.urlopen(req, timeout=10)
-        except Exception:
-            pass
-
-    out_path = os.path.join(OUT_DIR, f"{slug}-header.webp")
-    make_header(out_path, photo_url, title, photo_id, photographer)
+    out_path = f"{OUT_DIR}/{slug}-header.webp"
+    make_header(out_path, photo["largeImageURL"], title, photo["id"], photo["user"])
 
 
 if __name__ == "__main__":
