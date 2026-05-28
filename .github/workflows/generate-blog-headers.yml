@@ -52,7 +52,7 @@ jobs:
       - name: Generate missing header images
         if: steps.missing.outputs.slugs != ''
         env:
-          UNSPLASH_ACCESS_KEY: 1vQccWFdh1lkpklC9bnTw1QPRFiVR00P6varA69Dnxg
+            UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
         run: |
           for slug in ${{ steps.missing.outputs.slugs }}; do
             echo "Generating: $slug"
@@ -67,4 +67,4 @@ jobs:
           git add images/blog/
           git diff --cached --quiet && echo "No new images to commit" && exit 0
           git commit -m "Auto-generate blog header images [skip ci]"
-          git push origin HEAD:${{ github.ref_name }}
+          git push origin HEAD:${{ github.event.inputs.branch || github.ref_name }}
