@@ -5,6 +5,12 @@ on:
     branches: ['**']
     paths:
       - 'blog/*.html'
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch to generate images for'
+        required: false
+        default: 'claude/busy-goldberg-GY46m'
 
 jobs:
   generate-headers:
