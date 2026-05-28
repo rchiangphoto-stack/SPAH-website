@@ -52,7 +52,7 @@ jobs:
       - name: Generate missing header images
         if: steps.missing.outputs.slugs != ''
         env:
-            UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          PIXABAY_API_KEY: ${{ secrets.PIXABAY_API_KEY }}
         run: |
           for slug in ${{ steps.missing.outputs.slugs }}; do
             echo "Generating: $slug"
