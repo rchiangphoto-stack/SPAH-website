@@ -38,6 +38,31 @@
       "permanent": true
     },
     {
+      "source": "/corn-snake-health-problems",
+      "destination": "/blog/corn-snake-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/hamster-health-problems",
+      "destination": "/blog/hamster-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/bearded-dragon-health-problems",
+      "destination": "/blog/bearded-dragon-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/guinea-pig-health-problems",
+      "destination": "/blog/guinea-pig-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/hedgehog-health-problems",
+      "destination": "/blog/hedgehog-health-problems",
+      "permanent": true
+    },
+    {
       "source": "/avian-vet-alhambra",
       "destination": "/blog/avian-vet-alhambra",
       "permanent": true
