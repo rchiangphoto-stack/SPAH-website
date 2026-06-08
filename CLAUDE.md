@@ -70,9 +70,20 @@ Model after `blog/bearded-dragon-health-problems.html`. Key sections in order:
 - `BreadcrumbList` — Home → Blog → Post title
 - `FAQPage` — mirrors the FAQ section
 
-### Blog header images
-Every post needs a 1200×630 WebP header image at `images/blog/{slug}-header.webp`.
-A GitHub Actions workflow (`generate-blog-headers.yml`) auto-generates missing headers on push using the Pixabay API. Just add an HTML comment in the file:
+### Blog header images (auto-generated — don't create manually)
+Every post needs a 1200×630 WebP header image at `images/blog/{slug}-header.webp`. **You do not need to generate it yourself** — just reference it and add the photo comment; CI handles the rest.
+
+**How the pipeline works (`.github/workflows/generate-blog-headers.yml`):**
+1. Triggers on push to **any branch** (`branches: ['**']`) when `blog/*.html` changes, or manually via `workflow_dispatch` (default branch input: `claude/busy-goldberg-GY46m`)
+2. Scans every `blog/*.html` for an `<img src="...{slug}-header.webp">` reference and checks whether that file already exists in `images/blog/`
+3. For each missing image, runs `python3 scripts/auto_header.py {slug}`, which:
+   - Reads the post's `og:title` for the headline text
+   - Reads the search query from the HTML comment (`using query "{search query}"`)
+   - Searches Pixabay (`PIXABAY_API_KEY` from repo secrets), downloads the top horizontal photo ≥1200px wide
+   - Composites a dark overlay + bold title + `"South Pasadena Animal Hospital • Alhambra, CA"` subtitle, saves as 1200×630 WebP
+4. Commits generated images back to the same branch as `Auto-generate blog header images [skip ci]` and pushes
+
+**What you need to do when adding a post:** add the placeholder comment with a good search query, then push — the workflow fills in the actual file within a minute or two:
 ```html
 <!-- Photo: {description} — generate with scripts/auto_header.py using query "{search query}" -->
 ```
@@ -84,6 +95,7 @@ The image tag goes before `<div class="prose">`:
      style="width:100%;height:auto;border-radius:0.75rem;margin-bottom:2rem;"
      loading="eager" />
 ```
+To run it locally instead (e.g. to preview before pushing): `PIXABAY_API_KEY=... python3 scripts/auto_header.py {slug}` — requires Pillow (`pip install Pillow`).
 
 ### Category badge colors
 | Category | Background | Color |
