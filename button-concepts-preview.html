@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SPAH — Button Concept Previews</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --teal: #7A9E8E;
+    --blue: #5A7FA6;
+    --dark: #2A3442;
+    --warm: #FAF9F7;
+    --terra: #C97B5A;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: 'Lato', sans-serif;
+    background: var(--warm);
+    color: var(--dark);
+    margin: 0;
+    padding: 3rem 1.5rem 6rem;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    text-align: center;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    margin-bottom: 0.5rem;
+  }
+  .sub {
+    text-align: center;
+    color: #6b7280;
+    margin-bottom: 3rem;
+    font-size: 0.95rem;
+  }
+  .section {
+    max-width: 880px;
+    margin: 0 auto 3.5rem;
+    background: white;
+    border-radius: 1.25rem;
+    padding: 2.25rem 2rem;
+    box-shadow: 0 4px 24px rgba(42,52,66,0.06);
+    border: 1px solid rgba(122,158,142,0.12);
+  }
+  .label {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 0.35rem;
+  }
+  .desc {
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-bottom: 1.5rem;
+    max-width: 60ch;
+  }
+  .row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  /* ============ OPTION 1: Soft gradient + lift ============ */
+  .opt1-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: linear-gradient(135deg, #6F92BC 0%, #5A7FA6 55%, #4A6D92 100%);
+    color: white; font-weight: 700; letter-spacing: 0.03em;
+    border-radius: 9999px; padding: 0.85rem 2.1rem; text-decoration: none;
+    font-size: 0.95rem;
+    box-shadow: 0 6px 20px rgba(90,127,166,0.35), inset 0 1px 0 rgba(255,255,255,0.25);
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+    border: none; cursor: pointer;
+  }
+  .opt1-primary:hover { transform: translateY(-3px); box-shadow: 0 12px 28px rgba(90,127,166,0.45), inset 0 1px 0 rgba(255,255,255,0.3); }
+  .opt1-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: white; color: var(--blue); font-weight: 700; letter-spacing: 0.03em;
+    border-radius: 9999px; padding: 0.8rem 2.1rem; text-decoration: none;
+    font-size: 0.95rem; border: 1.5px solid rgba(90,127,166,0.35);
+    box-shadow: 0 2px 10px rgba(42,52,66,0.05);
+    transition: all 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .opt1-outline:hover { border-color: var(--blue); transform: translateY(-3px); box-shadow: 0 8px 22px rgba(90,127,166,0.2); }
+
+  /* ============ OPTION 2: Animated arrow / micro-interaction ============ */
+  .opt2-primary {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--teal); color: white; font-weight: 700; letter-spacing: 0.03em;
+    border-radius: 9999px; padding: 0.85rem 1.6rem 0.85rem 2.1rem; text-decoration: none;
+    font-size: 0.95rem; border: none; cursor: pointer; overflow: hidden; position: relative;
+    transition: background 0.25s ease, padding 0.25s ease;
+  }
+  .opt2-primary .arrow { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); display: inline-flex; }
+  .opt2-primary:hover { background: #6a8d7d; padding-right: 1.3rem; }
+  .opt2-primary:hover .arrow { transform: translateX(5px); }
+  .opt2-outline {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: transparent; color: var(--dark); font-weight: 700; letter-spacing: 0.03em;
+    border-radius: 9999px; padding: 0.8rem 2rem; text-decoration: none;
+    font-size: 0.95rem; border: 1.5px solid var(--dark);
+    transition: all 0.25s ease;
+  }
+  .opt2-outline:hover { background: var(--dark); color: white; }
+  .opt2-outline:hover .arrow { transform: translateX(5px); }
+  .opt2-outline .arrow { transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); display: inline-flex; }
+
+  /* ============ OPTION 3: Glassmorphism / frosted ============ */
+  .opt3-wrap {
+    background: linear-gradient(135deg, #7A9E8E 0%, #5A7FA6 100%);
+    border-radius: 1rem; padding: 2.5rem 2rem;
+  }
+  .opt3-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.95); color: var(--dark); font-weight: 800; letter-spacing: 0.03em;
+    border-radius: 9999px; padding: 0.85rem 2.1rem; text-decoration: none;
+    font-size: 0.95rem; border: none; cursor: pointer;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), background 0.25s ease;
+  }
+  .opt3-primary:hover { transform: scale(1.04); background: white; }
+  .opt3-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,255,255,0.12); backdrop-filter: blur(10px);
+    color: white; font-weight: 700; letter-spacing: 0.03em;
+    border-radius: 9999px; padding: 0.8rem 2.1rem; text-decoration: none;
+    font-size: 0.95rem; border: 1.5px solid rgba(255,255,255,0.5);
+    transition: all 0.25s ease;
+  }
+  .opt3-outline:hover { background: rgba(255,255,255,0.22); border-color: white; }
+
+  /* ============ OPTION 4: Fill-sweep on hover ============ */
+  .opt4-primary {
+    display: inline-block; position: relative; overflow: hidden;
+    background: var(--dark); color: white; font-weight: 700; letter-spacing: 0.03em;
+    border-radius: 9999px; padding: 0.85rem 2.1rem; text-decoration: none;
+    font-size: 0.95rem; border: none; cursor: pointer;
+    z-index: 0;
+  }
+  .opt4-primary::before {
+    content: ''; position: absolute; inset: 0;
+    background: linear-gradient(135deg, var(--teal), var(--blue));
+    transform: scaleX(0); transform-origin: left; z-index: -1;
+    transition: transform 0.4s cubic-bezier(0.65,0,0.35,1);
+  }
+  .opt4-primary:hover::before { transform: scaleX(1); }
+  .opt4-outline {
+    display: inline-block; position: relative; overflow: hidden;
+    background: transparent; color: var(--blue); font-weight: 700; letter-spacing: 0.03em;
+    border-radius: 9999px; padding: 0.8rem 2.1rem; text-decoration: none;
+    font-size: 0.95rem; border: 1.5px solid var(--blue); cursor: pointer; z-index: 0;
+  }
+  .opt4-outline::before {
+    content: ''; position: absolute; inset: 0;
+    background: var(--blue); transform: scaleX(0); transform-origin: left; z-index: -1;
+    transition: transform 0.4s cubic-bezier(0.65,0,0.35,1);
+  }
+  .opt4-outline:hover { color: white; }
+  .opt4-outline:hover::before { transform: scaleX(1); }
+
+  /* ============ OPTION 5: Minimal flat + animated underline ============ */
+  .opt5-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--dark); color: white; font-weight: 700; letter-spacing: 0.05em;
+    text-transform: uppercase; font-size: 0.8rem;
+    border-radius: 0.4rem; padding: 1rem 2.2rem; text-decoration: none;
+    border: none; cursor: pointer;
+    transition: background 0.2s ease, letter-spacing 0.2s ease;
+  }
+  .opt5-primary:hover { background: var(--teal); letter-spacing: 0.08em; }
+  .opt5-text {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    background: none; border: none; cursor: pointer;
+    color: var(--dark); font-weight: 700; font-size: 0.95rem;
+    text-decoration: none; padding: 0.5rem 0; position: relative;
+  }
+  .opt5-text::after {
+    content: ''; position: absolute; left: 0; right: 0; bottom: 0.3rem;
+    height: 2px; background: var(--terra);
+    transform: scaleX(0.3); transform-origin: left;
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .opt5-text:hover::after { transform: scaleX(1); }
+  .opt5-text:hover { color: var(--terra); }
+
+  svg { display: inline-block; vertical-align: middle; }
+</style>
+</head>
+<body>
+
+  <h1>Button Concept Previews for SPAH</h1>
+  <p class="sub">Five directions, all built on your existing brand palette &amp; fonts (Playfair Display + Lato). Hover each one to see the interaction.</p>
+
+  <div class="section">
+    <p class="label">Option 1 — Soft Gradient &amp; Lift</p>
+    <p class="desc">A gentle gradient fill with a subtle inner highlight, plus a "lift" effect on hover (rises up with a deeper shadow). Feels premium and tactile without being flashy — a refined evolution of your current style.</p>
+    <div class="row">
+      <a href="#" class="opt1-primary">Book an Appointment</a>
+      <a href="#" class="opt1-outline">See Our Services</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="label">Option 2 — Animated Arrow / Micro-interaction</p>
+    <p class="desc">Flat brand-color fills that stay calm at rest, with a small arrow that slides forward on hover. Adds a "let's go" energy that nudges people toward booking, while staying clean and minimal.</p>
+    <div class="row">
+      <a href="#" class="opt2-primary">Book an Appointment <span class="arrow">→</span></a>
+      <a href="#" class="opt2-outline">See Our Services <span class="arrow">→</span></a>
+    </div>
+  </div>
+
+  <div class="section opt3-section" style="padding:0;overflow:hidden;">
+    <div class="opt3-wrap">
+      <p class="label" style="color:white;">Option 3 — Glassmorphism / Frosted Glass</p>
+      <p class="desc" style="color:rgba(255,255,255,0.8);">Best suited for buttons placed over photos or gradient sections (like your hero or CTA bands) — a frosted, semi-transparent look that feels modern and "2026," with a crisp white solid button as the primary action.</p>
+      <div class="row">
+        <a href="#" class="opt3-primary">Book an Appointment</a>
+        <a href="#" class="opt3-outline">Call (626) 441-1314</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="label">Option 4 — Fill-Sweep on Hover</p>
+    <p class="desc">Starts dark/outlined, then a brand-gradient color "sweeps" in from the left on hover like a wipe transition. A satisfying, slightly playful interaction that still reads as professional and polished.</p>
+    <div class="row">
+      <a href="#" class="opt4-primary">Book an Appointment</a>
+      <a href="#" class="opt4-outline">See Our Services</a>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="label">Option 5 — Minimal Flat + Underline Link</p>
+    <p class="desc">A more editorial, "modern magazine" direction — boxy uppercase primary buttons with generous letter-spacing, paired with understated text-link style secondary actions that reveal a terra-colored underline on hover. Less "button-y," more confident.</p>
+    <div class="row">
+      <a href="#" class="opt5-primary">Book an Appointment</a>
+      <a href="#" class="opt5-text">See Our Services <span>→</span></a>
+    </div>
+  </div>
+
+  <p style="text-align:center;color:#9ca3af;font-size:0.85rem;max-width:50ch;margin:0 auto;">This is a static preview file (button-concepts-preview.html) — not linked from the live site. Once you pick a direction (or mix elements from a few), I'll roll it into the shared button styles across the site.</p>
+
+</body>
+</html>
