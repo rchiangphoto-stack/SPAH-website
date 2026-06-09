@@ -538,6 +538,91 @@
       "permanent": true
     },
     {
+      "source": "/sugar-glider-care",
+      "destination": "/blog/sugar-glider-care",
+      "permanent": true
+    },
+    {
+      "source": "/gerbil-care",
+      "destination": "/blog/gerbil-care",
+      "permanent": true
+    },
+    {
+      "source": "/chameleon-care",
+      "destination": "/blog/chameleon-care",
+      "permanent": true
+    },
+    {
+      "source": "/finch-canary-care",
+      "destination": "/blog/finch-canary-care",
+      "permanent": true
+    },
+    {
+      "source": "/toxic-foods-dogs-cats",
+      "destination": "/blog/toxic-foods-dogs-cats",
+      "permanent": true
+    },
+    {
+      "source": "/toxic-foods-pet-birds",
+      "destination": "/blog/toxic-foods-pet-birds",
+      "permanent": true
+    },
+    {
+      "source": "/flea-tick-prevention-alhambra",
+      "destination": "/blog/flea-tick-prevention-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/heartworm-prevention-alhambra",
+      "destination": "/blog/heartworm-prevention-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/cat-spay-neuter-alhambra",
+      "destination": "/blog/cat-spay-neuter-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/pet-insurance-exotic-pets",
+      "destination": "/blog/pet-insurance-exotic-pets",
+      "permanent": true
+    },
+    {
+      "source": "/dog-dental-cleaning-cost-alhambra",
+      "destination": "/blog/dog-dental-cleaning-cost-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-covina",
+      "destination": "/blog/vet-near-covina",
+      "permanent": true
+    },
+    {
+      "source": "/rat-mouse-health-problems",
+      "destination": "/blog/rat-mouse-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/conure-parrot-health-problems",
+      "destination": "/blog/conure-parrot-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-south-pasadena",
+      "destination": "/blog/vet-near-south-pasadena",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-san-marino",
+      "destination": "/blog/vet-near-san-marino",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-eagle-rock",
+      "destination": "/blog/vet-near-eagle-rock",
+      "permanent": true
+    },
+    {
       "source": "/about-us",
       "destination": "/about",
       "permanent": true
