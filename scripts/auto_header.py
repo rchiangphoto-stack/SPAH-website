@@ -12,6 +12,7 @@ Requires PIXABAY_API_KEY env var.
 import sys
 import os
 import re
+import html as html_module
 import urllib.request
 import urllib.parse
 import json
@@ -61,7 +62,7 @@ def extract_from_html(slug):
         html = f.read()
 
     m = re.search(r'<meta property="og:title" content="([^"]+)"', html)
-    title = m.group(1) if m else slug.replace("-", " ").title()
+    title = html_module.unescape(m.group(1)) if m else slug.replace("-", " ").title()
 
     m = re.search(r'using query "([^"]+)"', html)
     query = m.group(1) if m else slug.replace("-", " ")
