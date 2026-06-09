@@ -791,6 +791,16 @@
       "source": "/blog/dog-spay-neuter-alhambra.html",
       "destination": "/blog/dog-spay-neuter-alhambra",
       "permanent": true
+    },
+    {
+      "source": "/corn-snake-health-problems",
+      "destination": "/blog/corn-snake-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/hamster-health-problems",
+      "destination": "/blog/hamster-health-problems",
+      "permanent": true
     }
   ]
 }
