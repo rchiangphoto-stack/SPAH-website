@@ -12,6 +12,8 @@ Requires PIXABAY_API_KEY env var.
 import sys
 import os
 import re
+import hashlib
+import html as html_module
 import urllib.request
 import urllib.parse
 import json
@@ -61,7 +63,7 @@ def extract_from_html(slug):
         html = f.read()
 
     m = re.search(r'<meta property="og:title" content="([^"]+)"', html)
-    title = m.group(1) if m else slug.replace("-", " ").title()
+    title = html_module.unescape(m.group(1)) if m else slug.replace("-", " ").title()
 
     m = re.search(r'using query "([^"]+)"', html)
     query = m.group(1) if m else slug.replace("-", " ")
@@ -69,7 +71,14 @@ def extract_from_html(slug):
     return title, query
 
 
-def search_pixabay(query, api_key):
+def _slug_index(slug, count):
+    """Deterministic but varied result index so different slugs with the
+    same query don't all pick the same photo."""
+    h = int(hashlib.md5(slug.encode()).hexdigest(), 16)
+    return h % count
+
+
+def search_pixabay(query, api_key, slug=""):
     url = (
         "https://pixabay.com/api/?"
         + urllib.parse.urlencode({
@@ -77,7 +86,7 @@ def search_pixabay(query, api_key):
             "q": query,
             "image_type": "photo",
             "orientation": "horizontal",
-            "per_page": 10,
+            "per_page": 15,
             "safesearch": "true",
             "min_width": 1200,
         })
@@ -88,7 +97,8 @@ def search_pixabay(query, api_key):
     hits = data.get("hits", [])
     if not hits:
         sys.exit(f"No Pixabay results for: {query!r}")
-    return hits[0]
+    idx = _slug_index(slug, min(len(hits), 15))
+    return hits[idx]
 
 
 def make_header(out_path, photo_url, title, photo_id, photographer):
@@ -137,7 +147,7 @@ def main():
     print(f"Title: {title}")
     print(f"Query: {query}")
 
-    photo = search_pixabay(query, api_key)
+    photo = search_pixabay(query, api_key, slug=slug)
     photo_id     = photo["id"]
     photographer = photo["user"]
     photo_url    = photo["largeImageURL"]
