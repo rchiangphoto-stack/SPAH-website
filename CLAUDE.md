@@ -189,6 +189,15 @@ curl -X PUT \
 - Use specific numbers: "within 12–24 hours," "day 3–5"
 - Avoid: "It is important to note that...", "In most cases it is recommended..."
 
+### Medical & legal liability guardrails (MANDATORY for all blog content)
+- **Never assert a diagnosis** for the reader's pet — frame symptoms as "could be a sign of," "may indicate," "one possible cause," not "your pet has X"
+- **Never give specific drug names, dosages, or treatment protocols** to follow at home — defer to "your veterinarian will determine the right treatment/dosage"
+- **No absolute/guarantee language**: avoid "cures," "guaranteed," "always works," "100% safe/effective," "completely eliminates," "prevents [disease]" — use "can help reduce the risk of," "may improve," "is often effective"
+- **No DIY medical procedures** (e.g., "lance the abscess," "pull the retained shed yourself," "give your pet X medication") — home care should be limited to comfort/support measures (quiet space, hydration, monitoring), with anything invasive or medication-related routed to "have a vet do this"
+- Every post covering a health problem must include a clear "when to see a vet" section that pushes readers toward calling SPAH rather than relying on home treatment
+- Don't make comparative/superiority claims about SPAH vs. other named clinics or vets
+- Don't cite statistics, survival rates, or success rates without a verifiable source — if unsure, omit the number and use qualitative language instead
+
 ---
 
 ## Pixabay API
