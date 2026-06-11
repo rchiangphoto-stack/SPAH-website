@@ -321,6 +321,14 @@
       100% { background-position: -200% center; }
     }
 
+    /* ── Blog carousel card hover ── */
+    .blog-card {
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+    }
+    .blog-card:hover { transform: translateY(-4px); }
+    .blog-card img { transition: transform 0.4s ease; }
+    .blog-card:hover img { transform: scale(1.04); }
+
     /* ── Morphing arrow button ── */
     .morph-btn {
       width: 52px; height: 52px;
@@ -381,7 +389,6 @@
       </a>
       <div class="hidden md:flex items-center gap-8">
         <a href="/pricing"   class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">PRICING</a>
-        <a href="/blog"      class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">BLOG</a>
         <a href="/contact"   class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide transition-colors duration-200">CONTACT</a>
         <a href="https://spah.koala.health/" target="_blank"
            class="nav-link text-dark/70 hover:text-brand font-body text-sm tracking-wide font-bold transition-colors duration-200">PHARMACY ↗</a>
@@ -399,7 +406,6 @@
       <a href="/about"    class="text-dark/70 font-body text-sm tracking-wide py-3">ABOUT US</a>
       <a href="/services" class="text-dark/70 font-body text-sm tracking-wide py-3">SERVICES</a>
       <a href="/pricing"  class="text-dark/70 font-body text-sm tracking-wide py-3">PRICING</a>
-      <a href="/blog"     class="text-dark/70 font-body text-sm tracking-wide py-3">BLOG</a>
       <a href="/contact"  class="text-dark/70 font-body text-sm tracking-wide py-3">CONTACT</a>
       <a href="https://spah.koala.health/" target="_blank" class="text-dark/70 font-body text-sm font-bold py-3">PHARMACY ↗</a>
     </div>
@@ -895,57 +901,6 @@
     </div>
   </section>
 
-  <!-- FROM THE BLOG -->
-  <section class="py-8 md:py-24" style="background: linear-gradient(180deg, #FAFAF8 0%, #EFF4F9 100%);">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-14">
-        <span class="font-body text-xs font-bold tracking-widest uppercase" style="color:#4e7566;">Pet Care Resources</span>
-        <h2 class="font-display text-2xl sm:text-3xl md:text-4xl font-bold text-dark mt-3" style="letter-spacing:-0.02em;">From the Blog</h2>
-        <p class="font-body text-muted text-lg mt-4 max-w-xl mx-auto" style="line-height:1.7;">
-          Tips, guides, and answers from our team — for dogs, cats, and exotic pets alike.
-        </p>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <a href="/blog/vet-near-covina" class="service-card bg-white rounded-2xl overflow-hidden card-shadow block">
-          <div style="aspect-ratio:600/315;overflow:hidden;">
-            <img src="images/blog/vet-near-covina-header.webp" alt="Dog at vet clinic — vet near Covina CA" width="600" height="315" loading="lazy" class="w-full h-full object-cover" />
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-lg font-bold text-dark mb-2">Looking for a Vet Near Covina? SPAH Is 20 Minutes Away</h3>
-            <p class="font-body text-muted text-sm leading-relaxed" style="line-height:1.7;">
-              Full-service care for dogs, cats, and exotic animals — now accepting new clients from Covina and the eastern San Gabriel Valley.
-            </p>
-          </div>
-        </a>
-        <a href="/blog/dog-dental-cleaning-cost-alhambra" class="service-card bg-white rounded-2xl overflow-hidden card-shadow block">
-          <div style="aspect-ratio:600/315;overflow:hidden;">
-            <img src="images/blog/dog-dental-cleaning-cost-alhambra-header.webp" alt="Dog teeth dental care — cost guide Alhambra" width="600" height="315" loading="lazy" class="w-full h-full object-cover" />
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-lg font-bold text-dark mb-2">How Much Does a Dog Dental Cleaning Cost in Alhambra?</h3>
-            <p class="font-body text-muted text-sm leading-relaxed" style="line-height:1.7;">
-              Routine cleaning, extractions, anesthesia, radiographs — what goes into the price and what to expect at your appointment.
-            </p>
-          </div>
-        </a>
-        <a href="/blog/cat-spay-neuter-alhambra" class="service-card bg-white rounded-2xl overflow-hidden card-shadow block">
-          <div style="aspect-ratio:600/315;overflow:hidden;">
-            <img src="images/blog/cat-spay-neuter-alhambra-header.webp" alt="Cat at veterinary clinic — spay neuter guide Alhambra" width="600" height="315" loading="lazy" class="w-full h-full object-cover" />
-          </div>
-          <div class="p-6">
-            <h3 class="font-display text-lg font-bold text-dark mb-2">Cat Spay &amp; Neuter in Alhambra: What to Expect</h3>
-            <p class="font-body text-muted text-sm leading-relaxed" style="line-height:1.7;">
-              Best age, procedure overview, recovery timeline, and the warning signs that mean a follow-up call.
-            </p>
-          </div>
-        </a>
-      </div>
-      <div class="text-center mt-10">
-        <a href="/blog" class="btn-outline inline-block">Read More Articles</a>
-      </div>
-    </div>
-  </section>
-
   <!-- CTA BANNER -->
   <section class="py-8 md:py-20 relative overflow-hidden grain" style="background: linear-gradient(135deg, #5A7FA6 0%, #7A9E8E 100%);">
     <div style="position:absolute;top:-40px;right:-40px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,0.06);pointer-events:none;"></div>
@@ -1056,6 +1011,24 @@
       menu.classList.toggle('hidden');
       menu.classList.toggle('flex');
     });
+
+    // Blog carousel
+    (function() {
+      var track = document.getElementById('blogTrack');
+      var prevBtn = document.getElementById('blogPrev');
+      var nextBtn = document.getElementById('blogNext');
+      if (!track || !prevBtn || !nextBtn) return;
+      function cardWidth() {
+        var c = track.querySelector('.snap-start');
+        return c ? c.offsetWidth + 24 : 344;
+      }
+      prevBtn.addEventListener('click', function() {
+        track.scrollBy({ left: -cardWidth() * 2, behavior: 'smooth' });
+      });
+      nextBtn.addEventListener('click', function() {
+        track.scrollBy({ left: cardWidth() * 2, behavior: 'smooth' });
+      });
+    })();
 
     // Review carousel
     function scrollReviews(dir) {
