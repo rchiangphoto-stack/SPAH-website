@@ -29,7 +29,7 @@ GitHub repo: `rchiangphoto-stack/SPAH-website` (static HTML, no build step)
 
 - **Never use:** specialize, specialty, expert, expertise — veterinary board restriction
 - **No author byline** on any blog post
-- **Banner on all pages:** `"Good news — we're now accepting new clients, including dogs and cats!"` (updated 2026-06-08 — SPAH reopened to general new clients; previously was exotics-only)
+- **Banner on all pages:** `"Currently in temporary Bungalows during construction."` — soft pink style (`background:#FDDDE6;border:1px solid #F8B9CE;color:#9D4060;`) (updated 2026-06-12 — SPAH operating from temporary bungalows during construction)
 - **No walk-ins language** in meta descriptions or CTAs (appointment-only is fine)
 - **Never invent** staff credentials, services, equipment, or certifications not listed on spah.la
 - **Heading color spans** (h1/h2/h3 and inline references only):
