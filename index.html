@@ -463,128 +463,297 @@
   -->
 
   <!-- ============================================================
-       NEW HERO — "WE MOVED" Building Image
+       NEW HERO — Brand Stripes + Logo + Featured Reads Tile Grid
        ============================================================ -->
   <style>
-    .moved-hero {
+    .featured-hero {
       position: relative;
       overflow: hidden;
-      background: linear-gradient(180deg, #e8f0f8 0%, #FAFAF8 100%);
     }
-    .moved-hero-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 3.5rem 1.5rem 3.5rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
-    .moved-hero-img-wrap {
-      position: relative;
-      width: 100%;
-      max-width: 900px;
-      border-radius: 1.5rem;
-      overflow: hidden;
-      box-shadow: 0 8px 40px rgba(42,52,66,0.12), 0 2px 12px rgba(42,52,66,0.06);
-      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.6s ease;
-      cursor: pointer;
-    }
-    .moved-hero-img-wrap:hover {
-      transform: translateY(-6px) scale(1.01);
-      box-shadow: 0 16px 56px rgba(42,52,66,0.18), 0 4px 16px rgba(42,52,66,0.08);
-    }
-    .moved-hero-img-wrap img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.6s cubic-bezier(0.34,1.56,0.64,1);
-    }
-    .moved-hero-img-wrap:hover img {
-      transform: scale(1.03);
-    }
-    /* Subtle shimmer overlay on hover */
-    .moved-hero-img-wrap::after {
-      content: '';
+    .featured-hero-stripes {
       position: absolute;
       inset: 0;
-      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
+      display: flex;
+      z-index: 0;
     }
-    .moved-hero-img-wrap:hover::after {
-      opacity: 1;
-      animation: shimmer 1.5s ease forwards;
+    .featured-hero-stripes > div {
+      flex: 1;
+      height: 100%;
     }
-    @keyframes shimmer {
-      0%   { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
+    .featured-hero-content {
+      position: relative;
+      z-index: 1;
+      padding: clamp(2.5rem, 6vw, 4.5rem) 1.5rem clamp(2rem, 5vw, 3.5rem);
+      text-align: center;
     }
-    /* Entry animation */
+    .featured-hero-logo-card {
+      display: inline-block;
+      background: #FAF9F7;
+      border-radius: 1.25rem;
+      padding: clamp(1rem, 3vw, 1.75rem) clamp(1.5rem, 5vw, 3rem);
+      box-shadow: 0 8px 32px rgba(42,52,66,0.18);
+      animation: heroFadeUp 0.9s cubic-bezier(0.34,1.56,0.64,1) 0.1s both;
+    }
+    .featured-hero-logo {
+      display: block;
+      width: min(440px, 78vw);
+      height: auto;
+    }
+    .featured-hero-heading {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin: 1.5rem 0 0.6rem;
+      animation: heroFadeUpText 0.8s cubic-bezier(0.34,1.56,0.64,1) 0.35s both;
+    }
+    .featured-hero-sub {
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(0.9rem, 1.6vw, 1.05rem);
+      color: rgba(255,255,255,0.92);
+      max-width: 560px;
+      margin: 0 auto;
+      line-height: 1.7;
+      animation: heroFadeUpText 0.8s cubic-bezier(0.34,1.56,0.64,1) 0.5s both;
+    }
     @keyframes heroFadeUp {
-      0%   { transform: translateY(30px) scale(0.97); }
-      100% { transform: translateY(0) scale(1); }
+      0%   { transform: translateY(24px) scale(0.97); opacity: 0; }
+      100% { transform: translateY(0) scale(1); opacity: 1; }
     }
     @keyframes heroFadeUpText {
-      0%   { opacity: 0; transform: translateY(20px); }
+      0%   { opacity: 0; transform: translateY(16px); }
       100% { opacity: 1; transform: translateY(0); }
     }
-    .moved-hero-img-wrap {
-      animation: heroFadeUp 1s cubic-bezier(0.34,1.56,0.64,1) 0.2s forwards;
+
+    /* Tile grid */
+    .tile-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 3.5rem) 1.5rem clamp(2.5rem, 6vw, 4rem);
     }
-    .moved-hero-text {
-      opacity: 0;
-      animation: heroFadeUpText 0.8s cubic-bezier(0.34,1.56,0.64,1) 0.5s forwards;
+    @media (max-width: 1024px) {
+      .tile-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    .moved-hero-btns {
-      opacity: 0;
-      animation: heroFadeUpText 0.8s cubic-bezier(0.34,1.56,0.64,1) 0.7s forwards;
+    @media (max-width: 560px) {
+      .tile-grid { grid-template-columns: 1fr; }
     }
-    /* Mobile adjustments */
-    @media (max-width: 768px) {
-      .moved-hero-inner {
-        padding: 1.2rem 1rem 2rem;
-      }
-      .moved-hero-img-wrap {
-        border-radius: 1rem;
-      }
-      .chinchilla-mascot {
-        right: 0.5rem;
-        bottom: 1.5rem;
-        width: 65px;
-      }
+    .tile-card {
+      position: relative;
+      display: block;
+      aspect-ratio: 3 / 4;
+      border-radius: 1rem;
+      overflow: hidden;
+      text-decoration: none;
+      box-shadow: 0 4px 18px rgba(42,52,66,0.10);
+      transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.4s ease;
+    }
+    .tile-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(42,52,66,0.18);
+    }
+    .tile-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.6s ease;
+    }
+    .tile-card:hover img {
+      transform: scale(1.06);
+    }
+    .tile-overlay {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      padding: 2.4rem 1.1rem 1.2rem;
+      color: #fff;
+      clip-path: polygon(0% 22%, 8% 12%, 16% 24%, 24% 10%, 32% 22%, 40% 8%, 48% 20%, 56% 12%, 64% 24%, 72% 10%, 80% 22%, 88% 8%, 96% 20%, 100% 12%, 100% 100%, 0% 100%);
+    }
+    .tile-eyebrow {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.65rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      opacity: 0.9;
+      display: block;
+      margin-bottom: 0.4rem;
+    }
+    .tile-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.4rem;
+      display: block;
+    }
+    .tile-desc {
+      font-family: 'Lato', sans-serif;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      opacity: 0.92;
+      margin-bottom: 0.7rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .tile-cta {
+      font-family: 'Lato', sans-serif;
+      font-weight: 700;
+      font-size: 0.78rem;
+      letter-spacing: 0.02em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+    .tile-cta svg { transition: transform 0.3s ease; }
+    .tile-card:hover .tile-cta svg { transform: translateX(4px); }
+
+    /* Location bar below grid */
+    .location-bar {
+      background: #FAF9F7;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      border-top: 1px solid rgba(42,52,66,0.06);
+    }
+    .location-bar-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+      background: #fff;
+      border: 1px solid rgba(122,158,142,0.25);
+      border-radius: 999px;
+      padding: 8px 22px;
+      margin-bottom: 1.1rem;
+      font-family: 'Lato', sans-serif;
+      font-size: clamp(0.78rem, 1.4vw, 0.9rem);
+      color: #2A3442;
+    }
+    .location-bar-pill a {
+      font-weight: 700;
+      color: #5A7FA6;
+      text-decoration: none;
+      white-space: nowrap;
     }
   </style>
 
-  <section class="moved-hero">
-    <div class="moved-hero-inner">
-      <!-- Building image with hover animation -->
-      <div class="moved-hero-img-wrap">
-        <img src="images/spah-we-moved.webp"
-             alt="South Pasadena Animal Hospital new location announcement – we moved to 3116 W Main St, Alhambra"
-             width="1400" height="781" fetchpriority="high" />
+  <section class="featured-hero">
+    <div class="featured-hero-stripes">
+      <div style="background:#7A9E8E"></div>
+      <div style="background:#5A7FA6"></div>
+      <div style="background:#2A3442"></div>
+      <div style="background:#5A7FA6"></div>
+      <div style="background:#7A9E8E"></div>
+    </div>
+    <div class="featured-hero-content">
+      <div class="featured-hero-logo-card">
+        <img src="images/spah-logo-horizontal.webp" alt="South Pasadena Animal Hospital" class="featured-hero-logo" width="440" height="234" fetchpriority="high" />
       </div>
+      <h1 class="featured-hero-heading">Featured Reads</h1>
+      <p class="featured-hero-sub">Practical, vet-reviewed advice for dogs, cats, and exotic pets — written by the team at our Alhambra clinic.</p>
+    </div>
+  </section>
 
-      <!-- Text & CTA below image -->
-      <div class="moved-hero-text" style="margin-top:1.8rem;">
-        <h1 class="shiny-text" style="font-family:'Quicksand',sans-serif;font-weight:700;font-size:clamp(1.25rem,4vw,2.6rem);letter-spacing:0.02em;margin-bottom:0.3rem;white-space:nowrap;"><span style="color:#4e7566">South Pasadena</span> Animal Hospital</h1>
-        <p style="font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(1.4rem,3.8vw,2.2rem);color:#2A3442;line-height:1.15;letter-spacing:-0.02em;margin-bottom:0.6rem;">
-          Welcome to Our New Home
-        </p>
-        <p style="font-family:'Lato',sans-serif;font-size:clamp(0.9rem,1.6vw,1.05rem);color:#666;line-height:1.7;max-width:520px;margin:0 auto 0.3rem;">
-          <strong>3116 W Main St, Alhambra, CA 91801</strong>
-        </p>
+  <div class="tile-grid">
+    <a href="blog/new-puppy-vet-guide-alhambra" class="tile-card">
+      <img src="images/apple-maps-photos/01-dog-clean.jpg" alt="New puppy vet guide for Alhambra pet owners" loading="lazy" />
+      <div class="tile-overlay" style="background:rgba(122,158,142,0.88);">
+        <span class="tile-eyebrow">Dog Health</span>
+        <span class="tile-title">New Puppy in Alhambra? Your First-Year Vet Checklist</span>
+        <p class="tile-desc">Vaccines, dewormers, spay/neuter timing, and the checkups new puppy owners often forget.</p>
+        <span class="tile-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
       </div>
+    </a>
+    <a href="blog/signs-cat-is-sick" class="tile-card">
+      <img src="images/apple-maps-photos/02-cat-clean.jpg" alt="How to tell if your cat is sick" loading="lazy" />
+      <div class="tile-overlay" style="background:rgba(90,127,166,0.88);">
+        <span class="tile-eyebrow">Cat Health</span>
+        <span class="tile-title">How to Tell If Your Cat Is Sick</span>
+        <p class="tile-desc">10 subtle signs Alhambra cat owners often miss — and why it's worth a vet visit.</p>
+        <span class="tile-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+    <a href="blog/rabbit-vet-near-san-gabriel" class="tile-card">
+      <img src="images/apple-maps-photos/03-rabbit-clean.jpg" alt="Rabbit vet near San Gabriel" loading="lazy" />
+      <div class="tile-overlay" style="background:rgba(42,52,66,0.88);">
+        <span class="tile-eyebrow">Small Animal Care</span>
+        <span class="tile-title">Rabbit Vet Near San Gabriel</span>
+        <p class="tile-desc">Wellness exams, dental disease, and GI issues — what SGV bunny owners need to know.</p>
+        <span class="tile-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+    <a href="blog/sick-bird-signs" class="tile-card">
+      <img src="images/apple-maps-photos/04-bird-clean.jpg" alt="Signs your bird is sick" loading="lazy" />
+      <div class="tile-overlay" style="background:rgba(122,158,142,0.88);">
+        <span class="tile-eyebrow">Bird Care</span>
+        <span class="tile-title">Signs Your Bird Is Sick</span>
+        <p class="tile-desc">What parrot, conure, and lovebird owners should watch for — and when to call an avian vet.</p>
+        <span class="tile-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+    <a href="blog/guinea-pig-vet-sgv" class="tile-card">
+      <img src="images/apple-maps-photos/05-guinea-pig-clean.jpg" alt="Guinea pig vet near Monterey Park and the San Gabriel Valley" loading="lazy" />
+      <div class="tile-overlay" style="background:rgba(90,127,166,0.88);">
+        <span class="tile-eyebrow">Small Animal Care</span>
+        <span class="tile-title">Guinea Pig Vet Near Monterey Park</span>
+        <p class="tile-desc">Sneezing, not eating, or losing weight? Here's what it could mean — and when to come in.</p>
+        <span class="tile-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+    <a href="blog/hamster-sick-signs" class="tile-card">
+      <img src="images/blog/hamster-sick-behavior.webp" alt="Signs your hamster is sick" loading="lazy" />
+      <div class="tile-overlay" style="background:rgba(42,52,66,0.88);">
+        <span class="tile-eyebrow">Small Animal Care</span>
+        <span class="tile-title">Signs Your Hamster Is Sick</span>
+        <p class="tile-desc">Lethargy, hunched posture, wet tail — know the signs and when to see a vet.</p>
+        <span class="tile-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+    <a href="blog/senior-cat-care-sgv" class="tile-card">
+      <img src="images/blog/senior-cat-care-sgv-card.webp" alt="Senior cat care in the San Gabriel Valley" loading="lazy" />
+      <div class="tile-overlay" style="background:rgba(122,158,142,0.88);">
+        <span class="tile-eyebrow">Cat Health</span>
+        <span class="tile-title">Senior Cat Care in the SGV</span>
+        <p class="tile-desc">What changes after your cat turns 10 — hyperthyroidism, kidney disease, arthritis, and more.</p>
+        <span class="tile-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+    <a href="blog/cat-vet-highland-park" class="tile-card">
+      <img src="images/blog/cat-vet-highland-park-card.webp" alt="Cat and dog vet near Highland Park Los Angeles" loading="lazy" />
+      <div class="tile-overlay" style="background:rgba(90,127,166,0.88);">
+        <span class="tile-eyebrow">General</span>
+        <span class="tile-title">Cat &amp; Dog Vet Near Highland Park</span>
+        <p class="tile-desc">Quality veterinary care about 20 minutes east in Alhambra, for everyday pets and exotics alike.</p>
+        <span class="tile-cta">Read More <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></span>
+      </div>
+    </a>
+  </div>
 
-      <div class="moved-hero-btns" style="display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap;margin-top:1.2rem;">
-        <a href="https://maps.google.com/?q=South+Pasadena+Animal+Hospital,3116+W+Main+St,Alhambra,CA+91801" target="_blank" class="btn-primary">
-          Get Directions
-        </a>
-        <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank" class="btn-outline">
-          Book an Appointment
-        </a>
-      </div>
+  <!-- Location / CTA bar below tile grid -->
+  <section class="location-bar">
+    <div class="location-bar-pill">
+      <svg style="width:14px;height:14px;flex-shrink:0;" viewBox="0 0 24 24" fill="none" stroke="#7A9E8E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+      <span><strong>3116 W Main St, Alhambra, CA 91801</strong></span>
+      <a href="https://maps.google.com/?q=South+Pasadena+Animal+Hospital,3116+W+Main+St,Alhambra,CA+91801" target="_blank">Get Directions →</a>
+    </div>
+    <div style="display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap;">
+      <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank" class="btn-primary">
+        Book an Appointment
+      </a>
+      <a href="/services" class="btn-outline">
+        See Our Services
+      </a>
     </div>
   </section>
 
