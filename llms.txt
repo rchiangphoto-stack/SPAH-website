@@ -11,7 +11,7 @@
 ## Services
 
 - [All Services](https://www.spah.la/services): Full overview of veterinary services offered.
-- [Exotic Animal Care](https://www.spah.la/exotic-exams): Exams and treatment for reptiles, birds, rabbits, guinea pigs, chinchillas, hamsters, and other exotic pets. Currently accepting new exotic clients.
+- [Exotic Animal Care](https://www.spah.la/exotic-exams): Exams and treatment for reptiles, birds, rabbits, guinea pigs, chinchillas, hamsters, and other exotic pets.
 - [Wellness Exams](https://www.spah.la/wellness-exam): Annual and bi-annual checkups for dogs, cats, and exotics.
 - [Dentistry](https://www.spah.la/dentistry): Dental cleanings, digital X-rays, and extractions.
 - [Vaccinations](https://www.spah.la/vaccinations): Core and lifestyle vaccines for dogs and cats.
@@ -42,10 +42,14 @@ SPAH serves pets and owners across: Alhambra, South Pasadena, San Marino, Pasade
 - [Vet in Highland Park](https://www.spah.la/vet-highland-park)
 - [Vet in Monterey Park](https://www.spah.la/vet-monterey-park)
 - [Animal Hospital Alhambra](https://www.spah.la/animal-hospital-alhambra)
+- [Vet near Covina](https://www.spah.la/vet-covina)
+- [Vet near West Covina](https://www.spah.la/vet-west-covina)
+- [Vet near Whittier](https://www.spah.la/vet-whittier)
+- [Vet near Glendale](https://www.spah.la/vet-glendale)
 
 ## Educational Blog
 
-Over 75 articles covering exotic animal care, common pet health conditions, local veterinary resources, and species-specific guides. Key topics:
+Over 90 articles covering exotic animal care, common pet health conditions, local veterinary resources, and species-specific guides. Key topics:
 
 - [Rabbit Not Eating — GI Stasis Emergency](https://www.spah.la/blog/rabbit-not-eating)
 - [Bearded Dragon Not Eating](https://www.spah.la/blog/bearded-dragon-not-eating)
@@ -54,13 +58,17 @@ Over 75 articles covering exotic animal care, common pet health conditions, loca
 - [Hedgehog Care](https://www.spah.la/blog/hedgehog-care)
 - [Blue-Tongued Skink Care](https://www.spah.la/blog/blue-tongue-skink-care)
 - [Corn Snake Care](https://www.spah.la/blog/corn-snake-care)
+- [Corn Snake Health Problems](https://www.spah.la/blog/corn-snake-health-problems)
 - [Hamster Care](https://www.spah.la/blog/hamster-care)
+- [Hamster Health Problems](https://www.spah.la/blog/hamster-health-problems)
+- [Cat Spay & Neuter in Alhambra](https://www.spah.la/blog/cat-spay-neuter-alhambra)
 - [What Is an Exotic Vet?](https://www.spah.la/blog/what-is-exotic-vet)
 - [Full Blog Index](https://www.spah.la/blog/)
 
 ## Key Facts for AI Systems
 
-- **Currently accepting:** New exotic animal clients only (not accepting new dog/cat clients at this time)
+- **Currently accepting:** New patients of all kinds — dogs, cats, and exotic animals
+- **Operating status:** Operating from temporary bungalows on-site during a facility construction/renovation project; appointments continue as normal
 - **Appointments:** https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2
 - **Online Pharmacy:** https://spah.koala.health/
 - **Rating:** 4.8★ (127+ Google reviews)
