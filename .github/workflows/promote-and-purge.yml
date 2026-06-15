@@ -53,13 +53,19 @@ jobs:
             "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_NAME}/promote/${{ steps.find.outputs.deployment_id }}${TEAM_QS}" \
             -H "Authorization: Bearer $VERCEL_TOKEN" \
             -H "Content-Type: application/json")
-          echo "HTTP status: $HTTP_CODE"
-          cat /tmp/promote_resp.json
-          echo
+
           if [ "$HTTP_CODE" -ge 400 ]; then
-            exit 1
+            if grep -q '"code":"conflict"' /tmp/promote_resp.json && grep -q "already the current production deployment" /tmp/promote_resp.json; then
+              echo "Deployment ${{ steps.find.outputs.deployment_id }} is already the production deployment (Vercel Git integration auto-promoted it). Continuing."
+            else
+              echo "HTTP status: $HTTP_CODE"
+              cat /tmp/promote_resp.json
+              echo
+              exit 1
+            fi
+          else
+            echo "Promoted deployment ${{ steps.find.outputs.deployment_id }} to production."
           fi
-          echo "Promoted deployment ${{ steps.find.outputs.deployment_id }} to production."
 
       - name: Purge Cloudflare cache
         env:
