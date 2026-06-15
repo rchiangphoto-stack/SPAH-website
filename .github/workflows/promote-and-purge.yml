@@ -73,9 +73,15 @@ jobs:
           CLOUDFLARE_ZONE_ID: ${{ secrets.CLOUDFLARE_ZONE_ID }}
         run: |
           set -e
-          curl -sf -X POST \
+          HTTP_CODE=$(curl -s -o /tmp/purge_resp.json -w "%{http_code}" -X POST \
             "https://api.cloudflare.com/client/v4/zones/${CLOUDFLARE_ZONE_ID}/purge_cache" \
             -H "Authorization: Bearer ${CLOUDFLARE_API_TOKEN}" \
             -H "Content-Type: application/json" \
-            --data '{"purge_everything":true}'
+            --data '{"purge_everything":true}')
+          echo "HTTP status: $HTTP_CODE"
+          cat /tmp/purge_resp.json
+          echo
+          if [ "$HTTP_CODE" -ge 400 ]; then
+            exit 1
+          fi
           echo "Purged Cloudflare cache for spah.la."
