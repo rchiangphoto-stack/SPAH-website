@@ -49,10 +49,16 @@ jobs:
           TEAM_QS=""
           if [ -n "$VERCEL_TEAM_SLUG" ]; then TEAM_QS="?slug=$VERCEL_TEAM_SLUG"; fi
 
-          curl -sf -X POST \
+          HTTP_CODE=$(curl -s -o /tmp/promote_resp.json -w "%{http_code}" -X POST \
             "https://api.vercel.com/v10/projects/${VERCEL_PROJECT_NAME}/promote/${{ steps.find.outputs.deployment_id }}${TEAM_QS}" \
             -H "Authorization: Bearer $VERCEL_TOKEN" \
-            -H "Content-Type: application/json"
+            -H "Content-Type: application/json")
+          echo "HTTP status: $HTTP_CODE"
+          cat /tmp/promote_resp.json
+          echo
+          if [ "$HTTP_CODE" -ge 400 ]; then
+            exit 1
+          fi
           echo "Promoted deployment ${{ steps.find.outputs.deployment_id }} to production."
 
       - name: Purge Cloudflare cache
