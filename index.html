@@ -216,7 +216,7 @@
       text-align: center;
       text-decoration: none;
       cursor: pointer;
-      transition: color 0.25s ease, transform 0.2s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
     }
     .btn-primary::before, .btn-outline::before {
       content: '';
@@ -264,7 +264,7 @@
 
     /* Service card hover */
     .service-card {
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
     }
     .service-card:hover { transform: translateY(-4px); }
 
@@ -302,28 +302,29 @@
 
     /* Animated shiny gradient text */
     .shiny-text {
-      background: linear-gradient(
-        90deg,
-        #7A9E8E 0%,
-        #7A9E8E 35%,
-        #b8d4c8 50%,
-        #7A9E8E 65%,
-        #7A9E8E 100%
-      );
-      background-size: 200% auto;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      color: #7A9E8E;
+      position: relative;
+      display: inline-block;
+      overflow: hidden;
+    }
+    .shiny-text::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 50%;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.55) 50%, transparent 100%);
+      transform: translateX(-200%);
       animation: shinySlide 3s ease-in-out infinite;
+      pointer-events: none;
     }
     @keyframes shinySlide {
-      0%   { background-position: 200% center; }
-      100% { background-position: -200% center; }
+      0%   { transform: translateX(-200%); }
+      100% { transform: translateX(400%); }
     }
 
     /* ── Blog carousel card hover ── */
     .blog-card {
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease;
+      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
     }
     .blog-card:hover { transform: translateY(-4px); }
     .blog-card img { transition: transform 0.4s ease; }
