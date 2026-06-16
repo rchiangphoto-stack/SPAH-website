@@ -433,10 +433,10 @@
       </div>
       <div id="spah-tagline" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center;opacity:0;pointer-events:none;z-index:3;width:min(580px,90vw);padding:0 16px;box-sizing:border-box;">
         <span style="display:inline-block;padding:4px 14px;border:1.5px solid #7A9E8E;border-radius:999px;font-family:'Lato',sans-serif;font-weight:700;font-size:clamp(0.55rem,1.2vw,0.68rem);letter-spacing:0.16em;text-transform:uppercase;color:#5a7a6a;margin-bottom:0.8rem;">Alhambra / South Pasadena, CA &nbsp;·&nbsp; Est. 2023</span>
-        <h2 style="display:block;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(2rem,5.5vw,3.8rem);color:#2A3442;line-height:1.08;letter-spacing:-0.02em;margin-bottom:0.7rem;">
+        <p style="display:block;font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(2rem,5.5vw,3.8rem);color:#2A3442;line-height:1.08;letter-spacing:-0.02em;margin-bottom:0.7rem;">
           Compassionate Care<br>
           <span style="color:#5A7FA6;">for Every </span><span style="color:#4e7566;">Pet.</span>
-        </h2>
+        </p>
         <p style="display:block;font-family:'Lato',sans-serif;font-weight:400;font-size:clamp(0.85rem,1.6vw,1rem);color:#666;line-height:1.7;margin-bottom:1.2rem;">From Golden Retrievers to Bearded Dragons — we treat every patient like family.<br>Led by Dr. Sylvia Chiang and Dr. Gina Navia.</p>
         <div style="display:flex;gap:0.9rem;justify-content:center;flex-wrap:wrap;pointer-events:auto;">
           <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank" class="btn-primary">Book an Appointment</a>
@@ -977,11 +977,11 @@
           </div>
           <!-- Full-width mobile / Col 3 desktop: Areas We Serve (desktop = dropdown) -->
           <div class="footer-areas-col" id="footerAreasCol">
-            <div class="footer-areas-header" id="footerAreasHeader">
+            <button type="button" class="footer-areas-header" id="footerAreasHeader" aria-expanded="false" aria-controls="footerAreasLinks" style="background:none;border:none;padding:0;width:100%;text-align:left;cursor:pointer;">
               <p class="font-body font-bold tracking-widest text-xs uppercase text-dark/80 mb-4">Areas We Serve</p>
               <svg class="areas-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
-            </div>
-            <div class="footer-areas-links">
+            </button>
+            <div class="footer-areas-links" id="footerAreasLinks">
               <a href="/vet-alhambra"       class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Alhambra</a>
               <a href="/vet-south-pasadena" class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">South Pasadena</a>
               <a href="/vet-pasadena"       class="font-body text-dark text-sm hover:text-brand transition-colors duration-200">Pasadena</a>
@@ -1062,6 +1062,7 @@
       hdr.addEventListener('click', function() {
         var col = document.getElementById('footerAreasCol');
         col.classList.toggle('is-open');
+        hdr.setAttribute('aria-expanded', col.classList.contains('is-open') ? 'true' : 'false');
       });
     })();
 
