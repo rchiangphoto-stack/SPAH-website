@@ -288,11 +288,6 @@
       "permanent": true
     },
     {
-      "source": "/guinea-pig-vet-alhambra",
-      "destination": "/blog/guinea-pig-vet-alhambra",
-      "permanent": true
-    },
-    {
       "source": "/guinea-pig-vet-sgv",
       "destination": "/blog/guinea-pig-vet-sgv",
       "permanent": true
@@ -700,6 +695,11 @@
     {
       "source": "/blog/tags/reptiles",
       "destination": "/reptile-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/tags/preventive-care",
+      "destination": "/blog",
       "permanent": true
     },
     {
