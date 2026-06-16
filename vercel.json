@@ -698,6 +698,11 @@
       "permanent": true
     },
     {
+      "source": "/blog/tags/preventive-care",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
       "source": "/blog/tags/birds",
       "destination": "/bird-vet-alhambra",
       "permanent": true
