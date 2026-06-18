@@ -48,6 +48,46 @@
       "permanent": true
     },
     {
+      "source": "/exotic-vet-sgv",
+      "destination": "/blog/exotic-vet-sgv",
+      "permanent": true
+    },
+    {
+      "source": "/leopard-gecko-health-problems",
+      "destination": "/blog/leopard-gecko-health-problems",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-highland-park",
+      "destination": "/blog/vet-near-highland-park",
+      "permanent": true
+    },
+    {
+      "source": "/vet-near-whittier",
+      "destination": "/blog/vet-near-whittier",
+      "permanent": true
+    },
+    {
+      "source": "/bird-vet-glendale",
+      "destination": "/blog/bird-vet-glendale",
+      "permanent": true
+    },
+    {
+      "source": "/rabbit-vet-whittier",
+      "destination": "/blog/rabbit-vet-whittier",
+      "permanent": true
+    },
+    {
+      "source": "/can-rabbits-get-fleas",
+      "destination": "/blog/can-rabbits-get-fleas",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-pet-emergency",
+      "destination": "/blog/exotic-pet-emergency",
+      "permanent": true
+    },
+    {
       "source": "/bearded-dragon-health-problems",
       "destination": "/blog/bearded-dragon-health-problems",
       "permanent": true
