@@ -841,6 +841,21 @@
       "source": "/hamster-health-problems",
       "destination": "/blog/hamster-health-problems",
       "permanent": true
+    },
+    {
+      "source": "/do-rabbits-need-vet-visits",
+      "destination": "/blog/do-rabbits-need-vet-visits",
+      "permanent": true
+    },
+    {
+      "source": "/dog-vaccines-california",
+      "destination": "/blog/dog-vaccines-california",
+      "permanent": true
+    },
+    {
+      "source": "/vet-visit-cost-alhambra",
+      "destination": "/blog/vet-visit-cost-alhambra",
+      "permanent": true
     }
   ]
 }
