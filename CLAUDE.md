@@ -164,16 +164,16 @@ curl -X PUT \
 **Branch naming:** `claude/{descriptor}` (e.g. `claude/spah-seo-improvements`)
 **MCP GitHub tools** can read (PRs, files, issues) but cannot write PRs — use curl with the PAT above.
 
-### Deployment (Vercel + Cloudflare) — IMPORTANT, manual step required
+### Deployment (Vercel + Cloudflare) — Fully Automated
 
-This site does **NOT** auto-promote new deployments to Production on Vercel. After pushing to `master`:
+Pushing to `master` automatically:
+1. Triggers a Vercel build
+2. Promotes it to Production via the `promote-and-purge.yml` GitHub Actions workflow
+3. Purges the Cloudflare cache
 
-1. Push builds a new "Ready" deployment on Vercel, but it stays as a non-production build until manually promoted
-2. Go to **Vercel dashboard → spah-website → Deployments**, find the new deployment for the latest `master` commit, and click **"Promote to Production"** (the outlined "Production" button on that row)
-3. Cloudflare sits in front of Vercel and caches HTML independently — after promoting, go to **Cloudflare dashboard → spah.la → Caching → Configuration → Purge Everything** (or purge `https://www.spah.la/` and `https://spah.la/` specifically)
-4. Wait ~30s, then verify in an incognito window
+**No manual steps required.** Changes are live within ~1–2 minutes of pushing.
 
-**Always remind the user to do steps 2–3 after any push to `master`** — Claude Code does not have credentials for Vercel or Cloudflare and cannot do this directly. If changes don't appear live after a push, this is the first thing to check (verify which deployment has the "Production" badge before assuming a code/cache issue elsewhere).
+If the workflow fails (check Actions tab), the most likely cause is an expired `VERCEL_TOKEN` secret — regenerate it in Vercel account settings and update the repo secret at GitHub → Settings → Secrets.
 
 ---
 
