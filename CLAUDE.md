@@ -107,6 +107,40 @@ To run it locally instead (e.g. to preview before pushing): `PIXABAY_API_KEY=...
 | Cat Health | `#FCE4EC` | `#C62828` |
 | General | `#F3E5F5` | `#6A1B9A` |
 
+### AI Detection — Required Before Publishing
+
+Every blog post **must pass Sapling AI detection before being pushed to master**.
+
+**Passing threshold: under 40% (HUMAN class)**
+
+Run the check after writing the post:
+```bash
+python3 scripts/check_ai_detection.py --file blog/{slug}.html
+```
+
+| Score | Class | Action |
+|---|---|---|
+| < 40% | HUMAN | ✅ Ready to publish |
+| 40–79% | MIXED | ❌ Rewrite flagged sentences before publishing |
+| 80%+ | AI | ❌ Major rewrite required |
+
+**If it fails (40%+), rewrite using these techniques:**
+- Replace list-heavy explanations with a short narrative paragraph first
+- Add a first-person plural opener: "We see this in our clinic..." or "One thing Pasadena dog owners often ask us..."
+- Break up any 3+ sentence runs of pure facts with a specific clinical observation
+- Name a specific location, species behavior, or patient scenario instead of speaking generically
+- Cut any sentence that starts with "It is important to..." or "Pet owners should be aware..."
+
+**Reference scores from existing posts:**
+- `vet-visit-cost-alhambra`: 11.2% ✅ — conversational, opinionated, uses "we" voice throughout
+- `do-rabbits-need-vet-visits`: 49.9% ⚠️ — too structured, reads as informational
+- `dog-vaccines-california`: 58.8% ⚠️ — factual list format, needs more clinical narrative
+
+The `.sapling_key` file is stored at `scripts/.sapling_key` (gitignored). If the key is missing, add it with:
+```bash
+python3 scripts/check_ai_detection.py --save-key YOUR_KEY_HERE
+```
+
 ### Blog index (`blog/index.html`)
 - Update the article count comment `CARD GRID (N articles)` when adding posts
 - Add new cards at the **top** of `#cardGrid`
