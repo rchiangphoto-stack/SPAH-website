@@ -47,16 +47,26 @@
     .nav-link{position:relative;}
     .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:#7A9E8E;transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease;}
     .nav-link:hover::after{transform:scaleX(1);}
-    .neighborhood-chip{display:inline-block;background:#EDF3F0;color:#2A3442;font-family:'Lato',sans-serif;font-size:0.8rem;font-weight:600;border-radius:9999px;padding:5px 14px;margin:4px;}
+    .neighborhood-chip{display:inline-block;background:#fff;color:#2A3442;font-family:'Lato',sans-serif;font-size:0.78rem;font-weight:600;border-radius:9999px;padding:6px 16px;margin:4px;border:1.5px solid rgba(122,158,142,0.3);letter-spacing:0.02em;transition:background 0.2s,border-color 0.2s;}
+    .neighborhood-chip:hover{background:#EDF3F0;border-color:#7A9E8E;}
+    .section-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#7A9E8E;margin-bottom:0.75rem;}
+    .section-eyebrow::before{content:'';display:block;width:24px;height:1.5px;background:#7A9E8E;}
+    .health-card{background:#fff;border-radius:1.25rem;padding:1.5rem 1.75rem;border-left:3px solid #7A9E8E;box-shadow:0 1px 3px rgba(90,127,166,0.06),0 4px 16px rgba(90,127,166,0.08);transition:transform 0.2s,box-shadow 0.2s;}
+    .health-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(90,127,166,0.14);}
+    .service-card{background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 1px 3px rgba(90,127,166,0.06),0 4px 16px rgba(90,127,166,0.08);transition:transform 0.2s,box-shadow 0.2s;}
+    .service-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(90,127,166,0.14);}
     .service-card{background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
     .service-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
     .health-card{background:#fff;border-radius:1.25rem;padding:1.5rem 1.75rem;border-left:4px solid #7A9E8E;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
     .faq-item{background:#fff;border-radius:1rem;padding:1.5rem 1.75rem;margin-bottom:1rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
     .faq-item h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#2A3442;margin:0 0 0.5rem 0;}
     .faq-item p{font-size:0.95rem;line-height:1.75;color:#4a5568;margin:0;}
-    .stat-box{background:#fff;border-radius:1.25rem;padding:1.5rem;text-align:center;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
-    .stat-number{font-family:'Playfair Display',serif;font-size:2.25rem;font-weight:700;color:#5A7FA6;line-height:1;}
-    .stat-label{font-family:'Lato',sans-serif;font-size:0.8rem;color:#6b7280;margin-top:0.35rem;text-transform:uppercase;letter-spacing:0.05em;}
+    .stat-strip{display:flex;align-items:stretch;background:rgba(255,255,255,0.7);backdrop-filter:blur(8px);border:1px solid rgba(122,158,142,0.18);border-radius:1rem;overflow:hidden;max-width:480px;margin:2.5rem auto 0;}
+    .stat-item{flex:1;padding:1.1rem 0.75rem;text-align:center;position:relative;}
+    .stat-item+.stat-item::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:rgba(122,158,142,0.25);}
+    .stat-number{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#2A3442;line-height:1;}
+    .stat-accent{color:#7A9E8E;}
+    .stat-label{font-family:'Lato',sans-serif;font-size:0.7rem;color:#9ca3af;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;}
   </style>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="ZIMxhr5nEAsxfE8H6JNaeQ" async></script>
 </head>
@@ -104,28 +114,29 @@
         <a href="tel:6264411314" class="border-2 border-brand/40 text-brand font-body font-bold rounded-full px-8 py-3 hover:bg-brand/5 transition-colors duration-200">(626) 441-1314</a>
       </div>
       <!-- STATS -->
-      <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-12">
-        <div class="stat-box">
-          <div class="stat-number">4.8★</div>
+      <div class="stat-strip">
+        <div class="stat-item">
+          <div class="stat-number">4.8<span class="stat-accent">★</span></div>
           <div class="stat-label">Google Rating</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">10<span style="font-size:1.25rem">min</span></div>
+        <div class="stat-item">
+          <div class="stat-number">10<span class="stat-accent" style="font-size:1rem;">min</span></div>
           <div class="stat-label">From Pasadena</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">$$</div>
-          <div class="stat-label">Published Pricing</div>
+        <div class="stat-item">
+          <div class="stat-number"><span class="stat-accent">$$</span></div>
+          <div class="stat-label">Published Fees</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- NEIGHBORHOODS -->
-  <section class="py-14 bg-white">
+  <section class="py-14" style="background:#FAFAF8;border-top:1px solid rgba(122,158,142,0.12);border-bottom:1px solid rgba(122,158,142,0.12);">
     <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="flex justify-center"><span class="section-eyebrow">Where We Serve</span></div>
       <h2 class="font-display text-2xl font-bold text-dark mb-3" style="letter-spacing:-0.02em;">Pasadena Neighborhoods We Serve</h2>
-      <p class="font-body text-muted text-sm mb-6" style="line-height:1.7;">Dog owners from across Pasadena make the short drive down the 110 to visit us in Alhambra.</p>
+      <p class="font-body text-muted text-sm mb-7" style="line-height:1.7;">Dog owners from across Pasadena make the short drive down the 110 to visit us in Alhambra.</p>
       <div>
         <span class="neighborhood-chip">Bungalow Heaven</span>
         <span class="neighborhood-chip">Nob Hill</span>
@@ -144,8 +155,9 @@
   </section>
 
   <!-- WHAT MAKES PASADENA DOGS DIFFERENT -->
-  <section class="py-20" style="background:linear-gradient(180deg,#F7F9FC 0%,#FAFAF8 100%);">
+  <section class="py-20" style="background:linear-gradient(180deg,#F0F5F2 0%,#FAFAF8 100%);">
     <div class="max-w-5xl mx-auto px-6">
+      <div class="flex justify-center"><span class="section-eyebrow">Local Knowledge</span></div>
       <h2 class="font-display text-3xl font-bold text-dark text-center mb-4" style="letter-spacing:-0.02em;">Health Considerations for <span style="color:#7A9E8E">Pasadena</span> Dogs</h2>
       <p class="font-body text-muted text-base text-center max-w-2xl mx-auto mb-10" style="line-height:1.7;">Pasadena's climate, landscape, and lifestyle create specific health challenges for local dogs. Our team is familiar with all of them.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -181,6 +193,7 @@
   <!-- SERVICES -->
   <section class="py-20 bg-warm">
     <div class="max-w-5xl mx-auto px-6">
+      <div class="flex justify-center"><span class="section-eyebrow">What We Offer</span></div>
       <h2 class="font-display text-3xl font-bold text-dark text-center mb-4" style="letter-spacing:-0.02em;">Dog Veterinary Services</h2>
       <p class="font-body text-muted text-base text-center max-w-xl mx-auto mb-10" style="line-height:1.7;">Everything your Pasadena dog needs, at one independent clinic 10 minutes down the 110.</p>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
@@ -231,23 +244,23 @@
           <p class="font-body text-muted" style="line-height:1.8;">Our <a href="/pricing" class="text-brand hover:underline">pricing is published online</a> — no surprise bills, no pressure to agree to diagnostics you don't understand. We explain what we're recommending and why, every time.</p>
         </div>
         <div class="grid grid-cols-2 gap-4">
-          <div class="service-card">
-            <div class="text-2xl mb-2">🏡</div>
+          <div class="service-card" style="border-top:3px solid #7A9E8E;">
+            <div style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#7A9E8E;margin-bottom:0.6rem;">01</div>
             <h3 class="font-display text-base font-bold text-dark mb-1">Family-Owned</h3>
             <p class="font-body text-muted text-xs" style="line-height:1.6;">Founded and operated by two veterinarians who live and work in this community.</p>
           </div>
-          <div class="service-card">
-            <div class="text-2xl mb-2">📋</div>
+          <div class="service-card" style="border-top:3px solid #5A7FA6;">
+            <div style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#5A7FA6;margin-bottom:0.6rem;">02</div>
             <h3 class="font-display text-base font-bold text-dark mb-1">Transparent Pricing</h3>
             <p class="font-body text-muted text-xs" style="line-height:1.6;">All fees published online. No estimates that balloon at checkout.</p>
           </div>
-          <div class="service-card">
-            <div class="text-2xl mb-2">🔬</div>
+          <div class="service-card" style="border-top:3px solid #A8673A;">
+            <div style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#A8673A;margin-bottom:0.6rem;">03</div>
             <h3 class="font-display text-base font-bold text-dark mb-1">In-House Diagnostics</h3>
             <p class="font-body text-muted text-xs" style="line-height:1.6;">On-site lab, X-rays, and urinalysis for faster answers at your visit.</p>
           </div>
-          <div class="service-card">
-            <div class="text-2xl mb-2">🐾</div>
+          <div class="service-card" style="border-top:3px solid #2A3442;">
+            <div style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2A3442;margin-bottom:0.6rem;">04</div>
             <h3 class="font-display text-base font-bold text-dark mb-1">All Dogs Welcome</h3>
             <p class="font-body text-muted text-xs" style="line-height:1.6;">Puppies, seniors, anxious dogs — every temperament and life stage.</p>
           </div>
