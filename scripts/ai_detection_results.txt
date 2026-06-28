@@ -1,5 +1,8 @@
-SPAH AI Detection Report  --  2026-04-23 09:04
+SPAH AI Detection Report  --  2026-06-24 16:54
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-pet-skin-rashes:   ERROR -- HTTP 429: {"key_prefix":"W7B********************************","msg":"Rate limited. Capacity used. Visit https://sapling.ai/docs/api/api-access for details."}
+  do-rabbits-need-vet-visits
+    Class:           AI
+    AI score:        85.6%  [VERY HIGH - REWRITE]
+    AI sentences:    4 / 50

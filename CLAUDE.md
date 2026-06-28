@@ -32,6 +32,7 @@ GitHub repo: `rchiangphoto-stack/SPAH-website` (static HTML, no build step)
 - **Banner on all pages:** `"Currently in temporary Bungalows during construction."` — soft pink style (`background:#FDDDE6;border:1px solid #F8B9CE;color:#9D4060;`) (updated 2026-06-12 — SPAH operating from temporary bungalows during construction)
 - **No walk-ins language** in meta descriptions or CTAs (appointment-only is fine)
 - **Never invent** staff credentials, services, equipment, or certifications not listed on spah.la
+- **No urgent care or emergency language** anywhere on the site — SPAH is a general practice that focuses on regular/routine cases. Urgent and emergency cases are referred out. Never use: "urgent care," "emergency care," "emergency vet," "same-day emergency," "urgent visits," or any variation in meta descriptions, title tags, hero copy, or CTAs. If a page must address emergencies (e.g. GI stasis blog), frame it as "contact a vet immediately" or "seek emergency care" — pointing away, not implying SPAH provides it.
 - **Heading color spans** (h1/h2/h3 and inline references only):
   - `<span style="color:#7A9E8E">South Pasadena</span>`
   - `<span style="color:#5A7FA6">Alhambra</span>`
