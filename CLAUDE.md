@@ -228,12 +228,52 @@ If the workflow fails (check Actions tab), the most likely cause is an expired `
 | `blog/rabbit-not-eating` | ~21k | CTR fixed May 2026 |
 | `blog/corn-snake-care` | ~124k | Meta fixed June 2026 |
 
-### Blog post voice guidelines
-- Write like a clinician explaining to a worried client — not a textbook
-- Use first-person plural: "We see this in our clinic..."
-- Vary sentence length; mix short punchy sentences with longer ones
-- Use specific numbers: "within 12–24 hours," "day 3–5"
-- Avoid: "It is important to note that...", "In most cases it is recommended..."
+### Blog post voice guidelines — MANDATORY STANDARD
+
+Every post must read like a specific veterinarian talking to a specific worried client — not a reference article, not a care guide, not a listicle. A human reader should finish the post thinking "that was clearly written by someone who actually treats these animals" not "that's a summary of what the internet says."
+
+**The test:** Could this sentence appear on any vet blog in the country? If yes, it's not good enough. It needs to be grounded in something specific — a patient scenario, a local reference, a clinical observation, an opinion.
+
+#### MUST DO
+
+- **Open every major section with a clinical observation or opinion**, not a definition.
+  - ✅ "Ask us what we find most often and we'll say dental pain almost every time."
+  - ❌ "Dental disease is a condition that affects the teeth and gums."
+- **Use first-person plural throughout.** "We see this," "we find," "in our clinic," "one thing we've noticed," "we tell clients."
+- **Take a position.** The vet-cost post scored 11% because it argued something. Every post should argue something or explain why we think about a topic a certain way.
+- **Reference specific places, breeds, or scenarios.** "Dogs at Eaton Canyon," "cats in Pasadena craftsman homes," "the Shih Tzu who came in last month." Specificity is the antidote to AI slop.
+- **Vary sentence length deliberately.** Short sentences after long ones. Fragments are fine. "That's pain, not tiredness." 
+- **End sections with a push to call us** — not a generic "consult your vet" but "call us" or "this is when you call."
+- **Use specific timeframes.** "Within 4–6 hours," "by day 3," "after two missed meals." Vague = AI.
+
+#### MUST NOT DO
+
+- **Never open a section with a definition.** "X is a condition that..." — that's a Wikipedia article, not a vet.
+- **Never use h2 headers as a clinical checklist.** Headers like "Symptoms," "Causes," "Treatment," "When to See a Vet" in sequence is the most recognizable AI content pattern. Instead use opinionated headers: "The thing owners miss most," "Why we go to the mouth first," "When to call today, not tomorrow."
+- **Never write three facts in a row without a "we" anchor.** Facts need clinical grounding. "Rabbits hide illness. We see this constantly. By the time they're visibly sick, the problem has usually been building for weeks."
+- **Never use:** "It is important to note," "Pet owners should be aware," "In most cases it is recommended," "Comprehensive care," "It's worth noting," "One of the most common," "There are several reasons."
+- **Never write consecutive sentences of equal length.** That cadence is an AI fingerprint.
+- **Never cover everything.** A post that tries to cover every angle of a topic sounds like it was generated to be thorough. A real vet picks the three things that actually matter and talks about those.
+
+#### REFERENCE POSTS (pass/fail examples)
+- `vet-visit-cost-alhambra`: 11.2% ✅ — argues a position, opinionated editorial voice
+- `corporate-vs-independent-vet-sgv`: 2.0% ✅ — personal, takes a side
+- `dog-ear-cytology`: 1.3% ✅ — clinical and specific
+- `dog-not-eating`: 76.1% ⚠️ — Sapling doc model unreliable; 9% sentence-level OK
+- `cat-vomiting`: 99.8% ❌ — reads as a reference article, needs full rewrite
+- `hedgehog-care`: 99.9% ❌ — structured care guide, no clinical voice
+
+#### REWRITE PRIORITY ORDER (by GSC traffic × Sapling score)
+1. `corn-snake-care` — 124k impressions, 81.1% Sapling
+2. `hamster-sick-signs` — 57k impressions, 19.2% ✅ (already good)
+3. `turtle-tortoise-health` — 33k impressions (pending check)
+4. `rabbit-not-eating` — 21k impressions, 48.5%
+5. `cat-vomiting` — high score, 99.8%
+6. `dog-eye-problems` — 99.8%
+7. `pet-coughing-sneezing` — 100.0%
+8. `cat-hyperthyroidism` — 98.5%
+9. `dog-anxiety-alhambra` — 93.0%
+10. `cat-not-eating` — 88.2%
 
 ### Medical & legal liability guardrails (MANDATORY for all blog content)
 - **Never assert a diagnosis** for the reader's pet — frame symptoms as "could be a sign of," "may indicate," "one possible cause," not "your pet has X"
