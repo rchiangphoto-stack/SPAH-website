@@ -2,7 +2,7 @@ SPAH AI Detection Report  --  2026-06-30 08:59
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  vet-visit-cost-alhambra
-    Class:           MIXED
-    AI score:        61.2%  [HIGH - REWRITE]
-    AI sentences:    6 / 39
+  rabbit-vet-near-san-gabriel
+    Class:           HUMAN
+    AI score:        30.5%  [LOW - OK]
+    AI sentences:    8 / 49
