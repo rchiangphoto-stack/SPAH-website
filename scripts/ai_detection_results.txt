@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 09:03
+SPAH AI Detection Report  --  2026-06-30 09:04
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  rabbit-gi-stasis
+  cockatiel-parakeet-care
     Class:           HUMAN
-    AI score:        21.5%  [LOW - OK]
-    AI sentences:    7 / 56
+    AI score:        20.3%  [LOW - OK]
+    AI sentences:    7 / 62
