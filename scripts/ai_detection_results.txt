@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:46
+SPAH AI Detection Report  --  2026-06-30 08:48
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  chinchilla-not-eating-alhambra
+  hamster-sick-signs
     Class:           HUMAN
-    AI score:        29.7%  [LOW - OK]
-    AI sentences:    3 / 41
+    AI score:        26.0%  [LOW - OK]
+    AI sentences:    7 / 64
