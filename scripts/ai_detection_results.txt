@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 09:04
+SPAH AI Detection Report  --  2026-06-30 09:05
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  cockatiel-parakeet-care
+  avian-vet-alhambra
     Class:           HUMAN
-    AI score:        20.3%  [LOW - OK]
-    AI sentences:    7 / 62
+    AI score:        19.4%  [VERY LOW - OK]
+    AI sentences:    6 / 49
