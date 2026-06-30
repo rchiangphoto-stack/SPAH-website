@@ -2,7 +2,7 @@ SPAH AI Detection Report  --  2026-06-30 08:58
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  chinchilla-health-problems
-    Class:           MIXED
-    AI score:        69.3%  [HIGH - REWRITE]
-    AI sentences:    10 / 67
+  vet-near-west-covina
+    Class:           HUMAN
+    AI score:        22.3%  [LOW - OK]
+    AI sentences:    6 / 35
