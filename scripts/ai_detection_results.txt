@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:50
+SPAH AI Detection Report  --  2026-06-30 08:51
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  ferret-care
-    Class:           MIXED
-    AI score:        70.1%  [HIGH - REWRITE]
-    AI sentences:    6 / 44
+  guinea-pig-health-problems
+    Class:           AI
+    AI score:        81.6%  [VERY HIGH - REWRITE]
+    AI sentences:    8 / 52
