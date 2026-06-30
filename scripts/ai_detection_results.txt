@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:51
+SPAH AI Detection Report  --  2026-06-30 08:52
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  guinea-pig-health-problems
-    Class:           AI
-    AI score:        81.6%  [VERY HIGH - REWRITE]
-    AI sentences:    8 / 52
+  turtle-tortoise-health
+    Class:           HUMAN
+    AI score:        2.0%  [VERY LOW - OK]
+    AI sentences:    8 / 58
