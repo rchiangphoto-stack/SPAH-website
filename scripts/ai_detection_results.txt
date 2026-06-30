@@ -2,7 +2,7 @@ SPAH AI Detection Report  --  2026-06-30 09:06
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  red-eared-slider-not-eating
-    Class:           HUMAN
-    AI score:        13.8%  [VERY LOW - OK]
-    AI sentences:    7 / 40
+  pet-vomiting-diarrhea
+    Class:           AI
+    AI score:        87.2%  [VERY HIGH - REWRITE]
+    AI sentences:    6 / 64
