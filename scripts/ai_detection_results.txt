@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:57
+SPAH AI Detection Report  --  2026-06-30 08:58
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  hedgehog-health-problems
+  chinchilla-health-problems
     Class:           MIXED
-    AI score:        50.3%  [MODERATE - REVIEW]
-    AI sentences:    6 / 47
+    AI score:        69.3%  [HIGH - REWRITE]
+    AI sentences:    10 / 67
