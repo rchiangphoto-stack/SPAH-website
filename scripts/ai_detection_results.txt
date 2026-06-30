@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:44
+SPAH AI Detection Report  --  2026-06-30 08:46
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  guinea-pig-health-problems
-    Class:           AI
-    AI score:        81.6%  [VERY HIGH - REWRITE]
-    AI sentences:    8 / 52
+  chinchilla-not-eating-alhambra
+    Class:           HUMAN
+    AI score:        29.7%  [LOW - OK]
+    AI sentences:    3 / 41
