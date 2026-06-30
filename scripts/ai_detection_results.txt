@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:56
+SPAH AI Detection Report  --  2026-06-30 08:57
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  cat-hyperthyroidism
+  hedgehog-health-problems
     Class:           MIXED
-    AI score:        68.1%  [HIGH - REWRITE]
-    AI sentences:    5 / 37
+    AI score:        50.3%  [MODERATE - REVIEW]
+    AI sentences:    6 / 47
