@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-24 16:54
+SPAH AI Detection Report  --  2026-06-30 08:41
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  do-rabbits-need-vet-visits
-    Class:           AI
-    AI score:        85.6%  [VERY HIGH - REWRITE]
-    AI sentences:    4 / 50
+  guinea-pig-sneezing
+    Class:           MIXED
+    AI score:        61.3%  [HIGH - REWRITE]
+    AI sentences:    8 / 55
