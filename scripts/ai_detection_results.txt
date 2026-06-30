@@ -2,7 +2,7 @@ SPAH AI Detection Report  --  2026-06-30 08:50
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  dog-ear-infection
-    Class:           AI
-    AI score:        86.1%  [VERY HIGH - REWRITE]
-    AI sentences:    6 / 48
+  ferret-care
+    Class:           MIXED
+    AI score:        70.1%  [HIGH - REWRITE]
+    AI sentences:    6 / 44
