@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 09:06
+SPAH AI Detection Report  --  2026-06-30 09:11
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  pet-vomiting-diarrhea
-    Class:           AI
-    AI score:        87.2%  [VERY HIGH - REWRITE]
-    AI sentences:    6 / 64
+  what-is-exotic-vet
+    Class:           MIXED
+    AI score:        50.5%  [MODERATE - REVIEW]
+    AI sentences:    5 / 48
