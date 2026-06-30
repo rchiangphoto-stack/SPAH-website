@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:59
+SPAH AI Detection Report  --  2026-06-30 09:00
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  rabbit-vet-near-san-gabriel
+  senior-dog-care-alhambra
     Class:           HUMAN
-    AI score:        30.5%  [LOW - OK]
-    AI sentences:    8 / 49
+    AI score:        18.1%  [VERY LOW - OK]
+    AI sentences:    6 / 43
