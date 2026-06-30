@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:41
+SPAH AI Detection Report  --  2026-06-30 08:44
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  guinea-pig-sneezing
-    Class:           MIXED
-    AI score:        61.3%  [HIGH - REWRITE]
-    AI sentences:    8 / 55
+  guinea-pig-health-problems
+    Class:           AI
+    AI score:        81.6%  [VERY HIGH - REWRITE]
+    AI sentences:    8 / 52
