@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 09:05
+SPAH AI Detection Report  --  2026-06-30 09:06
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  avian-vet-alhambra
+  red-eared-slider-not-eating
     Class:           HUMAN
-    AI score:        19.4%  [VERY LOW - OK]
-    AI sentences:    6 / 49
+    AI score:        13.8%  [VERY LOW - OK]
+    AI sentences:    7 / 40
