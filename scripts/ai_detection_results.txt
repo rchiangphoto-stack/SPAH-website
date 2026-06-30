@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 08:58
+SPAH AI Detection Report  --  2026-06-30 08:59
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  vet-near-west-covina
-    Class:           HUMAN
-    AI score:        22.3%  [LOW - OK]
-    AI sentences:    6 / 35
+  vet-visit-cost-alhambra
+    Class:           MIXED
+    AI score:        61.2%  [HIGH - REWRITE]
+    AI sentences:    6 / 39
