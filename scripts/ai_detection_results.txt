@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 09:01
+SPAH AI Detection Report  --  2026-06-30 09:03
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  corporate-vs-independent-vet-sgv
+  rabbit-gi-stasis
     Class:           HUMAN
-    AI score:        1.4%  [VERY LOW - OK]
-    AI sentences:    9 / 46
+    AI score:        21.5%  [LOW - OK]
+    AI sentences:    7 / 56
