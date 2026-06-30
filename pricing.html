@@ -275,18 +275,17 @@
         <div style="position:absolute;top:20px;right:24px;width:60px;height:60px;border-radius:50%;background:rgba(122,158,142,0.12);"></div>
         <div style="position:absolute;bottom:-20px;right:120px;width:90px;height:90px;border-radius:50%;background:rgba(90,127,166,0.10);"></div>
 
-        <div class="flex flex-col md:flex-row items-center" style="position:relative;z-index:1;">
-          <!-- Dog photo -->
-          <div class="w-full md:w-[34%] flex justify-center md:justify-start" style="padding:1.5rem 1.5rem 0 1.5rem;">
+        <div class="flex flex-col md:flex-row items-stretch" style="position:relative;z-index:1;">
+          <!-- Dog photo — full-bleed -->
+          <div class="w-full md:w-[34%]" style="min-height:220px;">
             <img src="images/promo-summer-dog.webp"
                  alt="Happy golden retriever puppy — South Pasadena Animal Hospital summer special"
-                 width="220" height="220"
-                 style="width:180px;height:180px;object-fit:cover;border-radius:1.25rem;box-shadow:0 10px 24px rgba(42,52,66,0.18);border:4px solid #fff;"
+                 style="width:100%;height:100%;min-height:220px;object-fit:cover;display:block;"
                  loading="lazy" />
           </div>
 
           <!-- Text content -->
-          <div class="w-full md:w-[66%] text-center md:text-left" style="padding:1.5rem 2rem 2rem 1.5rem;">
+          <div class="w-full md:w-[66%] text-center md:text-left" style="padding:1.5rem 2rem 2rem 2rem;">
             <span class="inline-block px-3 py-1 rounded-full text-xs font-bold tracking-widest uppercase" style="background:#FFF3E0;color:#E65100;">Summer Special</span>
             <h2 class="font-display text-xl sm:text-2xl md:text-3xl font-bold text-dark mt-3" style="letter-spacing:-0.02em;line-height:1.25;">
               Free Heartworm Test with a 12-Month Supply of <span style="color:#5A7FA6">Simparica Trio</span>
