@@ -1,8 +1,8 @@
-SPAH AI Detection Report  --  2026-06-30 09:00
+SPAH AI Detection Report  --  2026-06-30 09:01
 ==============================================
 Using Sapling.ai API | Checking 1 post(s)
 
-  senior-dog-care-alhambra
+  corporate-vs-independent-vet-sgv
     Class:           HUMAN
-    AI score:        18.1%  [VERY LOW - OK]
-    AI sentences:    6 / 43
+    AI score:        1.4%  [VERY LOW - OK]
+    AI sentences:    9 / 46
