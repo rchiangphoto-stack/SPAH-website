@@ -47,15 +47,24 @@
     .nav-link{position:relative;}
     .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:#7A9E8E;transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease;}
     .nav-link:hover::after{transform:scaleX(1);}
-    .neighborhood-chip{display:inline-block;background:#FCE4EC;color:#2A3442;font-family:'Lato',sans-serif;font-size:0.8rem;font-weight:600;border-radius:9999px;padding:5px 14px;margin:4px;}
-    .service-card{background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
-    .health-card{background:#fff;border-radius:1.25rem;padding:1.5rem 1.75rem;border-left:4px solid #C62828;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
+    .neighborhood-chip{display:inline-block;background:#fff;color:#2A3442;font-family:'Lato',sans-serif;font-size:0.78rem;font-weight:600;border-radius:9999px;padding:6px 16px;margin:4px;border:1.5px solid rgba(198,40,40,0.25);letter-spacing:0.02em;transition:background 0.2s,border-color 0.2s;}
+    .neighborhood-chip:hover{background:#FCE4EC;border-color:#C62828;}
+    .section-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#C62828;margin-bottom:0.75rem;}
+    .section-eyebrow::before{content:'';display:block;width:24px;height:1.5px;background:#C62828;}
+    .service-card{background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);transition:transform 0.2s,box-shadow 0.2s;}
+    .service-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(90,127,166,0.14);}
+    .service-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+    .health-card{background:#fff;border-radius:1.25rem;padding:1.5rem 1.75rem;border-left:4px solid #C62828;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);transition:transform 0.2s,box-shadow 0.2s;}
+    .health-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(90,127,166,0.14);}
     .faq-item{background:#fff;border-radius:1rem;padding:1.5rem 1.75rem;margin-bottom:1rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
     .faq-item h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#2A3442;margin:0 0 0.5rem 0;}
     .faq-item p{font-size:0.95rem;line-height:1.75;color:#4a5568;margin:0;}
-    .stat-box{background:#fff;border-radius:1.25rem;padding:1.5rem;text-align:center;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
-    .stat-number{font-family:'Playfair Display',serif;font-size:2.25rem;font-weight:700;color:#C62828;line-height:1;}
-    .stat-label{font-family:'Lato',sans-serif;font-size:0.8rem;color:#6b7280;margin-top:0.35rem;text-transform:uppercase;letter-spacing:0.05em;}
+    .stat-strip{display:flex;align-items:stretch;background:rgba(255,255,255,0.7);backdrop-filter:blur(8px);border:1px solid rgba(198,40,40,0.18);border-radius:1rem;overflow:hidden;max-width:480px;margin:2.5rem auto 0;}
+    .stat-item{flex:1;padding:1.1rem 0.75rem;text-align:center;position:relative;}
+    .stat-item+.stat-item::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:rgba(198,40,40,0.2);}
+    .stat-number{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#2A3442;line-height:1;}
+    .stat-accent{color:#C62828;}
+    .stat-label{font-family:'Lato',sans-serif;font-size:0.7rem;color:#9ca3af;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;}
     .timeline-step{display:flex;gap:1.25rem;align-items:flex-start;margin-bottom:1.5rem;}
     .timeline-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:#FCE4EC;color:#C62828;font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;display:flex;align-items:center;justify-content:center;}
   </style>
@@ -104,28 +113,30 @@
         <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank" class="btn-primary">Book an Appointment</a>
         <a href="tel:6264411314" class="border-2 text-brand font-body font-bold rounded-full px-8 py-3 hover:bg-brand/5 transition-colors duration-200" style="border-color:#C62828;color:#C62828;">(626) 441-1314</a>
       </div>
-      <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-12">
-        <div class="stat-box">
-          <div class="stat-number">4.8★</div>
+      <!-- STATS -->
+      <div class="stat-strip">
+        <div class="stat-item">
+          <div class="stat-number">4.8<span class="stat-accent">★</span></div>
           <div class="stat-label">Google Rating</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">10<span style="font-size:1.25rem">min</span></div>
+        <div class="stat-item">
+          <div class="stat-number">10<span class="stat-accent" style="font-size:1rem;">min</span></div>
           <div class="stat-label">From Pasadena</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">$$</div>
-          <div class="stat-label">Published Fees</div>
+        <div class="stat-item">
+          <div class="stat-number" style="font-size:1.35rem;"><span class="stat-accent">Indep.</span></div>
+          <div class="stat-label">Local Practice</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- NEIGHBORHOODS -->
-  <section class="py-14 bg-white">
+  <section class="py-14" style="background:#FAFAF8;border-top:1px solid rgba(198,40,40,0.10);border-bottom:1px solid rgba(198,40,40,0.10);">
     <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="flex justify-center"><span class="section-eyebrow">Where We Serve</span></div>
       <h2 class="font-display text-2xl font-bold text-dark mb-3" style="letter-spacing:-0.02em;">Pasadena Cat Owners We See</h2>
-      <p class="font-body text-muted text-sm mb-6" style="line-height:1.7;">From historic craftsman neighborhoods to apartment buildings near Colorado Blvd, Pasadena cat owners make the short drive down the 110 to see us in Alhambra.</p>
+      <p class="font-body text-muted text-sm mb-7" style="line-height:1.7;">From historic craftsman neighborhoods to apartment buildings near Colorado Blvd, Pasadena cat owners make the short drive down the 110 to see us in Alhambra.</p>
       <div>
         <span class="neighborhood-chip">Bungalow Heaven</span>
         <span class="neighborhood-chip">Old Town / Colorado Blvd</span>
@@ -195,36 +206,37 @@
   <!-- SERVICES -->
   <section class="py-20" style="background:linear-gradient(180deg,#fdf0f3 0%,#FAFAF8 100%);">
     <div class="max-w-5xl mx-auto px-6">
+      <div class="flex justify-center"><span class="section-eyebrow">What We Offer</span></div>
       <h2 class="font-display text-3xl font-bold text-dark text-center mb-4" style="letter-spacing:-0.02em;">Cat Veterinary Services</h2>
       <p class="font-body text-muted text-base text-center max-w-xl mx-auto mb-10" style="line-height:1.7;">Comprehensive feline care under one roof, 10 minutes from Pasadena.</p>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#FCE4EC;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#FCE4EC;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Wellness Exams</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Thorough nose-to-tail physical exam, dental grade, weight, and health history review. Kittens through seniors.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#E8D6E8;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/vaccinations.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#E8D6E8;"><img src="images/services/vaccinations.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Vaccinations</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">FVRCP, rabies, and FeLV based on your cat's lifestyle. We discuss the right schedule at every visit.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#D4E5D9;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/nail-trims.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#D4E5D9;"><img src="images/services/nail-trims.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Dental Cleanings</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Professional scaling, polishing, and dental X-rays under anesthesia. Extractions when needed.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#E0CCBA;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/soft-tissue-surgery.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#E0CCBA;"><img src="images/services/soft-tissue-surgery.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Spay &amp; Neuter</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Safe procedures with thorough anesthesia protocols and post-op pain management.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#F7EDE5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/laboratory-services.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#F7EDE5;"><img src="images/services/laboratory-services.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Hyperthyroidism Care</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Diagnosis through bloodwork and ongoing management with medication or dietary therapy. One of our most common senior cat conditions.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#FCE4EC;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#FCE4EC;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Senior Cat Panels</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Comprehensive bloodwork, thyroid screening, blood pressure, and urinalysis for cats 10+. Twice-yearly recommended.</p>
         </div>

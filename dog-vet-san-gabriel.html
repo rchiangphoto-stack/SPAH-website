@@ -47,15 +47,24 @@
     .nav-link{position:relative;}
     .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:#7A9E8E;transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease;}
     .nav-link:hover::after{transform:scaleX(1);}
-    .neighborhood-chip{display:inline-block;background:#EDF3F0;color:#2A3442;font-family:'Lato',sans-serif;font-size:0.8rem;font-weight:600;border-radius:9999px;padding:5px 14px;margin:4px;}
-    .service-card{background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
-    .health-card{background:#fff;border-radius:1.25rem;padding:1.5rem 1.75rem;border-left:4px solid #7A9E8E;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
+    .neighborhood-chip{display:inline-block;background:#fff;color:#2A3442;font-family:'Lato',sans-serif;font-size:0.78rem;font-weight:600;border-radius:9999px;padding:6px 16px;margin:4px;border:1.5px solid rgba(90,127,166,0.3);letter-spacing:0.02em;transition:background 0.2s,border-color 0.2s;}
+    .neighborhood-chip:hover{background:#EFF4F9;border-color:#5A7FA6;}
+    .section-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#5A7FA6;margin-bottom:0.75rem;}
+    .section-eyebrow::before{content:'';display:block;width:24px;height:1.5px;background:#5A7FA6;}
+    .service-card{background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);transition:transform 0.2s,box-shadow 0.2s;}
+    .service-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(90,127,166,0.14);}
+    .service-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+    .health-card{background:#fff;border-radius:1.25rem;padding:1.5rem 1.75rem;border-left:4px solid #7A9E8E;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);transition:transform 0.2s,box-shadow 0.2s;}
+    .health-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(90,127,166,0.14);}
     .faq-item{background:#fff;border-radius:1rem;padding:1.5rem 1.75rem;margin-bottom:1rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
     .faq-item h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#2A3442;margin:0 0 0.5rem 0;}
     .faq-item p{font-size:0.95rem;line-height:1.75;color:#4a5568;margin:0;}
-    .stat-box{background:#fff;border-radius:1.25rem;padding:1.5rem;text-align:center;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
-    .stat-number{font-family:'Playfair Display',serif;font-size:2.25rem;font-weight:700;color:#5A7FA6;line-height:1;}
-    .stat-label{font-family:'Lato',sans-serif;font-size:0.8rem;color:#6b7280;margin-top:0.35rem;text-transform:uppercase;letter-spacing:0.05em;}
+    .stat-strip{display:flex;align-items:stretch;background:rgba(255,255,255,0.7);backdrop-filter:blur(8px);border:1px solid rgba(90,127,166,0.18);border-radius:1rem;overflow:hidden;max-width:480px;margin:2.5rem auto 0;}
+    .stat-item{flex:1;padding:1.1rem 0.75rem;text-align:center;position:relative;}
+    .stat-item+.stat-item::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:rgba(90,127,166,0.25);}
+    .stat-number{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#2A3442;line-height:1;}
+    .stat-accent{color:#5A7FA6;}
+    .stat-label{font-family:'Lato',sans-serif;font-size:0.7rem;color:#9ca3af;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;}
   </style>
   <script src="https://analytics.ahrefs.com/analytics.js" data-key="ZIMxhr5nEAsxfE8H6JNaeQ" async></script>
 </head>
@@ -102,28 +111,30 @@
         <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank" class="btn-primary">Book an Appointment</a>
         <a href="tel:6264411314" class="border-2 border-brand/40 text-brand font-body font-bold rounded-full px-8 py-3 hover:bg-brand/5 transition-colors duration-200">(626) 441-1314</a>
       </div>
-      <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-12">
-        <div class="stat-box">
-          <div class="stat-number">4.8★</div>
+      <!-- STATS -->
+      <div class="stat-strip">
+        <div class="stat-item">
+          <div class="stat-number">4.8<span class="stat-accent">★</span></div>
           <div class="stat-label">Google Rating</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">5<span style="font-size:1.25rem">min</span></div>
+        <div class="stat-item">
+          <div class="stat-number">5<span class="stat-accent" style="font-size:1rem;">min</span></div>
           <div class="stat-label">From San Gabriel</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">$$</div>
-          <div class="stat-label">Published Pricing</div>
+        <div class="stat-item">
+          <div class="stat-number" style="font-size:1.35rem;"><span class="stat-accent">Indep.</span></div>
+          <div class="stat-label">Local Practice</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- NEIGHBORHOODS -->
-  <section class="py-14 bg-white">
+  <section class="py-14" style="background:#FAFAF8;border-top:1px solid rgba(90,127,166,0.12);border-bottom:1px solid rgba(90,127,166,0.12);">
     <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="flex justify-center"><span class="section-eyebrow">Where We Serve</span></div>
       <h2 class="font-display text-2xl font-bold text-dark mb-3" style="letter-spacing:-0.02em;">San Gabriel Neighborhoods We Serve</h2>
-      <p class="font-body text-muted text-sm mb-6" style="line-height:1.7;">San Gabriel borders Alhambra directly — making SPAH one of the closest full-service veterinary practices for most of the city.</p>
+      <p class="font-body text-muted text-sm mb-7" style="line-height:1.7;">San Gabriel borders Alhambra directly — making SPAH one of the closest full-service veterinary practices for most of the city.</p>
       <div>
         <span class="neighborhood-chip">Mission District</span>
         <span class="neighborhood-chip">South San Gabriel</span>
@@ -141,6 +152,7 @@
   <!-- HEALTH CONSIDERATIONS -->
   <section class="py-20" style="background:linear-gradient(180deg,#F7F9FC 0%,#FAFAF8 100%);">
     <div class="max-w-5xl mx-auto px-6">
+      <div class="flex justify-center"><span class="section-eyebrow">Local Knowledge</span></div>
       <h2 class="font-display text-3xl font-bold text-dark text-center mb-4" style="letter-spacing:-0.02em;">Health Risks Specific to <span style="color:#5A7FA6">San Gabriel</span> Dogs</h2>
       <p class="font-body text-muted text-base text-center max-w-2xl mx-auto mb-10" style="line-height:1.7;">Dense urban environments like San Gabriel come with their own set of health hazards. We see these regularly in our clinic and address them proactively.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -176,36 +188,37 @@
   <!-- SERVICES -->
   <section class="py-20 bg-warm">
     <div class="max-w-5xl mx-auto px-6">
+      <div class="flex justify-center"><span class="section-eyebrow">What We Offer</span></div>
       <h2 class="font-display text-3xl font-bold text-dark text-center mb-4" style="letter-spacing:-0.02em;">Full-Service Dog Care for <span style="color:#5A7FA6">San Gabriel</span> Pets</h2>
       <p class="font-body text-muted text-base text-center max-w-xl mx-auto mb-10" style="line-height:1.7;">Everything your dog needs at one independently owned practice — minutes away without getting on a freeway.</p>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#D6DFED;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#D6DFED;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Wellness Exams</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Annual physical exams covering weight, heart, lungs, teeth, skin, ears, eyes — with a health history review and care plan discussion.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#E8D6E8;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/vaccinations.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#E8D6E8;"><img src="images/services/vaccinations.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Vaccinations</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Core and lifestyle vaccines tailored to your dog's age and risk. DHPP, rabies, bordetella, leptospirosis. California rabies license documentation provided.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#D4E5D9;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/nail-trims.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#D4E5D9;"><img src="images/services/nail-trims.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Dental Cleanings</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Professional scaling, polishing, dental X-rays, and extractions under anesthesia with continuous monitoring.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#E0CCBA;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/soft-tissue-surgery.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#E0CCBA;"><img src="images/services/soft-tissue-surgery.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Spay &amp; Neuter</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Elective surgical procedures with thorough pre-anesthetic assessment and post-op pain management protocols.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#F7EDE5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/laboratory-services.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#F7EDE5;"><img src="images/services/laboratory-services.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Diagnostics &amp; Bloodwork</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">In-house lab testing, urinalysis, and digital X-rays. Results at the visit, not days later.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#D6DFED;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#D6DFED;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Senior Dog Care</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Twice-yearly exams, senior bloodwork panels, joint health assessment, and monitoring for kidney, thyroid, and heart conditions.</p>
         </div>
@@ -214,15 +227,39 @@
     </div>
   </section>
 
-  <!-- NARRATIVE -->
+  <!-- WHY INDEPENDENT MATTERS -->
   <section class="py-20" style="background:linear-gradient(180deg,#EFF4F9 0%,#FAFAF8 100%);">
-    <div class="max-w-3xl mx-auto px-6">
-      <h2 class="font-display text-3xl font-bold text-dark text-center mb-8" style="letter-spacing:-0.02em;">What San Gabriel Dog Owners Can Expect</h2>
-      <div class="font-body text-muted space-y-5" style="line-height:1.85;font-size:1.05rem;">
-        <p>San Gabriel is one of the most densely residential cities in the SGV — block after block of single-family homes tucked between Valley Blvd restaurant rows, the 605 and 10 freeway corridors, and the San Gabriel Mission Historic District on Mission Drive. Dogs here are deeply embedded in family life, often sleeping indoors with large multigenerational households and accompanying owners on morning walks around Vincent Lugo Park or down Las Tunas toward the shops.</p>
-        <p>At SPAH, we match that energy. Dr. Sylvia Chiang and Dr. Gina Navia built this practice on the principle that good veterinary medicine is also good communication — explaining what we're seeing, what it means, and what the options are, before we proceed with anything. You should never leave a vet visit feeling confused about what happened or blindsided by a bill.</p>
-        <p>Because San Gabriel shares a border with Alhambra, we're the closest full-service independent practice to most of the city. Head west on Valley Blvd past Longo Toyota — you'll hit Main St in less than five minutes. Free parking out front, no meters, no garages.</p>
-        <p>We have published pricing at <a href="/pricing" class="text-brand hover:underline">spah.la/pricing</a> — review fees before you book. We also have an <a href="https://spah.koala.health/" target="_blank" class="text-brand hover:underline">online pharmacy</a> for prescription refills and home delivery.</p>
+    <div class="max-w-5xl mx-auto px-6">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+        <div>
+          <span class="font-body text-xs font-bold tracking-widest uppercase" style="color:#5A7FA6;">Why It Matters</span>
+          <h2 class="font-display text-3xl font-bold text-dark mt-2 mb-5" style="letter-spacing:-0.02em;">What San Gabriel Dog Owners Can Expect</h2>
+          <p class="font-body text-muted mb-4" style="line-height:1.8;">San Gabriel is one of the most densely residential cities in the SGV — block after block of single-family homes tucked between the Valley Blvd restaurant rows and the Mission Historic District. Dogs here are deeply embedded in family life, joining morning walks around Vincent Lugo Park or down Las Tunas toward the shops.</p>
+          <p class="font-body text-muted mb-4" style="line-height:1.8;">At SPAH, we match that energy. Dr. Sylvia Chiang and Dr. Gina Navia built this practice on the principle that good veterinary medicine is also good communication — explaining what we're seeing, what it means, and what the options are, before we proceed with anything. You should never leave a vet visit feeling confused about what happened or blindsided by a bill.</p>
+          <p class="font-body text-muted" style="line-height:1.8;">Because San Gabriel shares a border with Alhambra, we're the closest full-service independent practice to most of the city. Head west on Valley Blvd past Longo Toyota — you'll hit Main St in less than five minutes. Our <a href="/pricing" class="text-brand hover:underline">pricing is published online</a>, and our <a href="https://spah.koala.health/" target="_blank" class="text-brand hover:underline">online pharmacy</a> handles refills with home delivery.</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="service-card" style="border-top:3px solid #7A9E8E;">
+            <div style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#7A9E8E;margin-bottom:0.6rem;">01</div>
+            <h3 class="font-display text-base font-bold text-dark mb-1">Family-Owned</h3>
+            <p class="font-body text-muted text-xs" style="line-height:1.6;">Founded and operated by two veterinarians who live and work in this community.</p>
+          </div>
+          <div class="service-card" style="border-top:3px solid #5A7FA6;">
+            <div style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#5A7FA6;margin-bottom:0.6rem;">02</div>
+            <h3 class="font-display text-base font-bold text-dark mb-1">Transparent Pricing</h3>
+            <p class="font-body text-muted text-xs" style="line-height:1.6;">All fees published online. No estimates that balloon at checkout.</p>
+          </div>
+          <div class="service-card" style="border-top:3px solid #A8673A;">
+            <div style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#A8673A;margin-bottom:0.6rem;">03</div>
+            <h3 class="font-display text-base font-bold text-dark mb-1">In-House Diagnostics</h3>
+            <p class="font-body text-muted text-xs" style="line-height:1.6;">On-site lab, X-rays, and urinalysis for faster answers at your visit.</p>
+          </div>
+          <div class="service-card" style="border-top:3px solid #2A3442;">
+            <div style="font-family:'Playfair Display',serif;font-size:0.7rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;color:#2A3442;margin-bottom:0.6rem;">04</div>
+            <h3 class="font-display text-base font-bold text-dark mb-1">All Dogs Welcome</h3>
+            <p class="font-body text-muted text-xs" style="line-height:1.6;">Puppies, seniors, anxious dogs — every temperament and life stage.</p>
+          </div>
+        </div>
       </div>
     </div>
   </section>

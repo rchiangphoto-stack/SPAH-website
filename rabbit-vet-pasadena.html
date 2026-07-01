@@ -47,14 +47,24 @@
     .nav-link{position:relative;}
     .nav-link::after{content:'';position:absolute;bottom:-2px;left:0;right:0;height:2px;background:#7A9E8E;transform:scaleX(0);transform-origin:left;transition:transform 0.25s ease;}
     .nav-link:hover::after{transform:scaleX(1);}
-    .service-card{background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
-    .health-card{background:#fff;border-radius:1.25rem;padding:1.5rem 1.75rem;border-left:4px solid #7A9E8E;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
+    .neighborhood-chip{display:inline-block;background:#fff;color:#2A3442;font-family:'Lato',sans-serif;font-size:0.78rem;font-weight:600;border-radius:9999px;padding:6px 16px;margin:4px;border:1.5px solid rgba(122,158,142,0.3);letter-spacing:0.02em;transition:background 0.2s,border-color 0.2s;}
+    .neighborhood-chip:hover{background:#EDF3F0;border-color:#7A9E8E;}
+    .section-eyebrow{display:inline-flex;align-items:center;gap:8px;font-family:'Lato',sans-serif;font-size:0.7rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:#7A9E8E;margin-bottom:0.75rem;}
+    .section-eyebrow::before{content:'';display:block;width:24px;height:1.5px;background:#7A9E8E;}
+    .service-card{background:#fff;border-radius:1.25rem;padding:1.75rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);transition:transform 0.2s,box-shadow 0.2s;}
+    .service-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(90,127,166,0.14);}
+    .service-icon{width:52px;height:52px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+    .health-card{background:#fff;border-radius:1.25rem;padding:1.5rem 1.75rem;border-left:4px solid #7A9E8E;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);transition:transform 0.2s,box-shadow 0.2s;}
+    .health-card:hover{transform:translateY(-2px);box-shadow:0 4px 20px rgba(90,127,166,0.14);}
     .faq-item{background:#fff;border-radius:1rem;padding:1.5rem 1.75rem;margin-bottom:1rem;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
     .faq-item h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#2A3442;margin:0 0 0.5rem 0;}
     .faq-item p{font-size:0.95rem;line-height:1.75;color:#4a5568;margin:0;}
-    .stat-box{background:#fff;border-radius:1.25rem;padding:1.5rem;text-align:center;box-shadow:0 2px 4px rgba(90,127,166,0.06),0 8px 24px rgba(90,127,166,0.10);}
-    .stat-number{font-family:'Playfair Display',serif;font-size:2.25rem;font-weight:700;color:#7A9E8E;line-height:1;}
-    .stat-label{font-family:'Lato',sans-serif;font-size:0.8rem;color:#6b7280;margin-top:0.35rem;text-transform:uppercase;letter-spacing:0.05em;}
+    .stat-strip{display:flex;align-items:stretch;background:rgba(255,255,255,0.7);backdrop-filter:blur(8px);border:1px solid rgba(122,158,142,0.18);border-radius:1rem;overflow:hidden;max-width:480px;margin:2.5rem auto 0;}
+    .stat-item{flex:1;padding:1.1rem 0.75rem;text-align:center;position:relative;}
+    .stat-item+.stat-item::before{content:'';position:absolute;left:0;top:20%;height:60%;width:1px;background:rgba(122,158,142,0.25);}
+    .stat-number{font-family:'Playfair Display',serif;font-size:1.75rem;font-weight:700;color:#2A3442;line-height:1;}
+    .stat-accent{color:#7A9E8E;}
+    .stat-label{font-family:'Lato',sans-serif;font-size:0.7rem;color:#9ca3af;margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:600;}
     .warning-box{background:#FFF8E1;border-left:4px solid #F59E0B;border-radius:1rem;padding:1.25rem 1.5rem;}
     .warning-box p{font-size:0.95rem;line-height:1.7;color:#2A3442;margin:0;}
   </style>
@@ -103,19 +113,41 @@
         <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank" class="btn-primary">Book a Rabbit Appointment</a>
         <a href="tel:6264411314" class="border-2 border-brand/40 text-brand font-body font-bold rounded-full px-8 py-3 hover:bg-brand/5 transition-colors duration-200">(626) 441-1314</a>
       </div>
-      <div class="grid grid-cols-3 gap-4 max-w-lg mx-auto mt-12">
-        <div class="stat-box">
-          <div class="stat-number">4.8★</div>
+      <!-- STATS -->
+      <div class="stat-strip">
+        <div class="stat-item">
+          <div class="stat-number">4.8<span class="stat-accent">★</span></div>
           <div class="stat-label">Google Rating</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">10<span style="font-size:1.25rem">min</span></div>
+        <div class="stat-item">
+          <div class="stat-number">10<span class="stat-accent" style="font-size:1rem;">min</span></div>
           <div class="stat-label">From Pasadena</div>
         </div>
-        <div class="stat-box">
-          <div class="stat-number">$$</div>
-          <div class="stat-label">Published Fees</div>
+        <div class="stat-item">
+          <div class="stat-number" style="font-size:1.35rem;"><span class="stat-accent">Indep.</span></div>
+          <div class="stat-label">Local Practice</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NEIGHBORHOODS -->
+  <section class="py-14" style="background:#FAFAF8;border-top:1px solid rgba(122,158,142,0.12);border-bottom:1px solid rgba(122,158,142,0.12);">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+      <div class="flex justify-center"><span class="section-eyebrow">Where We Serve</span></div>
+      <h2 class="font-display text-2xl font-bold text-dark mb-3" style="letter-spacing:-0.02em;">Pasadena Rabbit Owners We See</h2>
+      <p class="font-body text-muted text-sm mb-7" style="line-height:1.7;">House rabbit owners from across Pasadena make the short drive down the 110 to a clinic that sees rabbits every week.</p>
+      <div>
+        <span class="neighborhood-chip">Bungalow Heaven</span>
+        <span class="neighborhood-chip">Fair Oaks / PCC Area</span>
+        <span class="neighborhood-chip">Caltech / California Blvd</span>
+        <span class="neighborhood-chip">Victory Park</span>
+        <span class="neighborhood-chip">Madison Heights</span>
+        <span class="neighborhood-chip">Old Town Pasadena</span>
+        <span class="neighborhood-chip">Sierra Madre Blvd</span>
+        <span class="neighborhood-chip">Hastings Ranch</span>
+        <span class="neighborhood-chip">Orange Grove</span>
+        <span class="neighborhood-chip">Linda Vista</span>
       </div>
     </div>
   </section>
@@ -123,6 +155,7 @@
   <!-- PASADENA RABBIT CONTEXT -->
   <section class="py-20 bg-white">
     <div class="max-w-4xl mx-auto px-6">
+      <div class="flex justify-center"><span class="section-eyebrow">Why It Matters</span></div>
       <h2 class="font-display text-3xl font-bold text-dark text-center mb-6" style="letter-spacing:-0.02em;">Why Pasadena Rabbit Owners Come to SPAH</h2>
       <div class="font-body text-muted space-y-5 max-w-3xl mx-auto" style="line-height:1.85;font-size:1.05rem;">
         <p>Pasadena has a substantial house rabbit community — in the craftsman bungalows of Bungalow Heaven National Historic District, in the apartments along Fair Oaks Ave near PCC, in graduate student housing off Wilson Ave and California Blvd near Caltech, and in the family homes around Victory Park and Sierra Madre Blvd. Many of these rabbits came home from the Pasadena Humane Society on East Foothill Boulevard. Their owners are thoughtful, engaged pet parents who want genuine veterinary support — not just an annual weigh-in from a clinic that sees two rabbits a year.</p>
@@ -144,6 +177,7 @@
   <!-- HEALTH CONDITIONS -->
   <section class="py-20" style="background:linear-gradient(180deg,#EDF3F0 0%,#FAFAF8 100%);">
     <div class="max-w-5xl mx-auto px-6">
+      <div class="flex justify-center"><span class="section-eyebrow">Local Knowledge</span></div>
       <h2 class="font-display text-3xl font-bold text-dark text-center mb-4" style="letter-spacing:-0.02em;">Rabbit Health Conditions We Treat</h2>
       <p class="font-body text-muted text-base text-center max-w-2xl mx-auto mb-10" style="line-height:1.7;">These are the most common reasons Pasadena rabbit owners visit SPAH — and the conditions we're most attentive to at every wellness visit.</p>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -170,35 +204,36 @@
   <!-- SERVICES -->
   <section class="py-20 bg-warm">
     <div class="max-w-5xl mx-auto px-6">
+      <div class="flex justify-center"><span class="section-eyebrow">What We Offer</span></div>
       <h2 class="font-display text-3xl font-bold text-dark text-center mb-10" style="letter-spacing:-0.02em;">Rabbit Veterinary Services at SPAH</h2>
       <div class="grid grid-cols-2 md:grid-cols-3 gap-5">
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#EDF3F0;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#EDF3F0;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Wellness Exams</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Annual (or twice-yearly for rabbits 5+) physical exam: weight, teeth, gut sounds, eyes, ears, coat, and husbandry review.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#D4E5D9;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/nail-trims.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#D4E5D9;"><img src="images/services/nail-trims.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Dental Checks</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Assessment of incisors and back molars for spurs, malocclusion, and root problems. X-rays when indicated.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#E0CCBA;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/soft-tissue-surgery.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#E0CCBA;"><img src="images/services/soft-tissue-surgery.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Spay &amp; Neuter</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Spaying removes the risk of uterine cancer in females. Neutering reduces territorial behavior in males. Recommended at 4–6 months.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#F7EDE5;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/laboratory-services.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#F7EDE5;"><img src="images/services/laboratory-services.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">GI Assessment</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Gut sounds auscultation, radiographs when needed, and treatment for GI motility problems including stasis.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#E8D6E8;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/vaccinations.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#E8D6E8;"><img src="images/services/vaccinations.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Bloodwork &amp; Urinalysis</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">In-house diagnostics to assess kidney function, liver health, and general organ status — especially important in senior rabbits.</p>
         </div>
         <div class="service-card">
-          <div style="width:48px;height:48px;border-radius:50%;background:#EDF3F0;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
+          <div class="service-icon" style="background:#EDF3F0;"><img src="images/services/wellness-exams.svg" alt="" class="w-7 h-7" loading="lazy" /></div>
           <h3 class="font-display text-base font-bold text-dark mb-1">Husbandry Counseling</h3>
           <p class="font-body text-muted text-xs" style="line-height:1.65;">Diet, hay intake, housing, temperature management, and enrichment — particularly relevant for Pasadena's summer climate.</p>
         </div>
