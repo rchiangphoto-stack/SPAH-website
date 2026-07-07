@@ -1,7 +1,7 @@
 {
     "google": {
         "rating": 4.8,
-        "count": 128
+        "count": 129
     },
     "yelp": {
         "rating": 4.2,
@@ -9,7 +9,7 @@
     },
     "combined": {
         "rating": 4.5,
-        "count": 239
+        "count": 240
     },
-    "updated": "2026-07-06T11:58:53Z"
+    "updated": "2026-07-07T10:50:28Z"
 }
