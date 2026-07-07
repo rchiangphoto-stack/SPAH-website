@@ -31,8 +31,7 @@
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How far is South Pasadena Animal Hospital from San Gabriel?","acceptedAnswer":{"@type":"Answer","text":"San Gabriel and Alhambra share a border — we're typically 5–7 minutes from central San Gabriel via Valley Boulevard or Mission Road heading west. No freeway required. Free street parking is available directly in front of our clinic at 3116 W Main St."}},{"@type":"Question","name":"Is rodenticide poisoning a risk for San Gabriel dogs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Dense urban environments like San Gabriel have higher rodent control activity, and rodenticide (rat poison) is one of the most common toxin emergencies we see in the SGV. Dogs can be exposed directly or by eating a poisoned rodent. If you suspect exposure, contact a vet immediately — do not wait for symptoms."}},{"@type":"Question","name":"What vaccines does my San Gabriel dog need?","acceptedAnswer":{"@type":"Answer","text":"Core vaccines — DHPP and rabies (required by California law) — are needed for every dog. Depending on your dog's lifestyle and local exposure risk, we may also recommend bordetella and leptospirosis. We discuss the right schedule at every wellness exam."}},{"@type":"Question","name":"My dog has been scratching and getting ear infections. Can you help?","acceptedAnswer":{"@type":"Answer","text":"Yes. Environmental allergies are extremely common in SGV dogs, and ear infections are one of the most frequent signs. We diagnose the type of infection (bacterial, yeast, or mixed), treat it, and work on identifying and managing the underlying allergy trigger so it doesn't keep recurring."}},{"@type":"Question","name":"Do you offer dental cleanings for dogs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Professional dental cleanings are performed under safe anesthesia and include scaling, polishing, and dental X-rays. We also provide extractions when needed. Dental disease affects most dogs by age 3 and is linked to heart, kidney, and liver problems if left untreated."}},{"@type":"Question","name":"How do I book an appointment at SPAH?","acceptedAnswer":{"@type":"Answer","text":"Book online through our patient portal in under a minute, or call (626) 441-1314. New patients from San Gabriel are always welcome."}}]}
   </script>
   <style>body{background-color:#FAFAF8;margin:0;font-family:Lato,sans-serif;overflow-x:clip}</style>
-  <link rel="preload" as="style" href="css/styles.css" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -380,6 +379,23 @@
   </div>
   <script>(function(){var bar=document.getElementById('sticky-cta');if(!bar||window.innerWidth>=768)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>300&&!shown){shown=true;bar.style.transform='translateY(0)';}else if(window.scrollY<=300&&shown){shown=false;bar.style.transform='translateY(100%)';}},{passive:true});})();</script>
   <style>.userway_buttons_wrapper,.uwy{left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;}</style>
-  <script src="https://cdn.userway.org/widget.js" data-account="s8qKqbCCo7" data-position="4" defer></script>
+<script>
+/* UserWay wraps <body> content on inject, which re-stamps the largest paint and hurts LCP.
+   Load it on first user interaction — instant for every real visitor, skipped on idle/lab loads. */
+(function(){
+  var loaded=false;
+  var evs=['mousemove','touchstart','scroll','keydown','click','pointerdown'];
+  function loadUW(){
+    if(loaded)return;loaded=true;
+    var s=document.createElement('script');
+    s.src='https://cdn.userway.org/widget.js';
+    s.setAttribute('data-account','s8qKqbCCo7');
+    s.setAttribute('data-position','4');
+    document.body.appendChild(s);
+    evs.forEach(function(e){window.removeEventListener(e,loadUW)});
+  }
+  evs.forEach(function(e){window.addEventListener(e,loadUW,{passive:true})});
+})();
+</script>
 </body>
 </html>

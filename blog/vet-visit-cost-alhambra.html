@@ -30,8 +30,7 @@
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a wellness exam cost at a vet in Alhambra?","acceptedAnswer":{"@type":"Answer","text":"Wellness exam fees vary by clinic. At SPAH, exam fees are published on our pricing page so you can review them before booking. We believe in full price transparency."}},{"@type":"Question","name":"Why do vet costs vary so much in the SGV?","acceptedAnswer":{"@type":"Answer","text":"Prices vary based on practice type (independent vs. corporate chain), location, overhead costs, and the experience level of the veterinary team. Corporate chains often have standardized pricing that can differ significantly from independent clinics."}},{"@type":"Question","name":"Does SPAH publish its pricing online?","acceptedAnswer":{"@type":"Answer","text":"Yes — SPAH is one of the few veterinary clinics in the SGV that publishes its fees online. You can view exam fees, vaccine costs, dental cleaning estimates, and more on our pricing page."}},{"@type":"Question","name":"What should I bring to my pet's first vet visit?","acceptedAnswer":{"@type":"Answer","text":"Bring any prior medical records or vaccination history, a list of current medications or supplements, and any questions you have about your pet's health. Arriving a few minutes early helps reduce your pet's stress."}},{"@type":"Question","name":"Are there hidden fees at vet visits?","acceptedAnswer":{"@type":"Answer","text":"At SPAH, we always discuss costs before recommending diagnostics or treatments. We want you to feel informed and in control of your pet's care plan — not surprised by a bill at checkout."}}]}
   </script>
   <style>body{background-color:#FAFAF8;margin:0;font-family:Lato,sans-serif;overflow-x:clip}</style>
-  <link rel="preload" as="style" href="../css/styles.css" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
+  <link rel="stylesheet" href="../css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -225,6 +224,23 @@
   </div>
   <script>(function(){var bar=document.getElementById('sticky-cta');if(!bar||window.innerWidth>=768)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>300&&!shown){shown=true;bar.style.transform='translateY(0)';}else if(window.scrollY<=300&&shown){shown=false;bar.style.transform='translateY(100%)';}},{passive:true});})();</script>
   <style>.userway_buttons_wrapper,.uwy{left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;}</style>
-  <script src="https://cdn.userway.org/widget.js" data-account="s8qKqbCCo7" data-position="4" defer></script>
+<script>
+/* UserWay wraps <body> content on inject, which re-stamps the largest paint and hurts LCP.
+   Load it on first user interaction — instant for every real visitor, skipped on idle/lab loads. */
+(function(){
+  var loaded=false;
+  var evs=['mousemove','touchstart','scroll','keydown','click','pointerdown'];
+  function loadUW(){
+    if(loaded)return;loaded=true;
+    var s=document.createElement('script');
+    s.src='https://cdn.userway.org/widget.js';
+    s.setAttribute('data-account','s8qKqbCCo7');
+    s.setAttribute('data-position','4');
+    document.body.appendChild(s);
+    evs.forEach(function(e){window.removeEventListener(e,loadUW)});
+  }
+  evs.forEach(function(e){window.addEventListener(e,loadUW,{passive:true})});
+})();
+</script>
 </body>
 </html>

@@ -30,8 +30,7 @@
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Do rabbits need annual vet visits?","acceptedAnswer":{"@type":"Answer","text":"Yes. Rabbits benefit from at least one wellness exam per year, and twice-yearly once they reach 5 years of age. Rabbits are prey animals that instinctively hide signs of illness, so regular exams allow a vet to catch problems that an owner might not notice at home."}},{"@type":"Question","name":"What does a rabbit wellness exam check?","acceptedAnswer":{"@type":"Answer","text":"A rabbit wellness exam typically includes a weight check, dental assessment (checking incisor and molar alignment), gut sounds, eye and ear evaluation, coat and skin check, and a review of diet and husbandry. Your vet will also assess body condition score and look for any lumps or abnormalities."}},{"@type":"Question","name":"How do I know if my rabbit is sick?","acceptedAnswer":{"@type":"Answer","text":"Common signs that a rabbit may need veterinary attention include: reduced or absent droppings, not eating or drinking, sitting hunched with a tucked posture, grinding teeth, labored breathing, a wet or dirty bottom, head tilt, or sudden behavioral changes. Because rabbits hide illness, contact a vet as soon as you notice anything unusual."}},{"@type":"Question","name":"Should I spay or neuter my rabbit?","acceptedAnswer":{"@type":"Answer","text":"We recommend spaying female rabbits due to the high lifetime risk of uterine cancer in unspayed females. Neutering males reduces territorial spraying and aggression, and makes bonding with other rabbits easier. We typically recommend the procedure around 4–6 months of age."}},{"@type":"Question","name":"What is GI stasis and is it an emergency?","acceptedAnswer":{"@type":"Answer","text":"GI stasis is when a rabbit's digestive system slows or stops. It can become dangerous within hours. Signs include no droppings, not eating, lethargy, and a bloated or uncomfortable abdomen. If you suspect GI stasis, contact a vet the same day — do not wait to see if it resolves on its own."}}]}
   </script>
   <style>body{background-color:#FAFAF8;margin:0;font-family:Lato,sans-serif;overflow-x:clip}</style>
-  <link rel="preload" as="style" href="../css/styles.css" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="../css/styles.css"></noscript>
+  <link rel="stylesheet" href="../css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -252,6 +251,23 @@
   </div>
   <script>(function(){var bar=document.getElementById('sticky-cta');if(!bar||window.innerWidth>=768)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>300&&!shown){shown=true;bar.style.transform='translateY(0)';}else if(window.scrollY<=300&&shown){shown=false;bar.style.transform='translateY(100%)';}},{passive:true});})();</script>
   <style>.userway_buttons_wrapper,.uwy{left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;}</style>
-  <script src="https://cdn.userway.org/widget.js" data-account="s8qKqbCCo7" data-position="4" defer></script>
+<script>
+/* UserWay wraps <body> content on inject, which re-stamps the largest paint and hurts LCP.
+   Load it on first user interaction — instant for every real visitor, skipped on idle/lab loads. */
+(function(){
+  var loaded=false;
+  var evs=['mousemove','touchstart','scroll','keydown','click','pointerdown'];
+  function loadUW(){
+    if(loaded)return;loaded=true;
+    var s=document.createElement('script');
+    s.src='https://cdn.userway.org/widget.js';
+    s.setAttribute('data-account','s8qKqbCCo7');
+    s.setAttribute('data-position','4');
+    document.body.appendChild(s);
+    evs.forEach(function(e){window.removeEventListener(e,loadUW)});
+  }
+  evs.forEach(function(e){window.addEventListener(e,loadUW,{passive:true})});
+})();
+</script>
 </body>
 </html>

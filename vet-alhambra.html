@@ -80,8 +80,7 @@
   }
   </script>
   <style>body{background-color:#FAFAF8;margin:0;font-family:Lato,sans-serif;overflow-x:clip}</style>
-  <link rel="preload" as="style" href="css/styles.css" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
@@ -580,7 +579,24 @@
 <style>
   .userway_buttons_wrapper,.uwy.userway_buttons_wrapper,.uwy{left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;transition:opacity .3s ease!important;}
 </style>
-<script src="https://cdn.userway.org/widget.js" data-account="s8qKqbCCo7" data-position="4" defer></script>
+<script>
+/* UserWay wraps <body> content on inject, which re-stamps the largest paint and hurts LCP.
+   Load it on first user interaction — instant for every real visitor, skipped on idle/lab loads. */
+(function(){
+  var loaded=false;
+  var evs=['mousemove','touchstart','scroll','keydown','click','pointerdown'];
+  function loadUW(){
+    if(loaded)return;loaded=true;
+    var s=document.createElement('script');
+    s.src='https://cdn.userway.org/widget.js';
+    s.setAttribute('data-account','s8qKqbCCo7');
+    s.setAttribute('data-position','4');
+    document.body.appendChild(s);
+    evs.forEach(function(e){window.removeEventListener(e,loadUW)});
+  }
+  evs.forEach(function(e){window.addEventListener(e,loadUW,{passive:true})});
+})();
+</script>
 <script>
 (function(){
   var scrollTimer;

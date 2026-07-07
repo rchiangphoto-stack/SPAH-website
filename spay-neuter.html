@@ -32,8 +32,7 @@
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"When should I spay or neuter my dog?","acceptedAnswer":{"@type":"Answer","text":"Timing depends on breed and size. Smaller dogs are often spayed or neutered around 6 months. For larger breeds, some vets recommend waiting until 12 to 18 months to allow full physical maturity. We discuss the best timing for your specific dog at your pre-surgical consultation."}},{"@type":"Question","name":"What are the health benefits of spaying or neutering?","acceptedAnswer":{"@type":"Answer","text":"Spaying females eliminates the risk of uterine infections (pyometra) and significantly reduces the risk of mammary tumors when done before the first or second heat cycle. Neutering males eliminates testicular cancer and reduces the risk of benign prostate enlargement. Both procedures also reduce certain hormone-driven behaviors."}},{"@type":"Question","name":"How do you keep my pet safe during surgery?","acceptedAnswer":{"@type":"Answer","text":"Every patient receives a pre-surgical exam and bloodwork assessment. We use modern anesthetic protocols with continuous monitoring of heart rate, oxygen levels, blood pressure, and temperature throughout the procedure. A dedicated team member monitors your pet from induction through recovery."}},{"@type":"Question","name":"What is the recovery like after spay or neuter surgery?","acceptedAnswer":{"@type":"Answer","text":"Most dogs and cats are discharged the same day and recover well at home within 10 to 14 days. We provide detailed post-operative care instructions including activity restrictions, incision monitoring, and pain management. We are available to answer questions during recovery."}},{"@type":"Question","name":"Can rabbits and other exotic pets be spayed or neutered?","acceptedAnswer":{"@type":"Answer","text":"Yes. Spaying female rabbits is strongly recommended as they have a very high rate of uterine cancer by middle age. Rabbits, guinea pigs, and ferrets can all benefit from spay or neuter surgery. Exotic pet reproductive surgeries are more complex and require a vet experienced with these species."}}]}
   </script>
   <style>body{background-color:#FAFAF8;margin:0;font-family:Lato,sans-serif;overflow-x:clip}</style>
-  <link rel="preload" as="style" href="css/styles.css" onload="this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="css/styles.css"></noscript>
+  <link rel="stylesheet" href="css/styles.css">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
@@ -324,6 +323,23 @@
   </div>
   <script>(function(){var bar=document.getElementById('sticky-cta');if(!bar||window.innerWidth>=768)return;var shown=false;window.addEventListener('scroll',function(){if(window.scrollY>300&&!shown){shown=true;bar.style.transform='translateY(0)';}else if(window.scrollY<=300&&shown){shown=false;bar.style.transform='translateY(100%)';}},{passive:true});})();</script>
   <style>.userway_buttons_wrapper,.uwy.userway_buttons_wrapper,.uwy{left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;}</style>
-  <script src="https://cdn.userway.org/widget.js" data-account="s8qKqbCCo7" data-position="4" defer></script>
+<script>
+/* UserWay wraps <body> content on inject, which re-stamps the largest paint and hurts LCP.
+   Load it on first user interaction — instant for every real visitor, skipped on idle/lab loads. */
+(function(){
+  var loaded=false;
+  var evs=['mousemove','touchstart','scroll','keydown','click','pointerdown'];
+  function loadUW(){
+    if(loaded)return;loaded=true;
+    var s=document.createElement('script');
+    s.src='https://cdn.userway.org/widget.js';
+    s.setAttribute('data-account','s8qKqbCCo7');
+    s.setAttribute('data-position','4');
+    document.body.appendChild(s);
+    evs.forEach(function(e){window.removeEventListener(e,loadUW)});
+  }
+  evs.forEach(function(e){window.addEventListener(e,loadUW,{passive:true})});
+})();
+</script>
 </body>
 </html>
