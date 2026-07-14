@@ -21,6 +21,17 @@
     }
   ],
   "redirects": [
+    { "source": "/blog/vet-near-glendale", "destination": "/vet-glendale", "permanent": true },
+    { "source": "/blog/vet-near-monterey-park", "destination": "/vet-monterey-park", "permanent": true },
+    { "source": "/blog/vet-near-san-marino", "destination": "/vet-san-marino", "permanent": true },
+    { "source": "/blog/vet-near-south-pasadena", "destination": "/vet-south-pasadena", "permanent": true },
+    { "source": "/blog/vet-near-temple-city", "destination": "/vet-temple-city", "permanent": true },
+    { "source": "/blog/vet-near-el-monte", "destination": "/vet-el-monte", "permanent": true },
+    { "source": "/blog/vet-near-covina", "destination": "/vet-covina", "permanent": true },
+    { "source": "/blog/vet-near-west-covina", "destination": "/vet-west-covina", "permanent": true },
+    { "source": "/blog/vet-near-whittier", "destination": "/vet-whittier", "permanent": true },
+    { "source": "/blog/vet-near-eagle-rock", "destination": "/vet-eagle-rock", "permanent": true },
+    { "source": "/blog/vet-near-highland-park", "destination": "/vet-highland-park", "permanent": true },
     {
       "source": "/:path*",
       "has": [
