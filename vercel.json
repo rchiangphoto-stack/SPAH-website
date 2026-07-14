@@ -21,6 +21,10 @@
     }
   ],
   "redirects": [
+    { "source": "/blog/exotic-vet-near-pasadena", "destination": "/exotic-vet-pasadena", "permanent": true },
+    { "source": "/blog/guinea-pig-vet-alhambra", "destination": "/guinea-pig-vet-alhambra", "permanent": true },
+    { "source": "/blog/bird-vet-care-alhambra", "destination": "/bird-vet-alhambra", "permanent": true },
+    { "source": "/blog/avian-vet-alhambra", "destination": "/bird-vet-alhambra", "permanent": true },
     { "source": "/blog/vet-near-glendale", "destination": "/vet-glendale", "permanent": true },
     { "source": "/blog/vet-near-monterey-park", "destination": "/vet-monterey-park", "permanent": true },
     { "source": "/blog/vet-near-san-marino", "destination": "/vet-san-marino", "permanent": true },
