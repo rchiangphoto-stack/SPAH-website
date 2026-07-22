@@ -18,3 +18,24 @@ body{overflow-x:clip;}
 .spah-seo-chevron{transition:transform .2s ease;flex-shrink:0;color:rgba(13,21,32,.2);}
 .spah-seo-accordion[open] .spah-seo-chevron{transform:rotate(180deg);}
 .spah-seo-body{padding-top:.625rem;}
+
+/* ── Mobile vertical rhythm ─────────────────────────────────────────────
+   Desktop section padding (py-20 = 80px top+bottom) was being served
+   unchanged to phones, leaving large empty gaps between every block.
+   Only applies below the md: breakpoint, so md:py-* variants are untouched. */
+@media (max-width:767px){
+  .py-28{padding-top:3.25rem;padding-bottom:3.25rem}
+  .py-24{padding-top:3rem;padding-bottom:3rem}
+  .py-20{padding-top:2.75rem;padding-bottom:2.75rem}
+  .py-16{padding-top:2.5rem;padding-bottom:2.5rem}
+  .py-12{padding-top:2.25rem;padding-bottom:2.25rem}
+  /* heading-to-content gaps scale down too */
+  .mb-16{margin-bottom:2rem}
+  .mb-14{margin-bottom:1.875rem}
+  .mb-12{margin-bottom:1.75rem}
+  .mb-10{margin-bottom:1.5rem}
+  /* tighter gutters reclaim ~16px of line length on a 375px screen */
+  .px-6{padding-left:1.25rem;padding-right:1.25rem}
+  /* footer link tap targets: 20px -> 40px+ without visual change */
+  footer a{padding-top:.3rem;padding-bottom:.3rem;display:inline-block}
+}
