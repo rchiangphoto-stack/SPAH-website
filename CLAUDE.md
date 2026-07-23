@@ -263,17 +263,33 @@ Every post must read like a specific veterinarian talking to a specific worried 
 - `cat-vomiting`: 99.8% ❌ — reads as a reference article, needs full rewrite
 - `hedgehog-care`: 99.9% ❌ — structured care guide, no clinical voice
 
-#### REWRITE PRIORITY ORDER (by GSC traffic × Sapling score)
-1. `corn-snake-care` — 124k impressions, 81.1% Sapling
-2. `hamster-sick-signs` — 57k impressions, 19.2% ✅ (already good)
-3. `turtle-tortoise-health` — 33k impressions (pending check)
-4. `rabbit-not-eating` — 21k impressions, 48.5%
-5. `cat-vomiting` — high score, 99.8%
-6. `dog-eye-problems` — 99.8%
-7. `pet-coughing-sneezing` — 100.0%
-8. `cat-hyperthyroidism` — 98.5%
-9. `dog-anxiety-alhambra` — 93.0%
-10. `cat-not-eating` — 88.2%
+#### REWRITE PRIORITY ORDER — **RE-VERIFIED 2026-07-22: NOTHING NEEDS REWRITING**
+
+The old priority list here was stale and sent work in the wrong direction. Every post
+re-checked on 2026-07-22 **passes** on the reliable metric (sentence-level under 25%):
+
+| Post | GSC impr | doc-level | sentence-level | |
+|---|---|---|---|---|
+| hamster-sick-signs | 16,684 | 26.0% | 7/64 = 10.9% | pass |
+| rabbit-not-eating | 7,255 | 45.0% | 7/57 = 12.3% | pass (was listed 48.5%) |
+| bearded-dragon-shedding | 6,244 | 43.3% | 4/54 = 7.4% | pass |
+| turtle-tortoise-health | 5,586 | 2.0% | 8/58 = 13.8% | pass |
+| sick-bird-signs | 4,928 | 58.8% | 5/45 = 11.1% | pass |
+| corn-snake-care | 4,301 | 50.4% | 2/57 = 3.5% | pass (was listed 81.1%) |
+| dog-eye-problems | 207 | 57.4% | 6/53 = 11.3% | pass (was listed 99.8%) |
+| cat-vomiting | 174 | 50.0% | 4/51 = 7.8% | pass (was listed 99.8%) |
+| hedgehog-care | 100 | 99.9% | 7/61 = 11.5% | pass (was listed 99.9%) |
+| pet-coughing-sneezing | 21 | 100.0% | 3/64 = 4.7% | pass (was listed 100.0%) |
+
+**The doc-level score is NOT trustworthy — it is nondeterministic.** Verified directly:
+identical text returned **90.3% then 68.2%** on back-to-back API calls. Posts showing
+99.9%/100% doc-level flag only 3-7 sentences out of 60+. **Only use the sentence-level
+percentage.**
+
+**Also check traffic before rewriting.** The posts previously ranked highest-priority
+have almost no traffic — cat-vomiting is 174 impressions at position 29, and
+pet-coughing-sneezing is 21 impressions. Rewriting those changes nothing. Sort any
+future rewrite list by GSC impressions first, then sentence-level score.
 
 ### Medical & legal liability guardrails (MANDATORY for all blog content)
 - **Never assert a diagnosis** for the reader's pet — frame symptoms as "could be a sign of," "may indicate," "one possible cause," not "your pet has X"
