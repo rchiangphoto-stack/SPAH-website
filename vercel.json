@@ -21,6 +21,7 @@
     }
   ],
   "redirects": [
+    { "source": "/exotic-vet-near-me", "destination": "/exotic-exams", "permanent": true },
     { "source": "/blog/exotic-vet-near-pasadena", "destination": "/exotic-vet-pasadena", "permanent": true },
     { "source": "/blog/guinea-pig-vet-alhambra", "destination": "/guinea-pig-vet-alhambra", "permanent": true },
     { "source": "/blog/bird-vet-care-alhambra", "destination": "/bird-vet-alhambra", "permanent": true },
