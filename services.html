@@ -97,6 +97,13 @@
   <style>
     body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+    /* Pharmacy column: top divider (with breathing room) on mobile, left divider on desktop.
+       Self-contained because the md:* / pt-10 Tailwind utilities are not in the compiled build. */
+    .pharma-col { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid rgba(255,255,255,0.12); }
+    @media (min-width: 768px) {
+      .pharma-col { margin-top: 0; padding-top: 0; padding-left: 2.5rem;
+                    border-top: 0; border-left: 1px solid rgba(255,255,255,0.12); }
+    }
     .card-shadow { box-shadow: 0 2px 4px rgba(90,127,166,0.06), 0 8px 24px rgba(90,127,166,0.10); }
     .service-card { transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.25s ease; }
     .service-card:hover { transform: translateY(-4px); box-shadow: 0 4px 8px rgba(90,127,166,0.10), 0 20px 48px rgba(90,127,166,0.16); }
@@ -640,7 +647,7 @@
           </div>
           <p class="font-body text-white/40 text-xs mt-5"><a href="/vet-alhambra" class="hover:text-white/70 transition-colors">Learn more about our Alhambra veterinary services &rarr;</a></p>
         </div>
-        <div class="border-t md:border-t-0 md:border-l mt-10 md:mt-0 pt-10 md:pt-0 md:pl-10" style="border-color:rgba(255,255,255,0.12);">
+        <div class="pharma-col" style="border-color:rgba(255,255,255,0.12);">
           <span class="font-body text-xs font-bold tracking-widest uppercase block mb-3" style="color:rgba(255,255,255,0.7);">Online Pharmacy</span>
           <h3 class="font-display text-2xl font-bold text-white mb-3">Need a refill?</h3>
           <p class="font-body text-sm mb-5" style="color:rgba(255,255,255,0.85);line-height:1.75;">Order medications, flea prevention, and supplements through our online pharmacy — powered by Koala Health.</p>
