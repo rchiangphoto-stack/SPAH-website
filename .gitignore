@@ -9,6 +9,7 @@ src/
 # API keys — never commit these
 scripts/.gptzero_key
 scripts/.sapling_key
+scripts/.psi_key
 .env
 
 # Excel files
