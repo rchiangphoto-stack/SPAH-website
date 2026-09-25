@@ -97,8 +97,29 @@ def search_pixabay(query, api_key, slug=""):
     hits = data.get("hits", [])
     if not hits:
         sys.exit(f"No Pixabay results for: {query!r}")
-    idx = _slug_index(slug, min(len(hits), 15))
-    return hits[idx]
+
+    # Guard against off-topic photos. The deterministic index below occasionally
+    # lands on an unrelated image (e.g. a dog on a rabbit post, an hourglass on a
+    # hedgehog post). Restrict the pool to results whose Pixabay tags actually
+    # contain a meaningful subject word from the search query before indexing.
+    stop = {
+        "the", "a", "an", "of", "and", "or", "for", "with", "in", "on", "near",
+        "to", "your", "my", "pet", "pets", "cute", "closeup", "close", "up",
+        "portrait", "photo", "photograph", "care", "health", "problems", "signs",
+        "guide", "vet", "veterinary", "veterinarian", "animal", "hospital",
+        "white", "black", "brown", "grey", "gray", "tan", "baby", "young",
+        "adult", "small", "big", "little",
+    }
+    keywords = [w for w in re.findall(r"[a-z]+", query.lower())
+                if w not in stop and len(w) > 2]
+    matched = [h for h in hits
+               if any(k in h.get("tags", "").lower() for k in keywords)]
+    if not matched and keywords:
+        print(f"WARNING: no Pixabay result for {slug!r} is tagged with any of "
+              f"{keywords}; falling back to all results (review the image).")
+    pool = matched if matched else hits
+    idx = _slug_index(slug, min(len(pool), 15))
+    return pool[idx]
 
 
 def make_header(out_path, photo_url, title, photo_id, photographer):
