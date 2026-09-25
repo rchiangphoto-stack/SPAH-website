@@ -165,6 +165,16 @@
   <style>
     body { font-family: 'Lato', sans-serif; background: #FAFAF8; color: #2A3442; }
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; }
+    /* Pricing FAQ accordion — compact, mobile-friendly */
+    .faq-acc{background:#fff;border:1px solid rgba(90,127,166,0.14);border-radius:12px;margin-bottom:10px;box-shadow:0 1px 2px rgba(90,127,166,0.05);}
+    .faq-acc>summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:14px;padding:15px 18px;font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:#2A3442;line-height:1.35;}
+    .faq-acc>summary::-webkit-details-marker{display:none;}
+    .faq-acc>summary::after{content:"";flex:0 0 auto;width:9px;height:9px;border-right:2px solid #7A9E8E;border-bottom:2px solid #7A9E8E;transform:rotate(45deg);transition:transform .2s ease;margin-top:-4px;}
+    .faq-acc[open]>summary::after{transform:rotate(-135deg);margin-top:3px;}
+    .faq-acc .faq-a{padding:0 18px 16px;font-family:'Lato',sans-serif;font-size:0.9rem;color:#5A6472;line-height:1.7;}
+    .faq-acc .faq-a a{color:#5A7FA6;}
+    @media (max-width:600px){.faq-acc>summary{font-size:0.92rem;padding:13px 15px;}.faq-acc .faq-a{padding:0 15px 14px;font-size:0.88rem;}}
+
     .card-shadow { box-shadow: 0 2px 4px rgba(90,127,166,0.06), 0 8px 24px rgba(90,127,166,0.10); }
 
     .btn-primary, .btn-outline {
@@ -714,46 +724,44 @@
   </section>
 
   <!-- PRICING FAQ (visible; mirrors FAQPage schema) -->
-  <section class="py-16" style="background:#FAF9F7;">
-    <div class="max-w-3xl mx-auto px-6">
-      <div class="text-center mb-10">
+  <section class="py-12" style="background:#FAF9F7;">
+    <div class="max-w-2xl mx-auto px-6">
+      <div class="text-center mb-8">
         <span class="font-body text-xs font-bold tracking-widest uppercase" style="color:#7A9E8E;">Pricing FAQ</span>
-        <h2 class="font-display text-3xl sm:text-4xl font-bold text-dark mt-2" style="letter-spacing:-0.02em;">Common cost questions</h2>
+        <h2 class="font-display text-2xl sm:text-3xl font-bold text-dark mt-2" style="letter-spacing:-0.02em;">Common cost questions</h2>
       </div>
-      <div class="flex flex-col gap-4">
-        <div class="bg-white rounded-2xl p-6 card-shadow">
-          <h3 class="font-display text-lg font-bold text-dark mb-2">How much does a vet exam cost at SPAH?</h3>
-          <p class="font-body text-muted text-sm" style="line-height:1.75;">A standard veterinary exam costs $80.00. Recheck exams are $48.00. Exotic pet exams are $105.00, with recheck exams at $70.00. Every price is published up front, so there are no surprises at checkout.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 card-shadow">
-          <h3 class="font-display text-lg font-bold text-dark mb-2">How much does bloodwork cost for dogs and cats?</h3>
-          <p class="font-body text-muted text-sm" style="line-height:1.75;">Adult bloodwork (under 7 years) costs $105.46. Senior bloodwork (over 7 years) costs $309.99. Heartworm tests for dogs are $36.25, and FIV/FeLV/Heartworm combo tests for cats are $101.47.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 card-shadow">
-          <h3 class="font-display text-lg font-bold text-dark mb-2">How much does ear or skin cytology cost?</h3>
-          <p class="font-body text-muted text-sm" style="line-height:1.75;">Ear cytology is $67.00 and skin cytology is $58.00. A skin scraping is also $67.00. These tests help us diagnose ear and skin infections, allergies, and mites.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 card-shadow">
-          <h3 class="font-display text-lg font-bold text-dark mb-2">How much is a urinalysis or fecal test?</h3>
-          <p class="font-body text-muted text-sm" style="line-height:1.75;">A urinalysis is $95.70 and a fecal (intestinal parasite) test is $101.22.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 card-shadow">
-          <h3 class="font-display text-lg font-bold text-dark mb-2">How much is a nail trim or ear cleaning?</h3>
-          <p class="font-body text-muted text-sm" style="line-height:1.75;">A nail trim is $28.00 for dogs and cats and $45.00 for exotic pets. Ear cleaning ranges from $42.00 to $85.00 depending on what's needed.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 card-shadow">
-          <h3 class="font-display text-lg font-bold text-dark mb-2">Do you offer wellness packages for pets?</h3>
-          <p class="font-body text-muted text-sm" style="line-height:1.75;">Yes, we offer annual Well Pet Packages starting from $220 per pet per year. Packages are available for puppies, adult dogs, kittens, and adult cats, bundling essential preventive care services at a savings.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 card-shadow">
-          <h3 class="font-display text-lg font-bold text-dark mb-2">Do you treat exotic pets like reptiles and birds?</h3>
-          <p class="font-body text-muted text-sm" style="line-height:1.75;">Yes — we see exotic companion animals routinely, including reptiles, birds, rabbits, guinea pigs, hamsters, bearded dragons and chickens. Dr. Gina Navia has a true passion for exotic pet care. See our <a href="/exotic-exams" class="text-brand hover:underline">exotic pet exams</a>.</p>
-        </div>
-        <div class="bg-white rounded-2xl p-6 card-shadow">
-          <h3 class="font-display text-lg font-bold text-dark mb-2">What are your hours and where are you located?</h3>
-          <p class="font-body text-muted text-sm" style="line-height:1.75;">We are located at 3116 West Main Street, Alhambra, CA 91801. Our hours are Monday through Friday, 8:00 AM to 1:00 PM and 2:00 PM to 6:00 PM (closed for lunch 1–2 PM). We are closed on weekends. Call us at (626) 441-1314.</p>
-        </div>
-      </div>
+        <details class="faq-acc">
+          <summary>How much does a vet exam cost at SPAH?</summary>
+          <div class="faq-a">A standard veterinary exam costs $80.00. Recheck exams are $48.00. Exotic pet exams are $105.00, with recheck exams at $70.00. Every price is published up front, so there are no surprises at checkout.</div>
+        </details>
+        <details class="faq-acc">
+          <summary>How much does bloodwork cost for dogs and cats?</summary>
+          <div class="faq-a">Adult bloodwork (under 7 years) costs $105.46. Senior bloodwork (over 7 years) costs $309.99. Heartworm tests for dogs are $36.25, and FIV/FeLV/Heartworm combo tests for cats are $101.47.</div>
+        </details>
+        <details class="faq-acc">
+          <summary>How much does ear or skin cytology cost?</summary>
+          <div class="faq-a">Ear cytology is $67.00 and skin cytology is $58.00. A skin scraping is also $67.00. These tests help us diagnose ear and skin infections, allergies, and mites.</div>
+        </details>
+        <details class="faq-acc">
+          <summary>How much is a urinalysis or fecal test?</summary>
+          <div class="faq-a">A urinalysis is $95.70 and a fecal (intestinal parasite) test is $101.22.</div>
+        </details>
+        <details class="faq-acc">
+          <summary>How much is a nail trim or ear cleaning?</summary>
+          <div class="faq-a">A nail trim is $28.00 for dogs and cats and $45.00 for exotic pets. Ear cleaning ranges from $42.00 to $85.00 depending on what's needed.</div>
+        </details>
+        <details class="faq-acc">
+          <summary>Do you offer wellness packages for pets?</summary>
+          <div class="faq-a">Yes, we offer annual Well Pet Packages starting from $220 per pet per year. Packages are available for puppies, adult dogs, kittens, and adult cats, bundling essential preventive care services at a savings.</div>
+        </details>
+        <details class="faq-acc">
+          <summary>Do you treat exotic pets like reptiles and birds?</summary>
+          <div class="faq-a">Yes — we see exotic companion animals routinely, including reptiles, birds, rabbits, guinea pigs, hamsters, bearded dragons and chickens. Dr. Gina Navia has a true passion for exotic pet care. See our <a href="/exotic-exams" class="text-brand hover:underline">exotic pet exams</a>.</div>
+        </details>
+        <details class="faq-acc">
+          <summary>What are your hours and where are you located?</summary>
+          <div class="faq-a">We are located at 3116 West Main Street, Alhambra, CA 91801. Our hours are Monday through Friday, 8:00 AM to 1:00 PM and 2:00 PM to 6:00 PM (closed for lunch 1–2 PM). We are closed on weekends. Call us at (626) 441-1314.</div>
+        </details>
     </div>
   </section>
 
