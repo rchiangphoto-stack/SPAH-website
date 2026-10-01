@@ -415,10 +415,14 @@
     </div>
   </nav>
 
-  <!-- CONSTRUCTION BANNER -->
-  <div class="w-full px-4 py-3 text-sm text-center font-body" style="background:#FDDDE6;border-bottom:1px solid #F8B9CE;color:#9D4060;">
-      Currently in temporary Bungalows during construction.
-  </div>
+  <!-- RSVP BANNER -->
+  <button type="button" onclick="if(window.spahOpenRSVP)window.spahOpenRSVP()"
+          class="w-full px-4 py-3 text-sm text-center font-body"
+          style="background:#A8673A;color:#fff;border:none;display:block;cursor:pointer;transition:filter .15s;"
+          onmouseover="this.style.filter='brightness(1.08)'" onmouseout="this.style.filter='none'">
+      <span aria-hidden="true">&#128062;</span>
+      Don't forget to <span style="text-decoration:underline;text-underline-offset:2px;font-weight:700;">RSVP for our Open House</span> &mdash; tap here!
+  </button>
 
 
   <!-- ============================================================
@@ -1267,7 +1271,8 @@ fetch('/reviews.json').then(r=>r.json()).then(d=>{
     var card=ov.querySelector('.rsvp-card'), form=document.getElementById('rsvp-form'), lastFocus=null;
     function seen(){try{return localStorage.getItem(KEY)==='1';}catch(e){return false;}}
     function markSeen(){try{localStorage.setItem(KEY,'1');}catch(e){}}
-    function openIt(){ if(seen())return; lastFocus=document.activeElement; ov.classList.add('open'); ov.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; var f=form.querySelector('input[name=name]'); if(f) setTimeout(function(){f.focus();},80); }
+    function openIt(force){ if(!force && seen())return; lastFocus=document.activeElement; ov.classList.add('open'); ov.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; var f=form.querySelector('input[name=name]'); if(f) setTimeout(function(){f.focus();},80); }
+    window.spahOpenRSVP = function(){ openIt(true); };
     function closeIt(){ ov.classList.remove('open'); ov.setAttribute('aria-hidden','true'); document.body.style.overflow=''; markSeen(); if(lastFocus&&lastFocus.focus)lastFocus.focus(); }
     ov.querySelector('.rsvp-x').addEventListener('click',closeIt);
     ov.addEventListener('mousedown',function(e){ if(e.target===ov) closeIt(); });
