@@ -1179,6 +1179,125 @@ fetch('/reviews.json').then(r=>r.json()).then(d=>{
 }).catch(function(){});
 </script>
 
+  <!-- ============ OPEN HOUSE RSVP POPUP ============ -->
+  <style>
+    #spah-rsvp{position:fixed;inset:0;z-index:9999;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(30,26,22,0.55);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);font-family:'Lato',sans-serif;}
+    #spah-rsvp.open{display:flex;animation:rsvpFade .25s ease both;}
+    @keyframes rsvpFade{from{opacity:0}to{opacity:1}}
+    #spah-rsvp .rsvp-card{position:relative;width:100%;max-width:440px;max-height:92vh;overflow-y:auto;background:#FBF8F2;border-radius:20px;box-shadow:0 22px 60px rgba(30,26,22,0.42);animation:rsvpPop .3s cubic-bezier(.2,.9,.3,1.15) both;}
+    @keyframes rsvpPop{from{opacity:0;transform:translateY(16px) scale(.97)}to{opacity:1;transform:none}}
+    #spah-rsvp .rsvp-x{position:absolute;top:12px;right:14px;z-index:2;width:34px;height:34px;border:none;border-radius:50%;background:rgba(255,255,255,0.75);color:#7a6a58;font-size:1.35rem;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s;}
+    #spah-rsvp .rsvp-x:hover{background:#fff;color:#2A3442;}
+    #spah-rsvp .rsvp-head{text-align:center;padding:30px 28px 2px;}
+    #spah-rsvp .rsvp-eyebrow{font-size:.63rem;letter-spacing:.2em;text-transform:uppercase;color:#A8673A;font-weight:700;}
+    #spah-rsvp .rsvp-paw{font-size:1.5rem;margin:7px 0 4px;line-height:1;}
+    #spah-rsvp .rsvp-invite{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:#8a7a66;}
+    #spah-rsvp .rsvp-title{font-family:'Playfair Display',serif;font-weight:700;font-size:2.15rem;color:#2A3442;line-height:1.02;margin:1px 0 0;letter-spacing:-.01em;}
+    #spah-rsvp .rsvp-div{display:flex;align-items:center;justify-content:center;gap:10px;margin:13px auto 11px;}
+    #spah-rsvp .rsvp-div::before,#spah-rsvp .rsvp-div::after{content:"";height:1px;width:48px;background:linear-gradient(90deg,transparent,#dcbf9c);}
+    #spah-rsvp .rsvp-div span{color:#C98A3C;font-size:.68rem;letter-spacing:.25em;}
+    #spah-rsvp .rsvp-when{font-size:.92rem;color:#5b5346;line-height:1.55;margin:0;}
+    #spah-rsvp .rsvp-when b{color:#2A3442;}
+    #spah-rsvp form{padding:16px 28px 26px;display:flex;flex-direction:column;gap:12px;}
+    #spah-rsvp label.fld{display:flex;flex-direction:column;gap:5px;font-size:.7rem;font-weight:700;letter-spacing:.05em;text-transform:uppercase;color:#7a6a58;}
+    #spah-rsvp input[type=text],#spah-rsvp input[type=email],#spah-rsvp input[type=number]{font-family:'Lato',sans-serif;font-size:.98rem;color:#2A3442;background:#fff;border:1.5px solid #e6ddce;border-radius:11px;padding:11px 13px;transition:border-color .15s,box-shadow .15s;width:100%;}
+    #spah-rsvp input:focus{outline:none;border-color:#7A9E8E;box-shadow:0 0 0 3px rgba(122,158,142,.18);}
+    #spah-rsvp .rsvp-check{display:flex;align-items:center;gap:9px;font-size:.9rem;font-weight:400;letter-spacing:0;text-transform:none;color:#2A3442;cursor:pointer;}
+    #spah-rsvp .rsvp-check input{width:18px;height:18px;accent-color:#A8673A;flex:0 0 auto;}
+    #spah-rsvp .rsvp-attend{display:flex;gap:8px;}
+    #spah-rsvp .rsvp-attend label{flex:1;position:relative;cursor:pointer;margin:0;}
+    #spah-rsvp .rsvp-attend input{position:absolute;opacity:0;width:0;height:0;}
+    #spah-rsvp .rsvp-attend span{display:block;text-align:center;font-weight:700;font-size:.9rem;color:#2A3442;background:#fff;border:1.5px solid #e6ddce;border-radius:11px;padding:11px 8px;transition:background .15s,border-color .15s,color .15s;}
+    #spah-rsvp .rsvp-attend input:checked+span{background:#7A9E8E;border-color:#7A9E8E;color:#fff;}
+    #spah-rsvp .rsvp-attend input:focus-visible+span{box-shadow:0 0 0 3px rgba(122,158,142,.3);}
+    #spah-rsvp #rsvp-guests-wrap{display:flex;}
+    #spah-rsvp .hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;}
+    #spah-rsvp button.rsvp-submit{margin-top:3px;font-family:'Lato',sans-serif;font-weight:700;font-size:1rem;color:#fff;background:#A8673A;border:none;border-radius:9999px;padding:13px;cursor:pointer;transition:filter .15s,transform .14s;}
+    #spah-rsvp button.rsvp-submit:hover{transform:translateY(-1px);filter:brightness(1.06);}
+    #spah-rsvp button.rsvp-submit:disabled{opacity:.6;cursor:default;transform:none;}
+    #spah-rsvp .rsvp-note{font-size:.72rem;color:#9a8f7e;text-align:center;margin:0;}
+    #spah-rsvp .rsvp-err{font-size:.82rem;color:#b0492f;text-align:center;display:none;margin:0;}
+    #spah-rsvp .rsvp-done{display:none;text-align:center;padding:46px 32px 52px;}
+    #spah-rsvp .rsvp-done .big{font-family:'Playfair Display',serif;font-size:1.8rem;color:#2A3442;margin:8px 0 8px;}
+    #spah-rsvp .rsvp-done p{font-size:.95rem;color:#5b5346;line-height:1.6;margin:0;}
+    @media (max-width:420px){#spah-rsvp .rsvp-title{font-size:1.85rem;}#spah-rsvp .rsvp-head{padding:30px 22px 2px;}#spah-rsvp form{padding:14px 22px 22px;}#spah-rsvp .rsvp-eyebrow{font-size:.55rem;letter-spacing:.12em;}#spah-rsvp .rsvp-x{top:10px;right:10px;}}
+    @media (prefers-reduced-motion:reduce){#spah-rsvp *{animation:none!important;}}
+  </style>
+  <div id="spah-rsvp" role="dialog" aria-modal="true" aria-labelledby="rsvp-title-h" aria-hidden="true">
+    <div class="rsvp-card">
+      <button class="rsvp-x" type="button" aria-label="Close">&times;</button>
+      <div id="rsvp-form-view">
+        <div class="rsvp-head">
+          <div class="rsvp-eyebrow">South Pasadena Animal Hospital</div>
+          <div class="rsvp-paw" aria-hidden="true">&#128062;</div>
+          <div class="rsvp-invite">You're invited to our</div>
+          <h2 class="rsvp-title" id="rsvp-title-h">Open House</h2>
+          <div class="rsvp-div" aria-hidden="true"><span>&#9670;</span></div>
+          <p class="rsvp-when"><b>Saturday, October 24</b> &middot; 11 AM &ndash; 2 PM<br>3116 W Main St, Alhambra, CA 91801</p>
+        </div>
+        <form id="rsvp-form" novalidate>
+          <label class="fld">Name<input type="text" name="name" required autocomplete="name"></label>
+          <label class="fld">Email<input type="email" name="email" required autocomplete="email"></label>
+          <label class="rsvp-check"><input type="checkbox" name="existing" value="yes"> I'm already a SPAH client</label>
+          <div class="fld" style="gap:7px;"><span>Will you attend?</span>
+            <div class="rsvp-attend">
+              <label><input type="radio" name="attending" value="Yes" checked><span>Yes &#128062;</span></label>
+              <label><input type="radio" name="attending" value="No"><span>Can't make it</span></label>
+            </div>
+          </div>
+          <label class="fld" id="rsvp-guests-wrap">Bringing any guests? (+1s)<input type="number" name="guests" min="0" max="20" value="0" inputmode="numeric"></label>
+          <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <p class="rsvp-err" id="rsvp-err">Hmm, that didn't go through &mdash; please try again, or email rsvp@spah.la.</p>
+          <button type="submit" class="rsvp-submit">Send RSVP</button>
+          <p class="rsvp-note">We'll send a confirmation to your email.</p>
+        </form>
+      </div>
+      <div class="rsvp-done" id="rsvp-done-view">
+        <div class="rsvp-paw" aria-hidden="true" style="font-size:2.2rem;">&#128062;</div>
+        <div class="big">See you there!</div>
+        <p>Thanks for your RSVP &mdash; a confirmation is on its way to your inbox. If anything changes, just reply to that email or call (626) 441-1314.</p>
+      </div>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbxNQjGqckYoaFul-ooUzEdD5rg06Aq-sEZbx7CXBfNtgTgdsNn6eLTD0o_5rVZJsBSC/exec';
+    var KEY='spah_rsvp_oct24';
+    var ov=document.getElementById('spah-rsvp'); if(!ov) return;
+    var card=ov.querySelector('.rsvp-card'), form=document.getElementById('rsvp-form'), lastFocus=null;
+    function seen(){try{return localStorage.getItem(KEY)==='1';}catch(e){return false;}}
+    function markSeen(){try{localStorage.setItem(KEY,'1');}catch(e){}}
+    function openIt(){ if(seen())return; lastFocus=document.activeElement; ov.classList.add('open'); ov.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; var f=form.querySelector('input[name=name]'); if(f) setTimeout(function(){f.focus();},80); }
+    function closeIt(){ ov.classList.remove('open'); ov.setAttribute('aria-hidden','true'); document.body.style.overflow=''; markSeen(); if(lastFocus&&lastFocus.focus)lastFocus.focus(); }
+    ov.querySelector('.rsvp-x').addEventListener('click',closeIt);
+    ov.addEventListener('mousedown',function(e){ if(e.target===ov) closeIt(); });
+    document.addEventListener('keydown',function(e){
+      if(!ov.classList.contains('open'))return;
+      if(e.key==='Escape') closeIt();
+      if(e.key==='Tab'){ var els=[].filter.call(card.querySelectorAll('button,input,select,textarea,a[href]'),function(el){return !el.disabled&&el.offsetParent!==null;}); if(!els.length)return; var f=els[0],l=els[els.length-1]; if(e.shiftKey&&document.activeElement===f){e.preventDefault();l.focus();} else if(!e.shiftKey&&document.activeElement===l){e.preventDefault();f.focus();} }
+    });
+    var gw=document.getElementById('rsvp-guests-wrap');
+    [].forEach.call(form.querySelectorAll('input[name=attending]'),function(r){ r.addEventListener('change',function(){ gw.style.display=(form.attending.value==='Yes')?'flex':'none'; }); });
+    function showDone(){ document.getElementById('rsvp-form-view').style.display='none'; document.getElementById('rsvp-done-view').style.display='block'; }
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      if(form.company.value){ markSeen(); showDone(); return; } /* honeypot */
+      if(!form.name.value.trim()||!form.email.checkValidity()){ if(form.reportValidity)form.reportValidity(); return; }
+      var btn=form.querySelector('.rsvp-submit'), err=document.getElementById('rsvp-err');
+      err.style.display='none'; btn.disabled=true; btn.textContent='Sending…';
+      var payload={ name:form.name.value.trim(), email:form.email.value.trim(), existingClient:form.existing.checked?'Yes':'No', attending:form.attending.value, guests:form.attending.value==='Yes'?(parseInt(form.guests.value,10)||0):0, source:'homepage popup', ts:new Date().toISOString() };
+      try{ if(window.gtag) gtag('event','rsvp_submit',{event_category:'open_house',attending:payload.attending}); }catch(_){}
+      if(!RSVP_ENDPOINT){ markSeen(); showDone(); return; }
+      fetch(RSVP_ENDPOINT,{method:'POST',body:JSON.stringify(payload)})
+        .then(function(r){ return r.json().catch(function(){return{ok:true};}); })
+        .then(function(){ markSeen(); showDone(); })
+        .catch(function(){ btn.disabled=false; btn.textContent='Send RSVP'; err.style.display='block'; });
+    });
+    if(!seen()) setTimeout(openIt, 1200);
+  })();
+  </script>
+  <!-- ============ /OPEN HOUSE RSVP POPUP ============ -->
+
   <script src="js/spah-events.js?v=202607222051" defer></script>
 </body>
 </html>
