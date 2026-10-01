@@ -1268,11 +1268,11 @@ fetch('/reviews.json').then(r=>r.json()).then(d=>{
     var RSVP_ENDPOINT = 'https://script.google.com/macros/s/AKfycbzXC4dhKUV0q2Dq_I2gaRoBFKIF5gFwsXzvcW83TK7mZ13TWUOa-DTt9qFf5zzQot2B/exec';
     var KEY='spah_rsvp_oct24';
     var ov=document.getElementById('spah-rsvp'); if(!ov) return;
-    var card=ov.querySelector('.rsvp-card'), form=document.getElementById('rsvp-form'), lastFocus=null;
+    var card=ov.querySelector('.rsvp-card'), form=document.getElementById('rsvp-form'), lastFocus=null, openVia='homepage popup (auto)';
     function seen(){try{return localStorage.getItem(KEY)==='1';}catch(e){return false;}}
     function markSeen(){try{localStorage.setItem(KEY,'1');}catch(e){}}
     function openIt(force){ if(!force && seen())return; lastFocus=document.activeElement; ov.classList.add('open'); ov.setAttribute('aria-hidden','false'); document.body.style.overflow='hidden'; var f=form.querySelector('input[name=name]'); if(f) setTimeout(function(){f.focus();},80); }
-    window.spahOpenRSVP = function(){ openIt(true); };
+    window.spahOpenRSVP = function(){ openVia='homepage banner'; openIt(true); };
     function closeIt(){ ov.classList.remove('open'); ov.setAttribute('aria-hidden','true'); document.body.style.overflow=''; markSeen(); if(lastFocus&&lastFocus.focus)lastFocus.focus(); }
     ov.querySelector('.rsvp-x').addEventListener('click',closeIt);
     ov.addEventListener('mousedown',function(e){ if(e.target===ov) closeIt(); });
@@ -1290,7 +1290,7 @@ fetch('/reviews.json').then(r=>r.json()).then(d=>{
       if(!form.name.value.trim()||!form.email.checkValidity()){ if(form.reportValidity)form.reportValidity(); return; }
       var btn=form.querySelector('.rsvp-submit'), err=document.getElementById('rsvp-err');
       err.style.display='none'; btn.disabled=true; btn.textContent='Sending…';
-      var payload={ name:form.name.value.trim(), email:form.email.value.trim(), existingClient:form.existing.checked?'Yes':'No', attending:form.attending.value, guests:form.attending.value==='Yes'?(parseInt(form.guests.value,10)||0):0, source:'homepage popup', ts:new Date().toISOString() };
+      var payload={ name:form.name.value.trim(), email:form.email.value.trim(), existingClient:form.existing.checked?'Yes':'No', attending:form.attending.value, guests:form.attending.value==='Yes'?(parseInt(form.guests.value,10)||0):0, source:openVia, ts:new Date().toISOString() };
       try{ if(window.gtag) gtag('event','rsvp_submit',{event_category:'open_house',attending:payload.attending}); }catch(_){}
       if(!RSVP_ENDPOINT){ markSeen(); showDone(); return; }
       fetch(RSVP_ENDPOINT,{method:'POST',body:JSON.stringify(payload)})
