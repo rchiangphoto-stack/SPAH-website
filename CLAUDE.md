@@ -19,7 +19,7 @@ GitHub repo: `rchiangphoto-stack/SPAH-website` (static HTML, no build step)
 | **GA4** | G-0WEP9XT29L |
 | **Ahrefs** | `data-key="ZIMxhr5nEAsxfE8H6JNaeQ"` |
 
-**Staff:** Dr. Sylvia Chiang (co-founder), Dr. Gina Navia (co-founder, exotic animal care), Dr. Fannie Chiang (relief), Dr. Curtis Eng (relief), Dr. Ruby Jong (relief)
+**Staff:** Dr. Sylvia Chiang (co-founder), Dr. Gina Navia (co-founder, exotic animal care), Dr. Alexis Agsaoa (full-time; dogs, cats, pocket pets & reptiles), Dr. Curtis Eng (relief), Dr. Ruby Jong (relief)
 
 **Target audience:** Pet parents in South Pasadena, Alhambra, San Marino, Monterey Park, San Gabriel, Pasadena, and the greater SGV/LA area.
 
