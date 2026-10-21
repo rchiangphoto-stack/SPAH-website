@@ -257,36 +257,30 @@
           </div>
           <h3 class="font-display text-lg font-bold text-dark">Upcoming Closures</h3>
         </div>
-        <div class="space-y-0 font-body text-sm">
-          <div class="flex items-center justify-between py-3 border-b border-sky/15">
-            <div class="min-w-0">
-              <span class="font-bold text-dark">Labor Day</span>
-              <span class="text-muted ml-2 sm:inline block sm:ml-2 ml-0 text-xs sm:text-sm">Mon, Sep 7, 2026</span>
-            </div>
-            <span class="text-xs font-bold text-terra bg-terra/10 rounded-full px-2.5 py-0.5 whitespace-nowrap ml-3">Closed</span>
-          </div>
-          <div class="flex items-center justify-between py-3 border-b border-sky/15">
+        <!-- Each row has data-until = holiday's last day (YYYY-MM-DD). Past holidays auto-hide ~10 days after via the script below. Add new holidays here. -->
+        <div class="space-y-0 font-body text-sm" id="closuresList">
+          <div class="closure-row flex items-center justify-between py-3 border-b border-sky/15" data-until="2026-11-11">
             <div class="min-w-0">
               <span class="font-bold text-dark">Veterans Day</span>
               <span class="text-muted ml-2 sm:inline block sm:ml-2 ml-0 text-xs sm:text-sm">Wed, Nov 11, 2026</span>
             </div>
             <span class="text-xs font-bold text-terra bg-terra/10 rounded-full px-2.5 py-0.5 whitespace-nowrap ml-3">Closed</span>
           </div>
-          <div class="flex items-center justify-between py-3 border-b border-sky/15">
+          <div class="closure-row flex items-center justify-between py-3 border-b border-sky/15" data-until="2026-11-27">
             <div class="min-w-0">
               <span class="font-bold text-dark">Thanksgiving Holiday</span>
               <span class="text-muted ml-2 sm:inline block sm:ml-2 ml-0 text-xs sm:text-sm">Thu–Fri, Nov 26–27, 2026</span>
             </div>
             <span class="text-xs font-bold text-terra bg-terra/10 rounded-full px-2.5 py-0.5 whitespace-nowrap ml-3">Closed</span>
           </div>
-          <div class="flex items-center justify-between py-3 border-b border-sky/15">
+          <div class="closure-row flex items-center justify-between py-3 border-b border-sky/15" data-until="2026-12-25">
             <div class="min-w-0">
               <span class="font-bold text-dark">Christmas Holiday</span>
               <span class="text-muted ml-2 sm:inline block sm:ml-2 ml-0 text-xs sm:text-sm">Thu–Fri, Dec 24–25, 2026</span>
             </div>
             <span class="text-xs font-bold text-terra bg-terra/10 rounded-full px-2.5 py-0.5 whitespace-nowrap ml-3">Closed</span>
           </div>
-          <div class="flex items-center justify-between py-3">
+          <div class="closure-row flex items-center justify-between py-3 border-b border-sky/15" data-until="2027-01-02">
             <div class="min-w-0">
               <span class="font-bold text-dark">New Year Holiday</span>
               <span class="text-muted ml-2 sm:inline block sm:ml-2 ml-0 text-xs sm:text-sm">Thu–Sat, Dec 31, 2026 – Jan 2, 2027</span>
@@ -294,7 +288,32 @@
             <span class="text-xs font-bold text-terra bg-terra/10 rounded-full px-2.5 py-0.5 whitespace-nowrap ml-3">Closed</span>
           </div>
         </div>
-        <p class="font-body text-xs text-muted mt-3 italic">For emergencies on holidays, please contact one of the facilities listed below.</p>
+        <p id="noClosures" class="font-body text-sm text-muted py-3" style="display:none;">No scheduled closures at this time.</p>
+        <p id="closuresNote" class="font-body text-xs text-muted mt-3 italic">For emergencies on holidays, please contact one of the facilities listed below.</p>
+        <script>
+          (function () {
+            // Hide holidays once they're more than GRACE_DAYS past (auto-prune ~a week or two later)
+            var GRACE_DAYS = 10;
+            var today = new Date(); today.setHours(0, 0, 0, 0);
+            var rows = Array.prototype.slice.call(document.querySelectorAll('#closuresList .closure-row'));
+            var visible = [];
+            rows.forEach(function (r) {
+              var u = r.getAttribute('data-until');
+              if (!u) { visible.push(r); return; }
+              var cutoff = new Date(u + 'T00:00:00');
+              cutoff.setDate(cutoff.getDate() + GRACE_DAYS);
+              if (today > cutoff) { r.style.display = 'none'; } else { visible.push(r); }
+            });
+            // Tidy bottom border: only the last visible row should have none
+            visible.forEach(function (r) { r.classList.add('border-b', 'border-sky/15'); });
+            if (visible.length) { visible[visible.length - 1].classList.remove('border-b', 'border-sky/15'); }
+            // Empty-state + note toggle
+            var none = document.getElementById('noClosures');
+            var note = document.getElementById('closuresNote');
+            if (none) { none.style.display = visible.length ? 'none' : ''; }
+            if (note) { note.style.display = visible.length ? '' : 'none'; }
+          })();
+        </script>
       </div>
 
       <!-- After Hours -->
