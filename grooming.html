@@ -87,7 +87,9 @@
   /* Header — matches spah.la: centered logo with links split left/right */
   header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:color-mix(in srgb,var(--bg) 95%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid color-mix(in srgb,var(--blue) 20%,transparent);box-shadow:0 2px 12px rgba(90,127,166,.08)}
   .navrow{max-width:var(--maxw);margin-inline:auto;padding:16px clamp(18px,5vw,40px);display:flex;align-items:center;justify-content:center;gap:40px;position:relative}
-  .navgroup{display:flex;align-items:center;gap:32px}
+  .navgroup{display:flex;align-items:center;gap:32px;flex:1;min-width:0}
+  .navrow>.navgroup:first-of-type{justify-content:flex-end}
+  .navrow>.navgroup:last-of-type{justify-content:flex-start}
   .navgroup a{font-family:var(--body);font-size:.82rem;letter-spacing:.04em;font-weight:400;color:color-mix(in srgb,var(--ink) 70%,transparent);text-decoration:none;transition:color .2s;white-space:nowrap}
   .navgroup a:hover{color:var(--sage)}
   .navgroup a.active{color:var(--sage);font-weight:700}
