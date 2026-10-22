@@ -40,6 +40,16 @@
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Service","serviceType":"Pet grooming","name":"Dog Grooming at South Pasadena Animal Hospital","description":"Vet-supervised dog grooming in Alhambra, CA — baths, tidies and full breed cuts, with a veterinary team on-site.","areaServed":[{"@type":"City","name":"Alhambra"},{"@type":"City","name":"South Pasadena"},{"@type":"City","name":"San Gabriel"},{"@type":"City","name":"San Marino"},{"@type":"City","name":"Monterey Park"}],"provider":{"@type":"VeterinaryCare","name":"South Pasadena Animal Hospital","@id":"https://www.spah.la/#spah","telephone":"+16264411314","address":{"@type":"PostalAddress","streetAddress":"3116 W Main St","addressLocality":"Alhambra","addressRegion":"CA","postalCode":"91801","addressCountry":"US"}}}
   </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Do you groom anxious, nervous, or senior dogs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Because our grooming happens inside a working animal hospital, the same team that knows your dog's history is right down the hall. We go at your dog's pace, take breaks when they need one, and keep things calm for pets who find grooming stressful or who are older and need a gentler, slower visit."}},
+    {"@type":"Question","name":"My dog was turned away by another groomer — can you help?","acceptedAnswer":{"@type":"Answer","text":"Often, yes. We regularly see dogs who have had a hard time at a salon, whether from fear, age, or a health condition. Having veterinarians on-site means we can groom pets that a standalone shop may not feel comfortable taking. If a dog truly can't tolerate grooming, our veterinary team will talk through the right options with you first."}},
+    {"@type":"Question","name":"Can you groom a badly matted dog or cat?","acceptedAnswer":{"@type":"Answer","text":"Yes. Heavy matting is uncomfortable and can hide skin problems underneath, so comfort always comes before looks — sometimes that means a shorter cut to start fresh. Because we're also a veterinary clinic, we can check the skin beneath the coat and flag anything that needs a closer look."}},
+    {"@type":"Question","name":"Is grooming at a vet different from a regular salon?","acceptedAnswer":{"@type":"Answer","text":"The grooming itself is familiar — baths, tidies, and full breed cuts. What's different is the setting: your pet is cared for by a team with medical oversight nearby, and you can pair a groom with a wellness visit in the same trip, which is especially helpful for anxious, senior, or health-sensitive pets."}},
+    {"@type":"Question","name":"Do you groom cats?","acceptedAnswer":{"@type":"Answer","text":"Cat grooming is on the way. When it launches, matted, senior, and handling-sensitive cats will be especially welcome, since the vet setting lets us keep them comfortable. Ask us to add you to the list and we'll reach out when cat grooming opens."}},
+    {"@type":"Question","name":"Where are you located and what areas do you serve?","acceptedAnswer":{"@type":"Answer","text":"Grooming is at South Pasadena Animal Hospital, 3116 W Main St, Alhambra, CA 91801. We welcome pet parents from Alhambra, South Pasadena, San Gabriel, San Marino, Monterey Park, and the greater Pasadena and San Gabriel Valley area. Grooming is by appointment."}}
+  ]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Lato:wght@300;400;700&display=swap">
@@ -214,6 +224,15 @@
   @media(max-width:880px){.cols-4{grid-template-columns:1fr 1fr}.cols-3,.svc .grid,.price-grid{grid-template-columns:1fr 1fr}}
   @media(max-width:560px){.cols-4,.cols-3,.svc .grid,.price-grid{grid-template-columns:1fr}.logo small{display:none}}
   @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+  /* FAQ */
+  .faq-wrap{max-width:760px;margin-inline:auto}
+  .faq-item{background:var(--surface);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:12px;overflow:hidden}
+  .faq-item summary{list-style:none;cursor:pointer;padding:18px clamp(18px,3vw,24px);font-family:var(--display);font-weight:600;font-size:1.06rem;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:1.2rem}
+  .faq-item summary::-webkit-details-marker{display:none}
+  .faq-item summary::after{content:"";flex:none;width:11px;height:11px;border-right:2px solid var(--soft);border-bottom:2px solid var(--soft);transform:rotate(45deg);transition:transform .25s ease;margin-top:-4px}
+  .faq-item[open] summary::after{transform:rotate(-135deg);margin-top:2px}
+  .faq-item .a{padding:0 clamp(18px,3vw,24px) 20px;color:var(--muted);font-size:.97rem;line-height:1.65}
+  .faq-item summary:hover{color:var(--sage)}
 </style>
 </head>
 <body>
@@ -251,8 +270,8 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-inner">
-      <h1>Happy pets, <em>great haircuts.</em></h1>
-      <p class="lede">Friendly, careful dog grooming &mdash; backed by the veterinary team that already knows and loves them.</p>
+      <h1>Your pet deserves a <em>SPAH day.</em></h1>
+      <p class="lede">Friendly and fun grooming &mdash; backed by the veterinary team that already knows and loves them.</p>
       <div class="hero-cta">
         <a href="https://southpasah.usw2.ezyvet.com/external/portal/main/login?id=2" target="_blank" rel="noopener" class="btn btn-dark">Book a groom</a>
         <a href="#services" class="btn btn-outline">See services</a>
@@ -277,7 +296,7 @@
     <div class="sec-head">
       <span class="eyebrow">The menu</span>
       <h2>Dog grooming, <em>done with care.</em></h2>
-      <p>From a quick freshen-up to a full breed cut. Cat grooming is on the way &mdash; check back soon for updates.</p>
+      <p>From a quick freshen-up to a full breed cut &mdash; and a calm, patient hand for anxious, senior, or matted pups who need a little extra care. Cat grooming is on the way; check back soon for updates.</p>
     </div>
     <div class="grid cols-3">
       <div class="card"><span class="tag">Dogs</span><h3>The Bath</h3><p>Warm wash, blow-dry, ear cleaning, nail trim, and a light brush-out. The reset between grooms.</p></div>
@@ -345,6 +364,42 @@
       <span class="chip"><b>Add-on:</b> Anal gland expression</span>
       <span class="chip"><b>Add-on:</b> Blueberry facial</span>
       <span class="chip"><b>Add-on:</b> Paw &amp; nose balm</span>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Good to know</span>
+      <h2>Questions pet parents ask us.</h2>
+      <p>Grooming for pets who need a little extra care &mdash; anxious, senior, matted, or turned away elsewhere.</p>
+    </div>
+    <div class="faq-wrap">
+      <details class="faq-item" open>
+        <summary>Do you groom anxious, nervous, or senior dogs?</summary>
+        <div class="a">Yes. Because our grooming happens inside a working animal hospital, the same team that knows your dog's history is right down the hall. We go at your dog's pace, take breaks when they need one, and keep things calm for pets who find grooming stressful or who are older and need a gentler, slower visit.</div>
+      </details>
+      <details class="faq-item">
+        <summary>My dog was turned away by another groomer &mdash; can you help?</summary>
+        <div class="a">Often, yes. We regularly see dogs who have had a hard time at a salon, whether from fear, age, or a health condition. Having veterinarians on-site means we can groom pets that a standalone shop may not feel comfortable taking. If a dog truly can't tolerate grooming, our veterinary team will talk through the right options with you first.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Can you groom a badly matted dog or cat?</summary>
+        <div class="a">Yes. Heavy matting is uncomfortable and can hide skin problems underneath, so comfort always comes before looks &mdash; sometimes that means a shorter cut to start fresh. Because we're also a veterinary clinic, we can check the skin beneath the coat and flag anything that needs a closer look.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Is grooming at a vet different from a regular salon?</summary>
+        <div class="a">The grooming itself is familiar &mdash; baths, tidies, and full breed cuts. What's different is the setting: your pet is cared for by a team with medical oversight nearby, and you can pair a groom with a wellness visit in the same trip, which is especially helpful for anxious, senior, or health-sensitive pets.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Do you groom cats?</summary>
+        <div class="a">Cat grooming is on the way. When it launches, matted, senior, and handling-sensitive cats will be especially welcome, since the vet setting lets us keep them comfortable. Ask us to add you to the list and we'll reach out when cat grooming opens.</div>
+      </details>
+      <details class="faq-item">
+        <summary>Where are you located and what areas do you serve?</summary>
+        <div class="a">Grooming is at South Pasadena Animal Hospital, 3116 W Main St, Alhambra, CA 91801. We welcome pet parents from Alhambra, South Pasadena, San Gabriel, San Marino, Monterey Park, and the greater Pasadena and San Gabriel Valley area. Grooming is by appointment.</div>
+      </details>
     </div>
   </div>
 </section>
