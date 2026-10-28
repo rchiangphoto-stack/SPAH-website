@@ -227,6 +227,33 @@
   .tier-list li svg{width:16px;height:16px;flex:none;color:var(--sage)}
   .tier-feature .tier-list li svg{color:rgba(255,255,255,.95)}
   @media(max-width:720px){.tier-grid{grid-template-columns:1fr}}
+  /* Interactive size picker */
+  .size-picker{background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r) + 6px);box-shadow:var(--shadow);padding:clamp(22px,3vw,34px);max-width:720px;margin:0 auto}
+  .sp-group + .sp-group{margin-top:18px}
+  .sp-label{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--soft);display:block;margin-bottom:.6rem}
+  .sp-sizes,.sp-coats{display:flex;flex-wrap:wrap;gap:8px}
+  .sp-seg{appearance:none;border:1px solid var(--line);background:var(--bg);color:var(--ink);font-family:var(--body);font-weight:600;font-size:.9rem;padding:.62em 1.05em;border-radius:999px;cursor:pointer;transition:background .18s,color .18s,border-color .18s}
+  .sp-seg:hover{border-color:var(--blue)}
+  .sp-seg.on{background:var(--ink);color:#fff;border-color:var(--ink)}
+  .sp-sizes .sp-seg{flex:1 1 0;min-width:88px;text-align:center}
+  .sp-result{margin-top:22px;border-top:1px dashed var(--line);padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
+  .sp-weight{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);font-weight:700}
+  .sp-weight b{display:block;margin-top:.2rem;color:var(--ink);font-weight:700;font-size:1.05rem;letter-spacing:normal;text-transform:none;font-family:var(--body)}
+  .sp-prices{display:flex;gap:12px}
+  .sp-pcell{text-align:center;background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:12px 22px;min-width:120px}
+  .sp-pcell span{display:block;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--soft);font-weight:700;margin-bottom:.15rem}
+  .sp-pcell b{font-family:var(--display);font-weight:700;font-size:1.7rem;color:var(--ink);line-height:1}
+  .sp-pcell.feat{background:linear-gradient(135deg,var(--sage),var(--blue));border:none}
+  .sp-pcell.feat span{color:rgba(255,255,255,.85)}
+  .sp-pcell.feat b{color:#fff}
+  .sp-full{max-width:720px;margin:16px auto 0}
+  .sp-full>summary{cursor:pointer;list-style:none;text-align:center;font-weight:700;font-size:.88rem;color:var(--blue-deep);padding:.65em;letter-spacing:.01em}
+  .sp-full>summary::-webkit-details-marker{display:none}
+  .sp-full>summary::after{content:" ▾";color:var(--soft)}
+  .sp-full[open]>summary::after{content:" ▴"}
+  .sp-full>summary:hover{text-decoration:underline}
+  .sp-full .ptable{margin-top:12px}
+  @media(max-width:560px){.sp-result{flex-direction:column;align-items:stretch;text-align:center}.sp-prices{justify-content:center}}
   .price-card .ico{margin-bottom:.9rem}
   .addons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
   .chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.5em 1em;font-size:.85rem;color:var(--muted);box-shadow:var(--shadow)}
@@ -406,7 +433,36 @@
       </div>
     </div>
 
-    <table class="ptable">
+    <div class="size-picker">
+      <div class="sp-group">
+        <span class="sp-label">Your dog's size</span>
+        <div class="sp-sizes">
+          <button type="button" class="sp-seg" data-size="xs">X-Small</button>
+          <button type="button" class="sp-seg" data-size="s">Small</button>
+          <button type="button" class="sp-seg on" data-size="m">Medium</button>
+          <button type="button" class="sp-seg" data-size="l">Large</button>
+          <button type="button" class="sp-seg" data-size="xl">X-Large</button>
+        </div>
+      </div>
+      <div class="sp-group">
+        <span class="sp-label">Coat</span>
+        <div class="sp-coats">
+          <button type="button" class="sp-seg on" data-coat="short">Short coat</button>
+          <button type="button" class="sp-seg" data-coat="long">Long coat</button>
+        </div>
+      </div>
+      <div class="sp-result">
+        <div class="sp-weight">Weight<b id="spWeight">26–50 lbs</b></div>
+        <div class="sp-prices">
+          <div class="sp-pcell"><span>Bath from</span><b id="spBath">$75</b></div>
+          <div class="sp-pcell feat"><span>Full groom from</span><b id="spFull">$125</b></div>
+        </div>
+      </div>
+    </div>
+
+    <details class="sp-full">
+      <summary>View the full price list</summary>
+      <table class="ptable">
       <thead>
         <tr><th>Size &amp; coat</th><th>Bath from</th><th>Full groom from</th></tr>
       </thead>
@@ -422,7 +478,8 @@
         <tr><td class="sz"><b>X-Large</b> short coat <small>100+ lbs</small></td><td class="amt bath">$115</td><td class="amt full">$200</td></tr>
         <tr><td class="sz"><b>X-Large</b> long coat <small>100+ lbs</small></td><td class="amt bath">$125</td><td class="amt full">$250</td></tr>
       </tbody>
-    </table>
+      </table>
+    </details>
     <p class="price-note">Prices are starting points. Your final quote depends on coat condition, length, and how your pet does with us &mdash; we'll always confirm before we begin.</p>
 
     <div class="addons-head"><h3>Add-ons</h3></div>
@@ -537,6 +594,32 @@
     </div>
   </div>
 </footer>
+
+<script>
+(function(){
+  var P={
+    xs:{w:'0–10 lbs',short:[50,90],long:[60,110]},
+    s:{w:'11–25 lbs',short:[60,100],long:[75,125]},
+    m:{w:'26–50 lbs',short:[75,125],long:[95,160]},
+    l:{w:'51–100 lbs',short:[95,160],long:[115,200]},
+    xl:{w:'100+ lbs',short:[115,200],long:[125,250]}
+  };
+  var size='m', coat='short';
+  var sizeBtns=document.querySelectorAll('[data-size]');
+  var coatBtns=document.querySelectorAll('[data-coat]');
+  var wEl=document.getElementById('spWeight'), bEl=document.getElementById('spBath'), fEl=document.getElementById('spFull');
+  if(!wEl) return;
+  function upd(){
+    var d=P[size];
+    wEl.textContent=d.w; bEl.textContent='$'+d[coat][0]; fEl.textContent='$'+d[coat][1];
+    sizeBtns.forEach(function(b){b.classList.toggle('on',b.dataset.size===size);});
+    coatBtns.forEach(function(b){b.classList.toggle('on',b.dataset.coat===coat);});
+  }
+  sizeBtns.forEach(function(b){b.addEventListener('click',function(){size=b.dataset.size;upd();});});
+  coatBtns.forEach(function(b){b.addEventListener('click',function(){coat=b.dataset.coat;upd();});});
+  upd();
+})();
+</script>
 
 </body>
 </html>
