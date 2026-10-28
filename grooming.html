@@ -38,7 +38,7 @@
   {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.spah.la/"},{"@type":"ListItem","position":2,"name":"Grooming","item":"https://www.spah.la/grooming"}]}
   </script>
   <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"Service","serviceType":"Pet grooming","name":"Dog Grooming at South Pasadena Animal Hospital","description":"Vet-supervised dog grooming in Alhambra, CA — baths, tidies and full breed cuts, with a veterinary team on-site.","areaServed":[{"@type":"City","name":"Alhambra"},{"@type":"City","name":"South Pasadena"},{"@type":"City","name":"San Gabriel"},{"@type":"City","name":"San Marino"},{"@type":"City","name":"Monterey Park"}],"provider":{"@type":"VeterinaryCare","name":"South Pasadena Animal Hospital","@id":"https://www.spah.la/#spah","telephone":"+16264411314","address":{"@type":"PostalAddress","streetAddress":"3116 W Main St","addressLocality":"Alhambra","addressRegion":"CA","postalCode":"91801","addressCountry":"US"}}}
+  {"@context":"https://schema.org","@type":"Service","serviceType":"Pet grooming","name":"Dog Grooming at South Pasadena Animal Hospital","description":"Vet-supervised dog grooming in Alhambra, CA — baths and full breed cuts, with a veterinary team on-site.","offers":{"@type":"AggregateOffer","priceCurrency":"USD","lowPrice":"50","highPrice":"250"},"areaServed":[{"@type":"City","name":"Alhambra"},{"@type":"City","name":"South Pasadena"},{"@type":"City","name":"San Gabriel"},{"@type":"City","name":"San Marino"},{"@type":"City","name":"Monterey Park"}],"provider":{"@type":"VeterinaryCare","name":"South Pasadena Animal Hospital","@id":"https://www.spah.la/#spah","telephone":"+16264411314","address":{"@type":"PostalAddress","streetAddress":"3116 W Main St","addressLocality":"Alhambra","addressRegion":"CA","postalCode":"91801","addressCountry":"US"}}}
   </script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -184,7 +184,23 @@
   .price-card h3{font-size:1.15rem}
   .price-row{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:.6rem 0;border-bottom:1px dashed var(--line);color:var(--muted);font-size:.92rem}
   .price-row:last-child{border-bottom:0}
-  .price-row .amt{width:52px;height:12px;border-radius:6px;background:var(--line);flex:none}
+  .price-row .amt{font-weight:700;color:var(--ink);font-size:.93rem;white-space:nowrap;flex:none}
+  .price-card h3 .cardnote{display:block;font-family:var(--body);font-weight:600;font-size:.74rem;letter-spacing:.02em;color:var(--soft);margin-top:.25rem;text-transform:none}
+  /* Pricing table (size x coat) */
+  .price-lead{max-width:60ch;margin:0 auto 22px;text-align:center;color:var(--muted);font-size:1rem}
+  .ptable{width:100%;border-collapse:collapse;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow)}
+  .ptable th,.ptable td{padding:13px 18px;border-bottom:1px solid var(--line);font-size:.94rem;vertical-align:middle}
+  .ptable thead th{background:color-mix(in srgb,var(--warm) 70%,var(--surface));font-family:var(--body);font-weight:700;color:var(--ink);letter-spacing:.03em;font-size:.72rem;text-transform:uppercase;text-align:right}
+  .ptable thead th:first-child{text-align:left}
+  .ptable tbody tr:last-child td{border-bottom:0}
+  .ptable td.sz b{color:var(--ink);font-weight:700}
+  .ptable td.sz small{color:var(--soft);font-size:.82rem;margin-left:.5ch}
+  .ptable td.amt{text-align:right;font-weight:700;color:var(--ink);white-space:nowrap}
+  .ptable td.amt.bath{color:var(--muted);font-weight:600}
+  .price-note{max-width:70ch;margin:20px auto 0;text-align:center;color:var(--soft);font-size:.86rem;line-height:1.55}
+  .addons-head{text-align:center;margin:clamp(34px,5vw,54px) 0 20px}
+  .addons-head h3{font-size:1.3rem}
+  @media(max-width:560px){.ptable th,.ptable td{padding:11px 12px;font-size:.87rem}.ptable td.sz small{display:block;margin-left:0}}
   .addons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
   .chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.5em 1em;font-size:.85rem;color:var(--muted);box-shadow:var(--shadow)}
   .chip b{color:var(--ink)}
@@ -326,40 +342,55 @@
 <section id="pricing" class="pricing" style="background:var(--warm)">
   <div class="wrap">
     <div class="sec-head">
-      <span class="eyebrow">Pricing &amp; add-ons</span>
-      <h2>A transparent menu, <em>coming soon.</em></h2>
-      <p>We're finalizing pricing for every service and add-on. This section is built and ready to drop the full list in.</p>
+      <span class="eyebrow">Pricing</span>
+      <h2>A transparent <em>menu.</em></h2>
     </div>
-    <div style="position:relative">
-      <div class="price-grid price-fade" aria-hidden="true">
-        <div class="price-card"><h3>Bath Packages</h3>
-          <div class="price-row"><span>Bath — small</span><span class="amt"></span></div>
-          <div class="price-row"><span>Bath — medium</span><span class="amt"></span></div>
-          <div class="price-row"><span>Bath — large</span><span class="amt"></span></div>
-          <div class="price-row"><span>Bath &amp; Tidy</span><span class="amt"></span></div>
-        </div>
-        <div class="price-card"><h3>Full Grooms</h3>
-          <div class="price-row"><span>Full groom — small</span><span class="amt"></span></div>
-          <div class="price-row"><span>Full groom — medium</span><span class="amt"></span></div>
-          <div class="price-row"><span>Full groom — large</span><span class="amt"></span></div>
-          <div class="price-row"><span>Full groom — doodle</span><span class="amt"></span></div>
-        </div>
-        <div class="price-card"><h3>Specialty</h3>
-          <div class="price-row"><span>Sedated groom</span><span class="amt"></span></div>
-          <div class="price-row"><span>Medicated bath</span><span class="amt"></span></div>
-          <div class="price-row"><span>De-shed treatment</span><span class="amt"></span></div>
-          <div class="price-row"><span>De-matting</span><span class="amt"></span></div>
-        </div>
+    <p class="price-lead">Starting prices by size and coat. Every full groom includes a warm bath, blow-out, nail trim, ear cleaning, and a breed-appropriate cut.</p>
+
+    <table class="ptable">
+      <thead>
+        <tr><th>Size &amp; coat</th><th>Bath from</th><th>Full groom from</th></tr>
+      </thead>
+      <tbody>
+        <tr><td class="sz"><b>X-Small</b> short coat <small>0–10 lbs</small></td><td class="amt bath">$50</td><td class="amt">$90</td></tr>
+        <tr><td class="sz"><b>X-Small</b> long coat <small>0–10 lbs</small></td><td class="amt bath">$60</td><td class="amt">$110</td></tr>
+        <tr><td class="sz"><b>Small</b> short coat <small>11–25 lbs</small></td><td class="amt bath">$60</td><td class="amt">$100</td></tr>
+        <tr><td class="sz"><b>Small</b> long coat <small>11–25 lbs</small></td><td class="amt bath">$75</td><td class="amt">$125</td></tr>
+        <tr><td class="sz"><b>Medium</b> short coat <small>26–50 lbs</small></td><td class="amt bath">$75</td><td class="amt">$125</td></tr>
+        <tr><td class="sz"><b>Medium</b> long coat <small>26–50 lbs</small></td><td class="amt bath">$95</td><td class="amt">$160</td></tr>
+        <tr><td class="sz"><b>Large</b> short coat <small>51–100 lbs</small></td><td class="amt bath">$95</td><td class="amt">$160</td></tr>
+        <tr><td class="sz"><b>Large</b> long coat <small>51–100 lbs</small></td><td class="amt bath">$115</td><td class="amt">$200</td></tr>
+        <tr><td class="sz"><b>X-Large</b> short coat <small>100+ lbs</small></td><td class="amt bath">$115</td><td class="amt">$200</td></tr>
+        <tr><td class="sz"><b>X-Large</b> long coat <small>100+ lbs</small></td><td class="amt bath">$125</td><td class="amt">$250</td></tr>
+      </tbody>
+    </table>
+    <p class="price-note">Prices are starting points. Your final quote depends on coat condition, length, and how your pet does with us &mdash; we'll always confirm before we begin.</p>
+
+    <div class="addons-head"><h3>Add-ons</h3></div>
+    <div class="price-grid">
+      <div class="price-card"><h3>Bath &amp; coat</h3>
+        <div class="price-row"><span>Medicated bath</span><span class="amt">$30</span></div>
+        <div class="price-row"><span>Flea treatment bath</span><span class="amt">$40</span></div>
+        <div class="price-row"><span>De-shedding <small>(level 1–4)</small></span><span class="amt">$20–50</span></div>
+        <div class="price-row"><span>De-matting</span><span class="amt">$15 / 15 min</span></div>
+        <div class="price-row"><span>Sanitary trim</span><span class="amt">$55</span></div>
+        <div class="price-row"><span>Face trim only</span><span class="amt">$35</span></div>
       </div>
-      <div class="soon"><span>Full menu coming soon</span></div>
-    </div>
-    <div class="addons">
-      <span class="chip"><b>Add-on:</b> Nail grind</span>
-      <span class="chip"><b>Add-on:</b> Teeth brushing</span>
-      <span class="chip"><b>Add-on:</b> De-shed</span>
-      <span class="chip"><b>Add-on:</b> Anal gland expression</span>
-      <span class="chip"><b>Add-on:</b> Blueberry facial</span>
-      <span class="chip"><b>Add-on:</b> Paw &amp; nose balm</span>
+      <div class="price-card"><h3>Nails, teeth &amp; finishing</h3>
+        <div class="price-row"><span>Nail trim</span><span class="amt">$28</span></div>
+        <div class="price-row"><span>Paw pad trim</span><span class="amt">$20</span></div>
+        <div class="price-row"><span>Teeth brushing</span><span class="amt">$15</span></div>
+        <div class="price-row"><span>Anal gland expression</span><span class="amt">$40</span></div>
+        <div class="price-row"><span>Blueberry facial</span><span class="amt">$15</span></div>
+      </div>
+      <div class="price-card"><h3>Creative &amp; color<span class="cardnote">All dyes are pet-safe</span></h3>
+        <div class="price-row"><span>Nail pawlish</span><span class="amt">$20</span></div>
+        <div class="price-row"><span>Pop of color</span><span class="amt">$25</span></div>
+        <div class="price-row"><span>Multiple color accents</span><span class="amt">$50</span></div>
+        <div class="price-row"><span>Ear-tip color</span><span class="amt">$30</span></div>
+        <div class="price-row"><span>Tail color</span><span class="amt">$30</span></div>
+        <div class="price-row"><span>Temporary gems</span><span class="amt">$35</span></div>
+      </div>
     </div>
   </div>
 </section>
