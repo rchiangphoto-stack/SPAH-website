@@ -205,24 +205,28 @@
   .ptable tbody tr:hover{background:var(--sage-tint)}
   .ptable td.amt.full{color:var(--blue-deep);font-size:1.04rem}
   .ptable thead th:last-child{color:var(--blue-deep)}
-  /* High-end gradient value band (echoes the /pricing Well Pet Packages block) */
-  .value-band{display:grid;grid-template-columns:1.55fr .95fr;gap:clamp(20px,4vw,44px);align-items:center;
-    background:linear-gradient(135deg,var(--sage),var(--blue));color:#fff;border-radius:calc(var(--r) + 8px);
-    padding:clamp(26px,4vw,46px);box-shadow:0 18px 44px rgba(74,109,146,.28);margin-bottom:34px;position:relative;overflow:hidden}
-  .value-band::after{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.08)}
-  .vb-eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;color:rgba(255,255,255,.85)}
-  .value-band h3{color:#fff;font-size:clamp(1.5rem,3vw,2.05rem);margin:.5rem 0 0;letter-spacing:-.01em}
-  .value-band p{color:rgba(255,255,255,.92);margin-top:.6rem;max-width:48ch;font-size:.98rem;line-height:1.6}
-  .vb-list{list-style:none;padding:0;margin:1.15rem 0 0;display:grid;grid-template-columns:1fr 1fr;gap:.45rem 1rem}
-  .vb-list li{color:#fff;font-size:.92rem;font-weight:500;display:flex;align-items:center;gap:.5ch}
-  .vb-list li svg{width:16px;height:16px;flex:none;color:rgba(255,255,255,.95)}
-  .vb-price{position:relative;z-index:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:26px 22px;text-align:center;backdrop-filter:blur(4px)}
-  .vb-price .vb-cap{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.88);font-weight:700}
-  .vb-amt{font-family:var(--display);font-weight:600;font-size:clamp(2.7rem,6vw,3.5rem);line-height:1;margin:.35rem 0 .2rem}
-  .vb-price small{color:rgba(255,255,255,.82);font-size:.82rem}
-  .vb-add{margin-top:1.05rem;padding-top:.95rem;border-top:1px solid rgba(255,255,255,.26);color:rgba(255,255,255,.95);font-size:.9rem;max-width:48ch}
-  .vb-add b{font-weight:700;color:#fff}
-  @media(max-width:720px){.value-band{grid-template-columns:1fr;gap:22px}.vb-list{max-width:420px}}
+  /* High-end service tiles (Bath & Brush vs Full Groom) */
+  .tier-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-bottom:34px;align-items:stretch}
+  .tier{background:var(--surface);border:1px solid var(--line);border-radius:calc(var(--r) + 6px);padding:clamp(24px,3.2vw,36px);box-shadow:var(--shadow);position:relative;display:flex;flex-direction:column}
+  .tier-feature{background:linear-gradient(135deg,var(--sage),var(--blue));border:none;color:#fff;box-shadow:0 18px 44px rgba(74,109,146,.28);overflow:hidden}
+  .tier-feature::after{content:"";position:absolute;right:-70px;top:-70px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .tier-badge{position:absolute;top:18px;right:18px;z-index:1;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.32);color:#fff;font-size:.64rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.42em .85em;border-radius:999px}
+  .tier-head{border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:14px}
+  .tier-feature .tier-head{border-color:rgba(255,255,255,.28)}
+  .tier-head h3{font-size:clamp(1.3rem,2.6vw,1.7rem);margin:0 0 .35rem}
+  .tier-feature .tier-head h3{color:#fff}
+  .tier-price{font-family:var(--display);font-weight:600;font-size:clamp(1.55rem,3.2vw,2.05rem);color:var(--ink);white-space:nowrap;line-height:1}
+  .tier-feature .tier-price{color:#fff}
+  .tier-price span{font-family:var(--body);font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--soft);font-weight:700;margin-right:.35ch}
+  .tier-feature .tier-price span{color:rgba(255,255,255,.85)}
+  .tier-sub{color:var(--muted);font-size:.94rem;margin:0 0 1.1rem;position:relative;z-index:1}
+  .tier-feature .tier-sub{color:rgba(255,255,255,.92)}
+  .tier-list{list-style:none;padding:0;margin:0;display:grid;gap:.58rem;position:relative;z-index:1}
+  .tier-list li{display:flex;align-items:center;gap:.6ch;font-size:.95rem;color:var(--ink)}
+  .tier-feature .tier-list li{color:#fff}
+  .tier-list li svg{width:16px;height:16px;flex:none;color:var(--sage)}
+  .tier-feature .tier-list li svg{color:rgba(255,255,255,.95)}
+  @media(max-width:720px){.tier-grid{grid-template-columns:1fr}}
   .price-card .ico{margin-bottom:.9rem}
   .addons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
   .chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.5em 1em;font-size:.85rem;color:var(--muted);box-shadow:var(--shadow)}
@@ -368,23 +372,37 @@
       <span class="eyebrow">Pricing</span>
       <h2>A transparent <em>menu.</em></h2>
     </div>
-    <div class="value-band">
-      <div class="vb-main">
-        <span class="vb-eyebrow">What's included</span>
-        <h3>More than a wash.</h3>
-        <p>Every bath and full groom is done start to finish by a team that knows pets inside and out.</p>
-        <ul class="vb-list">
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Bath &amp; blow-dry</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Brush &amp; comb-out</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ear wiping</li>
-          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Anal gland expression</li>
+    <div class="tier-grid">
+      <div class="tier">
+        <div class="tier-head">
+          <h3>Bath &amp; Brush</h3>
+          <div class="tier-price"><span>from</span>$50</div>
+        </div>
+        <p class="tier-sub">A clean, comfortable refresh between grooms.</p>
+        <ul class="tier-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Warm bath</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Blow-dry</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Brush &amp; comb-out</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ear wiping</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Anal gland expression</li>
         </ul>
-        <p class="vb-add">Full grooms also include a <b>breed-appropriate haircut</b> and <b>nail trim</b>.</p>
       </div>
-      <div class="vb-price">
-        <span class="vb-cap">Full grooms from</span>
-        <div class="vb-amt">$90</div>
-        <small>Baths from $50 &middot; by size &amp; coat</small>
+      <div class="tier tier-feature">
+        <span class="tier-badge">Most complete</span>
+        <div class="tier-head">
+          <h3>Full Groom</h3>
+          <div class="tier-price"><span>from</span>$90</div>
+        </div>
+        <p class="tier-sub">Everything in a Bath &amp; Brush, plus a full haircut.</p>
+        <ul class="tier-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Warm bath</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Blow-dry</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Brush &amp; comb-out</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Breed-appropriate haircut</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Nail trim</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Ear wiping</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Anal gland expression</li>
+        </ul>
       </div>
     </div>
 
