@@ -201,6 +201,27 @@
   .addons-head{text-align:center;margin:clamp(34px,5vw,54px) 0 20px}
   .addons-head h3{font-size:1.3rem}
   @media(max-width:560px){.ptable th,.ptable td{padding:11px 12px;font-size:.87rem}.ptable td.sz small{display:block;margin-left:0}}
+  .ptable tbody tr{transition:background .18s}
+  .ptable tbody tr:hover{background:var(--sage-tint)}
+  .ptable td.amt.full{color:var(--blue-deep);font-size:1.04rem}
+  .ptable thead th:last-child{color:var(--blue-deep)}
+  /* High-end gradient value band (echoes the /pricing Well Pet Packages block) */
+  .value-band{display:grid;grid-template-columns:1.55fr .95fr;gap:clamp(20px,4vw,44px);align-items:center;
+    background:linear-gradient(135deg,var(--sage),var(--blue));color:#fff;border-radius:calc(var(--r) + 8px);
+    padding:clamp(26px,4vw,46px);box-shadow:0 18px 44px rgba(74,109,146,.28);margin-bottom:34px;position:relative;overflow:hidden}
+  .value-band::after{content:"";position:absolute;right:-80px;top:-80px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .vb-eyebrow{font-weight:700;text-transform:uppercase;letter-spacing:.18em;font-size:.7rem;color:rgba(255,255,255,.85)}
+  .value-band h3{color:#fff;font-size:clamp(1.5rem,3vw,2.05rem);margin:.5rem 0 0;letter-spacing:-.01em}
+  .value-band p{color:rgba(255,255,255,.92);margin-top:.6rem;max-width:48ch;font-size:.98rem;line-height:1.6}
+  .vb-list{list-style:none;padding:0;margin:1.15rem 0 0;display:grid;grid-template-columns:1fr 1fr;gap:.45rem 1rem}
+  .vb-list li{color:#fff;font-size:.92rem;font-weight:500;display:flex;align-items:center;gap:.5ch}
+  .vb-list li svg{width:16px;height:16px;flex:none;color:rgba(255,255,255,.95)}
+  .vb-price{position:relative;z-index:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);border-radius:20px;padding:26px 22px;text-align:center;backdrop-filter:blur(4px)}
+  .vb-price .vb-cap{display:block;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.88);font-weight:700}
+  .vb-amt{font-family:var(--display);font-weight:600;font-size:clamp(2.7rem,6vw,3.5rem);line-height:1;margin:.35rem 0 .2rem}
+  .vb-price small{color:rgba(255,255,255,.82);font-size:.82rem}
+  @media(max-width:720px){.value-band{grid-template-columns:1fr;gap:22px}.vb-list{max-width:420px}}
+  .price-card .ico{margin-bottom:.9rem}
   .addons{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:26px}
   .chip{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.5em 1em;font-size:.85rem;color:var(--muted);box-shadow:var(--shadow)}
   .chip b{color:var(--ink)}
@@ -345,30 +366,47 @@
       <span class="eyebrow">Pricing</span>
       <h2>A transparent <em>menu.</em></h2>
     </div>
-    <p class="price-lead">Starting prices by size and coat. Every full groom includes a warm bath, blow-out, nail trim, ear cleaning, and a breed-appropriate cut.</p>
+    <div class="value-band">
+      <div class="vb-main">
+        <span class="vb-eyebrow">What every full groom includes</span>
+        <h3>The full-service groom</h3>
+        <p>One price, start to finish &mdash; and a calm, careful visit from a team that knows pets inside and out.</p>
+        <ul class="vb-list">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Warm bath &amp; blow-out</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Breed-appropriate cut</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Nail trim &amp; ear cleaning</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg> Veterinary team on-site</li>
+        </ul>
+      </div>
+      <div class="vb-price">
+        <span class="vb-cap">Full grooms from</span>
+        <div class="vb-amt">$90</div>
+        <small>priced by size &amp; coat</small>
+      </div>
+    </div>
 
     <table class="ptable">
       <thead>
         <tr><th>Size &amp; coat</th><th>Bath from</th><th>Full groom from</th></tr>
       </thead>
       <tbody>
-        <tr><td class="sz"><b>X-Small</b> short coat <small>0–10 lbs</small></td><td class="amt bath">$50</td><td class="amt">$90</td></tr>
-        <tr><td class="sz"><b>X-Small</b> long coat <small>0–10 lbs</small></td><td class="amt bath">$60</td><td class="amt">$110</td></tr>
-        <tr><td class="sz"><b>Small</b> short coat <small>11–25 lbs</small></td><td class="amt bath">$60</td><td class="amt">$100</td></tr>
-        <tr><td class="sz"><b>Small</b> long coat <small>11–25 lbs</small></td><td class="amt bath">$75</td><td class="amt">$125</td></tr>
-        <tr><td class="sz"><b>Medium</b> short coat <small>26–50 lbs</small></td><td class="amt bath">$75</td><td class="amt">$125</td></tr>
-        <tr><td class="sz"><b>Medium</b> long coat <small>26–50 lbs</small></td><td class="amt bath">$95</td><td class="amt">$160</td></tr>
-        <tr><td class="sz"><b>Large</b> short coat <small>51–100 lbs</small></td><td class="amt bath">$95</td><td class="amt">$160</td></tr>
-        <tr><td class="sz"><b>Large</b> long coat <small>51–100 lbs</small></td><td class="amt bath">$115</td><td class="amt">$200</td></tr>
-        <tr><td class="sz"><b>X-Large</b> short coat <small>100+ lbs</small></td><td class="amt bath">$115</td><td class="amt">$200</td></tr>
-        <tr><td class="sz"><b>X-Large</b> long coat <small>100+ lbs</small></td><td class="amt bath">$125</td><td class="amt">$250</td></tr>
+        <tr><td class="sz"><b>X-Small</b> short coat <small>0–10 lbs</small></td><td class="amt bath">$50</td><td class="amt full">$90</td></tr>
+        <tr><td class="sz"><b>X-Small</b> long coat <small>0–10 lbs</small></td><td class="amt bath">$60</td><td class="amt full">$110</td></tr>
+        <tr><td class="sz"><b>Small</b> short coat <small>11–25 lbs</small></td><td class="amt bath">$60</td><td class="amt full">$100</td></tr>
+        <tr><td class="sz"><b>Small</b> long coat <small>11–25 lbs</small></td><td class="amt bath">$75</td><td class="amt full">$125</td></tr>
+        <tr><td class="sz"><b>Medium</b> short coat <small>26–50 lbs</small></td><td class="amt bath">$75</td><td class="amt full">$125</td></tr>
+        <tr><td class="sz"><b>Medium</b> long coat <small>26–50 lbs</small></td><td class="amt bath">$95</td><td class="amt full">$160</td></tr>
+        <tr><td class="sz"><b>Large</b> short coat <small>51–100 lbs</small></td><td class="amt bath">$95</td><td class="amt full">$160</td></tr>
+        <tr><td class="sz"><b>Large</b> long coat <small>51–100 lbs</small></td><td class="amt bath">$115</td><td class="amt full">$200</td></tr>
+        <tr><td class="sz"><b>X-Large</b> short coat <small>100+ lbs</small></td><td class="amt bath">$115</td><td class="amt full">$200</td></tr>
+        <tr><td class="sz"><b>X-Large</b> long coat <small>100+ lbs</small></td><td class="amt bath">$125</td><td class="amt full">$250</td></tr>
       </tbody>
     </table>
     <p class="price-note">Prices are starting points. Your final quote depends on coat condition, length, and how your pet does with us &mdash; we'll always confirm before we begin.</p>
 
     <div class="addons-head"><h3>Add-ons</h3></div>
     <div class="price-grid">
-      <div class="price-card"><h3>Bath &amp; coat</h3>
+      <div class="price-card"><div class="ico ico-blue"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.7S5.5 9.3 5.5 14a6.5 6.5 0 0 0 13 0C18.5 9.3 12 2.7 12 2.7z"/></svg></div><h3>Bath &amp; coat</h3>
         <div class="price-row"><span>Medicated bath</span><span class="amt">$30</span></div>
         <div class="price-row"><span>Flea treatment bath</span><span class="amt">$40</span></div>
         <div class="price-row"><span>De-shedding <small>(level 1–4)</small></span><span class="amt">$20–50</span></div>
@@ -376,14 +414,14 @@
         <div class="price-row"><span>Sanitary trim</span><span class="amt">$55</span></div>
         <div class="price-row"><span>Face trim only</span><span class="amt">$35</span></div>
       </div>
-      <div class="price-card"><h3>Nails, teeth &amp; finishing</h3>
+      <div class="price-card"><div class="ico ico-sage"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M20 4 8.12 15.88M14.47 14.48 20 20M8.12 8.12 12 12"/></svg></div><h3>Nails, teeth &amp; finishing</h3>
         <div class="price-row"><span>Nail trim</span><span class="amt">$28</span></div>
         <div class="price-row"><span>Paw pad trim</span><span class="amt">$20</span></div>
         <div class="price-row"><span>Teeth brushing</span><span class="amt">$15</span></div>
         <div class="price-row"><span>Anal gland expression</span><span class="amt">$40</span></div>
         <div class="price-row"><span>Blueberry facial</span><span class="amt">$15</span></div>
       </div>
-      <div class="price-card"><h3>Creative &amp; color<span class="cardnote">All dyes are pet-safe</span></h3>
+      <div class="price-card"><div class="ico ico-terra"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9l-4.6 1.9L12 15l-1.9-4.1L5.5 9l4.6-1.4L12 3z"/><path d="M18 14l.8 2 2 .8-2 .8L18 20l-.8-2-2-.8 2-.8.8-2z"/></svg></div><h3>Creative &amp; color<span class="cardnote">All dyes are pet-safe</span></h3>
         <div class="price-row"><span>Nail pawlish</span><span class="amt">$20</span></div>
         <div class="price-row"><span>Pop of color</span><span class="amt">$25</span></div>
         <div class="price-row"><span>Multiple color accents</span><span class="amt">$50</span></div>
