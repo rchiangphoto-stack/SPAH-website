@@ -764,7 +764,7 @@
 
         <!-- Combined total -->
         <p class="font-body text-muted text-sm mt-4">
-          <strong id="combined-rating" class="text-dark">4.5 stars</strong> · <strong id="combined-count" class="text-dark">256+ reviews</strong> combined
+          <strong id="combined-rating" class="text-dark">4.5 stars</strong> · <strong id="combined-count" class="text-dark">250+ reviews</strong> combined
         </p>
       </div>
 
@@ -1190,7 +1190,7 @@
 </script>
 <script>
 // Auto-update review counts from reviews.json
-fetch('/reviews.json').then(r=>r.json()).then(d=>{
+fetch('/reviews.json?v='+Date.now()).then(r=>r.json()).then(d=>{
   var ge=document.getElementById('google-rating'),gc=document.getElementById('google-count');
   var ye=document.getElementById('yelp-rating'),yc=document.getElementById('yelp-count');
   var cr=document.getElementById('combined-rating'),cc=document.getElementById('combined-count');
@@ -1199,7 +1199,7 @@ fetch('/reviews.json').then(r=>r.json()).then(d=>{
   if(ye&&d.yelp)ye.textContent=d.yelp.rating;
   if(yc&&d.yelp)yc.textContent=d.yelp.count+' reviews';
   if(cr&&d.combined)cr.textContent=d.combined.rating+' stars';
-  if(cc&&d.combined)cc.textContent=d.combined.count+'+ reviews';
+  if(cc&&d.combined)cc.textContent=(Math.floor(d.combined.count/10)*10)+'+ reviews';
 }).catch(function(){});
 </script>
 
