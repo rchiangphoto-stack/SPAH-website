@@ -33,9 +33,13 @@ jobs:
           GOOGLE_RATING=$(echo "$RESPONSE" | jq -r '.candidates[0].rating // empty')
           GOOGLE_COUNT=$(echo "$RESPONSE" | jq -r '.candidates[0].user_ratings_total // empty')
           if [ -z "$GOOGLE_RATING" ] || [ -z "$GOOGLE_COUNT" ]; then
-            echo "WARNING: Google API returned empty — using existing values"
+            STATUS=$(echo "$RESPONSE" | jq -r '.status // "NO_RESPONSE"')
+            echo "::error title=Google reviews feed is down::Google Places API returned no data (status: $STATUS). Homepage review counts are FROZEN at the last-known values. Most likely cause: billing disabled on the Google Cloud project that owns GOOGLE_API_KEY, or the Places API / key is misconfigured."
+            echo "ok=false" >> $GITHUB_OUTPUT
             GOOGLE_RATING="${{ steps.existing.outputs.google_rating }}"
             GOOGLE_COUNT="${{ steps.existing.outputs.google_count }}"
+          else
+            echo "ok=true" >> $GITHUB_OUTPUT
           fi
           echo "rating=$GOOGLE_RATING" >> $GITHUB_OUTPUT
           echo "count=$GOOGLE_COUNT" >> $GITHUB_OUTPUT
@@ -48,17 +52,21 @@ jobs:
           YELP_RATING=$(echo "$RESPONSE" | jq -r '.rating // empty')
           YELP_COUNT=$(echo "$RESPONSE" | jq -r '.review_count // empty')
           if [ -z "$YELP_RATING" ] || [ -z "$YELP_COUNT" ]; then
-            echo "WARNING: Yelp API returned empty — using existing values"
+            echo "::warning title=Yelp reviews feed is down::Yelp API returned no data (its Fusion API access may be revoked). Using the last-known Yelp values; update them manually if needed."
+            echo "ok=false" >> $GITHUB_OUTPUT
             YELP_RATING="${{ steps.existing.outputs.yelp_rating }}"
             YELP_COUNT="${{ steps.existing.outputs.yelp_count }}"
+          else
+            echo "ok=true" >> $GITHUB_OUTPUT
           fi
           echo "rating=$YELP_RATING" >> $GITHUB_OUTPUT
           echo "count=$YELP_COUNT" >> $GITHUB_OUTPUT
 
-      - name: Generate reviews.json
+      - name: Generate reviews.json (only when a count or rating changes)
+        id: gen
         run: |
           python3 - <<'PYEOF'
-          import json, os, subprocess
+          import json, os
           from datetime import datetime, timezone
 
           g_r = float("${{ steps.google.outputs.rating }}")
@@ -69,20 +77,39 @@ jobs:
           total = g_c + y_c
           combined = round((g_r * g_c + y_r * y_c) / total, 1) if total > 0 else 0.0
 
-          data = {
-              "google":   {"rating": g_r, "count": g_c},
-              "yelp":     {"rating": y_r, "count": y_c},
-              "combined": {"rating": combined, "count": total},
-              "updated":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
-          }
+          try:
+              old = json.load(open("reviews.json"))
+          except Exception:
+              old = {}
 
-          with open("reviews.json", "w") as f:
-              json.dump(data, f, indent=4)
+          changed = (
+              old.get("google", {}).get("rating") != g_r or
+              old.get("google", {}).get("count") != g_c or
+              old.get("yelp", {}).get("rating") != y_r or
+              old.get("yelp", {}).get("count") != y_c
+          )
 
-          print(json.dumps(data, indent=4))
+          if changed:
+              data = {
+                  "google":   {"rating": g_r, "count": g_c},
+                  "yelp":     {"rating": y_r, "count": y_c},
+                  "combined": {"rating": combined, "count": total},
+                  "updated":  datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
+              }
+              with open("reviews.json", "w") as f:
+                  json.dump(data, f, indent=4)
+                  f.write("\n")
+              print("Values changed — reviews.json updated:")
+              print(json.dumps(data, indent=4))
+          else:
+              print("No change in Google/Yelp ratings or counts — nothing to commit.")
+
+          with open(os.environ["GITHUB_OUTPUT"], "a") as gh:
+              gh.write("changed=%s\n" % ("true" if changed else "false"))
           PYEOF
 
       - name: Commit and push if changed
+        if: steps.gen.outputs.changed == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
@@ -92,6 +119,15 @@ jobs:
           git reset --hard origin/master
           cp /tmp/reviews_new.json reviews.json
           git add reviews.json
-          git diff --cached --quiet && echo "No changes — reviews unchanged" && exit 0
+          git diff --cached --quiet && echo "No net change after rebase" && exit 0
           git commit -m "Update review counts [automated]"
           git push
+
+      # SAFEGUARD: fail the run (red X in the Actions tab + owner email) when the
+      # Google feed is down, so a frozen review count never goes unnoticed again.
+      # Yelp-only outages stay a yellow warning and do NOT fail the run.
+      - name: Fail loudly if the Google feed is down
+        if: steps.google.outputs.ok == 'false'
+        run: |
+          echo "::error title=Review auto-update is degraded::The Google reviews feed is down, so the homepage review counts are NOT updating automatically. Fix: re-enable billing on the Google Cloud project that owns GOOGLE_API_KEY (and confirm the Places API is enabled). The site keeps showing the last-known numbers until then; they can also be updated manually."
+          exit 1
