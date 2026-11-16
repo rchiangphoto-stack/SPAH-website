@@ -505,35 +505,6 @@
       display: block;
       animation: heroReveal 1.7s cubic-bezier(0.22,1,0.36,1) 0.15s both;
     }
-    /* One-time gloss sweep after the reveal */
-    .moved-hero-img-wrap::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      z-index: 3;
-      pointer-events: none;
-      background: linear-gradient(105deg, transparent 38%, rgba(255,255,255,0.42) 50%, transparent 62%);
-      transform: translateX(-120%);
-      animation: heroShine 1.1s ease 1.95s both;
-    }
-    /* Subtle shimmer overlay on hover */
-    .moved-hero-img-wrap::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
-      opacity: 0;
-      transition: opacity 0.5s ease;
-      pointer-events: none;
-    }
-    .moved-hero-img-wrap:hover::after {
-      opacity: 1;
-      animation: shimmer 1.5s ease forwards;
-    }
-    @keyframes shimmer {
-      0%   { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
     /* Entry animation */
     @keyframes heroFade {
       from { opacity: 0; }
@@ -543,9 +514,6 @@
       0%   { clip-path: inset(47% 0 47% 0); transform: scale(1.2); }
       55%  { clip-path: inset(0 0 0 0); }
       100% { clip-path: inset(0 0 0 0); transform: scale(1); }
-    }
-    @keyframes heroShine {
-      to { transform: translateX(120%); }
     }
     @keyframes heroFadeUpText {
       0%   { transform: translateY(20px); opacity: 0; }
