@@ -981,6 +981,26 @@
       "source": "/why-is-my-rabbit-breathing-fast",
       "destination": "/blog/why-is-my-rabbit-breathing-fast",
       "permanent": true
+    },
+    {
+      "source": "/blog/turtle-tortoise-",
+      "destination": "/blog/turtle-tortoise-health",
+      "permanent": true
+    },
+    {
+      "source": "/bearded-dragon-vet-alhambra",
+      "destination": "/reptile-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/exotic-pets-alhambra",
+      "destination": "/exotic-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/our-team",
+      "destination": "/about",
+      "permanent": true
     }
   ]
 }
