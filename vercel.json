@@ -9,34 +9,113 @@
   "headers": [
     {
       "source": "/css/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=600, s-maxage=31536000, stale-while-revalidate=86400" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=600, s-maxage=31536000, stale-while-revalidate=86400"
+        }
+      ]
     },
     {
       "source": "/images/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     },
     {
       "source": "/(.*)\\.js",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
     }
   ],
   "redirects": [
-    { "source": "/exotic-vet-near-me", "destination": "/exotic-exams", "permanent": true },
-    { "source": "/blog/exotic-vet-near-pasadena", "destination": "/exotic-vet-pasadena", "permanent": true },
-    { "source": "/blog/guinea-pig-vet-alhambra", "destination": "/guinea-pig-vet-alhambra", "permanent": true },
-    { "source": "/blog/bird-vet-care-alhambra", "destination": "/bird-vet-alhambra", "permanent": true },
-    { "source": "/blog/avian-vet-alhambra", "destination": "/bird-vet-alhambra", "permanent": true },
-    { "source": "/blog/vet-near-glendale", "destination": "/vet-glendale", "permanent": true },
-    { "source": "/blog/vet-near-monterey-park", "destination": "/vet-monterey-park", "permanent": true },
-    { "source": "/blog/vet-near-san-marino", "destination": "/vet-san-marino", "permanent": true },
-    { "source": "/blog/vet-near-south-pasadena", "destination": "/vet-south-pasadena", "permanent": true },
-    { "source": "/blog/vet-near-temple-city", "destination": "/vet-temple-city", "permanent": true },
-    { "source": "/blog/vet-near-el-monte", "destination": "/vet-el-monte", "permanent": true },
-    { "source": "/blog/vet-near-covina", "destination": "/vet-covina", "permanent": true },
-    { "source": "/blog/vet-near-west-covina", "destination": "/vet-west-covina", "permanent": true },
-    { "source": "/blog/vet-near-whittier", "destination": "/vet-whittier", "permanent": true },
-    { "source": "/blog/vet-near-eagle-rock", "destination": "/vet-eagle-rock", "permanent": true },
-    { "source": "/blog/vet-near-highland-park", "destination": "/vet-highland-park", "permanent": true },
+    {
+      "source": "/exotic-vet-near-me",
+      "destination": "/exotic-exams",
+      "permanent": true
+    },
+    {
+      "source": "/blog/exotic-vet-near-pasadena",
+      "destination": "/exotic-vet-pasadena",
+      "permanent": true
+    },
+    {
+      "source": "/blog/guinea-pig-vet-alhambra",
+      "destination": "/guinea-pig-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/bird-vet-care-alhambra",
+      "destination": "/bird-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/avian-vet-alhambra",
+      "destination": "/bird-vet-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-glendale",
+      "destination": "/vet-glendale",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-monterey-park",
+      "destination": "/vet-monterey-park",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-san-marino",
+      "destination": "/vet-san-marino",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-south-pasadena",
+      "destination": "/vet-south-pasadena",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-temple-city",
+      "destination": "/vet-temple-city",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-el-monte",
+      "destination": "/vet-el-monte",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-covina",
+      "destination": "/vet-covina",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-west-covina",
+      "destination": "/vet-west-covina",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-whittier",
+      "destination": "/vet-whittier",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-eagle-rock",
+      "destination": "/vet-eagle-rock",
+      "permanent": true
+    },
+    {
+      "source": "/blog/vet-near-highland-park",
+      "destination": "/vet-highland-park",
+      "permanent": true
+    },
     {
       "source": "/:path*",
       "has": [
@@ -871,6 +950,36 @@
     {
       "source": "/vet-visit-cost-alhambra",
       "destination": "/blog/vet-visit-cost-alhambra",
+      "permanent": true
+    },
+    {
+      "source": "/head-tilt-rabbits-guinea-pigs",
+      "destination": "/blog/head-tilt-rabbits-guinea-pigs",
+      "permanent": true
+    },
+    {
+      "source": "/why-is-my-bearded-dragon-glass-surfing",
+      "destination": "/blog/why-is-my-bearded-dragon-glass-surfing",
+      "permanent": true
+    },
+    {
+      "source": "/why-is-my-bearded-dragon-turning-black",
+      "destination": "/blog/why-is-my-bearded-dragon-turning-black",
+      "permanent": true
+    },
+    {
+      "source": "/why-is-my-cat-breathing-fast",
+      "destination": "/blog/why-is-my-cat-breathing-fast",
+      "permanent": true
+    },
+    {
+      "source": "/why-is-my-guinea-pig-losing-hair",
+      "destination": "/blog/why-is-my-guinea-pig-losing-hair",
+      "permanent": true
+    },
+    {
+      "source": "/why-is-my-rabbit-breathing-fast",
+      "destination": "/blog/why-is-my-rabbit-breathing-fast",
       "permanent": true
     }
   ]
