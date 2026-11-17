@@ -1,0 +1,406 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPAH — Full-Bleed Hero Variations</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Lato:wght@400;700;900&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#7A9E8E; --blue:#5A7FA6; --blue-deep:#4A6D92;
+    --ink:#2A3442; --bg:#FAF7F2; --warm:#F4EADF;
+    --img:url('images/south-pasadena-animal-hospital-building-alhambra-1600.webp');
+    --reception:url('images/spah-clinic-reception-alhambra-1200.webp');
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Lato',system-ui,sans-serif;background:var(--bg);color:var(--ink)}
+  .lab{max-width:1180px;margin:0 auto;padding:40px 20px 80px}
+  .lab > h1{font-family:'Playfair Display',serif;font-size:28px;font-weight:700;margin-bottom:6px}
+  .lab > p.sub{color:#6b7280;margin-bottom:34px;font-size:15px}
+  .spec{display:flex;align-items:center;gap:12px;margin:48px 0 14px}
+  .spec .tag{font-family:'Quicksand';font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;
+    color:#fff;background:var(--ink);padding:5px 12px;border-radius:999px}
+  .spec h2{font-family:'Playfair Display',serif;font-size:21px;font-weight:600}
+  .spec .note{color:#6b7280;font-size:13.5px;margin-left:auto;max-width:430px;text-align:right}
+  .frame{border-radius:20px;overflow:hidden;box-shadow:0 24px 60px -24px rgba(42,52,66,.5);position:relative}
+
+  /* line icons */
+  .ic{width:1.05em;height:1.05em;stroke:currentColor;fill:none;stroke-width:1.7;
+    stroke-linecap:round;stroke-linejoin:round;vertical-align:-2px;opacity:.82;flex:none}
+
+  /* shared hero scaffolding */
+  .hero{position:relative;min-height:560px;display:flex;color:#fff;isolation:isolate;overflow:hidden}
+  .hero .bg{position:absolute;inset:0;background-size:cover;background-position:center 38%;z-index:-2;
+    transform:scale(1.02)}
+  .hero .bg.building{background-image:var(--img)}
+  .hero .bg.reception{background-image:var(--reception)}
+  .label{display:inline-flex;align-items:center;gap:8px;font-family:'Quicksand';font-weight:600;
+    font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:7px 15px;border-radius:999px;
+    border:1px solid rgba(255,255,255,.4)}
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:'Lato';font-weight:800;font-size:16px;
+    padding:15px 26px;border-radius:999px;text-decoration:none;transition:.2s;cursor:pointer;border:0}
+  .btn .ic{opacity:1;width:1.1em;height:1.1em}
+  .btn-book{background:var(--sage);color:#fff;box-shadow:0 10px 24px -8px rgba(122,158,142,.55)}
+  .btn-call{background:rgba(255,255,255,.1);color:#fff;border:1.5px solid rgba(255,255,255,.5)}
+  .btn-call-solid{background:#fff;color:var(--ink)}
+  .eyebrow{font-family:'Quicksand';font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:13px;opacity:.92}
+  .h1{font-family:'Playfair Display',serif;font-weight:700;line-height:1.06;letter-spacing:-.01em}
+  .exo{position:relative;display:inline-block;font-style:italic;font-weight:700;color:#AED7C7;
+    text-shadow:0 2px 12px rgba(0,0,0,.5);padding-bottom:.06em;white-space:nowrap}
+  .exo::after{content:"";position:absolute;left:-2px;right:-2px;bottom:0;height:.09em;border-radius:999px;
+    background:var(--sage);transform-origin:left center;transform:scaleX(0);
+    animation:drawPet 1s cubic-bezier(.65,0,.35,1) .4s forwards}
+  @keyframes drawPet{to{transform:scaleX(1)}}
+  @media(prefers-reduced-motion:reduce){.exo::after{animation:none;transform:scaleX(1)}}
+  .flag{position:absolute;top:10px;right:12px;background:#FEF3C7;color:#92400E;font-size:11px;font-weight:700;
+    padding:3px 9px;border-radius:6px;z-index:5;font-family:'Lato'}
+  .chips{display:flex;flex-wrap:wrap;gap:9px}
+  .chip{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.26);padding:8px 14px;border-radius:999px;font-size:13.5px;font-weight:700}
+
+  /* 2A centered cinematic */
+  .a .bg{filter:saturate(1.03)}
+  .a::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:radial-gradient(120% 90% at 50% 100%,rgba(26,36,48,.86) 0%,rgba(26,36,48,.45) 48%,rgba(26,36,48,.28) 100%)}
+  .a{align-items:center;text-align:center;padding:64px 28px 0}
+  .a .inner{max-width:760px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
+  .a .h1{font-size:clamp(34px,5vw,56px)}
+  .a .sub{font-size:19px;max-width:560px;opacity:.95;font-weight:400}
+  .a .ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:4px}
+  .a .trust{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:center;gap:30px;flex-wrap:wrap;
+    padding:16px;background:rgba(14,21,30,.72);border-top:1px solid rgba(255,255,255,.12);
+    font-size:14px;font-weight:700}
+  .a .trust span{display:inline-flex;align-items:center;gap:8px;opacity:.95}
+
+  /* 2B bottom-left editorial */
+  .b::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(90deg,rgba(20,28,38,.82) 0%,rgba(20,28,38,.5) 42%,rgba(20,28,38,.05) 72%),
+               linear-gradient(0deg,rgba(20,28,38,.7) 0%,rgba(20,28,38,0) 46%)}
+  .b{align-items:flex-end;padding:0}
+  .b .inner{padding:44px 48px;max-width:640px;display:flex;flex-direction:column;gap:18px}
+  .b .rule{width:48px;height:3px;background:var(--sage);border-radius:3px}
+  .b .h1{font-size:clamp(32px,4.4vw,50px)}
+  .b .sub{font-size:18px;opacity:.94;font-weight:400;max-width:520px}
+  .b .ctas{display:flex;gap:13px;flex-wrap:wrap;margin-top:4px}
+  .b .meta{display:flex;gap:16px;flex-wrap:wrap;align-items:center;font-size:14px;font-weight:700}
+  .b .meta span{display:inline-flex;align-items:center;gap:8px}
+
+  /* 2C glass panel (glass is the concept here) */
+  .c .bg{background-position:center 42%}
+  .c::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(90deg,rgba(18,26,36,.4),rgba(18,26,36,.08))}
+  .c{align-items:center;padding:0}
+  .c .panel{margin:36px;background:rgba(17,25,35,.46);border:1px solid rgba(255,255,255,.2);
+    backdrop-filter:blur(14px);border-radius:22px;padding:40px 40px;max-width:500px;
+    display:flex;flex-direction:column;gap:18px;box-shadow:0 20px 50px -20px rgba(0,0,0,.5)}
+  .c .h1{font-size:clamp(30px,3.6vw,44px)}
+  .c .sub{font-size:17px;opacity:.95;font-weight:400}
+  .c .hours{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;
+    background:rgba(122,158,142,.28);border:1px solid rgba(122,158,142,.55);padding:7px 14px;border-radius:999px;align-self:flex-start}
+  .c .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:2px}
+
+  /* 2D branded duotone (softened) */
+  .d .bg{filter:grayscale(.12) contrast(1.02)}
+  .d::before{content:"";position:absolute;inset:0;z-index:-1;mix-blend-mode:multiply;
+    background:linear-gradient(120deg,var(--blue-deep) 0%,var(--sage) 100%);opacity:.58}
+  .d::after{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(0deg,rgba(20,28,38,.55),rgba(20,28,38,0) 58%)}
+  .d{align-items:center;text-align:center;padding:60px 28px}
+  .d .inner{max-width:780px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:20px}
+  .d .eyebrow{color:#EAF3EE}
+  .d .h1{font-size:clamp(34px,5vw,56px);text-shadow:0 2px 20px rgba(0,0,0,.25)}
+  .d .sub{font-size:18.5px;max-width:580px;opacity:.96;font-weight:400}
+  .d .ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+  .d .chips{justify-content:center;margin-top:4px}
+
+  /* 2E diagonal split */
+  .e{padding:0;background:var(--ink)}
+  .e .bg{clip-path:polygon(34% 0,100% 0,100% 100%,22% 100%);background-position:center 40%}
+  .e::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(105deg,var(--ink) 30%,rgba(42,52,66,.2) 46%,transparent 55%)}
+  .e .inner{padding:52px 48px;max-width:560px;display:flex;flex-direction:column;gap:18px;justify-content:center}
+  .e .accent{width:54px;height:4px;border-radius:3px;background:var(--sage)}
+  .e .h1{font-size:clamp(32px,4.2vw,50px)}
+  .e .sub{font-size:17.5px;opacity:.9;font-weight:400;max-width:440px}
+  .e .ctas{display:flex;gap:13px;flex-wrap:wrap;margin-top:4px}
+  .e .meta{display:flex;align-items:center;gap:18px;font-size:14px;font-weight:700;flex-wrap:wrap}
+  .e .meta span{display:inline-flex;align-items:center;gap:8px}
+
+  /* 2F floating dock (glass is the concept here) */
+  .f .bg{background-position:center 42%}
+  .f::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(0deg,rgba(18,26,36,.72) 0%,rgba(18,26,36,.05) 40%),
+               linear-gradient(180deg,rgba(18,26,36,.4) 0%,transparent 28%)}
+  .f{align-items:flex-start;justify-content:center;padding:40px 20px}
+  .f .top{text-align:center;max-width:720px;display:flex;flex-direction:column;align-items:center;gap:14px;margin-top:10px}
+  .f .eyebrow{opacity:.95}
+  .f .h1{font-size:clamp(32px,4.6vw,52px)}
+  .f .dock{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);
+    display:flex;align-items:center;gap:8px;background:rgba(17,25,35,.56);backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:10px 10px 10px 22px;
+    box-shadow:0 18px 40px -16px rgba(0,0,0,.6);flex-wrap:wrap;justify-content:center;max-width:94%}
+  .f .dock .info{display:flex;align-items:center;gap:16px;font-size:13.5px;font-weight:700;padding-right:6px}
+  .f .dock .info span{display:inline-flex;align-items:center;gap:8px}
+  .f .dock .info .sep{opacity:.35}
+
+  /* 2G warm reception */
+  .g .bg{background-position:center 50%}
+  .g::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(90deg,rgba(42,52,66,.84) 0%,rgba(42,52,66,.52) 44%,rgba(42,52,66,.12) 78%)}
+  .g{align-items:center;padding:0}
+  .g .inner{padding:48px 52px;max-width:600px;display:flex;flex-direction:column;gap:18px}
+  .g .eyebrow{color:#A7CBBB}
+  .g .h1{font-size:clamp(32px,4.2vw,50px)}
+  .g .sub{font-size:17.5px;opacity:.95;font-weight:400;max-width:480px}
+  .g .ctas{display:flex;gap:13px;flex-wrap:wrap;margin-top:4px}
+  .g .meta{display:flex;align-items:center;gap:18px;font-size:14px;font-weight:700;flex-wrap:wrap}
+  .g .meta span{display:inline-flex;align-items:center;gap:8px}
+
+  /* 2H letterbox grand */
+  .h .bg{background-position:center 38%;filter:saturate(1.03)}
+  .h::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:linear-gradient(180deg,rgba(16,23,32,.78) 0%,rgba(16,23,32,.15) 30%,rgba(16,23,32,.15) 62%,rgba(16,23,32,.85) 100%)}
+  .h{flex-direction:column;align-items:center;justify-content:space-between;text-align:center;padding:40px 28px 34px}
+  .h .top{display:flex;flex-direction:column;align-items:center;gap:14px;max-width:820px}
+  .h .eyebrow{opacity:.92}
+  .h .h1{font-size:clamp(34px,5vw,58px)}
+  .h .ticker{display:flex;align-items:center;gap:22px;font-size:14px;font-weight:700;flex-wrap:wrap;justify-content:center}
+  .h .ticker span{display:inline-flex;align-items:center;gap:8px}
+  .h .ticker .sep{opacity:.4}
+  .h .bottom{display:flex;flex-direction:column;align-items:center;gap:16px}
+  .h .sub{font-size:18px;opacity:.95;font-weight:400;max-width:560px}
+  .h .ctas{display:flex;gap:14px;flex-wrap:wrap;justify-content:center}
+
+  @media(max-width:720px){
+    .e .bg{clip-path:none;opacity:.5}
+    .e::before{background:linear-gradient(0deg,var(--ink),rgba(42,52,66,.5))}
+    .f .dock{position:static;transform:none;margin-top:28px}
+    .g .inner,.e .inner{padding:30px 24px}
+    .spec .note{display:none}
+    .hero{min-height:520px}
+    .b .inner{padding:30px 24px}
+    .c .panel{margin:18px;padding:28px 24px}
+    .a .trust{gap:16px;font-size:12.5px}
+  }
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path d="M5 4h3l1.2 4-1.9 1.1a10.5 10.5 0 0 0 5.1 5.1l1.1-1.9 4 1.2v3a1.3 1.3 0 0 1-1.4 1.3A15 15 0 0 1 3.7 5.4 1.3 1.3 0 0 1 5 4z"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.2"/><path d="M12 7.6V12l3 1.8"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21c4-4.2 6-7.3 6-10a6 6 0 1 0-12 0c0 2.7 2 5.8 6 10z"/><circle cx="12" cy="11" r="2.1"/></symbol>
+</svg>
+
+<div class="lab">
+  <h1>Full-Bleed Hero — 8 variations</h1>
+  <p class="sub">Refined pass: real line icons instead of emoji, glass pared back to the two concepts that are actually about glass, softened duotone, and no stock arrows. Every one uses your tagline, <em>"Compassionate Care for Every Pet."</em>, with a tappable phone and Book button above the fold. <strong>Hours are a placeholder</strong> (flagged) until you confirm them.</p>
+
+  <!-- 2A -->
+  <div class="spec">
+    <span class="tag">2A</span><h2>Centered Cinematic</h2>
+    <span class="note">Big centered headline, darkest at the base, one dominant Book button, and the key facts in a solid bar along the bottom edge. Clean and confident.</span>
+  </div>
+  <div class="frame">
+    <span class="flag">hours = placeholder</span>
+    <section class="hero a">
+      <div class="bg building"></div>
+      <div class="inner">
+        <span class="label">Dogs · Cats · Exotics</span>
+        <h1 class="h1">Compassionate Care for Every <span class="exo">Pet.</span></h1>
+        <p class="sub">From Golden Retrievers to Bearded Dragons, we treat every patient like family.</p>
+        <div class="ctas">
+          <a class="btn btn-book" href="#">Book an Appointment</a>
+          <a class="btn btn-call" href="tel:+16264411314"><svg class="ic"><use href="#i-phone"/></svg>(626) 441-1314</a>
+        </div>
+      </div>
+      <div class="trust">
+        <span><svg class="ic"><use href="#i-pin"/></svg>3116 W Main St, Alhambra</span>
+        <span><svg class="ic"><use href="#i-clock"/></svg>Open today · 8am–6pm</span>
+        <span>Dogs · Cats · Rabbits · Reptiles · Birds</span>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2B -->
+  <div class="spec">
+    <span class="tag">2B</span><h2>Bottom-Left Editorial</h2>
+    <span class="note">Copy anchored lower-left like a magazine cover, with a short sage rule above the headline. Feels editorial and established; the photo stays more visible on the right.</span>
+  </div>
+  <div class="frame">
+    <span class="flag">hours = placeholder</span>
+    <section class="hero b">
+      <div class="bg building"></div>
+      <div class="inner">
+        <span class="rule"></span>
+        <span class="eyebrow">South Pasadena Animal Hospital · Alhambra</span>
+        <h1 class="h1">Compassionate Care for Every <span class="exo">Pet.</span></h1>
+        <p class="sub">From Golden Retrievers to Bearded Dragons, we treat every patient like family.</p>
+        <div class="meta">
+          <span><svg class="ic"><use href="#i-clock"/></svg>Open today · 8am–6pm</span>
+          <span><svg class="ic"><use href="#i-pin"/></svg>3116 W Main St</span>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-book" href="#">Book an Appointment</a>
+          <a class="btn btn-call" href="tel:+16264411314"><svg class="ic"><use href="#i-phone"/></svg>(626) 441-1314</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2C -->
+  <div class="spec">
+    <span class="tag">2C</span><h2>Glass Panel</h2>
+    <span class="note">A single frosted card holds the copy on one side, so the building photo stays crisp and uncovered elsewhere. Glass used deliberately, on one element only.</span>
+  </div>
+  <div class="frame">
+    <span class="flag">hours = placeholder</span>
+    <section class="hero c">
+      <div class="bg building"></div>
+      <div class="panel">
+        <span class="eyebrow">Alhambra · South Pasadena · SGV</span>
+        <h1 class="h1">Compassionate Care for Every <span class="exo">Pet.</span></h1>
+        <p class="sub">From Golden Retrievers to Bearded Dragons, we treat every patient like family.</p>
+        <span class="hours"><svg class="ic"><use href="#i-clock"/></svg>Open today · 8am–6pm</span>
+        <div class="ctas">
+          <a class="btn btn-book" href="#">Book an Appointment</a>
+          <a class="btn btn-call-solid" href="tel:+16264411314"><svg class="ic"><use href="#i-phone"/></svg>Call</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2D -->
+  <div class="spec">
+    <span class="tag">2D</span><h2>Branded Duotone</h2>
+    <span class="note">A soft sage-to-blue wash over the photo ties the hero to your brand without washing out the building. Softened from the earlier version so it reads as photography, not a filter.</span>
+  </div>
+  <div class="frame">
+    <span class="flag">hours = placeholder</span>
+    <section class="hero d">
+      <div class="bg building"></div>
+      <div class="inner">
+        <span class="eyebrow">South Pasadena Animal Hospital</span>
+        <h1 class="h1">Compassionate Care for Every <span class="exo">Pet.</span></h1>
+        <p class="sub">From Golden Retrievers to Bearded Dragons, we treat every patient like family.</p>
+        <div class="ctas">
+          <a class="btn btn-book" href="#">Book an Appointment</a>
+          <a class="btn btn-call" href="tel:+16264411314"><svg class="ic"><use href="#i-phone"/></svg>(626) 441-1314</a>
+        </div>
+        <div class="chips">
+          <span class="chip">Dogs · Cats · Exotics</span>
+          <span class="chip"><svg class="ic"><use href="#i-clock"/></svg>Open today · 8am–6pm</span>
+          <span class="chip"><svg class="ic"><use href="#i-pin"/></svg>3116 W Main St</span>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2E -->
+  <div class="spec">
+    <span class="tag">2E</span><h2>Diagonal Split</h2>
+    <span class="note">An angled cut reveals the building photo on the right against a deep brand panel on the left. Architectural and confident; reads as a designed brand, not a template.</span>
+  </div>
+  <div class="frame">
+    <span class="flag">hours = placeholder</span>
+    <section class="hero e">
+      <div class="bg building"></div>
+      <div class="inner">
+        <div class="accent"></div>
+        <span class="eyebrow">Alhambra · South Pasadena · SGV</span>
+        <h1 class="h1">Compassionate Care for Every <span class="exo">Pet.</span></h1>
+        <p class="sub">From Golden Retrievers to Bearded Dragons, we treat every patient like family.</p>
+        <div class="meta">
+          <span>Dogs · Cats · Exotics</span>
+          <span><svg class="ic"><use href="#i-clock"/></svg>Open today · 8am–6pm</span>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-book" href="#">Book an Appointment</a>
+          <a class="btn btn-call" href="tel:+16264411314"><svg class="ic"><use href="#i-phone"/></svg>(626) 441-1314</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2F -->
+  <div class="spec">
+    <span class="tag">2F</span><h2>Floating Dock</h2>
+    <span class="note">The photo stays almost untouched; a short headline up top and every action collapsed into one floating glass bar at the bottom. Minimal, lets the building breathe.</span>
+  </div>
+  <div class="frame">
+    <span class="flag">hours = placeholder</span>
+    <section class="hero f">
+      <div class="bg building"></div>
+      <div class="top">
+        <span class="eyebrow">South Pasadena Animal Hospital · Alhambra</span>
+        <h1 class="h1">Compassionate Care for Every <span class="exo">Pet.</span></h1>
+        <p class="sub" style="opacity:.95;font-size:18px;max-width:560px">From Golden Retrievers to Bearded Dragons, we treat every patient like family.</p>
+      </div>
+      <div class="dock">
+        <div class="info">
+          <span>Dogs · Cats · Exotics</span><span class="sep">|</span>
+          <span><svg class="ic"><use href="#i-clock"/></svg>Open today · 8am–6pm</span>
+        </div>
+        <a class="btn btn-call-solid" href="tel:+16264411314" style="padding:12px 18px;font-size:15px"><svg class="ic"><use href="#i-phone"/></svg>(626) 441-1314</a>
+        <a class="btn btn-book" href="#" style="padding:12px 20px;font-size:15px">Book</a>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2G -->
+  <div class="spec">
+    <span class="tag">2G</span><h2>Warm Reception</h2>
+    <span class="note">Uses the interior reception photo with a soft brand-ink scrim, so the visitor feels already inside and welcomed. The only variation showing your clinic interior.</span>
+  </div>
+  <div class="frame">
+    <span class="flag">hours = placeholder</span>
+    <section class="hero g">
+      <div class="bg reception"></div>
+      <div class="inner">
+        <span class="eyebrow">Alhambra · South Pasadena · SGV</span>
+        <h1 class="h1">Compassionate Care for Every <span class="exo">Pet.</span></h1>
+        <p class="sub">From Golden Retrievers to Bearded Dragons, we treat every patient like family.</p>
+        <div class="meta">
+          <span>Dogs · Cats · Exotics</span>
+          <span><svg class="ic"><use href="#i-clock"/></svg>Open today · 8am–6pm</span>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-book" href="#">Book an Appointment</a>
+          <a class="btn btn-call" href="tel:+16264411314"><svg class="ic"><use href="#i-phone"/></svg>(626) 441-1314</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <!-- 2H -->
+  <div class="spec">
+    <span class="tag">2H</span><h2>Letterbox Grand</h2>
+    <span class="note">Cinematic letterbox, headline anchored top, a thin info line across the middle, CTAs at the base. Feels like a film title card with the photo fully visible.</span>
+  </div>
+  <div class="frame">
+    <span class="flag">hours = placeholder</span>
+    <section class="hero h">
+      <div class="bg building"></div>
+      <div class="top">
+        <span class="eyebrow">South Pasadena Animal Hospital · Alhambra</span>
+        <h1 class="h1">Compassionate Care for Every <span class="exo">Pet.</span></h1>
+        <div class="ticker">
+          <span>Dogs · Cats · Exotics</span><span class="sep">•</span>
+          <span><svg class="ic"><use href="#i-clock"/></svg>Open today · 8am–6pm</span><span class="sep">•</span>
+          <span><svg class="ic"><use href="#i-pin"/></svg>3116 W Main St</span>
+        </div>
+      </div>
+      <div class="bottom">
+        <p class="sub">From Golden Retrievers to Bearded Dragons, we treat every patient like family.</p>
+        <div class="ctas">
+          <a class="btn btn-book" href="#">Book an Appointment</a>
+          <a class="btn btn-call" href="tel:+16264411314"><svg class="ic"><use href="#i-phone"/></svg>(626) 441-1314</a>
+        </div>
+      </div>
+    </section>
+  </div>
+
+</div>
+</body>
+</html>

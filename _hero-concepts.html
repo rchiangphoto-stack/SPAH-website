@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>SPAH Hero Concepts — Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,500&family=Lato:wght@300;400;700;900&family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --sage:#7A9E8E; --sage-deep:#5f8475;
+    --blue:#5A7FA6; --blue-deep:#4A6D92; --blue-tint:#EFF4F9;
+    --terra:#A8673A; --terra-tint:#F5E7DA;
+    --ink:#2A3442; --muted:#5b6672; --soft:#79838f;
+    --bg:#FAF7F2; --warm:#F4EADF; --surface:#fff;
+    --line:rgba(90,127,166,0.16);
+    --display:'Playfair Display',serif; --body:'Lato',sans-serif; --brandfont:'Quicksand',sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:var(--body);color:var(--ink);background:#eceff3;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3{margin:0;font-family:var(--display);}
+  a{text-decoration:none;}
+  img{display:block;max-width:100%;}
+
+  /* ---- pitch board chrome ---- */
+  .board-head{max-width:1100px;margin:0 auto;padding:48px 24px 8px;text-align:center;}
+  .board-head h1{font-size:2rem;color:var(--ink);}
+  .board-head p{color:var(--muted);font-size:1.02rem;max-width:680px;margin:12px auto 0;line-height:1.6;}
+  .concept-wrap{max-width:1240px;margin:40px auto;padding:0 20px;}
+  .concept-tag{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin:0 0 14px;}
+  .concept-tag .num{width:34px;height:34px;border-radius:9px;background:var(--ink);color:#fff;font-family:var(--brandfont);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:0.95rem;}
+  .concept-tag h2{font-family:var(--brandfont);font-weight:700;font-size:1.3rem;color:var(--ink);letter-spacing:-0.01em;}
+  .concept-tag .vibe{font-family:var(--body);font-size:0.82rem;color:var(--soft);font-weight:700;text-transform:uppercase;letter-spacing:0.08em;}
+  .concept-note{color:var(--muted);font-size:0.95rem;line-height:1.6;margin:0 0 18px;max-width:900px;}
+  .frame{border-radius:20px;overflow:hidden;box-shadow:0 20px 60px rgba(42,52,66,0.14), 0 4px 14px rgba(42,52,66,0.06);border:1px solid rgba(42,52,66,0.06);background:#fff;}
+
+  /* ---- shared hero bits ---- */
+  .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:6px 15px;border-radius:999px;font-family:var(--body);font-weight:700;font-size:0.7rem;letter-spacing:0.14em;text-transform:uppercase;}
+  .btn{display:inline-flex;align-items:center;gap:9px;padding:14px 26px;border-radius:999px;font-family:var(--body);font-weight:700;font-size:1rem;cursor:pointer;transition:transform .25s cubic-bezier(.34,1.56,.64,1),box-shadow .25s,background .25s;border:2px solid transparent;}
+  .btn svg{width:17px;height:17px;}
+  .btn-primary{background:linear-gradient(135deg,var(--blue) 0%,var(--sage) 100%);color:#fff;box-shadow:0 8px 22px rgba(90,127,166,0.32);}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 12px 30px rgba(90,127,166,0.42);}
+  .btn-ghost{background:#fff;color:var(--blue-deep);border-color:var(--line);}
+  .btn-ghost:hover{transform:translateY(-2px);border-color:var(--blue);color:var(--blue);}
+  .btn-glass{background:rgba(255,255,255,0.16);color:#fff;border-color:rgba(255,255,255,0.5);backdrop-filter:blur(8px);}
+  .btn-glass:hover{background:rgba(255,255,255,0.26);transform:translateY(-2px);}
+  .btn-white{background:#fff;color:var(--ink);box-shadow:0 8px 22px rgba(0,0,0,0.18);}
+  .btn-white:hover{transform:translateY(-2px);}
+
+  .stars{color:#E8A93B;letter-spacing:1px;font-size:0.95rem;}
+  .trust-row{display:flex;align-items:center;gap:18px;flex-wrap:wrap;}
+  .trust-item{display:flex;align-items:center;gap:8px;font-family:var(--body);font-size:0.9rem;color:var(--muted);}
+  .trust-item strong{color:var(--ink);}
+  .dot{width:5px;height:5px;border-radius:50%;background:var(--line);}
+
+  .species{display:inline-flex;align-items:center;gap:7px;font-family:var(--body);font-weight:700;font-size:0.82rem;color:var(--sage-deep);}
+  .species .pawicon{width:16px;height:16px;}
+
+  /* =====================================================
+     CONCEPT 1 — SPLIT EDITORIAL
+  ===================================================== */
+  .c1{display:grid;grid-template-columns:1.05fr 1fr;min-height:560px;background:linear-gradient(160deg,#FBF8F3 0%,#EFF4F9 100%);}
+  .c1-copy{padding:56px 52px;display:flex;flex-direction:column;justify-content:center;gap:18px;}
+  .c1 .eyebrow{background:var(--terra-tint);color:var(--terra);align-self:flex-start;}
+  .c1 h1{font-size:clamp(2.1rem,3.4vw,3.2rem);line-height:1.08;letter-spacing:-0.02em;color:var(--ink);}
+  .c1 h1 .g{color:var(--sage-deep);} .c1 h1 .b{color:var(--blue);}
+  .c1 .lede{font-family:var(--body);font-size:1.06rem;line-height:1.65;color:var(--muted);max-width:430px;}
+  .c1-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;}
+  .c1-media{position:relative;overflow:hidden;}
+  .c1-media img{width:100%;height:100%;object-fit:cover;}
+  .c1-float{position:absolute;left:24px;bottom:24px;background:rgba(255,255,255,0.92);backdrop-filter:blur(10px);border-radius:16px;padding:14px 18px;box-shadow:0 12px 30px rgba(42,52,66,0.18);display:flex;align-items:center;gap:12px;}
+  .c1-float .av{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--sage),var(--blue));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-family:var(--brandfont);}
+  .c1-float small{display:block;font-family:var(--body);color:var(--soft);font-size:0.72rem;}
+  .c1-float b{font-family:var(--body);color:var(--ink);font-size:0.98rem;}
+
+  /* =====================================================
+     CONCEPT 2 — IMMERSIVE FULL-BLEED
+  ===================================================== */
+  .c2{position:relative;min-height:600px;display:flex;align-items:center;overflow:hidden;background:#1f262e;}
+  .c2-bg{position:absolute;inset:0;}
+  .c2-bg img{width:100%;height:100%;object-fit:cover;}
+  .c2-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,36,48,0.86) 0%,rgba(26,36,48,0.62) 42%,rgba(26,36,48,0.18) 100%);}
+  .c2-inner{position:relative;z-index:2;padding:56px 56px;max-width:640px;color:#fff;display:flex;flex-direction:column;gap:18px;}
+  .c2 .eyebrow{background:rgba(255,255,255,0.14);color:#fff;border:1px solid rgba(255,255,255,0.35);align-self:flex-start;}
+  .c2 h1{font-size:clamp(2.3rem,3.8vw,3.5rem);line-height:1.06;letter-spacing:-0.02em;color:#fff;}
+  .c2 .lede{font-family:var(--body);font-size:1.1rem;line-height:1.6;color:rgba(255,255,255,0.88);max-width:480px;}
+  .c2-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;}
+  .c2-chips{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px;}
+  .c2-chip{display:inline-flex;align-items:center;gap:8px;padding:9px 15px;border-radius:999px;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.25);backdrop-filter:blur(8px);font-family:var(--body);font-size:0.86rem;color:#fff;}
+  .c2-chip .stars{font-size:0.86rem;}
+
+  /* =====================================================
+     CONCEPT 3 — BENTO GRID
+  ===================================================== */
+  .c3{padding:30px;background:linear-gradient(160deg,#EFF4F9 0%,#F4EADF 100%);}
+  .c3-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:150px;gap:16px;}
+  .tile{border-radius:18px;padding:22px;position:relative;overflow:hidden;box-shadow:0 6px 18px rgba(42,52,66,0.07);}
+  .tile-main{grid-column:span 2;grid-row:span 2;background:linear-gradient(145deg,#fff 0%,#f7fafc 100%);display:flex;flex-direction:column;justify-content:center;gap:14px;border:1px solid var(--line);}
+  .tile-main .eyebrow{background:var(--terra-tint);color:var(--terra);align-self:flex-start;}
+  .tile-main h1{font-size:clamp(1.7rem,2.6vw,2.4rem);line-height:1.08;letter-spacing:-0.02em;}
+  .tile-main h1 .g{color:var(--sage-deep);} .tile-main h1 .b{color:var(--blue);}
+  .tile-main .btn{align-self:flex-start;margin-top:4px;}
+  .tile-photo{grid-column:span 2;grid-row:span 2;padding:0;}
+  .tile-photo img{width:100%;height:100%;object-fit:cover;}
+  .tile-reviews{background:linear-gradient(135deg,var(--blue) 0%,var(--blue-deep) 100%);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:4px;}
+  .tile-reviews .big{font-family:var(--display);font-weight:800;font-size:2rem;line-height:1;}
+  .tile-reviews small{color:rgba(255,255,255,0.85);font-family:var(--body);font-size:0.8rem;}
+  .tile-hours{background:linear-gradient(135deg,var(--sage) 0%,var(--sage-deep) 100%);color:#fff;display:flex;flex-direction:column;justify-content:center;gap:4px;}
+  .tile-hours .status{display:inline-flex;align-items:center;gap:7px;font-weight:700;font-family:var(--body);font-size:0.9rem;}
+  .tile-hours .pulse{width:9px;height:9px;border-radius:50%;background:#B6F0C8;box-shadow:0 0 0 0 rgba(182,240,200,0.7);}
+  .tile-hours small{color:rgba(255,255,255,0.9);font-family:var(--body);font-size:0.82rem;}
+  .tile-phone{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:3px;}
+  .tile-phone small{color:var(--soft);font-family:var(--body);font-size:0.74rem;text-transform:uppercase;letter-spacing:0.08em;font-weight:700;}
+  .tile-phone b{font-family:var(--display);font-weight:700;font-size:1.35rem;color:var(--ink);}
+  .tile-species{background:#fff;border:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;gap:8px;}
+  .tile-species .row{display:flex;gap:14px;}
+  .tile-species .sp{display:flex;flex-direction:column;align-items:center;gap:4px;font-family:var(--body);font-size:0.72rem;font-weight:700;color:var(--muted);}
+  .tile-species .sp .ic{width:34px;height:34px;border-radius:10px;background:var(--blue-tint);display:flex;align-items:center;justify-content:center;}
+
+  /* =====================================================
+     CONCEPT 4 — WARM WELCOME / ORGANIC
+  ===================================================== */
+  .c4{position:relative;overflow:hidden;background:radial-gradient(1100px 520px at 88% -8%,rgba(122,158,142,0.18),transparent 60%),radial-gradient(900px 480px at 2% 108%,rgba(168,103,58,0.12),transparent 55%),linear-gradient(180deg,#FBF8F3,#F7EFE6);min-height:560px;display:grid;grid-template-columns:1.1fr 0.9fr;align-items:center;}
+  .c4-copy{padding:56px 54px;display:flex;flex-direction:column;gap:18px;position:relative;z-index:2;}
+  .c4 .eyebrow{background:#fff;color:var(--sage-deep);border:1px solid rgba(122,158,142,0.3);align-self:flex-start;box-shadow:0 4px 12px rgba(42,52,66,0.05);}
+  .c4 h1{font-size:clamp(2.2rem,3.6vw,3.3rem);line-height:1.06;letter-spacing:-0.02em;color:var(--ink);}
+  .c4 h1 .g{color:var(--sage-deep);font-style:italic;font-weight:500;}
+  .c4 .lede{font-family:var(--body);font-size:1.06rem;line-height:1.65;color:var(--muted);max-width:440px;}
+  .c4-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px;}
+  .c4-media{position:relative;height:100%;min-height:560px;}
+  .c4-blob{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:118%;height:86%;background:linear-gradient(135deg,var(--sage),var(--blue));border-radius:46% 54% 58% 42% / 52% 44% 56% 48%;}
+  .c4-photo{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:78%;height:78%;border-radius:44% 56% 56% 44% / 50% 46% 54% 50%;overflow:hidden;box-shadow:0 24px 50px rgba(42,52,66,0.22);}
+  .c4-photo img{width:100%;height:100%;object-fit:cover;}
+  .c4-badge{position:absolute;right:6%;top:14%;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 14px 30px rgba(42,52,66,0.18);text-align:center;z-index:3;}
+  .c4-badge .stars{display:block;}
+  .c4-badge b{font-family:var(--display);font-weight:700;font-size:1.1rem;color:var(--ink);}
+  .c4-badge small{display:block;color:var(--soft);font-family:var(--body);font-size:0.72rem;}
+  .c4-paw{position:absolute;width:30px;height:30px;opacity:0.5;}
+
+  .flag{display:inline-block;background:#FFF3CD;color:#8a6d1a;border:1px solid #f0e0a8;border-radius:6px;padding:2px 8px;font-family:var(--body);font-size:0.76rem;font-weight:700;margin-left:6px;}
+
+  @media (max-width:860px){
+    .c1,.c4{grid-template-columns:1fr;}
+    .c1-media,.c4-media{min-height:320px;height:320px;order:-1;}
+    .c2-scrim{background:linear-gradient(180deg,rgba(26,36,48,0.55),rgba(26,36,48,0.82));}
+    .c3-grid{grid-template-columns:repeat(2,1fr);}
+    .tile-main,.tile-photo{grid-column:span 2;}
+    .c1-copy,.c2-inner,.c4-copy{padding:36px 26px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="board-head">
+  <h1>South Pasadena Animal Hospital — Hero Concepts</h1>
+  <p>Four distinct directions, all built on your real brand (Playfair + Lato, sage/blue palette) and your actual photos. Every concept puts a tappable phone, today's hours, your 4.5★ rating, and one clear booking CTA above the fold — the things the top-ranked 2026 vet sites do that your current hero doesn't.</p>
+</div>
+
+<!-- ============ CONCEPT 1 ============ -->
+<div class="concept-wrap">
+  <div class="concept-tag"><span class="num">1</span><h2>Split Editorial</h2><span class="vibe">Polished · Conversion-first</span></div>
+  <p class="concept-note">The trusted-clinic classic. Message on the left, building photo on the right with a floating rating card. Reads instantly as an established practice. Safest, most professional, best for conversions.</p>
+  <div class="frame">
+    <section class="c1">
+      <div class="c1-copy">
+        <span class="eyebrow">Alhambra · San Gabriel Valley</span>
+        <h1>Compassionate care for <span class="g">dogs</span>, <span class="b">cats</span> &amp; exotics.</h1>
+        <p class="lede">A full-service general practice led by Dr. Sylvia Chiang and Dr. Gina Navia — treating every patient, from Golden Retrievers to bearded dragons, like family.</p>
+        <div class="c1-cta">
+          <a class="btn btn-primary" href="#">Book an Appointment</a>
+          <a class="btn btn-ghost" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(626) 441-1314</a>
+        </div>
+        <div class="trust-row" style="margin-top:8px;">
+          <div class="trust-item"><span class="stars">★★★★★</span> <strong>4.5</strong>&nbsp;· 250+ reviews</div>
+          <span class="dot"></span>
+          <div class="trust-item"><strong>Open today</strong> · 8am–6pm <span class="flag">hours = placeholder</span></div>
+        </div>
+      </div>
+      <div class="c1-media">
+        <img src="images/south-pasadena-animal-hospital-building-alhambra-1600.webp" alt="SPAH building">
+        <div class="c1-float"><div class="av">S</div><div><small>Google &amp; Yelp</small><b>4.5 ★ · 250+ happy pet parents</b></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ CONCEPT 2 ============ -->
+<div class="concept-wrap">
+  <div class="concept-tag"><span class="num">2</span><h2>Immersive Full-Bleed</h2><span class="vibe">Cinematic · Emotional</span></div>
+  <p class="concept-note">A full-width building photo with a soft gradient scrim and white headline over it. The most striking, premium "wow" option. Glass trust chips float over the image.</p>
+  <div class="frame">
+    <section class="c2">
+      <div class="c2-bg"><img src="images/south-pasadena-animal-hospital-building-alhambra-1600.webp" alt="SPAH building"></div>
+      <div class="c2-scrim"></div>
+      <div class="c2-inner">
+        <span class="eyebrow">Now at 3116 W Main St, Alhambra</span>
+        <h1>Your whole family's vet —<br>paws, claws &amp; scales.</h1>
+        <p class="lede">Gentle, modern care for dogs, cats, birds, rabbits &amp; reptiles, from a team your pet will actually look forward to seeing.</p>
+        <div class="c2-cta">
+          <a class="btn btn-white" href="#">Book an Appointment</a>
+          <a class="btn btn-glass" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(626) 441-1314</a>
+        </div>
+        <div class="c2-chips">
+          <span class="c2-chip"><span class="stars">★★★★★</span> 4.5 · 250+ reviews</span>
+          <span class="c2-chip">● Open today 8am–6pm</span>
+          <span class="c2-chip">Dogs · Cats · Exotics</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ CONCEPT 3 ============ -->
+<div class="concept-wrap">
+  <div class="concept-tag"><span class="num">3</span><h2>Bento Grid</h2><span class="vibe">Modern · 2026 trend</span></div>
+  <p class="concept-note">The of-the-moment layout. Modular tiles pack everything into one glance: headline + CTA, photo, live rating, open-now status, tappable phone, and the species you treat. Most "next-level," uniquely shows every trust signal at once.</p>
+  <div class="frame">
+    <section class="c3">
+      <div class="c3-grid">
+        <div class="tile tile-main">
+          <span class="eyebrow">Alhambra · SGV</span>
+          <h1>Care for every member of the family — <span class="g">furred</span>, <span class="b">feathered</span> or scaled.</h1>
+          <a class="btn btn-primary" href="#">Book an Appointment</a>
+        </div>
+        <div class="tile tile-photo"><img src="images/spah-clinic-reception-alhambra-1200.webp" alt="SPAH reception"></div>
+        <div class="tile tile-reviews"><span class="stars" style="color:#FFD98A">★★★★★</span><span class="big">4.5</span><small>250+ Google &amp; Yelp reviews</small></div>
+        <div class="tile tile-hours"><span class="status"><span class="pulse"></span>Open today</span><span style="font-family:var(--display);font-weight:700;font-size:1.25rem;">8am – 6pm</span><small>Mon–Sat · by appointment</small></div>
+        <div class="tile tile-phone"><small>Call us</small><b>(626) 441-1314</b><small style="text-transform:none;letter-spacing:0;font-weight:400;color:var(--soft)">3116 W Main St, Alhambra</small></div>
+        <div class="tile tile-species">
+          <div class="row">
+            <div class="sp"><span class="ic">🐶</span>Dogs</div>
+            <div class="sp"><span class="ic">🐱</span>Cats</div>
+            <div class="sp"><span class="ic">🐰</span>Rabbits</div>
+            <div class="sp"><span class="ic">🦎</span>Reptiles</div>
+            <div class="sp"><span class="ic">🦜</span>Birds</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- ============ CONCEPT 4 ============ -->
+<div class="concept-wrap">
+  <div class="concept-tag"><span class="num">4</span><h2>Warm Welcome</h2><span class="vibe">Friendly · Organic</span></div>
+  <p class="concept-note">Soft organic shapes and a curved photo frame — the opposite of a cold corporate chain. Feels like the caring neighborhood vet. Leans into the "human-made," approachable 2026 direction with a floating rating badge.</p>
+  <div class="frame">
+    <section class="c4">
+      <div class="c4-copy">
+        <span class="eyebrow">🐾 Your neighborhood animal hospital</span>
+        <h1>Where Alhambra brings the pets they <span class="g">love.</span></h1>
+        <p class="lede">From wellness visits to the tricky exotics other clinics turn away, we care for your whole menagerie with patience and a gentle touch.</p>
+        <div class="c4-cta">
+          <a class="btn btn-primary" href="#">Book an Appointment</a>
+          <a class="btn btn-ghost" href="#"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>(626) 441-1314</a>
+        </div>
+        <div class="trust-row" style="margin-top:6px;">
+          <div class="trust-item"><strong>Open today</strong> · 8am–6pm <span class="flag">hours = placeholder</span></div>
+        </div>
+      </div>
+      <div class="c4-media">
+        <div class="c4-blob"></div>
+        <div class="c4-photo"><img src="images/spah-clinic-reception-desk-alhambra-860.webp" alt="SPAH reception desk"></div>
+        <div class="c4-badge"><span class="stars">★★★★★</span><b>4.5</b><small>250+ reviews</small></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div class="board-head" style="padding-bottom:60px;">
+  <p style="font-size:0.9rem;color:var(--soft)">Placeholder copy &amp; hours shown for layout only — all final wording is yours to approve. Nothing here is live on spah.la.</p>
+</div>
+
+</body>
+</html>

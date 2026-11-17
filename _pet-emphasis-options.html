@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPAH — "Pet." emphasis options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Lato:wght@400;700;900&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--sage:#7A9E8E;--blue:#5A7FA6;--ink:#2A3442;--bg:#FAF7F2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--ink)}
+  .wrap{max-width:1040px;margin:0 auto;padding:40px 20px 80px}
+  h1.t{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:6px}
+  p.s{color:#6b7280;margin-bottom:30px;font-size:15px}
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:760px){.grid{grid-template-columns:1fr}}
+  .card{border-radius:16px;overflow:hidden;box-shadow:0 16px 40px -20px rgba(42,52,66,.5);position:relative;
+    min-height:230px;display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 26px;color:#fff;isolation:isolate}
+  .card .bg{position:absolute;inset:0;z-index:-2;
+    background:url('images/south-pasadena-animal-hospital-building-alhambra-1600.webp') center 40%/cover}
+  .card::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:radial-gradient(120% 90% at 50% 100%,rgba(26,36,48,.85),rgba(26,36,48,.5) 60%,rgba(26,36,48,.35))}
+  .lab{position:absolute;top:10px;left:12px;font-family:'Quicksand';font-weight:700;font-size:11px;
+    letter-spacing:.09em;text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:4px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+  .hl{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(26px,3.4vw,38px);line-height:1.1;letter-spacing:-.01em}
+
+  /* A — sage color + weight + soft shadow, no box */
+  .a .pet{color:#9FCBBA;text-shadow:0 2px 14px rgba(0,0,0,.55),0 1px 2px rgba(0,0,0,.7)}
+  /* B — white text + sage marker underline (thick rounded) */
+  .b .pet{position:relative;white-space:nowrap}
+  .b .pet::after{content:"";position:absolute;left:-2px;right:-2px;bottom:.06em;height:.16em;border-radius:999px;background:var(--sage)}
+  /* C — white text + thin sage rule underline */
+  .c .pet{border-bottom:3px solid var(--sage);padding-bottom:.02em}
+  /* D — sage italic, differentiate by style + shadow */
+  .d .pet{font-style:italic;color:#AED7C7;text-shadow:0 2px 12px rgba(0,0,0,.5)}
+  /* E — white word, only the period in sage, slightly heavier */
+  .e .pet b{font-weight:700}
+  .e .dot{color:#9FCBBA}
+  /* F — sage swash underline that sits behind, lower opacity highlight band (half-height) */
+  .f .pet{position:relative;z-index:0}
+  .f .pet::after{content:"";position:absolute;left:-4px;right:-4px;bottom:0;height:.42em;z-index:-1;border-radius:3px;
+    background:rgba(122,158,142,.55)}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="t">Ways to emphasize "Pet." — pick one</h1>
+  <p class="s">Same tagline, same sage palette, shown on the real building photo so you can judge legibility. No filled box this time. Tell me the letter you like (or mix) and I'll apply it across all eight heroes.</p>
+
+  <div class="grid">
+    <div class="card a"><span class="lab">A · Sage + glow</span>
+      <div class="bg"></div>
+      <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    </div>
+    <div class="card b"><span class="lab">B · Marker underline</span>
+      <div class="bg"></div>
+      <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    </div>
+    <div class="card c"><span class="lab">C · Thin rule underline</span>
+      <div class="bg"></div>
+      <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    </div>
+    <div class="card d"><span class="lab">D · Sage italic</span>
+      <div class="bg"></div>
+      <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    </div>
+    <div class="card e"><span class="lab">E · Sage period only</span>
+      <div class="bg"></div>
+      <div class="hl">Compassionate Care for Every <span class="pet"><b>Pet</b><span class="dot">.</span></span></div>
+    </div>
+    <div class="card f"><span class="lab">F · Soft half-highlight</span>
+      <div class="bg"></div>
+      <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

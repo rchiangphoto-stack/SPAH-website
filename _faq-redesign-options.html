@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPAH — Pricing FAQ redesign options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lato:wght@400;700;900&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--sage:#7A9E8E;--blue:#5A7FA6;--blue-deep:#4A6D92;--ink:#2A3442;--muted:#5A6472;--bg:#FAF7F2;--line:rgba(90,127,166,0.16)}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Lato',system-ui,sans-serif;background:#eef1f4;color:var(--ink)}
+  .lab{max-width:1120px;margin:0 auto;padding:40px 20px 90px}
+  .lab>h1{font-family:'Playfair Display',serif;font-size:27px;font-weight:700;margin-bottom:6px}
+  .lab>p.sub{color:#6b7280;margin-bottom:10px;font-size:15px;max-width:760px}
+  .spec{display:flex;align-items:center;gap:12px;margin:46px 0 0}
+  .spec .tag{font-family:'Quicksand';font-weight:700;font-size:12.5px;letter-spacing:.09em;text-transform:uppercase;color:#fff;background:var(--ink);padding:5px 12px;border-radius:999px}
+  .spec h2{font-family:'Playfair Display',serif;font-size:20px;font-weight:600}
+  .spec .note{color:#6b7280;font-size:13px;margin-left:auto;max-width:440px;text-align:right}
+  .stage{background:var(--bg);border-radius:18px;padding:46px 40px;margin-top:14px;box-shadow:0 14px 40px -22px rgba(42,52,66,.4)}
+  .eyebrow{font-family:'Quicksand';font-weight:700;letter-spacing:.18em;text-transform:uppercase;font-size:12px;color:var(--sage);text-align:center}
+  .h2{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(24px,3vw,32px);text-align:center;letter-spacing:-.02em;margin-top:6px}
+  .lede{text-align:center;color:var(--muted);margin-top:8px;font-size:15px}
+  .call{text-align:center;margin-top:26px;font-size:14px;color:var(--muted)}
+  .call a{color:var(--blue);font-weight:700;text-decoration:none}
+
+  /* A — price guide grid */
+  .pg{display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;max-width:820px;margin:28px auto 0}
+  .pg .row{display:flex;align-items:baseline;justify-content:space-between;gap:12px;padding:13px 2px;border-bottom:1px solid var(--line)}
+  .pg .row .svc{font-weight:700;font-size:15px}
+  .pg .row .svc small{display:block;font-weight:400;color:var(--muted);font-size:12.5px;margin-top:2px}
+  .pg .row .amt{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;color:var(--blue-deep);white-space:nowrap}
+
+  /* B — trimmed accordion */
+  .acc{max-width:720px;margin:26px auto 0}
+  .acc .item{background:#fff;border:1px solid var(--line);border-radius:12px;margin-bottom:10px;overflow:hidden}
+  .acc .q{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:16px 18px;font-family:'Playfair Display',serif;font-weight:700;font-size:16px}
+  .acc .q::after{content:"";width:9px;height:9px;border-right:2px solid var(--sage);border-bottom:2px solid var(--sage);transform:rotate(45deg);flex:none}
+  .acc .item.open .q::after{transform:rotate(-135deg)}
+  .acc .a{padding:0 18px 16px;color:var(--muted);font-size:14.5px;line-height:1.7}
+  .acc .a a{color:var(--blue)}
+
+  /* C — two-column compact */
+  .cc{display:grid;grid-template-columns:1fr 1fr;gap:9px 14px;max-width:880px;margin:26px auto 0}
+  .cc .q{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:13px 15px;font-family:'Playfair Display',serif;font-weight:700;font-size:14.5px;color:var(--ink)}
+  .cc .q::after{content:"+";color:var(--sage);font-weight:700;font-size:17px;flex:none}
+
+  /* D — snapshot cards + mini faq */
+  .snap{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:880px;margin:28px auto 0}
+  .snap .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 18px;text-align:center}
+  .snap .card .amt{font-family:'Playfair Display',serif;font-weight:700;font-size:26px;color:var(--blue-deep);line-height:1}
+  .snap .card .lbl{margin-top:8px;font-size:13px;color:var(--muted);font-weight:700;letter-spacing:.01em}
+  .snap .card.alt .amt{font-size:20px;color:var(--sage)}
+  .mini{max-width:720px;margin:16px auto 0}
+  .mini .item{background:#fff;border:1px solid var(--line);border-radius:10px;margin-bottom:8px}
+  .mini .q{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;font-family:'Playfair Display',serif;font-weight:700;font-size:14.5px}
+  .mini .q::after{content:"";width:8px;height:8px;border-right:2px solid var(--sage);border-bottom:2px solid var(--sage);transform:rotate(45deg);flex:none}
+  .mini .item.open .q::after{transform:rotate(-135deg)}
+  .mini .a{padding:0 16px 14px;color:var(--muted);font-size:14px;line-height:1.65}
+
+  @media(max-width:720px){.pg,.cc,.snap{grid-template-columns:1fr}.spec .note{display:none}.stage{padding:32px 18px}}
+</style>
+</head>
+<body>
+<div class="lab">
+  <h1>Pricing FAQ — 4 redesign options</h1>
+  <p class="sub">Your current FAQ hides dollar amounts behind 8 click-to-open rows, on a page that already lists full pricing. Each option below is shorter, and most make the prices visible instead of buried. Real SPAH numbers used throughout.</p>
+
+  <!-- A -->
+  <div class="spec"><span class="tag">A</span><h2>Quick Price Guide</h2>
+    <span class="note">Drop the accordion entirely: show the prices people are clicking for, at a glance, in a clean two-column list. Most useful, shortest to scan.</span></div>
+  <div class="stage">
+    <div class="eyebrow">Transparent Pricing</div>
+    <div class="h2">What things cost</div>
+    <div class="lede">Every price is published up front, so there are no surprises at checkout.</div>
+    <div class="pg">
+      <div class="row"><span class="svc">Office exam<small>Recheck $48 · Exotic $105</small></span><span class="amt">$80</span></div>
+      <div class="row"><span class="svc">Nail trim<small>Exotic pets $45</small></span><span class="amt">$28</span></div>
+      <div class="row"><span class="svc">Adult bloodwork<small>Under 7 years</small></span><span class="amt">$105</span></div>
+      <div class="row"><span class="svc">Senior bloodwork<small>Over 7 years</small></span><span class="amt">$310</span></div>
+      <div class="row"><span class="svc">Ear cleaning<small>Depending on what's needed</small></span><span class="amt">$42–85</span></div>
+      <div class="row"><span class="svc">Ear / skin cytology</span><span class="amt">$58–67</span></div>
+      <div class="row"><span class="svc">Urinalysis</span><span class="amt">$96</span></div>
+      <div class="row"><span class="svc">Fecal test</span><span class="amt">$101</span></div>
+      <div class="row"><span class="svc">Heartworm test<small>Dogs</small></span><span class="amt">$36</span></div>
+      <div class="row"><span class="svc">Wellness packages<small>Puppy · kitten · adult</small></span><span class="amt">from $220/yr</span></div>
+    </div>
+    <div class="call">Full service price list is above &nbsp;·&nbsp; Questions? <a href="tel:+16264411314">(626) 441-1314</a></div>
+  </div>
+
+  <!-- B -->
+  <div class="spec"><span class="tag">B</span><h2>Trimmed to What Matters</h2>
+    <span class="note">Keep the familiar accordion, but cut 8 questions down to the 4 that aren't already answered by the price table. Short, calm, still expandable.</span></div>
+  <div class="stage">
+    <div class="eyebrow">Pricing FAQ</div>
+    <div class="h2">Good questions</div>
+    <div class="acc">
+      <div class="item open"><div class="q">What does an exam cost?</div><div class="a">A standard exam is $80, a recheck is $48, and an exotic pet exam is $105. Every price is published up front — see the full list above.</div></div>
+      <div class="item"><div class="q">Do you offer wellness packages?</div><div class="a">Yes. Annual Well Pet Packages start at $220 per pet per year and bundle essential preventive care at a savings.</div></div>
+      <div class="item"><div class="q">Do you treat exotic pets?</div><div class="a">Yes — reptiles, birds, rabbits, guinea pigs and more. Dr. Gina Navia has a true passion for exotic pet care.</div></div>
+      <div class="item"><div class="q">Hours &amp; location?</div><div class="a">3116 W Main St, Alhambra. Mon–Fri 8am–6pm (closed 1–2pm for lunch), weekends closed. Call (626) 441-1314.</div></div>
+    </div>
+  </div>
+
+  <!-- C -->
+  <div class="spec"><span class="tag">C</span><h2>Two-Column Compact</h2>
+    <span class="note">Smallest change: same questions, but a tidy two-column grid so the section is half as tall and feels lighter, not like a long wall.</span></div>
+  <div class="stage">
+    <div class="eyebrow">Pricing FAQ</div>
+    <div class="h2">Common cost questions</div>
+    <div class="cc">
+      <div class="q">How much does a vet exam cost?</div>
+      <div class="q">Bloodwork for dogs &amp; cats?</div>
+      <div class="q">Ear or skin cytology?</div>
+      <div class="q">Urinalysis or fecal test?</div>
+      <div class="q">Nail trim or ear cleaning?</div>
+      <div class="q">Wellness packages?</div>
+      <div class="q">Do you treat exotic pets?</div>
+      <div class="q">Hours &amp; location?</div>
+    </div>
+  </div>
+
+  <!-- D -->
+  <div class="spec"><span class="tag">D</span><h2>Price Snapshot + Mini FAQ</h2>
+    <span class="note">Lead with four headline price cards people actually want, then a tiny two-item FAQ for the non-price questions. Modern, visual, brief.</span></div>
+  <div class="stage">
+    <div class="eyebrow">Transparent Pricing</div>
+    <div class="h2">Starting prices</div>
+    <div class="lede">Published up front. No surprises at checkout.</div>
+    <div class="snap">
+      <div class="card"><div class="amt">$80</div><div class="lbl">Office exams</div></div>
+      <div class="card"><div class="amt">$28</div><div class="lbl">Nail trims</div></div>
+      <div class="card"><div class="amt">$220<span style="font-size:14px">/yr</span></div><div class="lbl">Wellness plans</div></div>
+      <div class="card alt"><div class="amt">Welcome</div><div class="lbl">Exotic pets</div></div>
+    </div>
+    <div class="mini">
+      <div class="item open"><div class="q">What's included in a wellness package?</div><div class="a">Bundled annual preventive care — exam, core vaccines, and routine screening — for puppies, kittens, and adult dogs and cats, priced at a savings over à la carte.</div></div>
+      <div class="item"><div class="q">Hours &amp; location</div><div class="a">3116 W Main St, Alhambra · Mon–Fri 8am–6pm (closed 1–2pm) · (626) 441-1314.</div></div>
+    </div>
+    <div class="call">See the full service price list above &nbsp;·&nbsp; <a href="tel:+16264411314">(626) 441-1314</a></div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SPAH — "Pet." italic + animated underline</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Lato:wght@400;700;900&family=Quicksand:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{--sage:#7A9E8E;--sage-lt:#AED7C7;--ink:#2A3442;--bg:#FAF7F2}
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Lato',sans-serif;background:var(--bg);color:var(--ink)}
+  .wrap{max-width:1040px;margin:0 auto;padding:40px 20px 80px}
+  h1.t{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:6px}
+  p.s{color:#6b7280;margin-bottom:14px;font-size:15px}
+  .replay{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;border:0;cursor:pointer;
+    font-family:'Quicksand';font-weight:700;font-size:13px;padding:9px 16px;border-radius:999px;margin-bottom:26px}
+  .card{border-radius:16px;overflow:hidden;box-shadow:0 16px 40px -20px rgba(42,52,66,.5);position:relative;
+    min-height:220px;display:flex;align-items:center;justify-content:center;text-align:center;padding:34px 26px;color:#fff;isolation:isolate;margin-bottom:22px}
+  .card .bg{position:absolute;inset:0;z-index:-2;
+    background:url('images/south-pasadena-animal-hospital-building-alhambra-1600.webp') center 40%/cover}
+  .card::before{content:"";position:absolute;inset:0;z-index:-1;
+    background:radial-gradient(120% 90% at 50% 100%,rgba(26,36,48,.85),rgba(26,36,48,.5) 60%,rgba(26,36,48,.35))}
+  .lab{position:absolute;top:10px;left:12px;font-family:'Quicksand';font-weight:700;font-size:11px;
+    letter-spacing:.09em;text-transform:uppercase;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.3);
+    padding:4px 10px;border-radius:999px;backdrop-filter:blur(6px)}
+  .note{position:absolute;bottom:10px;right:14px;font-size:12px;opacity:.8}
+  .hl{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(28px,3.6vw,40px);line-height:1.1;letter-spacing:-.01em}
+  .pet{position:relative;font-style:italic;color:var(--sage-lt);text-shadow:0 2px 12px rgba(0,0,0,.5);white-space:nowrap;padding-bottom:.06em}
+  .pet::after{content:"";position:absolute;left:-2px;right:-2px;bottom:0;height:.1em;border-radius:999px;background:var(--sage)}
+
+  /* looping demo: draws on, holds, fades, resets — so the motion is always visible */
+  @keyframes drawLoop{
+    0%{transform:scaleX(0);opacity:1}
+    22%{transform:scaleX(1);opacity:1}
+    82%{transform:scaleX(1);opacity:1}
+    94%{transform:scaleX(1);opacity:0}
+    95%{transform:scaleX(0);opacity:0}
+    100%{transform:scaleX(0);opacity:1}}
+  @keyframes sweep{0%{background-position:120% 0}60%,100%{background-position:-120% 0}}
+  @keyframes shine{0%{background-position:120% 0}55%,100%{background-position:-120% 0}}
+
+  /* D1 — draw on, left → right */
+  .d1 .pet::after{transform-origin:left center;animation:drawLoop 4.5s cubic-bezier(.65,0,.35,1) infinite}
+
+  /* D2 — draw on + a light sweep travels across the line on a loop */
+  .d2 .pet::after{transform-origin:left center;
+    background:linear-gradient(90deg,var(--sage) 0%,var(--sage) 38%,#EAF6F0 50%,var(--sage) 62%,var(--sage) 100%);
+    background-size:220% 100%;
+    animation:drawLoop 4.5s cubic-bezier(.65,0,.35,1) infinite, sweep 2.4s ease-in-out infinite}
+
+  /* D3 — underline draws + a soft shine glides through the WORD */
+  .d3 .pet::after{transform-origin:left center;animation:drawLoop 4.5s cubic-bezier(.65,0,.35,1) infinite}
+  .d3 .pet{background:linear-gradient(90deg,var(--sage-lt) 0%,var(--sage-lt) 40%,#FFFFFF 50%,var(--sage-lt) 60%,var(--sage-lt) 100%);
+    background-size:220% 100%;-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+    animation:shine 3.2s ease-in-out infinite}
+
+  /* D4 — faster, snappier draw */
+  .d4 .pet::after{transform-origin:left center;animation:drawLoop 3s cubic-bezier(.65,0,.35,1) infinite}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1 class="t">Sage italic "Pet." + animated underline</h1>
+  <p class="s">All based on option D. Each one now <strong>loops continuously</strong> so you can watch every motion at once. (In production it would draw just once on load.)</p>
+
+  <div class="card d1"><span class="lab">D1 · Draw-on underline</span>
+    <div class="bg"></div>
+    <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    <span class="note">Underline sweeps left→right once on load</span>
+  </div>
+
+  <div class="card d2"><span class="lab">D2 · Draw-on + looping light sweep</span>
+    <div class="bg"></div>
+    <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    <span class="note">Draws on, then a soft light glides across the line every few seconds</span>
+  </div>
+
+  <div class="card d3"><span class="lab">D3 · Draw-on + word shimmer</span>
+    <div class="bg"></div>
+    <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    <span class="note">Underline draws; a gentle shine passes through the word</span>
+  </div>
+
+  <div class="card d4"><span class="lab">D4 · Quick snappy draw</span>
+    <div class="bg"></div>
+    <div class="hl">Compassionate Care for Every <span class="pet">Pet.</span></div>
+    <span class="note">Faster, tighter underline wipe — more energetic</span>
+  </div>
+</div>
+</body>
+</html>
