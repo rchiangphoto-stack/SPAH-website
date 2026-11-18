@@ -28,6 +28,7 @@ GitHub repo: `rchiangphoto-stack/SPAH-website` (static HTML, no build step)
 ## Sitewide Rules (MANDATORY)
 
 - **Never use:** specialize, specialty, expert, expertise — veterinary board restriction
+- **No em-dashes in visible content.** Never use `—` or `&mdash;` in any reader-facing text: body prose, headings, lists, FAQ answers, CTAs, banners. They read as an AI tell and raise AI-detection scores. Use a comma or period mid-sentence, a colon in a heading separator (`Temperature: where most mistakes start`), or a parenthetical. **Allowed:** en-dashes (`&ndash;` / `–`) in numeric ranges like `5–8 minutes` or `80–85°F`, and em-dashes left inside `<head>` metadata (title/meta/OG/Twitter/JSON-LD) and `alt=` attributes (not reader-facing, avoids SERP churn). When sweeping existing posts, skip `<style>`/`<script>` blocks and HTML/CSS/JS comments.
 - **No author byline** on any blog post
 - **No construction banner.** The pink "Currently in temporary Bungalows during construction." banner was REMOVED sitewide on 2026-10-12 — SPAH is no longer in the bungalows. Do not re-add it to any page.
 - **No walk-ins language** in meta descriptions or CTAs (appointment-only is fine)
